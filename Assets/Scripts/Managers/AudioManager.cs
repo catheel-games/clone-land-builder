@@ -32,7 +32,6 @@ public class AudioManager : Singleton<AudioManager>
     public struct MusicGroup
     {
         public string name;
-        public AudioMixerSnapshot snapshot;
         public Music[] musics;
     }
 
@@ -51,9 +50,10 @@ public class AudioManager : Singleton<AudioManager>
     private Dictionary<string, Dictionary<string, Sound>> soundRegistry = new Dictionary<string, Dictionary<string, Sound>>();
     private Dictionary<string, MusicGroup> musicRegistry = new Dictionary<string, MusicGroup>();
 
-    private MusicGroup currentMusicGroup;
+    private Dictionary<string, AudioSource> musicAudioSources = new Dictionary<string, AudioSource>();
+
     private AudioSource currentMusicSource;
-    private int currentMusicIndex;
+    private Sequence currentMusicSequence;
 
     protected override void Awake()
     {
@@ -72,6 +72,10 @@ public class AudioManager : Singleton<AudioManager>
         foreach (MusicGroup group in musicGroups)
         {
             musicRegistry[group.name] = group;
+
+            musicAudioSources[group.name] = Instantiate(audioSourcePrefab, Vector3.zero, Quaternion.identity, transform);
+            musicAudioSources[group.name].gameObject.name = "Music Source";
+            musicAudioSources[group.name].outputAudioMixerGroup = musicMixerGroup;
         }
     }
 
@@ -107,62 +111,55 @@ public class AudioManager : Singleton<AudioManager>
         return null;
     }
 
-    public void PlayMusicGroup(string musicQuery)
+    public AudioSource PlayMusicGroup(string groupName)
     {
-        if (musicRegistry.TryGetValue(musicQuery, out var group))
+        if (musicRegistry.TryGetValue(groupName, out var group))
         {
-            currentMusicGroup = group;
-            currentMusicIndex = 0;
-            PlayMusic();
-        }
-        else
-        {
-            Debug.LogWarning($"Music query '{musicQuery}' not found.");
-        }
-    }
+            AudioSource musicAudioSource = musicAudioSources[groupName];
 
-    private void PlayMusic()
-    {
-        Music music = currentMusicGroup.musics[currentMusicIndex];
+            if (currentMusicSequence != null)
+            {
+                currentMusicSequence.Kill();
+            }
 
-        AudioSource newMusicSource = Instantiate(audioSourcePrefab, Vector3.zero, Quaternion.identity, transform);
+            currentMusicSequence = DOTween.Sequence();
 
-        newMusicSource.gameObject.name = "Music Source";
-
-        newMusicSource.clip = music.clip;
-        newMusicSource.outputAudioMixerGroup = musicMixerGroup;
-
-        newMusicSource.Play();
-
-        if (currentMusicSource != null)
-        {
-            Sequence sequence = DOTween.Sequence();
-
-            newMusicSource.volume = 0f;
-
-            sequence.Append(currentMusicSource.DOFade(0f, musicFadeDuration));
-            sequence.Join(newMusicSource.DOFade(1f, musicFadeDuration));
-            sequence.OnComplete(() =>
+            foreach (Music music in group.musics)
+            {
+                currentMusicSequence.AppendCallback(() =>
                 {
-                    if (currentMusicSource != null) 
-                    {
-                        if (currentMusicSource.gameObject != null)
-                        {
-                            Destroy(currentMusicSource.gameObject);
-                        }
-                    }
+                    musicAudioSource.clip = music.clip;
+                    musicAudioSource.Play();
+                });
 
-                    currentMusicSource = newMusicSource;
-                }
-            );
-        } 
+                currentMusicSequence.AppendInterval(music.clip.length);
+            }
+
+            currentMusicSequence.SetLoops(-1, LoopType.Restart);
+
+            if (currentMusicSource != null)
+            {
+                Sequence sequence = DOTween.Sequence();
+
+                sequence.Append(currentMusicSource.DOFade(0f, musicFadeDuration));
+                sequence.Join(musicAudioSource.DOFade(1f, musicFadeDuration));
+                sequence.OnComplete(() => {
+                    currentMusicSource.Stop();
+                    currentMusicSource = musicAudioSource;
+                });
+            } else
+            {
+                musicAudioSource.volume = 1f;
+                currentMusicSource = musicAudioSource;
+            }
+
+            return musicAudioSource;
+        }
         else
         {
-            newMusicSource.volume = 1f;
-            currentMusicSource = newMusicSource;
+            Debug.LogWarning($"Music group '{groupName}' not found.");
         }
 
-        currentMusicIndex = (currentMusicIndex + 1) % currentMusicGroup.musics.Length;
-        
+        return null;
     }
 }

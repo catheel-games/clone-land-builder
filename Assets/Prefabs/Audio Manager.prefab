@@ -47,54 +47,6 @@ MonoBehaviour:
   audioSourcePrefab: {fileID: 694854792018272022, guid: 9c24dccd6e06e3e4e834b8934bf7761f, type: 3}
   musicFadeDuration: 2
   soundMixerGroup: {fileID: -8750258603494275546, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
-  soundGroups:
-  - name: My Knives
-    sounds:
-    - name: Knive 1
-      clip: {fileID: 8300000, guid: c839153c611e86b4d9c6041d9ed00a5d, type: 3}
-      pitch: {x: 1, y: 1}
-    - name: Knive 2
-      clip: {fileID: 8300000, guid: 55a040a458a68a44c96620b289708d0d, type: 3}
-      pitch: {x: 1, y: 1}
-    - name: Knive 3
-      clip: {fileID: 8300000, guid: b2b9e72fe4a19464e809d23e656c5fb5, type: 3}
-      pitch: {x: 1, y: 1}
-  - name: UI sounds
-    sounds:
-    - name: Knive 1
-      clip: {fileID: 8300000, guid: c839153c611e86b4d9c6041d9ed00a5d, type: 3}
-      pitch: {x: 1, y: 1}
-    - name: Knive 2
-      clip: {fileID: 8300000, guid: 55a040a458a68a44c96620b289708d0d, type: 3}
-      pitch: {x: 1, y: 1}
-    - name: Knive 3
-      clip: {fileID: 8300000, guid: b2b9e72fe4a19464e809d23e656c5fb5, type: 3}
-      pitch: {x: 1, y: 1}
-  - name: Dvso sounds
-    sounds:
-    - name: DD sound
-      clip: {fileID: 8300000, guid: ce98822b6abe5834b858e73f6b09a34d, type: 3}
-      pitch: {x: 1, y: 1}
-    - name: Ba Heto
-      clip: {fileID: 8300000, guid: 55a040a458a68a44c96620b289708d0d, type: 3}
-      pitch: {x: 1, y: 1}
-    - name: Knive 3
-      clip: {fileID: 8300000, guid: b2b9e72fe4a19464e809d23e656c5fb5, type: 3}
-      pitch: {x: 1, y: 1}
-    - name: Knive 3
-      clip: {fileID: 8300000, guid: b2b9e72fe4a19464e809d23e656c5fb5, type: 3}
-      pitch: {x: 1, y: 1}
+  soundGroups: []
   musicMixerGroup: {fileID: -2426639153622354055, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
-  musicGroups:
-  - name: Level 0
-    snapshot: {fileID: 0}
-    musics:
-    - name: Music 1
-      clip: {fileID: 8300000, guid: 8be16aceed6212d45a8e97f6eacbea7b, type: 3}
-  - name: Level 1
-    snapshot: {fileID: 0}
-    musics:
-    - name: Music 1
-      clip: {fileID: 8300000, guid: d8e64dd3a99e5fa44bb87d01fdba6534, type: 3}
-    - name: Music 2
-      clip: {fileID: 8300000, guid: 8be16aceed6212d45a8e97f6eacbea7b, type: 3}
+  musicGroups: []
