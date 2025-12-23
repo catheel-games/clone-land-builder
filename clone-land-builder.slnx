@@ -1,6 +1,6 @@
 ﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Gaskellgames.csproj" />
   <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="Gaskellgames.FolderSystem.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
 </Solution>
