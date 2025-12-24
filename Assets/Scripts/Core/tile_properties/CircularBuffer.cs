@@ -5,22 +5,16 @@ using UnityEngine;
 public class CircularBuffer : MonoBehaviour
 {
     //Just a demo types as I have no access to the miro to check the real ones, this will be updated
-    public enum Types{ 
-        Town,
-        Grass,
-        Forest,                 
-        Lake,
-        Null
-    }
 
-    private Types[] buffer;
+
+    private Component.Types[] buffer;
     private int start;
 
-    public CircularBuffer(Types[] items) {
+    public CircularBuffer(Component.Types[] items) {
         if (items.Length != 6) {
             throw new System.ArgumentException("Please have 6 elements in your array", nameof(items));
         }
-        buffer = new Types[6];
+        buffer = new Component.Types[6];
         Array.Copy(items, buffer, items.Length);
         start = 0;
     }
@@ -39,7 +33,7 @@ public class CircularBuffer : MonoBehaviour
         start = (start - Math.Abs(x) % 360 / 60 + 6) % 6;
     }
     // getter for the buffer
-    public Types Get(int i) {
+    public Component.Types Get(int i) {
         return buffer[(start + i) % 6];
     } 
 }

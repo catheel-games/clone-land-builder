@@ -3,35 +3,50 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] private CircularBuffer.Types[] components;  //start with the North tile component, then go clockwise when uploading start with upper - go to \ then / then _ etc.
-    [SerializeField] private CircularBuffer.Types centerIdentity;
+    [SerializeField] private Component[] components;  //start with the North tile component, then go clockwise when uploading start with upper - go to \ then / then _ etc.
+    [SerializeField] private Component centerIdentity;
     private CircularBuffer buffer;
+    private Component.Types[] types;
+    bool isChosen;  //if Tile was not chosen then it shouldnt rotate, there is a setter function below to change this boolean
 
     public Tile() {
-  
-        buffer = new CircularBuffer(components);
-    
+        
+        for (int i = 0; i < components.Length; i++)
+        {
+            types[i] = components[i].GetType();
+        }
+        buffer = new CircularBuffer(types);
+        isChosen = false;
     }
     //Tile rotation, just plug the rotation angle from real world, whoever is going to make the actual Tile rotations make sure each rotation step is 60 degrees
-    public void TileRotate(int x) {  
-        if (x > 0)
+    public void TileRotate(int x) {
+        if (isChosen)
         {
-            buffer.AngleRotateRight(x);
-        }
-        else if (x < 0)
-        {
-            buffer.AngleRotateLeft(x);
+            if (x > 0)
+            {
+                buffer.AngleRotateRight(x);
+            }
+            else if (x < 0)
+            {
+                buffer.AngleRotateLeft(x);
+            }
+            else
+            {
+
+                Debug.Log("There was no rotation");
+            }
+
         }
         else {
-
-            Debug.Log("There was no rotation");
+            Debug.Log("The Tile was not chosen");
         }
-    
+
+
     }
     //this function is just a Geo Compass based type getter, it is going to be needed when making the type matching system
     //for example notice that for the north-east part of the tile the matching part should be another tile's north-west one, and so on
     //good luck on tile matching system making
-    public CircularBuffer.Types GeoTileGetter(string compass) { 
+    public Component.Types GeoTileGetter(string compass) { 
         switch (compass)
         {
             case "N":
@@ -53,11 +68,13 @@ public class Tile : MonoBehaviour
                 return buffer.Get(5);
             default:
                 print("Oops, something went wrong with your GeoTileGetter, recheck the input argument");
-                return CircularBuffer.Types.Null;
+                return Component.Types.Null;
         }
     }
 
-
+    public void ChooseTile() { 
+        isChosen = true;    
+    }
 
 
 
