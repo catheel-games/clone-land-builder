@@ -11,11 +11,6 @@ public class UIManager : Singleton<UIManager>
     {
         base.Awake();
 
-        foreach (UIContainer main in mainContainers)
-        {
-            main.Hide();
-        }
-
         if (mainContainers.Count > 0)
         {
             currentContainer = mainContainers[0];
@@ -25,16 +20,15 @@ public class UIManager : Singleton<UIManager>
 
     public void Transition(int index)
     {
-        if (index < 0) return;
-        if (index >= mainContainers.Count) return;
-        if (currentContainer == mainContainers[index]) return;
-
-        if (currentContainer != null)
+        if (currentContainer != mainContainers[index])
         {
-            currentContainer.Hide();
+            if (currentContainer != null)
+            {
+                currentContainer.Hide();
+            }
+            
+            currentContainer = mainContainers[index];
+            currentContainer.Show();
         }
-        
-        currentContainer = mainContainers[index];
-        currentContainer.Show();
     }
 }
