@@ -9,6 +9,11 @@ public abstract class UIContainer : MonoBehaviour
     void Awake()
     {
         isActive = gameObject.activeSelf;
+        
+        foreach (UIContainer child in childContainers)
+        {
+            child.Hide();
+        }
     }
 
     public virtual void Show()
@@ -26,10 +31,7 @@ public abstract class UIContainer : MonoBehaviour
         {
             foreach (UIContainer child in childContainers)
             {
-                if (child != null)
-                {
-                    child.Hide();
-                }
+                child.Hide();
             }
             
             isActive = false;

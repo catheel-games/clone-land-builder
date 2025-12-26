@@ -10,10 +10,10 @@ public class UIManager : Singleton<UIManager>
     protected override void Awake()
     {
         base.Awake();
-        
-        foreach (UIContainer container in mainContainers)
+
+        foreach (UIContainer main in mainContainers)
         {
-            container.Hide();
+            main.Hide();
         }
 
         if (mainContainers.Count > 0)
