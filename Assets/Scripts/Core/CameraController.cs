@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
@@ -7,11 +8,17 @@ public class CameraController : MonoBehaviour
     private Vector3 _lastRotatePosition;
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _pivotPoint;
-    private bool _canMove;
+    [SerializeField] private Button ZoomIn = null;
+    [SerializeField] private Button ZoomOut = null;
+    [SerializeField] private Button RotateLeft = null;
+    [SerializeField] private Button RotateRight = null;
 
     void Start()
     {
-        
+        ZoomIn.onClick.AddListener(OnZoomIn);
+        ZoomOut.onClick.AddListener(OnZoomOut);
+        RotateLeft.onClick.AddListener(OnRotateLeft);
+        RotateRight.onClick.AddListener(OnRotateRight);
     }
 
     void Update()
@@ -69,7 +76,29 @@ public class CameraController : MonoBehaviour
         _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, -rotation);
     }
 
-    // m=rotate left rigth
-    // zoom in out
-    // ui zut public void methodner gri aranc parameter vor ui buttonnery kanchen
+    public void OnZoomIn()
+    {
+        float zoomSpeed = 0.5f;
+        float newSize = _camera.orthographicSize - zoomSpeed;
+        _camera.orthographicSize = Mathf.Clamp(newSize, 1f, 10f);
+    }
+
+    public void OnZoomOut()
+    {
+        float zoomSpeed = 0.5f;
+        float newSize = _camera.orthographicSize + zoomSpeed;
+        _camera.orthographicSize = Mathf.Clamp(newSize, 1f, 10f);
+    }
+
+    public void OnRotateLeft()
+    {
+        float rotateAmount = 15f;
+        _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, rotateAmount);
+    }
+
+    public void OnRotateRight()
+    {
+        float rotateAmount = 15f;
+        _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, -rotateAmount);
+    }
 }
