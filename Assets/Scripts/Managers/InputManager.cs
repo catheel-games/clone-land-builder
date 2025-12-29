@@ -1,5 +1,4 @@
 using System;
-using NUnit.Framework;
 using UnityEngine;
 
 public class InputManager : Singleton<InputManager>
@@ -28,7 +27,6 @@ public class InputManager : Singleton<InputManager>
     public static event Action<TapEvent> OnTap;
 
     private bool isSliding;
-
     private Vector2 screenHalf;
 
     protected override void Awake()
@@ -41,8 +39,6 @@ public class InputManager : Singleton<InputManager>
 
     void Update()
     {
-        Debug.Log(Input.touchCount);
-
         if (Input.touchCount > 1)
         {
             handleTwoFingerSlide();
@@ -74,7 +70,8 @@ public class InputManager : Singleton<InputManager>
     {
         OneFingerSlideEvent slideEvent = new OneFingerSlideEvent
         {
-            Position = touch.position - screenHalf,
+            Position = touch.position,
+            PositionCentered = touch.position - screenHalf,
             Delta = touch.deltaPosition
         };
 

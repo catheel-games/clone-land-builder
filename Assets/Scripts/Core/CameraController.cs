@@ -4,26 +4,21 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
-    private Vector3 _lastMousePosition;
-    private Vector3 _lastRotatePosition;
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _pivotPoint;
-    [SerializeField] private Button ZoomIn = null;
-    [SerializeField] private Button ZoomOut = null;
-    [SerializeField] private Button RotateLeft = null;
-    [SerializeField] private Button RotateRight = null;
 
-    void Start()
-    {
-        ZoomIn.onClick.AddListener(OnZoomIn);
-        ZoomOut.onClick.AddListener(OnZoomOut);
-        RotateLeft.onClick.AddListener(OnRotateLeft);
-        RotateRight.onClick.AddListener(OnRotateRight);
-    }
+    [SerializeField] private float zoomCoefficient = 0.5f;
+    [SerializeField] private float rotateCoefficient = 30f;
+    [SerializeField] private float translateCoefficient = 0.5f;
+
+    [SerializeField] private float rotationAmountUI = 15f;
+    [SerializeField] private float zoomAmountUI = 0.5f;
+
+    private Vector3 _lastMousePosition;
+    private Vector3 _lastRotatePosition;
 
     void Update()
     {
-        // CheckClick();
         HandlePCMovement();
         HandlePCZoom();
         HandlePCRotate();
@@ -60,7 +55,6 @@ public class CameraController : MonoBehaviour
         float scroll = Input.mouseScrollDelta.y;
         if (scroll == 0) return; // if not zooming skip the rest of the function 
 
-        float zoomSpeed = 0.5f;
         float newSize = _camera.orthographicSize - scroll * zoomSpeed;
         _camera.orthographicSize = Mathf.Clamp(newSize, 1f, 10f);
     }
@@ -70,7 +64,6 @@ public class CameraController : MonoBehaviour
         if (!Input.GetMouseButton(1)) return;
 
         float delta = Input.GetAxis("Mouse X");
-        float rotateSpeed = 30f;
         float rotation = Mathf.Clamp(delta * rotateSpeed, -1f, 1f);
 
         _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, -rotation);
@@ -78,27 +71,23 @@ public class CameraController : MonoBehaviour
 
     public void OnZoomIn()
     {
-        float zoomSpeed = 0.5f;
-        float newSize = _camera.orthographicSize - zoomSpeed;
+        float newSize = _camera.orthographicSize - zoomAmountUI;
         _camera.orthographicSize = Mathf.Clamp(newSize, 1f, 10f);
     }
 
     public void OnZoomOut()
     {
-        float zoomSpeed = 0.5f;
-        float newSize = _camera.orthographicSize + zoomSpeed;
+        float newSize = _camera.orthographicSize + zoomAmountUI;
         _camera.orthographicSize = Mathf.Clamp(newSize, 1f, 10f);
     }
 
     public void OnRotateLeft()
     {
-        float rotateAmount = 15f;
-        _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, rotateAmount);
+        _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, rotationAmountUI);
     }
 
     public void OnRotateRight()
     {
-        float rotateAmount = 15f;
-        _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, -rotateAmount);
+        _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, -rotationAmountUI);
     }
 }
