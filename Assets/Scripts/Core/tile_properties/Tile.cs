@@ -9,7 +9,8 @@ public class Tile : MonoBehaviour
         Town,
         Grass,
         Forest,
-        Lake
+        Yellow,
+        Water
     }
 
     [SerializeField] private Type[] borderTypes;
