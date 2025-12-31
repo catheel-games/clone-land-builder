@@ -73,6 +73,7 @@ public class CameraController : MonoBehaviour
     {
         float newSize = _camera.orthographicSize - zoomAmountUI;
         _camera.orthographicSize = Mathf.Clamp(newSize, 1f, 10f);
+        
     }
 
     public void OnZoomOut()
