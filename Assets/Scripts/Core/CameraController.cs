@@ -17,11 +17,32 @@ public class CameraController : MonoBehaviour
     private Vector3 _lastMousePosition;
     private Vector3 _lastRotatePosition;
 
+    private float _zoomTarget;
+    private float _rotateTarget;
+    private float _currentRotation;
+
+    void Awake()
+    {
+        _zoomTarget = _camera.orthographicSize;
+        _currentRotation = 0f;
+        _rotateTarget = 0f;
+    }
+
     void Update()
     {
         HandlePCMovement();
         HandlePCZoom();
         HandlePCRotate();
+
+        // Zoom lerp
+        _camera.orthographicSize = Mathf.Lerp(_camera.orthographicSize, _zoomTarget, 0.2f);
+
+        // Rotation lerp
+        float previousRotation = _currentRotation;
+        _currentRotation = Mathf.Lerp(_currentRotation, _rotateTarget, 0.2f);
+        float rotationDelta = _currentRotation - previousRotation;
+
+        _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, rotationDelta);
     }
 
     private void HandlePCMovement()
@@ -55,8 +76,10 @@ public class CameraController : MonoBehaviour
         float scroll = Input.mouseScrollDelta.y;
         if (scroll == 0) return; // if not zooming skip the rest of the function 
 
-        float newSize = _camera.orthographicSize - scroll * zoomSpeed;
+        float newSize = _camera.orthographicSize - scroll * zoomCoefficient;
         _camera.orthographicSize = Mathf.Clamp(newSize, 1f, 10f);
+
+        _zoomTarget = _camera.orthographicSize;
     }
 
     private void HandlePCRotate()
@@ -64,31 +87,32 @@ public class CameraController : MonoBehaviour
         if (!Input.GetMouseButton(1)) return;
 
         float delta = Input.GetAxis("Mouse X");
-        float rotation = Mathf.Clamp(delta * rotateSpeed, -1f, 1f);
+        float rotation = Mathf.Clamp(delta * rotateCoefficient, -1f, 1f);
 
-        _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, -rotation);
+        _rotateTarget += rotation; 
     }
 
+    [ContextMenu("Zoom In")]
     public void OnZoomIn()
     {
-        float newSize = _camera.orthographicSize - zoomAmountUI;
-        _camera.orthographicSize = Mathf.Clamp(newSize, 1f, 10f);
-        
+        _zoomTarget -= zoomAmountUI;
     }
 
+    [ContextMenu("Zoom Out")]
     public void OnZoomOut()
     {
-        float newSize = _camera.orthographicSize + zoomAmountUI;
-        _camera.orthographicSize = Mathf.Clamp(newSize, 1f, 10f);
+        _zoomTarget += zoomAmountUI;
     }
 
+    [ContextMenu("Rotate Left")]
     public void OnRotateLeft()
     {
-        _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, rotationAmountUI);
+        _rotateTarget -= rotationAmountUI;
     }
 
+    [ContextMenu("Rotate Right")]
     public void OnRotateRight()
     {
-        _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, -rotationAmountUI);
+        _rotateTarget += rotationAmountUI;
     }
 }
