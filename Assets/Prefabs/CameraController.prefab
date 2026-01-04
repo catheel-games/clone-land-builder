@@ -70,7 +70,7 @@ MonoBehaviour:
   controllerRef: {fileID: 3507406195470626192}
   cameraRef: {fileID: 6718079390963149649}
   zoomCoefficient: 20
-  rotationCoefficient: 300
+  rotationCoefficient: 400
   translationCoefficient: 12
 --- !u!1 &6838969445515328345
 GameObject:

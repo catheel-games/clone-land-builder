@@ -38,7 +38,7 @@ public class CameraInputInterpreter : MonoBehaviour
 
     private void OnTwoFingerSlide(InputManager.TwoFingerSlideEvent slideEvent)
     {
-        Vector2 firstDistanceNormal = (slideEvent.FirstFinger.Position - slideEvent.SecondFinger.Position).normalized;
+        Vector2 firstDistanceNormal = (slideEvent.SecondFinger.Position - slideEvent.FirstFinger.Position).normalized;
         Vector2 firstDistanceTangent = new Vector2(-firstDistanceNormal.y, firstDistanceNormal.x);
 
         float firstDeltaAlongNormal = Vector2.Dot(slideEvent.FirstFinger.Delta, firstDistanceNormal);
