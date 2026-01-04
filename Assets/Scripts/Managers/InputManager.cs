@@ -26,12 +26,26 @@ public class InputManager : Singleton<InputManager>
     public static event Action<MouseClickEvent> OnMouseLeftClickSlide;
     public static event Action<MouseClickEvent> OnMouseRightClickSlide;
 
+    [SerializeField] private Camera cameraRef;
+
+    private Vector2 screenCenter = new Vector2(0.5f, 0.5f * Screen.height / Screen.width);
+
     void Update()
     {
         handleOneFingerSlide();
         handleTwoFingerSlide();
         handleMouseLeftClick();
         handleMouseRightClick();
+    }
+
+    private Vector2 processInputPosition(Vector2 positionInput)
+    {
+        return positionInput / Screen.width - screenCenter;
+    }
+
+    private Vector2 processInputDelta(Vector2 deltaInput)
+    {
+        return deltaInput / Screen.width;
     }
 
     private void handleOneFingerSlide()
@@ -42,8 +56,8 @@ public class InputManager : Singleton<InputManager>
             
             OneFingerSlideEvent slideEvent = new OneFingerSlideEvent
             {
-                Position = touch.position,
-                Delta = touch.deltaPosition
+                Position = processInputPosition(touch.position),
+                Delta = processInputDelta(touch.deltaPosition)
             };
 
             OnOneFingerSlide?.Invoke(slideEvent);
@@ -61,13 +75,13 @@ public class InputManager : Singleton<InputManager>
             {
                 FirstFinger = new OneFingerSlideEvent
                 {
-                    Position = touchOne.position,
-                    Delta = touchOne.deltaPosition
+                    Position = processInputPosition(touchOne.position),
+                    Delta = processInputDelta(touchOne.deltaPosition)
                 },
                 SecondFinger = new OneFingerSlideEvent
                 {
-                    Position = touchTwo.position,
-                    Delta = touchTwo.deltaPosition
+                    Position = processInputPosition(touchTwo.position),
+                    Delta = processInputDelta(touchTwo.deltaPosition)
                 }
             };
 
@@ -77,12 +91,12 @@ public class InputManager : Singleton<InputManager>
 
     private void handleMouseLeftClick()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Input.touchCount == 0)
         {
             MouseClickEvent clickEvent = new MouseClickEvent
             {
-                Position = Input.mousePosition,
-                Delta = Input.mousePositionDelta
+                Position = processInputPosition(Input.mousePosition),
+                Delta = processInputDelta(Input.mousePositionDelta)
             };
 
             OnMouseLeftClickSlide?.Invoke(clickEvent);
@@ -91,12 +105,12 @@ public class InputManager : Singleton<InputManager>
 
     private void handleMouseRightClick()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && Input.touchCount == 0)
         {
             MouseClickEvent clickEvent = new MouseClickEvent
             {
-                Position = Input.mousePosition,
-                Delta = Input.mousePositionDelta
+                Position = processInputPosition(Input.mousePosition),
+                Delta = processInputDelta(Input.mousePositionDelta)
             };
 
             OnMouseRightClickSlide?.Invoke(clickEvent);

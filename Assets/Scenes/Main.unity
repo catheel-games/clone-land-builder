@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2452338551405651032, guid: 63c202a2ff48c554689c08447dd366bf, type: 3}
+      propertyPath: cameraRef
+      value: 
+      objectReference: {fileID: 1161084811}
     - target: {fileID: 6955605513642144640, guid: 63c202a2ff48c554689c08447dd366bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -580,6 +584,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1161084811 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6718079390963149649, guid: 8ce7304781eedda4385b8b2e1ff56331, type: 3}
+  m_PrefabInstance: {fileID: 767561132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

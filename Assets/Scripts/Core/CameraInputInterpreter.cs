@@ -9,8 +9,6 @@ public class CameraInputInterpreter : MonoBehaviour
     [SerializeField] private float rotationCoefficient = 0.5f;
     [SerializeField] private float translationCoefficient = 4f;
 
-    private Vector2 screenCenter = new Vector2(Screen.width  / 2, Screen.height / 2);
-
     void OnEnable()
     {
         InputManager.OnOneFingerSlide += OnOneFingerSlide;
@@ -69,7 +67,7 @@ public class CameraInputInterpreter : MonoBehaviour
 
     private void OnMouseRightClickSlide(InputManager.MouseClickEvent clickEvent)
     {
-        Vector2 firstDistanceNormal = (screenCenter - clickEvent.Position).normalized;
+        Vector2 firstDistanceNormal = (-clickEvent.Position).normalized;
         Vector2 firstDistanceTangent = new Vector2(-firstDistanceNormal.y, firstDistanceNormal.x);
 
         float firstDeltaAlongNormal = Vector2.Dot(clickEvent.Delta, firstDistanceNormal);
