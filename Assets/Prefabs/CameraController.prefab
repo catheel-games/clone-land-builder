@@ -31,7 +31,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 984365230756303940}
   - {fileID: 7163466672120344942}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8133389fe134f4fa31ced29d2a7402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  _camera: {fileID: 6718079390963149649}
-  _pivotPoint: {fileID: 7163466672120344942}
+  cameraRef: {fileID: 6718079390963149649}
+  pivotTransform: {fileID: 7163466672120344942}
   zoomLerpCoefficient: 20
   rotationLerpCoefficient: 20
   translationLerpCoefficient: 20
@@ -70,8 +69,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraInputInterpreter
   controllerRef: {fileID: 3507406195470626192}
   cameraRef: {fileID: 6718079390963149649}
-  zoomCoefficient: 2
-  rotationCoefficient: 0.5
+  zoomCoefficient: 0.1
+  rotationCoefficient: 1
   translationCoefficient: 4
 --- !u!1 &6838969445515328345
 GameObject:
@@ -100,12 +99,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6838969445515328345}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 2.37, z: -2.37}
+  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 2.37, z: -2.3700004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 953743583938983394}
+  m_Father: {fileID: 7163466672120344942}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!20 &6718079390963149649
 Camera:
@@ -234,10 +233,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7645652380911969716}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.12605, y: -0.90288, z: 1.5103698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 984365230756303940}
   m_Father: {fileID: 953743583938983394}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

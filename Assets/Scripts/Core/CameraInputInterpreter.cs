@@ -9,7 +9,7 @@ public class CameraInputInterpreter : MonoBehaviour
     [SerializeField] private float rotationCoefficient = 0.5f;
     [SerializeField] private float translationCoefficient = 4f;
 
-    private Vector2 screenCenter = new Vector2(Screen.width, Screen.height);
+    private Vector2 screenCenter = new Vector2(Screen.width  / 2, Screen.height / 2);
 
     void OnEnable()
     {

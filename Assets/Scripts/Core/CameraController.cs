@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Camera _camera;
-    [SerializeField] private Transform _pivotPoint;
+    [SerializeField] private Camera cameraRef;
+    [SerializeField] private Transform pivotTransform;
 
     [SerializeField] private float zoomLerpCoefficient = 0.2f;
     [SerializeField] private float rotationLerpCoefficient = 0.2f;
@@ -15,46 +15,37 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float zoomMax = 10f;
     [SerializeField] private float zoomMin = 1f;
 
-    private float _zoomTarget;
-    private float _rotationTarget;
-    private Vector3 _positionTarget;
-
-    private float _currentRotation;
+    private float zoomTarget;
+    private float rotationTarget;
+    private Vector3 positionTarget;
 
     void Awake()
     {
-        _zoomTarget = _camera.orthographicSize;
-        _currentRotation = 0f;
-        _rotationTarget = 0f;
-        _positionTarget = _camera.transform.position;
+        zoomTarget = cameraRef.orthographicSize;
+        rotationTarget = pivotTransform.transform.rotation.y;
+        positionTarget = transform.position;
     }
 
     void Update()
     {
-        // Zoom lerp
-        _camera.orthographicSize = Mathf.Lerp(_camera.orthographicSize, _zoomTarget, zoomLerpCoefficient * Time.deltaTime);
-
-        // Rotation lerp
-        float rotationDelta = Mathf.Lerp(_currentRotation, _rotationTarget, rotationLerpCoefficient * Time.deltaTime) - _currentRotation;
-        _camera.transform.RotateAround(_pivotPoint.position, Vector3.up, rotationDelta);
-
-        // Translation Lerp
-        _camera.transform.position = Vector3.Lerp(_camera.transform.position, _positionTarget, translationLerpCoefficient * Time.deltaTime);
+        cameraRef.orthographicSize = Mathf.Lerp(cameraRef.orthographicSize, zoomTarget, zoomLerpCoefficient * Time.deltaTime);
+        pivotTransform.transform.rotation = Quaternion.Lerp(pivotTransform.transform.rotation, Quaternion.Euler(0f, rotationTarget, 0f), rotationLerpCoefficient);
+        transform.position = Vector3.Lerp(transform.position, positionTarget, translationLerpCoefficient * Time.deltaTime);
     }
 
     public void ChangeZoom(float zoomAmount)
     {
-        _zoomTarget = Mathf.Clamp(_zoomTarget + zoomAmount, zoomMin, zoomMax);
+        zoomTarget = Mathf.Clamp(zoomTarget + zoomAmount, zoomMin, zoomMax);
     }
 
     public void ChangeRotation(float rotationAmount)
     {
-        _rotationTarget += rotationAmount;
+        rotationTarget += rotationAmount;
     }
 
     public void ChangePosition(Vector3 translationAmount)
     {
-        _positionTarget += translationAmount;
+        positionTarget += translationAmount;
     }
 
     [ContextMenu("Zoom In")]
