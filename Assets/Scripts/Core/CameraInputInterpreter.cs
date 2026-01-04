@@ -29,10 +29,13 @@ public class CameraInputInterpreter : MonoBehaviour
 
     private void OnOneFingerSlide(InputManager.OneFingerSlideEvent slideEvent)
     {
-        Vector3 touchPositionA = cameraRef.ScreenToWorldPoint(slideEvent.Position - slideEvent.Delta);
-        Vector3 touchPositionB = cameraRef.ScreenToWorldPoint(slideEvent.Position);
-        
-        controllerRef.ChangePosition((touchPositionB - touchPositionA) * translationCoefficient);
+        Vector2 mousePositionA = slideEvent.Position - slideEvent.Delta;
+        Vector2 mousePositionB = slideEvent.Position;
+
+        Vector3 mousePositionA3 = new Vector3(mousePositionA.x, 0f, mousePositionA.y);
+        Vector3 mousePositionB3 = new Vector3(mousePositionB.x, 0f, mousePositionB.y);
+
+        controllerRef.ChangePosition((mousePositionB3 - mousePositionA3) * translationCoefficient);
     }
 
     private void OnTwoFingerSlide(InputManager.TwoFingerSlideEvent slideEvent)
@@ -55,10 +58,13 @@ public class CameraInputInterpreter : MonoBehaviour
 
     private void OnMouseLeftClickSlide(InputManager.MouseClickEvent clickEvent)
     {
-        Vector3 mousePositionA = cameraRef.ScreenToWorldPoint(clickEvent.Position - clickEvent.Delta);
-        Vector3 mousePositionB = cameraRef.ScreenToWorldPoint(clickEvent.Position);
+        Vector2 mousePositionA = clickEvent.Position - clickEvent.Delta;
+        Vector2 mousePositionB = clickEvent.Position;
 
-        controllerRef.ChangePosition((mousePositionB - mousePositionA) * translationCoefficient);
+        Vector3 mousePositionA3 = new Vector3(mousePositionA.x, 0f, mousePositionA.y);
+        Vector3 mousePositionB3 = new Vector3(mousePositionB.x, 0f, mousePositionB.y);
+
+        controllerRef.ChangePosition((mousePositionB3 - mousePositionA3) * translationCoefficient);
     }
 
     private void OnMouseRightClickSlide(InputManager.MouseClickEvent clickEvent)

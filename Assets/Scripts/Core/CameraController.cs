@@ -59,7 +59,7 @@ public class CameraController : MonoBehaviour
 
     public void ChangePosition(Vector3 translationAmount)
     {
-        positionTarget += translationAmount;
+        positionTarget += pivotTransform.transform.rotation * translationAmount;
     }
 
     public void OnZoomIn()
