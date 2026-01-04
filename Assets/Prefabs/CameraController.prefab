@@ -69,9 +69,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraInputInterpreter
   controllerRef: {fileID: 3507406195470626192}
   cameraRef: {fileID: 6718079390963149649}
-  zoomCoefficient: 16
-  rotationCoefficient: 100
-  translationCoefficient: 8
+  zoomCoefficient: 20
+  rotationCoefficient: 300
+  translationCoefficient: 12
 --- !u!1 &6838969445515328345
 GameObject:
   m_ObjectHideFlags: 0
