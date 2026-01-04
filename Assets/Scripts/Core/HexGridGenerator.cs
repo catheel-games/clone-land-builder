@@ -10,18 +10,22 @@ public class HexGridGenerator : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject tilePrefab;
 
+    const float sqrt3 = 1.73205080757f;
+    const float sqrt3half = 0.86602540378f;
+
     void Start()
     {
         MakeMapGrid();
     }
 
-    private Vector2 GetHexCoords(int x, int z)
+    private Vector3 GetHexCoords(int x, int z)
     {
-        float xPos = x * tileSize * Mathf.Cos(Mathf.Deg2Rad * 30f);
+        Vector3 position = Vector3.zero;
 
-        float zPos = z * tileSize + ((x % 2 == 1) ? tileSize * 0.5f : 0f);
+        position += tileSize * new Vector3(sqrt3 * x, 0f, 1.5f * z);
+        position += tileSize * new Vector3(sqrt3half * MainUtilities.Modulo(z, 2), 0f, 0f);
 
-        return new Vector2(xPos, zPos);
+        return position;
     }
 
     private void MakeMapGrid()
@@ -30,11 +34,7 @@ public class HexGridGenerator : MonoBehaviour
         {
             for (int z = 0; z < mapHeight; z++)
             {
-                Vector2 hexCoords = GetHexCoords(x, z);
-
-                Vector3 worldPosition = new Vector3(hexCoords.x, 0f, hexCoords.y);
-
-                Instantiate(tilePrefab, worldPosition, Quaternion.identity, transform);
+                Instantiate(tilePrefab, GetHexCoords(x, z), Quaternion.identity, transform);
             }
         }
     }
