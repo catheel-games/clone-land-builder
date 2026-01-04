@@ -5,15 +5,15 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Camera cameraRef;
     [SerializeField] private Transform pivotTransform;
 
-    [SerializeField] private float zoomLerpCoefficient = 0.2f;
-    [SerializeField] private float rotationLerpCoefficient = 0.2f;
-    [SerializeField] private float translationLerpCoefficient = 0.5f;
+    [SerializeField] private float zoomLerpCoefficient = 10f;
+    [SerializeField] private float rotationLerpCoefficient = 10f;
+    [SerializeField] private float translationLerpCoefficient = 10f;
 
-    [SerializeField] private float zoomStep = 0.5f;
-    [SerializeField] private float rotationStep = 15f;
-
-    [SerializeField] private float zoomMax = 10f;
     [SerializeField] private float zoomMin = 1f;
+    [SerializeField] private float zoomMax = 10f;
+
+    [SerializeField] private float zoomStep = 2f;
+    [SerializeField] private float rotationStep = 20f;
 
     private float zoomTarget;
     private float rotationTarget;
@@ -28,9 +28,23 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        cameraRef.orthographicSize = Mathf.Lerp(cameraRef.orthographicSize, zoomTarget, zoomLerpCoefficient * Time.deltaTime);
-        pivotTransform.transform.rotation = Quaternion.Lerp(pivotTransform.transform.rotation, Quaternion.Euler(0f, rotationTarget, 0f), rotationLerpCoefficient);
-        transform.position = Vector3.Lerp(transform.position, positionTarget, translationLerpCoefficient * Time.deltaTime);
+        cameraRef.orthographicSize = Mathf.Lerp(
+            cameraRef.orthographicSize,
+            zoomTarget,
+            zoomLerpCoefficient * Time.deltaTime
+        );
+
+        pivotTransform.transform.rotation = Quaternion.Lerp(
+            pivotTransform.transform.rotation,
+            Quaternion.Euler(0f, rotationTarget, 0f),
+            rotationLerpCoefficient * Time.deltaTime
+        );
+
+        transform.position = Vector3.Lerp(
+            transform.position,
+            positionTarget,
+            translationLerpCoefficient * Time.deltaTime
+        );
     }
 
     public void ChangeZoom(float zoomAmount)
@@ -40,7 +54,7 @@ public class CameraController : MonoBehaviour
 
     public void ChangeRotation(float rotationAmount)
     {
-        rotationTarget += rotationAmount;
+        rotationTarget -= rotationAmount;
     }
 
     public void ChangePosition(Vector3 translationAmount)
@@ -48,27 +62,23 @@ public class CameraController : MonoBehaviour
         positionTarget += translationAmount;
     }
 
-    [ContextMenu("Zoom In")]
     public void OnZoomIn()
     {
         ChangeZoom(-zoomStep);
     }
 
-    [ContextMenu("Zoom Out")]
     public void OnZoomOut()
     {
         ChangeZoom(zoomStep);
     }
 
-    [ContextMenu("Rotate Left")]
     public void OnRotateLeft()
     {
-        ChangeRotation(-rotationStep);
+        ChangeRotation(rotationStep);
     }
 
-    [ContextMenu("Rotate Right")]
     public void OnRotateRight()
     {
-        ChangeRotation(rotationStep);
+        ChangeRotation(-rotationStep);
     }
 }

@@ -48,11 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   cameraRef: {fileID: 6718079390963149649}
   pivotTransform: {fileID: 7163466672120344942}
-  zoomLerpCoefficient: 20
-  rotationLerpCoefficient: 20
-  translationLerpCoefficient: 20
-  zoomStep: 0.5
-  rotationStep: 15
+  zoomLerpCoefficient: 10
+  rotationLerpCoefficient: 10
+  translationLerpCoefficient: 10
+  zoomStep: 2
+  rotationStep: 20
   zoomMax: 10
   zoomMin: 1
 --- !u!114 &7084255861470146081
