@@ -6,7 +6,6 @@ public class InputManager : Singleton<InputManager>
     public struct OneFingerSlideEvent
     {
         public Vector2 Position;
-        public Vector2 PositionCentered;
         public Vector2 Delta;
     }
 
@@ -16,109 +15,91 @@ public class InputManager : Singleton<InputManager>
         public OneFingerSlideEvent SecondFinger;
     }
 
-    public struct TapEvent
+    public struct MouseClickEvent
     {
         public Vector2 Position;
-        public GameObject TappedObject;
+        public Vector2 Delta;
     }
 
     public static event Action<OneFingerSlideEvent> OnOneFingerSlide;
     public static event Action<TwoFingerSlideEvent> OnTwoFingerSlide;
-    public static event Action<TapEvent> OnTap;
-
-    private bool isSliding;
-    private Vector2 screenHalf;
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        isSliding = false;
-        screenHalf = new Vector2(Screen.width / 2f, Screen.height / 2f);
-    }
+    public static event Action<MouseClickEvent> OnMouseLeftClickSlide;
+    public static event Action<MouseClickEvent> OnMouseRightClickSlide;
 
     void Update()
     {
-        if (Input.touchCount > 1)
-        {
-            handleTwoFingerSlide();
-        }
-        else if (Input.touchCount == 1)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Moved)
-            {
-                isSliding = true;
-                handleOneFingerSlide(touch);
-            }
-            else if (touch.phase == TouchPhase.Ended)
-            {
-                if (!isSliding)
-                {
-                    handleTap(touch);
-                }
-                else
-                { 
-                    isSliding = false;
-                }
-            }
-        }
+        handleOneFingerSlide();
+        handleTwoFingerSlide();
+        handleMouseLeftClick();
+        handleMouseRightClick();
     }
 
-    private void handleOneFingerSlide(Touch touch)
+    private void handleOneFingerSlide()
     {
-        OneFingerSlideEvent slideEvent = new OneFingerSlideEvent
+        if (Input.touchCount == 1)
         {
-            Position = touch.position,
-            PositionCentered = touch.position - screenHalf,
-            Delta = touch.deltaPosition
-        };
+            Touch touch = Input.GetTouch(0);
+            
+            OneFingerSlideEvent slideEvent = new OneFingerSlideEvent
+            {
+                Position = touch.position,
+                Delta = touch.deltaPosition
+            };
 
-        OnOneFingerSlide?.Invoke(slideEvent);
+            OnOneFingerSlide?.Invoke(slideEvent);
+        }
     }
 
     private void handleTwoFingerSlide()
     {
-        Touch touchOne = Input.GetTouch(0);
-        Touch touchTwo = Input.GetTouch(1);
-
-        TwoFingerSlideEvent slideEvent = new TwoFingerSlideEvent
+        if (Input.touchCount > 1)
         {
-            FirstFinger = new OneFingerSlideEvent
-            {
-                Position = touchOne.position,
-                PositionCentered = touchOne.position - screenHalf,
-                Delta = touchOne.deltaPosition
-            },
-            SecondFinger = new OneFingerSlideEvent
-            {
-                Position = touchTwo.position,
-                PositionCentered = touchTwo.position - screenHalf,
-                Delta = touchTwo.deltaPosition
-            }
-        };
+            Touch touchOne = Input.GetTouch(0);
+            Touch touchTwo = Input.GetTouch(1);
 
-        OnTwoFingerSlide?.Invoke(slideEvent);
+            TwoFingerSlideEvent slideEvent = new TwoFingerSlideEvent
+            {
+                FirstFinger = new OneFingerSlideEvent
+                {
+                    Position = touchOne.position,
+                    Delta = touchOne.deltaPosition
+                },
+                SecondFinger = new OneFingerSlideEvent
+                {
+                    Position = touchTwo.position,
+                    Delta = touchTwo.deltaPosition
+                }
+            };
+
+            OnTwoFingerSlide?.Invoke(slideEvent);
+        }
     }
 
-    private void handleTap(Touch touch)
+    private void handleMouseLeftClick()
     {
-        Ray ray = Camera.main.ScreenPointToRay(touch.position);
-        RaycastHit hit;
-
-        GameObject tappedObject = null;
-        if (Physics.Raycast(ray, out hit))
+        if (Input.GetMouseButton(0))
         {
-            tappedObject = hit.collider.gameObject;
+            MouseClickEvent clickEvent = new MouseClickEvent
+            {
+                Position = Input.mousePosition,
+                Delta = Input.mousePositionDelta
+            };
+
+            OnMouseLeftClickSlide?.Invoke(clickEvent);
         }
+    }
 
-        TapEvent tapEvent = new TapEvent
+    private void handleMouseRightClick()
+    {
+        if (Input.GetMouseButton(1))
         {
-            Position = touch.position,
-            TappedObject = tappedObject
-        };
+            MouseClickEvent clickEvent = new MouseClickEvent
+            {
+                Position = Input.mousePosition,
+                Delta = Input.mousePositionDelta
+            };
 
-        OnTap?.Invoke(tapEvent);
+            OnMouseRightClickSlide?.Invoke(clickEvent);
+        }
     }
 }
