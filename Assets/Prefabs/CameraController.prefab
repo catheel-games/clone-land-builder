@@ -52,7 +52,7 @@ MonoBehaviour:
   rotationLerpCoefficient: 10
   translationLerpCoefficient: 10
   zoomMin: 1
-  zoomMax: 10
+  zoomMax: 20
   zoomStep: 2
   rotationStep: 20
 --- !u!114 &7084255861470146081
