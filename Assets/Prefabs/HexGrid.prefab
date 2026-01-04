@@ -47,4 +47,4 @@ MonoBehaviour:
   mapWidth: 12
   mapHeight: 12
   tileSize: 1
-  tilePrefab: {fileID: 919132149155446097, guid: 8d43c9979af34f74f9ce6e2b2d00fd3d, type: 3}
+  tilePrefab: {fileID: 919132149155446097, guid: 39a0732b6a701424fb842fb6088191db, type: 3}
