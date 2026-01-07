@@ -1,9 +1,10 @@
 using UnityEngine;
 
+[RequireComponent(typeof(CanvasGroup))]
 public abstract class UIContainer : MonoBehaviour
 {
-    [SerializeField] protected CanvasGroup canvasGroup;
     [SerializeField] private UIContainer[] childContainers;
+    [SerializeField] protected CanvasGroup canvasGroup;
 
     private bool isActive;
 
