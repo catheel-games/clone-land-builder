@@ -5,25 +5,31 @@ public abstract class UIContainer : MonoBehaviour
 {
     [SerializeField] private UIContainer[] childContainers;
     [SerializeField] protected CanvasGroup canvasGroup;
+    [SerializeField] private bool activeMode = false;
 
     private bool isActive;
 
     void Awake()
     {
-        isActive = false;
-        canvasGroup.alpha = 0f;
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
+        setVisibility(activeMode);
+    }
+
+    public virtual void Reset()
+    {
+        setVisibility(activeMode);
+
+        foreach (UIContainer child in childContainers)
+        {
+            child.Reset();
+        }
     }
 
     public virtual void Show()
     {
         if (!isActive)
         {
-            isActive = true;
-            canvasGroup.alpha = 1f;
-            canvasGroup.interactable = true;
-            canvasGroup.blocksRaycasts = true;
+            Reset();
+            setVisibility(true);
         }
     }
 
@@ -31,15 +37,15 @@ public abstract class UIContainer : MonoBehaviour
     {
         if (isActive)
         {
-            foreach (UIContainer child in childContainers)
-            {
-                child.Hide();
-            }
-            
-            isActive = false;
-            canvasGroup.alpha = 0f;
-            canvasGroup.interactable = false;
-            canvasGroup.blocksRaycasts = false;
+            setVisibility(false);
         }
+    }
+
+    private void setVisibility(bool visible)
+    {
+        isActive = visible;
+        canvasGroup.alpha = visible ? 1f : 0f;
+        canvasGroup.interactable = visible;
+        canvasGroup.blocksRaycasts = visible;
     }
 }
