@@ -7,7 +7,7 @@ public abstract class UIContainer : MonoBehaviour
     [SerializeField] protected CanvasGroup canvasGroup;
     [SerializeField] private bool activeMode = false;
 
-    private bool isActive;
+    protected bool isActive;
 
     void Awake()
     {
