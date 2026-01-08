@@ -8,7 +8,7 @@ public class LoadManager : Singleton<LoadManager>
 
     private AsyncOperation operation;
 
-    public async void LoadScene(string sceneName)
+    public void LoadScene(string sceneName)
     {
         if (operation == null)
         {

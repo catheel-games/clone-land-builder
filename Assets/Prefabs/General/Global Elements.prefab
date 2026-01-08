@@ -208,6 +208,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230291542795655136, guid: b9e74418cba68c648ac106b7d654ab00, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5709589177634096042, guid: b9e74418cba68c648ac106b7d654ab00, type: 3}
       propertyPath: m_Name
       value: Global Canvas
