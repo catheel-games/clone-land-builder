@@ -9,11 +9,6 @@ public class VibrationManager : Singleton<VibrationManager>
         vibrationEnabled = isEnabled;
     }
 
-    public void ChangeVibration(bool vibration)
-    {
-        vibrationEnabled = vibration;
-    }
-
     public void Vibrate()
     {
         #if UNITY_ANDROID

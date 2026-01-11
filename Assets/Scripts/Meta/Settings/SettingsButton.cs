@@ -13,7 +13,7 @@ public abstract class SettingsButton : MonoBehaviour
 
     protected bool isActive;
     
-    void Awake()
+    void Start()
     {
         isActive = Preferences.GetBool(preferenceKey, defaultValue);
         ApplyVisual();

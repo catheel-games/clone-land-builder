@@ -164,7 +164,7 @@ public class AudioManager : Singleton<AudioManager>
         return null;
     }
 
-    public void SetMusicEnabled(bool isMusicOn)
+    public void SetMusicVolume(bool isMusicOn)
     {
         if (isMusicOn)
         {
@@ -175,7 +175,7 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
-    public void SetSoundEnabled(bool isSoundOn)
+    public void SetSoundVolume(bool isSoundOn)
     {
         if (isSoundOn)
         {
