@@ -83,14 +83,14 @@ public class SettingsController : MonoBehaviour
     {
         PlayerPrefs.SetInt("MusicSettings", MusicIsOn ? 1 : 0);
         settingsButton[0].SetButton(MusicIsOn);
-        AudioManager.Instance.ChangeMixerGroupVolume("MusicVolume", MusicIsOn);
+        AudioManager.Instance.SetMusicEnabled(MusicIsOn);
     }
 
     private void SetSounds()
     {
         PlayerPrefs.SetInt("SoundSetting", SoundIsOn ? 1 : 0);
         settingsButton[1].SetButton(SoundIsOn);
-        AudioManager.Instance.ChangeMixerGroupVolume("SoundsVolume", SoundIsOn);
+        AudioManager.Instance.SetSoundEnabled(SoundIsOn);
     }
 
     private void SetVibration()

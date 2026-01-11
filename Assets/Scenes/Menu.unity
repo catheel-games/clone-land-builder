@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 250551579}
   - component: {fileID: 250551578}
   m_Layer: 5
-  m_Name: GetXStarsPanel
+  m_Name: Get X Stars Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -882,7 +882,7 @@ GameObject:
   - component: {fileID: 263306360}
   - component: {fileID: 263306359}
   m_Layer: 5
-  m_Name: InfoText
+  m_Name: Info Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1126,7 +1126,7 @@ GameObject:
   - component: {fileID: 322449374}
   - component: {fileID: 322449373}
   m_Layer: 5
-  m_Name: ResourcePanel
+  m_Name: Resource Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2048,7 +2048,7 @@ GameObject:
   - component: {fileID: 401851088}
   - component: {fileID: 401851087}
   m_Layer: 5
-  m_Name: PauseText
+  m_Name: Pause Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3027,7 +3027,7 @@ GameObject:
   - component: {fileID: 578099915}
   - component: {fileID: 578099914}
   m_Layer: 5
-  m_Name: CloseButton
+  m_Name: Close Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3554,7 +3554,7 @@ GameObject:
   - component: {fileID: 682355944}
   - component: {fileID: 682355943}
   m_Layer: 5
-  m_Name: RetryButton
+  m_Name: Retry Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4555,7 +4555,7 @@ GameObject:
   - component: {fileID: 990539015}
   - component: {fileID: 990539018}
   m_Layer: 5
-  m_Name: FPSButton
+  m_Name: FPS Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5314,7 +5314,7 @@ GameObject:
   - component: {fileID: 1137284330}
   - component: {fileID: 1137284329}
   m_Layer: 5
-  m_Name: ContinentText
+  m_Name: Continent Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5799,7 +5799,7 @@ GameObject:
   - component: {fileID: 1214335473}
   - component: {fileID: 1214335476}
   m_Layer: 5
-  m_Name: VibrationButton
+  m_Name: Vibration Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6238,7 +6238,7 @@ GameObject:
   - component: {fileID: 1246086061}
   - component: {fileID: 1246086060}
   m_Layer: 5
-  m_Name: SettingsReferenceImage
+  m_Name: Settings ReferenceImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6431,7 +6431,7 @@ GameObject:
   - component: {fileID: 1301910311}
   - component: {fileID: 1301910310}
   m_Layer: 5
-  m_Name: MenuReferenceImage
+  m_Name: Menu ReferenceImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7290,7 +7290,7 @@ GameObject:
   - component: {fileID: 1503231267}
   - component: {fileID: 1503231270}
   m_Layer: 5
-  m_Name: ContinueButton
+  m_Name: Continue Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7424,7 +7424,7 @@ GameObject:
   - component: {fileID: 1666469120}
   - component: {fileID: 1666469119}
   m_Layer: 5
-  m_Name: LevelSelectionReferenceImage
+  m_Name: Level Selection ReferenceImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7888,7 +7888,7 @@ GameObject:
   - component: {fileID: 1836989933}
   - component: {fileID: 1836989932}
   m_Layer: 5
-  m_Name: StarsImage
+  m_Name: Stars Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8100,7 +8100,7 @@ GameObject:
   - component: {fileID: 1893842861}
   - component: {fileID: 1893842860}
   m_Layer: 5
-  m_Name: StatusText
+  m_Name: Status Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9113,7 +9113,7 @@ GameObject:
   - component: {fileID: 2039773808}
   - component: {fileID: 2039773807}
   m_Layer: 5
-  m_Name: CloseButton
+  m_Name: Close Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9381,7 +9381,7 @@ GameObject:
   - component: {fileID: 2079712669}
   - component: {fileID: 2079712668}
   m_Layer: 5
-  m_Name: GoalsText
+  m_Name: Goals Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9594,7 +9594,7 @@ GameObject:
   - component: {fileID: 2106707972}
   - component: {fileID: 2106707971}
   m_Layer: 5
-  m_Name: CompletedLevelSelectionReferenceImage
+  m_Name: Completed Level Selection ReferenceImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9670,7 +9670,7 @@ GameObject:
   - component: {fileID: 2114313896}
   - component: {fileID: 2114313895}
   m_Layer: 5
-  m_Name: ButtonsPanel
+  m_Name: Buttons Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9777,7 +9777,7 @@ GameObject:
   - component: {fileID: 2129412968}
   - component: {fileID: 2129412971}
   m_Layer: 5
-  m_Name: MusicButton
+  m_Name: Music Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9932,7 +9932,7 @@ GameObject:
   - component: {fileID: 2130245357}
   - component: {fileID: 2130245360}
   m_Layer: 5
-  m_Name: SFXButton
+  m_Name: Sound Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10085,7 +10085,7 @@ GameObject:
   - component: {fileID: 2139124736}
   - component: {fileID: 2139124735}
   m_Layer: 5
-  m_Name: LevelText
+  m_Name: Level Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10229,6 +10229,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Global Elements
       objectReference: {fileID: 0}
+    - target: {fileID: 6637864725736187163, guid: 85d4c427b5609624a930e5ae854c77c6, type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
+    - target: {fileID: 6637864725736187163, guid: 85d4c427b5609624a930e5ae854c77c6, type: 3}
+      propertyPath: musicMixerGroup
+      value: 
+      objectReference: {fileID: -2426639153622354055, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
+    - target: {fileID: 6637864725736187163, guid: 85d4c427b5609624a930e5ae854c77c6, type: 3}
+      propertyPath: soundMixerGroup
+      value: 
+      objectReference: {fileID: -8750258603494275546, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
+    - target: {fileID: 6637864725736187163, guid: 85d4c427b5609624a930e5ae854c77c6, type: 3}
+      propertyPath: audioSourcePrefab
+      value: 
+      objectReference: {fileID: 694854792018272022, guid: 9c24dccd6e06e3e4e834b8934bf7761f, type: 3}
     - target: {fileID: 8385995912201985111, guid: 85d4c427b5609624a930e5ae854c77c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 648.0063
