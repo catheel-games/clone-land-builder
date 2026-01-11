@@ -23,7 +23,7 @@ public class HexGridGenerator : MonoBehaviour
         Vector3 position = Vector3.zero;
 
         position += tileSize * new Vector3(sqrt3 * x, 0f, 1.5f * z);
-        position += tileSize * new Vector3(sqrt3half * MainUtilities.Modulo(z, 2), 0f, 0f);
+        position += tileSize * new Vector3(sqrt3half * Tools.Modulo(z, 2), 0f, 0f);
 
         return position;
     }

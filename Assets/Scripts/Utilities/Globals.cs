@@ -1,4 +1,4 @@
-public class GlobalElements : Singleton<GlobalElements>
+public class Globals : Singleton<Globals>
 {
     protected override void Awake()
     {

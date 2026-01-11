@@ -25,7 +25,7 @@ public class Tile : MonoBehaviour
     }
 
     public void Rotate(int step) {
-        startIndex = MainUtilities.Modulo(startIndex + step, 6);
+        startIndex = Tools.Modulo(startIndex + step, 6);
         transform.rotation = Quaternion.AngleAxis(startIndex * 60, Vector3.up);
     }
 

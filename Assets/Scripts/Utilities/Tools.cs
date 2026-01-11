@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MainUtilities
+public class Tools
 {
     public static int Modulo(int value, int mode)
     {

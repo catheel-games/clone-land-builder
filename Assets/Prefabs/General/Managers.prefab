@@ -114,7 +114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2713999093718921203}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -170,11 +170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4edbc7b6906694a949e816d63b8972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  _mixer: {fileID: 0}
-  offSoundDb: 0
-  onSoundDb: 0
-  _audioSources: []
-  _clips: []
+  audioMixer: {fileID: 24100000, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
+  audioSourcePrefab: {fileID: 694854792018272022, guid: 9c24dccd6e06e3e4e834b8934bf7761f, type: 3}
+  musicFadeDuration: 2
+  soundMixerGroup: {fileID: -8750258603494275546, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
+  soundGroups: []
+  musicMixerGroup: {fileID: -2426639153622354055, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
+  musicGroups: []
 --- !u!1 &5149440950281139509
 GameObject:
   m_ObjectHideFlags: 0
