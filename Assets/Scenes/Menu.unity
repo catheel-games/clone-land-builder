@@ -4154,7 +4154,6 @@ GameObject:
   - component: {fileID: 903867304}
   - component: {fileID: 903867307}
   - component: {fileID: 903867308}
-  - component: {fileID: 903867309}
   m_Layer: 5
   m_Name: Settings Panel
   m_TagString: Untagged
@@ -4251,24 +4250,6 @@ MonoBehaviour:
   activeMode: 0
   fadeDuration: 0.3
   topBar: {fileID: 74988401}
---- !u!114 &903867309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903867302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49dd6192be7794d49860bc711cb1bd3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingsController
-  settingsButton:
-  - {fileID: 2129412971}
-  - {fileID: 2130245360}
-  - {fileID: 1214335476}
-  - {fileID: 990539018}
-  cooldown: 0.15
 --- !u!1 &921801336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4626,9 +4607,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 903867309}
-        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
-        m_MethodName: ToggleFPS
+      - m_Target: {fileID: 990539018}
+        m_TargetAssemblyTypeName: FPSSettingsButton, Assembly-CSharp
+        m_MethodName: Toggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4685,9 +4666,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 990539013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb683b39e3a20c49999672d75e7b391, type: 3}
+  m_Script: {fileID: 11500000, guid: 87dd6d07a73832444a1e207f509eaaa0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingsButton
+  m_EditorClassIdentifier: Assembly-CSharp::FPSSettingsButton
+  preferenceKey: FPSSettings
+  defaultValue: 1
   buttonImage: {fileID: 990539016}
   onSprite: {fileID: -523578479, guid: 8f5c77390624aa443b007dfc3da36669, type: 3}
   offSprite: {fileID: -1427123870, guid: 8f5c77390624aa443b007dfc3da36669, type: 3}
@@ -5869,9 +5852,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 903867309}
-        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
-        m_MethodName: ToggleVibration
+      - m_Target: {fileID: 1214335476}
+        m_TargetAssemblyTypeName: VibrationSettingsButton, Assembly-CSharp
+        m_MethodName: Toggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5928,18 +5911,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1214335471}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb683b39e3a20c49999672d75e7b391, type: 3}
+  m_Script: {fileID: 11500000, guid: b8a29548b657b9e47a7b62ea89455519, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingsButton
+  m_EditorClassIdentifier: Assembly-CSharp::VibrationSettingsButton
+  preferenceKey: VibrationSettings
+  defaultValue: 1
   buttonImage: {fileID: 1214335474}
   onSprite: {fileID: -1797885850, guid: 8f5c77390624aa443b007dfc3da36669, type: 3}
   offSprite: {fileID: -743893940, guid: 8f5c77390624aa443b007dfc3da36669, type: 3}
-  numberText: {fileID: 0}
-  fpsText: {fileID: 0}
-  onValue: 60
-  offValue: 30
-  onColor: {r: 1, g: 1, b: 1, a: 1}
-  offColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &1218641987
 GameObject:
   m_ObjectHideFlags: 0
@@ -9847,9 +9826,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 903867309}
-        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
-        m_MethodName: ToggleMusic
+      - m_Target: {fileID: 2129412971}
+        m_TargetAssemblyTypeName: MusicSettingsButton, Assembly-CSharp
+        m_MethodName: Toggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9906,18 +9885,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2129412966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb683b39e3a20c49999672d75e7b391, type: 3}
+  m_Script: {fileID: 11500000, guid: c8cb15c5454992e4aab13eecf4cdd5a4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingsButton
+  m_EditorClassIdentifier: Assembly-CSharp::MusicSettingsButton
+  preferenceKey: MusicSettings
+  defaultValue: 1
   buttonImage: {fileID: 2129412969}
   onSprite: {fileID: -340758892, guid: 8f5c77390624aa443b007dfc3da36669, type: 3}
   offSprite: {fileID: -1815903823, guid: 8f5c77390624aa443b007dfc3da36669, type: 3}
-  numberText: {fileID: 0}
-  fpsText: {fileID: 0}
-  onValue: 60
-  offValue: 30
-  onColor: {r: 1, g: 1, b: 1, a: 1}
-  offColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &2130245355
 GameObject:
   m_ObjectHideFlags: 0
@@ -10002,9 +9977,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 903867309}
-        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
-        m_MethodName: ToggleSounds
+      - m_Target: {fileID: 2130245360}
+        m_TargetAssemblyTypeName: SoundSettingsButton, Assembly-CSharp
+        m_MethodName: Toggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10061,18 +10036,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2130245355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb683b39e3a20c49999672d75e7b391, type: 3}
+  m_Script: {fileID: 11500000, guid: fbb1a310544efe34cb73d29093664a99, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingsButton
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSettingsButton
+  preferenceKey: SoundSettings
+  defaultValue: 1
   buttonImage: {fileID: 2130245358}
   onSprite: {fileID: -84533825, guid: 8f5c77390624aa443b007dfc3da36669, type: 3}
   offSprite: {fileID: 2060663892, guid: 8f5c77390624aa443b007dfc3da36669, type: 3}
-  numberText: {fileID: 0}
-  fpsText: {fileID: 0}
-  onValue: 60
-  offValue: 30
-  onColor: {r: 1, g: 1, b: 1, a: 1}
-  offColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &2139124733
 GameObject:
   m_ObjectHideFlags: 0
