@@ -7,7 +7,6 @@ public class LevelSelection : MonoBehaviour
 
     public void MenuSelectLevel(int level)
     {
-        Debug.Log("Quns Tanuma " + level);
         if (Random.Range(0, 2) == 0)
         {
             levelSelection.Show();

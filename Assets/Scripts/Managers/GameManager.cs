@@ -8,4 +8,9 @@ public class GameManager : Singleton<GameManager>
 
         Application.targetFrameRate = 60;
     }
+
+    public void SetFPS(int fps)
+    {
+        Application.targetFrameRate = fps;
+    }
 }
