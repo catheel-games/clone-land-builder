@@ -35,6 +35,7 @@ public class AudioManager : Singleton<AudioManager>
         public Music[] musics;
     }
 
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource audioSourcePrefab;
     [SerializeField] private float musicFadeDuration = 2f;
 
@@ -45,7 +46,6 @@ public class AudioManager : Singleton<AudioManager>
     [Header("Music")]
     [SerializeField] private AudioMixerGroup musicMixerGroup;
     [SerializeField] private MusicGroup[] musicGroups;
-    [SerializeField] private AudioMixer audioMixer;
 
 
     private Dictionary<string, Dictionary<string, Sound>> soundRegistry = new Dictionary<string, Dictionary<string, Sound>>();
@@ -165,24 +165,24 @@ public class AudioManager : Singleton<AudioManager>
     }
 
     public void SetMusicEnabled(bool isMusicOn)
+    {
+        if (isMusicOn)
         {
-            if (isMusicOn)
-            {
-                audioMixer.SetFloat("MusicVolume", 0);
-            } else
-            {
-                audioMixer.SetFloat("MusicVolume", -80);               
-            }
+            audioMixer.SetFloat("MusicVolume", 0);
+        } else
+        {
+            audioMixer.SetFloat("MusicVolume", -80);               
         }
+    }
 
-        public void SetSoundEnabled(bool isSoundOn)
+    public void SetSoundEnabled(bool isSoundOn)
+    {
+        if (isSoundOn)
         {
-            if (isSoundOn)
-            {
-                audioMixer.SetFloat("SoundVolume", 0);
-            } else
-            {
-                audioMixer.SetFloat("SoundVolume", -80);               
-            }
+            audioMixer.SetFloat("SoundVolume", 0);
+        } else
+        {
+            audioMixer.SetFloat("SoundVolume", -80);               
         }
+    }
 }
