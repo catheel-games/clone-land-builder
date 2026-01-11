@@ -3,7 +3,27 @@ guid: 9c15aaed08d79374baf8553370488f81
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: City Material
+    second: {fileID: 2100000, guid: ac9a47f6f9ab0ea45b5ef8892aa8eee0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hexagon Material
+    second: {fileID: 2100000, guid: e4f8e2dd0566a7649b6f78d3c36963d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hexagon Material.001
+    second: {fileID: 2100000, guid: e4f8e2dd0566a7649b6f78d3c36963d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Menu Map Material
+    second: {fileID: 2100000, guid: c94d47f533a960f45934ade246030830, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
