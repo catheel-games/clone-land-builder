@@ -1,12 +1,8 @@
 using UnityEngine;
-using System.Collections;
 using DG.Tweening;
 
 public class TilePlacementFeedback : MonoBehaviour
 {
-    [SerializeField] private GameObject tileObject;
-    [SerializeField] private GameObject[] tilePlacementZones;
-
     private GameObject currentTileObject;
 
     [Header("Feedback Values")]
@@ -16,7 +12,7 @@ public class TilePlacementFeedback : MonoBehaviour
     [SerializeField] private float hoveringValue = 0.075f;
     [SerializeField] private float hoveringDuration = 1.5f;
 
-    public void ActivateFeedback()
+    public GameObject ActivateFeedback(GameObject tileObject, GameObject[] tilePlacementZones)
     {
         for (int i = 0; i < tilePlacementZones.Length; i++) {
             tilePlacementZones[i].transform.DOScale(0, 0);
@@ -41,14 +37,7 @@ public class TilePlacementFeedback : MonoBehaviour
             .Append(currentTileObject.transform.DOPunchScale(punchScaleVector, punchScaleDuration, 0, 0))
             .Append(hoveringSeq);
 
+        return currentTileObject;
     }
 
-    public void DestroyFeedback()
-    {
-        Destroy(currentTileObject);
-        for (int i = 0; i < tilePlacementZones.Length; i++)
-        {
-            tilePlacementZones[i].transform.DOScale(1, 0.5f);
-        }
-    }
 }
