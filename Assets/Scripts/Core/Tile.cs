@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 // thank you, Hayk <<3
@@ -18,10 +19,11 @@ public class Tile : MonoBehaviour
     
     private int startIndex;
     private bool isChosen;
-
+    private Type[] Roullette;
     void Awake() {
         startIndex = 0;
         isChosen = false;
+        Roullette = (Type[])Enum.GetValues(typeof(Type));
     }
 
     public void Rotate(int step) {
@@ -35,5 +37,15 @@ public class Tile : MonoBehaviour
 
     public void ChooseTile() { 
         isChosen = true;    
+    }
+
+    public void TypeSetter(int i, Type type) {
+        borderTypes[i] = type;
+    }
+
+    public void RandomSixTypeSetter() {
+        for (int i = 0; i < 6; i++) {
+            borderTypes[i] = (Type)Roullette.GetValue(UnityEngine.Random.Range(0,6));
+        }
     }
 }
