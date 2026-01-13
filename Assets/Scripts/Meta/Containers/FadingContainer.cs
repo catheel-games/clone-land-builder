@@ -14,6 +14,8 @@ public class FadingContainer : UIContainer
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
 
+            AudioManager.Instance.PlaySound("UI", "Open UI");
+
             sequence.Append(canvasGroup.DOFade(1f, fadeDuration));
             sequence.AppendCallback(() => base.Show());
         }
@@ -27,6 +29,8 @@ public class FadingContainer : UIContainer
 
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
+
+            AudioManager.Instance.PlaySound("UI", "Close UI");
 
             sequence.Append(canvasGroup.DOFade(0f, fadeDuration));
             sequence.AppendCallback(() => base.Hide());
