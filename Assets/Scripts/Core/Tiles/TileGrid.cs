@@ -58,4 +58,20 @@ public class TileGrid : Singleton<TileGrid>
             }
         }
     }
+
+    public void hideTilePlacer()
+    {
+        foreach (TilePlacer plus in frontier.Values)
+        {
+            plus.gameObject.SetActive(false);
+        }
+    }
+
+    public void showTilePlacer()
+    {
+        foreach (TilePlacer plus in frontier.Values)
+        {
+            plus.gameObject.SetActive(true);
+        }
+    }
 }

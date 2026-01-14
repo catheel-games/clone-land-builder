@@ -9,6 +9,8 @@ public class CameraInputInterpreter : MonoBehaviour
     [SerializeField] private float rotationCoefficient = 0.5f;
     [SerializeField] private float translationCoefficient = 4f;
 
+    public bool blockInput = false;
+
     void OnEnable()
     {
         InputManager.OnOneFingerSlide += OnOneFingerSlide;
@@ -67,6 +69,7 @@ public class CameraInputInterpreter : MonoBehaviour
 
     private void OnMouseRightClickSlide(InputManager.MouseClickEvent clickEvent)
     {
+        if (blockInput) return;
         Vector2 firstDistanceNormal = (-clickEvent.Position).normalized;
         Vector2 firstDistanceTangent = new Vector2(-firstDistanceNormal.y, firstDistanceNormal.x);
 

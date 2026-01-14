@@ -24,6 +24,7 @@ public class TilePlacer : MonoBehaviour
 
     public void Click()
     {
-        TileGrid.Instance.SetTile(coords);
+        // TileGrid.Instance.SetTile(coords);
+        TilePreview.Instance.Preview(coords);
     }
 }
