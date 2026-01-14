@@ -29,11 +29,11 @@ public static class Hexagons
 
     public static void IterateHexNeighbors(Coords hex, Action<Coords> action)
     {
-        action(new Coords(hex.x + (-1 + 2 * Tools.Modulo(hex.y, 2)), hex.y));
+        action(new Coords(hex.x - 1 + 2 * Tools.Modulo(hex.y, 2), hex.y));
         action(new Coords(hex.x + Tools.Modulo(hex.y, 2), hex.y + 1));
         action(new Coords(hex.x - (1 - Tools.Modulo(hex.y, 2)), hex.y + 1));
-        action(new Coords(hex.x - (-1 + 2 * Tools.Modulo(hex.y, 2)), hex.y));
+        action(new Coords(hex.x + 1 - 2 * Tools.Modulo(hex.y, 2), hex.y));
         action(new Coords(hex.x, hex.y - 1));
-        action(new Coords(hex.x + (-1 + 2 * Tools.Modulo(hex.y, 2)), hex.y - 1));
+        action(new Coords(hex.x - 1 + 2 * Tools.Modulo(hex.y, 2), hex.y - 1));
     }
 }
