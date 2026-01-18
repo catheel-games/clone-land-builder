@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5974018506004725441}
   - component: {fileID: 8734218967770000859}
+  - component: {fileID: 3507411321406807095}
+  - component: {fileID: 1422112157639380835}
   m_Layer: 0
   m_Name: Tile Grid
   m_TagString: Untagged
@@ -49,6 +51,40 @@ MonoBehaviour:
   tilePrefab: {fileID: 534292831841679959, guid: bcd7f819e3cd6ce4693371fb7f0ea128, type: 3}
   tilePlacerPrefab: {fileID: 168078730613406418, guid: 37e64f1b541356b4c9a5bd4f553c28af, type: 3}
   tilePreviewPrefab: {fileID: 915202331465559182, guid: 759dc8165c084924586d50e8ab72025f, type: 3}
+  tilePreviewInstance: {fileID: 0}
+  tilePlacementFeedback: {fileID: 3507411321406807095}
+  tileDenyingFeedback: {fileID: 1422112157639380835}
+--- !u!114 &3507411321406807095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729833632504538225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820a6a829e1d67441823a11dd1812fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TilePlacementFeedback
+  scaleTo1Duration: 0.1
+  punchScaleDuration: 0.2
+  punchScaleVector: {x: 0.1, y: 0.1, z: 0.1}
+  hoveringValue: 0.075
+  hoveringDuration: 1.5
+--- !u!114 &1422112157639380835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729833632504538225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1033c637e9dcb684986766cec9f37631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileDenyingFeedback
+  scaleTo0Duration: 0.5
+  scaleTo1Duration: 0.6
 --- !u!1 &7963308776948811205
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,11 @@ public class TileGridController : Singleton<TileGridController>
     private Dictionary<Hexagons.Coords, TilePlacer> frontier = new Dictionary<Hexagons.Coords, TilePlacer>();
     private Dictionary<Hexagons.Coords, Tile> tiles = new Dictionary<Hexagons.Coords, Tile>();
 
+    [Header("Feedback Refs")]
+    [SerializeField] private TilePlacementFeedback tilePlacementFeedback;
+    [SerializeField] private TileDenyingFeedback tileDenyingFeedback;
+
+
     void Start()
     {
         setTilePlacer(new Hexagons.Coords(0, 0));
@@ -77,12 +82,15 @@ public class TileGridController : Singleton<TileGridController>
 
         tilePreviewCoords = coords;
 
+        tilePlacementFeedback.ActivateFeedback(tilePreviewInstance.gameObject);
+
         LevelController.Instance.EnterTileViewMode(coords);
     }
 
     public void DeclinePreviewTile()
     {
-        Destroy(tilePreviewInstance.gameObject);
+        tileDenyingFeedback.ActivateFeedback(tilePreviewInstance.gameObject, frontier);
+
         LevelController.Instance.ExitTileViewMode();
     }
 

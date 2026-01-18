@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using DG.Tweening;
 
 public class TilePlacementFeedback : MonoBehaviour
@@ -12,14 +13,8 @@ public class TilePlacementFeedback : MonoBehaviour
     [SerializeField] private float hoveringValue = 0.075f;
     [SerializeField] private float hoveringDuration = 1.5f;
 
-    public GameObject ActivateFeedback(GameObject tileObject, GameObject[] tilePlacementZones)
+    public GameObject ActivateFeedback(GameObject currentTileObject)
     {
-        for (int i = 0; i < tilePlacementZones.Length; i++) {
-            tilePlacementZones[i].transform.DOScale(0, 0);
-        }
-
-        currentTileObject = Instantiate(tileObject, transform.position, Quaternion.identity);
-
         Sequence activatingSeq = DOTween.Sequence();
 
         Sequence hoveringSeq = DOTween.Sequence();
