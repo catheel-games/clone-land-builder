@@ -4,14 +4,14 @@ public static class Preferences
 {
     public static bool GetBool(string preferenceKey, bool defaultValue)
     {
-        if (!PlayerPrefs.HasKey(preferenceKey))
+        if (PlayerPrefs.HasKey(preferenceKey))
         {
-            PlayerPrefs.SetInt(preferenceKey, defaultValue ? 1 : 0);
-            return defaultValue;
+            return PlayerPrefs.GetInt(preferenceKey) == 1;
         }
         else
         {
-            return PlayerPrefs.GetInt(preferenceKey) == 1;
+            PlayerPrefs.SetInt(preferenceKey, defaultValue ? 1 : 0);
+            return defaultValue;
         }
     }
 
