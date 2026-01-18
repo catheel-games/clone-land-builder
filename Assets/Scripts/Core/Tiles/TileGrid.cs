@@ -1,14 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileGrid : Singleton<TileGrid>
+public class TileGridController : Singleton<TileGridController>
 {
-    [SerializeField] private Transform gridCanvasTransform;
+    [SerializeField] private Transform tilePlacerContainerTransform;
+
+    [SerializeField] private Tile tilePrefab;
     [SerializeField] private TilePlacer tilePlacerPrefab;
-    [SerializeField] private GameObject tilePrefab;
+    [SerializeField] private TilePreview tilePreviewPrefab;
+
+    private TilePreview tilePreviewInstance;
+    Hexagons.Coords tilePreviewCoords;
 
     private Dictionary<Hexagons.Coords, TilePlacer> frontier = new Dictionary<Hexagons.Coords, TilePlacer>();
-    private Dictionary<Hexagons.Coords, GameObject> tiles = new Dictionary<Hexagons.Coords, GameObject>();
+    private Dictionary<Hexagons.Coords, Tile> tiles = new Dictionary<Hexagons.Coords, Tile>();
 
     void Start()
     {
@@ -19,30 +24,33 @@ public class TileGrid : Singleton<TileGrid>
     {
         if (!frontier.ContainsKey(coords))
         {
-            TilePlacer newTilePlacer = Instantiate(
-                tilePlacerPrefab,
-                Hexagons.HexToWorld(coords),
-                tilePlacerPrefab.transform.rotation,
-                gridCanvasTransform
-            );
+            if (!tiles.ContainsKey(coords))
+            {
+                TilePlacer newTilePlacer = Instantiate(
+                    tilePlacerPrefab,
+                    Hexagons.HexToWorld(coords),
+                    tilePlacerPrefab.transform.rotation,
+                    tilePlacerContainerTransform
+                );
 
-            newTilePlacer.SetCoords(coords);
+                newTilePlacer.Init(coords);
 
-            frontier.Add(coords, newTilePlacer);
+                frontier.Add(coords, newTilePlacer);
+            }
         }
     }
 
-    public void SetTile(Hexagons.Coords coords)
+    private void setTile(Hexagons.Coords coords)
     {
         if (frontier.ContainsKey(coords))
         {
             if (!tiles.ContainsKey(coords))
             {
-                TilePlacer placerToRemove = frontier[coords];
-                Destroy(placerToRemove.gameObject);
+                Destroy(frontier[coords].gameObject);
+
                 frontier.Remove(coords);
 
-                GameObject newTile = Instantiate(
+                Tile newTile = Instantiate(
                     tilePrefab,
                     Hexagons.HexToWorld(coords),
                     Quaternion.identity,
@@ -50,12 +58,38 @@ public class TileGrid : Singleton<TileGrid>
                 );
 
                 tiles.Add(coords, newTile);
-
                 
                 Hexagons.IterateHexNeighbors(coords, (Hexagons.Coords neighbor) => {
                     setTilePlacer(neighbor);
                 });
             }
         }
+    }
+
+    public void CreatePreviewTile(Hexagons.Coords coords)
+    {
+        tilePreviewInstance = Instantiate(
+            tilePreviewPrefab,
+            Hexagons.HexToWorld(coords),
+            Quaternion.identity,
+            transform
+        );
+
+        tilePreviewCoords = coords;
+
+        LevelController.Instance.EnterTileViewMode(coords);
+    }
+
+    public void DeclinePreviewTile()
+    {
+        Destroy(tilePreviewInstance.gameObject);
+        LevelController.Instance.ExitTileViewMode();
+    }
+
+    public void AcceptPreviewTile()
+    {
+        Destroy(tilePreviewInstance.gameObject);
+        setTile(tilePreviewCoords);
+        LevelController.Instance.ExitTileViewMode();
     }
 }

@@ -59,7 +59,15 @@ public class CameraController : MonoBehaviour
 
     public void ChangePosition(Vector3 translationAmount)
     {
-        positionTarget -= pivotTransform.transform.rotation * translationAmount;
+        if (!LevelController.Instance.IsTileViewMode) 
+        {
+            positionTarget -= pivotTransform.transform.rotation * translationAmount;
+        }
+    }
+
+    public void SetPosition(Vector3 newPosition)
+    {
+        positionTarget = newPosition;
     }
 
     public void OnZoomIn()

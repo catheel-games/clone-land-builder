@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class TilePreview : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float rotationLerpCoefficient = 10f;
+    [SerializeField] private Tile tileInstance;
+
+    private float targetRotation;
+
+    void Awake()
     {
-        
+        targetRotation = tileInstance.transform.rotation.eulerAngles.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        tileInstance.transform.rotation = Quaternion.Lerp(
+            tileInstance.transform.rotation,
+            Quaternion.Euler(0f, Mathf.Floor(targetRotation / 60f) * 60f, 0f),
+            rotationLerpCoefficient * Time.deltaTime
+        );
+    }
+
+    public void ChangeRotation(float rotationAmount)
+    {
+        targetRotation += rotationAmount;
     }
 }

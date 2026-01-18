@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class CameraInputInterpreter : MonoBehaviour
+public class CameraInput : MonoBehaviour
 {
-    [SerializeField] private CameraController controllerRef;
+    [SerializeField] private CameraController cameraController;
     [SerializeField] private Camera cameraRef;
 
     [SerializeField] private float zoomCoefficient = 2f;
@@ -27,13 +27,13 @@ public class CameraInputInterpreter : MonoBehaviour
 
     private void OnOneFingerSlide(InputManager.OneFingerSlideEvent slideEvent)
     {
-        Vector2 mousePositionA = slideEvent.Position - slideEvent.Delta;
-        Vector2 mousePositionB = slideEvent.Position;
+        Vector2 touchPositionA = slideEvent.Position - slideEvent.Delta;
+        Vector2 touchPositionB = slideEvent.Position;
 
-        Vector3 mousePositionA3 = new Vector3(mousePositionA.x, 0f, mousePositionA.y);
-        Vector3 mousePositionB3 = new Vector3(mousePositionB.x, 0f, mousePositionB.y);
+        Vector3 touchPositionA3 = new Vector3(touchPositionA.x, 0f, touchPositionA.y);
+        Vector3 touchPositionB3 = new Vector3(touchPositionB.x, 0f, touchPositionB.y);
 
-        controllerRef.ChangePosition((mousePositionB3 - mousePositionA3) * translationCoefficient);
+        cameraController.ChangePosition((touchPositionB3 - touchPositionA3) * translationCoefficient);
     }
 
     private void OnTwoFingerSlide(InputManager.TwoFingerSlideEvent slideEvent)
@@ -50,8 +50,8 @@ public class CameraInputInterpreter : MonoBehaviour
         float secondDeltaAlongNormal = Vector2.Dot(slideEvent.SecondFinger.Delta, secondDistanceNormal);
         float secondDeltaAlongTangent = Vector2.Dot(slideEvent.SecondFinger.Delta, secondDistanceTangent);
 
-        controllerRef.ChangeRotation((firstDeltaAlongTangent + secondDeltaAlongTangent) * rotationCoefficient);
-        controllerRef.ChangeZoom((firstDeltaAlongNormal + secondDeltaAlongNormal) * zoomCoefficient);
+        cameraController.ChangeRotation((firstDeltaAlongTangent + secondDeltaAlongTangent) * rotationCoefficient);
+        cameraController.ChangeZoom((firstDeltaAlongNormal + secondDeltaAlongNormal) * zoomCoefficient);
     }
 
     private void OnMouseLeftClickSlide(InputManager.MouseClickEvent clickEvent)
@@ -62,7 +62,7 @@ public class CameraInputInterpreter : MonoBehaviour
         Vector3 mousePositionA3 = new Vector3(mousePositionA.x, 0f, mousePositionA.y);
         Vector3 mousePositionB3 = new Vector3(mousePositionB.x, 0f, mousePositionB.y);
 
-        controllerRef.ChangePosition((mousePositionB3 - mousePositionA3) * translationCoefficient);
+        cameraController.ChangePosition((mousePositionB3 - mousePositionA3) * translationCoefficient);
     }
 
     private void OnMouseRightClickSlide(InputManager.MouseClickEvent clickEvent)
@@ -73,7 +73,7 @@ public class CameraInputInterpreter : MonoBehaviour
         float firstDeltaAlongNormal = Vector2.Dot(clickEvent.Delta, firstDistanceNormal);
         float firstDeltaAlongTangent = Vector2.Dot(clickEvent.Delta, firstDistanceTangent);   
 
-        controllerRef.ChangeRotation(firstDeltaAlongTangent * rotationCoefficient);
-        controllerRef.ChangeZoom(firstDeltaAlongNormal * zoomCoefficient);
+        cameraController.ChangeRotation(firstDeltaAlongTangent * rotationCoefficient);
+        cameraController.ChangeZoom(firstDeltaAlongNormal * zoomCoefficient);
     }
 }
