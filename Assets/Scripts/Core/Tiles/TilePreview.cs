@@ -1,118 +1,28 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class TilePreview : Singleton<TilePreview>
+public class TilePreview : MonoBehaviour
 {
-    [SerializeField] private GameObject tilePrefab;
-    [SerializeField] private Button declineButton;
-    [SerializeField] private Button acceptButton;
+    [SerializeField] private float rotationLerpCoefficient = 10f;
+    [SerializeField] private Tile tileInstance;
 
-    private GameObject previewTile;
-    private bool isPreviewTileActive;
-    private RaycastHit hit;
+    private float targetRotation;
 
-    private Hexagons.Coords coords;
-
-    void Start()
+    void Awake()
     {
-        declineButton.gameObject.SetActive(false);
-        acceptButton.gameObject.SetActive(false);
+        targetRotation = tileInstance.transform.rotation.eulerAngles.y;
     }
 
-    void OnEnable()
+    void Update()
     {
-        Debug.Log("enable working");
-        InputManager.OnOneFingerSlide += OnFingerDrag;
-        InputManager.OnMouseRightClickSlide += OnMouseDrag;
-    }
-
-    void OnDisable()
-    {
-        InputManager.OnOneFingerSlide -= OnFingerDrag;
-        InputManager.OnMouseRightClickSlide -= OnMouseDrag;
-    }
-
-    private void OnMouseDrag(InputManager.MouseClickEvent click)
-    {
-        Debug.Log("dzec ashxatec");
-        Ray ray = Camera.main.ScreenPointToRay(click.Position);
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (previewTile != null && hit.collider.transform.IsChildOf(previewTile.transform))
-            {
-                RotateTile(click.Delta.x);
-            }
-        }
-    }
-
-    private void OnFingerDrag(InputManager.OneFingerSlideEvent slide)
-    {
-        Ray ray = Camera.main.ScreenPointToRay(slide.Position);
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (previewTile != null && hit.collider.transform.IsChildOf(previewTile.transform))
-            {
-                RotateTile(slide.Delta.x);
-            }
-        }
-    }
-
-    private void RotateTile(float drag)
-    {
-        if (isPreviewTileActive)
-        {
-            FindObjectOfType<CameraInputInterpreter>().blockInput = true;
-            if (drag < 0) previewTile.GetComponent<Tile>().Rotate(-1);
-            if (drag > 0) previewTile.GetComponent<Tile>().Rotate(1);
-        }
-    }
-
-    public void Preview(Hexagons.Coords coords)
-    {
-        isPreviewTileActive = true;
-        TileGrid.Instance.hideTilePlacer();
-
-        Vector3 worldPosition = Hexagons.HexToWorld(coords);
-        worldPosition.y += 0.5f;
-
-        previewTile = Instantiate(
-                    tilePrefab,
-                    worldPosition,
-                    Quaternion.identity,
-                    transform
+        tileInstance.transform.rotation = Quaternion.Lerp(
+            tileInstance.transform.rotation,
+            Quaternion.Euler(0f, Mathf.Floor(targetRotation / 60f) * 60f, 0f),
+            rotationLerpCoefficient * Time.deltaTime
         );
-
-        this.coords = coords;
-        
-        declineButton.gameObject.SetActive(true);
-        acceptButton.gameObject.SetActive(true);
     }
 
-    public void DeclineTile()
+    public void ChangeRotation(float rotationAmount)
     {
-        Destroy(previewTile);
-        TileGrid.Instance.showTilePlacer();
-
-        isPreviewTileActive = false;
-        FindObjectOfType<CameraInputInterpreter>().blockInput = false;
-        
-        declineButton.gameObject.SetActive(false);
-        acceptButton.gameObject.SetActive(false);
-    }
-
-    public void AcceptTile()
-    {
-        Destroy(previewTile);
-        TileGrid.Instance.SetTile(coords);
-        TileGrid.Instance.showTilePlacer();
-
-        isPreviewTileActive = false;
-        FindObjectOfType<CameraInputInterpreter>().blockInput = false;
-        
-        declineButton.gameObject.SetActive(false);
-        acceptButton.gameObject.SetActive(false);
+        targetRotation += rotationAmount;
     }
 }

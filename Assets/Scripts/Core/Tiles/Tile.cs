@@ -15,21 +15,10 @@ public class Tile : MonoBehaviour
     [SerializeField] private Type[] borderTypes;
     [SerializeField] private Type centerType;
 
-    private Hexagons.Coords coords;
     private int rotationOffset;
 
     void Awake() {
         rotationOffset = 0;
-    }
-
-    public void SetCoords(Hexagons.Coords coords)
-    {
-        this.coords = coords;
-    }
-
-    public void Rotate(int step) {
-        rotationOffset = Tools.Modulo(rotationOffset + step, 6);
-        transform.rotation = Quaternion.AngleAxis(rotationOffset * 60, Vector3.up);
     }
 
     public Type GetSideType(int side) { 
