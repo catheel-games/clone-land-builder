@@ -4,7 +4,6 @@ using UnityEngine;
 public class TileGridController : Singleton<TileGridController>
 {
     [SerializeField] private Transform tilePlacerContainerTransform;
-
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private TilePlacer tilePlacerPrefab;
     [SerializeField] private TilePreview tilePreviewPrefab;
@@ -88,6 +87,7 @@ public class TileGridController : Singleton<TileGridController>
 
     public void AcceptPreviewTile()
     {
+        TileGenerator.Instance.GetNextTile();
         Destroy(tilePreviewInstance.gameObject);
         setTile(tilePreviewCoords);
         LevelController.Instance.ExitTileViewMode();
