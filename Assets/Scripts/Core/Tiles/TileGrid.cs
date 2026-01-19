@@ -78,6 +78,8 @@ public class TileGridController : Singleton<TileGridController>
         Tile spawnedTile = Instantiate(nextTilePrefab, tilePreviewInstance.transform);
         tilePreviewInstance.SetTile(spawnedTile);
 
+        TilePreviewInputInterpreter.Instance.SetTilePreview(tilePreviewInstance);
+
         tilePreviewCoords = coords;
 
         LevelController.Instance.EnterTileViewMode(coords);
