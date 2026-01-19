@@ -50,7 +50,7 @@ public class TileGridController : Singleton<TileGridController>
                 frontier.Remove(coords);
 
                 Tile newTile = Instantiate(
-                    tilePrefab,
+                    TileGenerator.Instance.GetNextTile(),
                     Hexagons.HexToWorld(coords),
                     Quaternion.identity,
                     transform
@@ -74,6 +74,10 @@ public class TileGridController : Singleton<TileGridController>
             transform
         );
 
+        Tile nextTilePrefab = TileGenerator.Instance.ShowNextTile();
+        Tile spawnedTile = Instantiate(nextTilePrefab, tilePreviewInstance.transform);
+        tilePreviewInstance.SetTile(spawnedTile);
+
         tilePreviewCoords = coords;
 
         LevelController.Instance.EnterTileViewMode(coords);
@@ -87,7 +91,6 @@ public class TileGridController : Singleton<TileGridController>
 
     public void AcceptPreviewTile()
     {
-        TileGenerator.Instance.GetNextTile();
         Destroy(tilePreviewInstance.gameObject);
         setTile(tilePreviewCoords);
         LevelController.Instance.ExitTileViewMode();
