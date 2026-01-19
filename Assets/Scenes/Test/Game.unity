@@ -801,6 +801,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169147407}
   m_CullTransparentMesh: 1
+--- !u!1 &1543408254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1543408256}
+  - component: {fileID: 1543408255}
+  m_Layer: 0
+  m_Name: TileGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1543408255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543408254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67dd3e18252342c48936a9df3cc523cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileGenerator
+  tiles:
+  - {fileID: 150659522139038286, guid: 1acce9c69eb0f994fa61e39163f871c5, type: 3}
+  - {fileID: 7124405206798151553, guid: 1d5a6d9a60f9d2747b81cc2cd050d4ea, type: 3}
+  - {fileID: 1796743617616111805, guid: e29d4fdf431be5e45a548432cb47ce36, type: 3}
+  - {fileID: -6716788495134104095, guid: 21a3c2225206fd34184865afc364940e, type: 3}
+  - {fileID: 3739991561722816691, guid: 0d7dc57564cd878448d338bbd4f3a5b8, type: 3}
+  - {fileID: -6467685305981661080, guid: 1a15dbba72b0c1343a879890da671a6a, type: 3}
+  - {fileID: 8523314424066943370, guid: fad9ea3e2a841724bbcd3858f915db3b, type: 3}
+  - {fileID: -2239358894983149028, guid: 172e7d8e21791fa4985a3c71b84ec67a, type: 3}
+  - {fileID: -7364054950910470748, guid: e08fb4773a4884e40bd53250900508d0, type: 3}
+  - {fileID: 7348327155288334026, guid: d4a6fd205a22a1847a46deeaa78c4536, type: 3}
+--- !u!4 &1543408256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543408254}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 450.59192, y: 951.66473, z: -25.69409}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1902411374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1024,3 +1079,4 @@ SceneRoots:
   - {fileID: 453549252}
   - {fileID: 486294692709197874}
   - {fileID: 279927369}
+  - {fileID: 1543408256}
