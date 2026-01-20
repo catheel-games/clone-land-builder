@@ -51,13 +51,9 @@ public  class TileCalculator : MonoBehaviour
 
                     newStar.transform.SetParent(transform, false);
 
-                    newStar.transform.localPosition = new Vector3(
-                        Mathf.Cos(angle * Mathf.Deg2Rad) * starRadius,
-                        elementElevation,
-                        Mathf.Sin(angle * Mathf.Deg2Rad) * starRadius
-                    );
+                    newStar.transform.localPosition = Vector3.up * elementElevation + Quaternion.AngleAxis(angle, Vector3.up) * Vector3.forward * starRadius;
 
-                    newStar.transform.localRotation = Quaternion.Euler(0f, 90f - angle, 0f);
+                    newStar.transform.localRotation = Quaternion.Euler(0f, angle, 0f);
 
                     stars[side] = newStar;
                 }

@@ -26,7 +26,7 @@ public class Tile : MonoBehaviour
         if (!isPlaced)
         {
             rotationOffsetDiscrete = newRotationOffset;
-            rotationOffset = (int)Mathf.Floor(rotationOffsetDiscrete / 60f);
+            rotationOffset = (int)Mathf.Floor(-rotationOffsetDiscrete / 60f);
         }
     }
 

@@ -17,10 +17,10 @@ public class TileGrid : Singleton<TileGrid>
 
     void Start()
     {
-        setTilePlacer(new Hexagons.Coords(0, 0));
+        setTilePlacer(new Hexagons.Coords(0, 0), 0);
     }
     
-    private void setTilePlacer(Hexagons.Coords coords)
+    private void setTilePlacer(Hexagons.Coords coords, int i)
     {
         if (!frontier.ContainsKey(coords))
         {
@@ -32,6 +32,8 @@ public class TileGrid : Singleton<TileGrid>
                     tilePlacerPrefab.transform.rotation,
                     tilePlacerContainerTransform
                 );
+
+                newTilePlacer.gameObject.name = $"asadasd {i}";
 
                 newTilePlacer.Init(coords);
 
@@ -56,7 +58,7 @@ public class TileGrid : Singleton<TileGrid>
                 tiles.Add(coords, newTile);
                 
                 Hexagons.IterateNeighbours(coords, (int side, Hexagons.Coords neighbor) => {
-                    setTilePlacer(neighbor);
+                    setTilePlacer(neighbor, side);
                 });
             }
         }
