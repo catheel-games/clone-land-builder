@@ -4,7 +4,6 @@ using UnityEngine;
 public class TileGridController : Singleton<TileGridController>
 {
     [SerializeField] private Transform tilePlacerContainerTransform;
-
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private TilePlacer tilePlacerPrefab;
     [SerializeField] private TilePreview tilePreviewPrefab;
@@ -51,7 +50,7 @@ public class TileGridController : Singleton<TileGridController>
                 frontier.Remove(coords);
 
                 Tile newTile = Instantiate(
-                    tilePrefab,
+                    TileGenerator.Instance.GetNextTile(),
                     Hexagons.HexToWorld(coords),
                     Quaternion.identity,
                     transform
@@ -74,6 +73,12 @@ public class TileGridController : Singleton<TileGridController>
             Quaternion.identity,
             transform
         );
+
+        Tile nextTilePrefab = TileGenerator.Instance.ShowNextTile();
+        Tile spawnedTile = Instantiate(nextTilePrefab, tilePreviewInstance.transform);
+        tilePreviewInstance.SetTile(spawnedTile);
+
+        TilePreviewInputInterpreter.Instance.SetTilePreview(tilePreviewInstance);
 
         tilePreviewCoords = coords;
 

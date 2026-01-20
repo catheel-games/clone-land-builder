@@ -1,10 +1,9 @@
 using UnityEngine;
 
-public class TilePreviewInputInterpreter : MonoBehaviour
-{
-    [SerializeField] private TilePreview tilePreview;
-    
+public class TilePreviewInputInterpreter : Singleton<TilePreviewInputInterpreter>
+{   
     [SerializeField] private float rotationCoefficient = 0.5f;
+    private TilePreview tilePreviewInstance;
 
     void OnEnable()
     {
@@ -20,21 +19,30 @@ public class TilePreviewInputInterpreter : MonoBehaviour
 
     private void OnOneFingerSlide(InputManager.OneFingerSlideEvent slideEvent)
     {
+        if (tilePreviewInstance == null) return;
+
         Vector2 distanceNormal = -slideEvent.Position.normalized;
         Vector2 distanceTangent = new Vector2(-distanceNormal.y, distanceNormal.x);
 
         float deltaAlongTangent = Vector2.Dot(slideEvent.Delta, distanceTangent);
 
-        tilePreview.ChangeRotation(deltaAlongTangent * rotationCoefficient);
+        tilePreviewInstance.ChangeRotation(deltaAlongTangent * rotationCoefficient);
     }
 
     private void OnMouseLeftClickSlide(InputManager.MouseClickEvent clickEvent)
     {
+        if (tilePreviewInstance == null) return;
+
         Vector2 distanceNormal = -clickEvent.Position.normalized;
         Vector2 distanceTangent = new Vector2(-distanceNormal.y, distanceNormal.x);
 
         float deltaAlongTangent = Vector2.Dot(clickEvent.Delta, distanceTangent);
 
-        tilePreview.ChangeRotation(deltaAlongTangent * rotationCoefficient);
+        tilePreviewInstance.ChangeRotation(deltaAlongTangent * rotationCoefficient);
+    }
+
+    public void SetTilePreview(TilePreview preview)
+    {
+        tilePreviewInstance = preview;
     }
 }
