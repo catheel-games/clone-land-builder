@@ -25,7 +25,7 @@ public class TilePreviewInputInterpreter : MonoBehaviour
 
         float deltaAlongTangent = Vector2.Dot(slideEvent.Delta, distanceTangent);
 
-        tilePreview.ChangeRotation(deltaAlongTangent * rotationCoefficient);
+        tilePreview.RotateContinuously(deltaAlongTangent * rotationCoefficient);
     }
 
     private void OnMouseLeftClickSlide(InputManager.MouseClickEvent clickEvent)
@@ -35,6 +35,6 @@ public class TilePreviewInputInterpreter : MonoBehaviour
 
         float deltaAlongTangent = Vector2.Dot(clickEvent.Delta, distanceTangent);
 
-        tilePreview.ChangeRotation(deltaAlongTangent * rotationCoefficient);
+        tilePreview.RotateContinuously(deltaAlongTangent * rotationCoefficient);
     }
 }

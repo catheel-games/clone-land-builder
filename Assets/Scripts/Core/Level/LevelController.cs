@@ -6,14 +6,17 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private UIContainer tilePreviewContainer;
 
     [SerializeField] private CameraController cameraController;
-    [SerializeField] private TileGridController tileGridController;
+    [SerializeField] private TileGrid tileGridController;
 
     [SerializeField] private Transform cameraPivotTransform;
+
+    [SerializeField] private float tileRotationLerpCoefficient = 10f;
 
     private bool isTileViewMode;
     
     public bool IsTileViewMode => isTileViewMode;
     public float CameraPivotRotation => cameraPivotTransform.rotation.eulerAngles.y;
+    public float TileRotationLerpCoefficient => tileRotationLerpCoefficient;
 
     void Start()
     {

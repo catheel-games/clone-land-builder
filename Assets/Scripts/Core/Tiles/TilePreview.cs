@@ -1,28 +1,57 @@
 using UnityEngine;
 
+[RequireComponent(typeof(TileCalculator))]
 public class TilePreview : MonoBehaviour
 {
-    [SerializeField] private float rotationLerpCoefficient = 10f;
-    [SerializeField] private Tile tileInstance;
+    [SerializeField] private float tileElevevation = 0.5f;
+    [SerializeField] private TileCalculator tileCalculator;
 
-    private float targetRotation;
+    private Tile tileInstance;
+    private TileGrid tileGrid;
 
-    void Awake()
+    private float targetRotationContinuous;
+    private float targetRotationDiscrete;
+    private float newRotationDiscrete;
+
+    public void Init(TileGrid tileGrid, Hexagons.Coords coords)
     {
-        targetRotation = tileInstance.transform.rotation.eulerAngles.y;
+        this.tileGrid = tileGrid;
+        
+        SetupTile();
+        tileCalculator.Init(tileInstance, tileGrid, coords);
+        tileCalculator.Process();
     }
 
-    void Update()
+    private void SetupTile()
     {
-        tileInstance.transform.rotation = Quaternion.Lerp(
-            tileInstance.transform.rotation,
-            Quaternion.Euler(0f, Mathf.Floor(targetRotation / 60f) * 60f, 0f),
-            rotationLerpCoefficient * Time.deltaTime
-        );
+        tileInstance = TileGenerator.Instance.GetRandomTile();
+        tileInstance.transform.SetParent(transform, false);
+        tileInstance.transform.localPosition = new Vector3(0f, tileElevevation, 0f);
     }
 
-    public void ChangeRotation(float rotationAmount)
+    public Tile PlaceTile()
     {
-        targetRotation += rotationAmount;
+        tileInstance.Place();
+        tileInstance.transform.SetParent(tileGrid.transform, true);
+        
+        return tileInstance;
+    }
+
+    public void RotateContinuously(float rotationAmount)
+    {
+        targetRotationContinuous += rotationAmount;
+        newRotationDiscrete = Mathf.Floor(targetRotationContinuous / 60f) * 60f;
+
+        if (newRotationDiscrete != targetRotationDiscrete)
+        {
+            targetRotationDiscrete = newRotationDiscrete;
+            RotateDiscretely();
+        }
+    }
+
+    private void RotateDiscretely()
+    {
+        tileInstance.Rotate(targetRotationDiscrete);
+        tileCalculator.Process();
     }
 }

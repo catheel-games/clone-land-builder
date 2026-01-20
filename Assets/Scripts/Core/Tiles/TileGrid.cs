@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileGridController : Singleton<TileGridController>
+public class TileGrid : Singleton<TileGrid>
 {
     [SerializeField] private Transform tilePlacerContainerTransform;
 
@@ -50,20 +50,22 @@ public class TileGridController : Singleton<TileGridController>
 
                 frontier.Remove(coords);
 
-                Tile newTile = Instantiate(
-                    tilePrefab,
-                    Hexagons.HexToWorld(coords),
-                    Quaternion.identity,
-                    transform
-                );
+                Tile newTile = tilePreviewInstance.PlaceTile();
+                newTile.transform.position = Hexagons.HexToWorld(tilePreviewCoords);
 
                 tiles.Add(coords, newTile);
                 
-                Hexagons.IterateHexNeighbors(coords, (Hexagons.Coords neighbor) => {
+                Hexagons.IterateNeighbours(coords, (int side, Hexagons.Coords neighbor) => {
                     setTilePlacer(neighbor);
                 });
             }
         }
+    }
+
+    public Tile GetTile(Hexagons.Coords coords)
+    {
+        tiles.TryGetValue(coords, out Tile tile);
+        return tile;
     }
 
     public void CreatePreviewTile(Hexagons.Coords coords)
@@ -77,6 +79,8 @@ public class TileGridController : Singleton<TileGridController>
 
         tilePreviewCoords = coords;
 
+        tilePreviewInstance.Init(this, coords);
+
         LevelController.Instance.EnterTileViewMode(coords);
     }
 
@@ -84,12 +88,16 @@ public class TileGridController : Singleton<TileGridController>
     {
         Destroy(tilePreviewInstance.gameObject);
         LevelController.Instance.ExitTileViewMode();
+
+        tilePreviewInstance = null;
     }
 
     public void AcceptPreviewTile()
     {
-        Destroy(tilePreviewInstance.gameObject);
         setTile(tilePreviewCoords);
+        Destroy(tilePreviewInstance.gameObject);
         LevelController.Instance.ExitTileViewMode();
+
+        tilePreviewInstance = null;
     }
 }

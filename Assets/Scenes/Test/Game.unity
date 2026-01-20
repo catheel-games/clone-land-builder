@@ -556,6 +556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile Preview Interface
       objectReference: {fileID: 0}
+    - target: {fileID: 4349281011353337728, guid: b8987a0fbe7c4424facfe828b3e469fd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5673155746412848254, guid: b8987a0fbe7c4424facfe828b3e469fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -809,10 +813,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 486294692709197874}
     m_Modifications:
-    - target: {fileID: 599131060263427178, guid: ef6b51a2f9d1c1840949cf614c9d1235, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3782118966075705244, guid: ef6b51a2f9d1c1840949cf614c9d1235, type: 3}
       propertyPath: tilePreviewContainer
       value: 

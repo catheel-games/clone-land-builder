@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TilePlacer : MonoBehaviour
@@ -18,6 +19,6 @@ public class TilePlacer : MonoBehaviour
 
     public void Click()
     {
-        TileGridController.Instance.CreatePreviewTile(coords);
+        TileGrid.Instance.CreatePreviewTile(coords);
     }
 }
