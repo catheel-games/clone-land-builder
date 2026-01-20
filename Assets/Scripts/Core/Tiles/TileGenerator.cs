@@ -3,6 +3,26 @@ using System.Collections.Generic;
 
 public class TileGenerator : Singleton<TileGenerator>
 {
+    [System.Serializable]
+    public class FullTiles
+    {
+        public Tile[] fullGrassTiles;
+        public Tile[] fullWaterTiles;
+        public Tile[] fullTownTiles;
+        public Tile[] fullYellowTiles;
+        public Tile[] fullForestTiles;
+    }
+
+    [System.Serializable]
+    public class TypeTiles
+    {
+        public Tile[] grassTiles;
+        public Tile[] waterTiles;
+        public Tile[] townTiles;
+        public Tile[] yellowTiles;
+        public Tile[] forestTiles;
+    }
+
     [SerializeField] private Tile[] tiles;
 
     List<Tile> displayedTiles = new List<Tile>();
