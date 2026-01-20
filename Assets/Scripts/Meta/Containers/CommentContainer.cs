@@ -3,7 +3,8 @@ using DG.Tweening;
 
 public class CommentContainer : UIContainer
 {
-    [SerializeField] private float fadeDuration = 0.125f;
+    [SerializeField] private float fadeDuration = 0.15f;
+    [SerializeField] private float showDuration = 2f;
     private bool isVisible = false;
 
     public override void Show()
@@ -20,6 +21,8 @@ public class CommentContainer : UIContainer
             sequence.Join(transform.DOScale(1f, fadeDuration));
             sequence.Append(canvasGroup.DOFade(1f, fadeDuration));
             sequence.AppendCallback(() => base.Show());
+            sequence.AppendInterval(showDuration);
+            sequence.AppendCallback(() => { if (isVisible) Hide(); });
         }
     }
 

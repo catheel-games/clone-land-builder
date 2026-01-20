@@ -3431,7 +3431,7 @@ MonoBehaviour:
   childContainers: []
   canvasGroup: {fileID: 6647437329942156646}
   activeMode: 0
-  fadeDuration: 0.125
+  fadeDuration: 0.15
 --- !u!1 &3461192279627340736
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,7 +3647,7 @@ MonoBehaviour:
   childContainers: []
   canvasGroup: {fileID: 3300902160872728197}
   activeMode: 0
-  fadeDuration: 0.125
+  fadeDuration: 0.15
 --- !u!1 &3826785961803862248
 GameObject:
   m_ObjectHideFlags: 0
@@ -4889,7 +4889,7 @@ MonoBehaviour:
   childContainers: []
   canvasGroup: {fileID: 6103321464582327016}
   activeMode: 0
-  fadeDuration: 0.125
+  fadeDuration: 0.15
 --- !u!1 &4756785609067904660
 GameObject:
   m_ObjectHideFlags: 0
@@ -9372,7 +9372,7 @@ MonoBehaviour:
   childContainers: []
   canvasGroup: {fileID: 8518277655937489098}
   activeMode: 0
-  fadeDuration: 0.125
+  fadeDuration: 0.15
 --- !u!1 &9017759537891215075
 GameObject:
   m_ObjectHideFlags: 0

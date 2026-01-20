@@ -937,9 +937,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9087443946784728261}
     m_Modifications:
+    - target: {fileID: 928884775929594096, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 928884775929594096, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 928884775929594096, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 928884775929594096, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1427803172001187703, guid: 23ae87895fc41cc448ef861088252601, type: 3}
       propertyPath: m_Name
       value: Pause Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757839905114118435, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757839905114118435, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757839905114118435, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757839905114118435, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598565933608513050, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598565933608513050, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598565933608513050, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598565933608513050, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7382926271144433134, guid: 23ae87895fc41cc448ef861088252601, type: 3}
       propertyPath: m_Pivot.x
@@ -1019,6 +1067,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7382926271144433134, guid: 23ae87895fc41cc448ef861088252601, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035374298307145871, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035374298307145871, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035374298307145871, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035374298307145871, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1255,6 +1319,10 @@ PrefabInstance:
       propertyPath: topBar
       value: 
       objectReference: {fileID: 6138085773297411304}
+    - target: {fileID: 2792379830004484124, guid: 2556ea1dcf0cddc4fb3aa98e8b772099, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5044717279844040566, guid: 2556ea1dcf0cddc4fb3aa98e8b772099, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
