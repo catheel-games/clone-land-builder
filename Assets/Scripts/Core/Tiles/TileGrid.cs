@@ -14,6 +14,8 @@ public class TileGridController : Singleton<TileGridController>
     private Dictionary<Hexagons.Coords, TilePlacer> frontier = new Dictionary<Hexagons.Coords, TilePlacer>();
     private Dictionary<Hexagons.Coords, Tile> tiles = new Dictionary<Hexagons.Coords, Tile>();
 
+    private float rotationValue;
+
     void Start()
     {
         setTilePlacer(new Hexagons.Coords(0, 0));
@@ -52,7 +54,7 @@ public class TileGridController : Singleton<TileGridController>
                 Tile newTile = Instantiate(
                     TileGenerator.Instance.GetNextTile(),
                     Hexagons.HexToWorld(coords),
-                    Quaternion.identity,
+                    Quaternion.Euler(0f, rotationValue, 0f),
                     transform
                 );
 
@@ -94,6 +96,7 @@ public class TileGridController : Singleton<TileGridController>
 
     public void AcceptPreviewTile()
     {
+        rotationValue = tilePreviewInstance.GetTargetRotation();
         Destroy(tilePreviewInstance.gameObject);
         setTile(tilePreviewCoords);
         LevelController.Instance.ExitTileViewMode();

@@ -17,6 +17,11 @@ public class TilePreview : MonoBehaviour
         );
     }
 
+    public float GetTargetRotation()
+    {
+        return Mathf.Floor(targetRotation / 60f) * 60f;
+    }
+
     public void SetTile(Tile tile)
     {
         tileInstance = tile;
