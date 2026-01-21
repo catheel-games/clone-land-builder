@@ -168,9 +168,9 @@ public class TileGenerator : Singleton<TileGenerator>
 
     public Tile GetNextTile()
     {
-        RefillQueue(GetRandomType());
         Tile prevTile = setQueue[0];
         setQueue.RemoveAt(0);
+        RefillQueue(GetRandomType());
         return prevTile;
     }
 

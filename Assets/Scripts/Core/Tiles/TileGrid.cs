@@ -79,17 +79,18 @@ public class TileGridController : Singleton<TileGridController>
         Tile nextTilePrefab = TileGenerator.Instance.ShowNextTile();
         Tile spawnedTile = Instantiate(nextTilePrefab, tilePreviewInstance.transform);
         spawnedTile.transform.localPosition = new Vector3(0, 0.5f, 0);
+        spawnedTile.transform.localRotation = Quaternion.Euler(0f, rotationValue, 0f); 
         tilePreviewInstance.SetTile(spawnedTile);
 
         TilePreviewInputInterpreter.Instance.SetTilePreview(tilePreviewInstance);
 
         tilePreviewCoords = coords;
-
         LevelController.Instance.EnterTileViewMode(coords);
     }
 
     public void DeclinePreviewTile()
     {
+        rotationValue = tilePreviewInstance.GetTargetRotation();
         Destroy(tilePreviewInstance.gameObject);
         LevelController.Instance.ExitTileViewMode();
     }
