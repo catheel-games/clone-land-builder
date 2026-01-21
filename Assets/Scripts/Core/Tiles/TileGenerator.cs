@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+// using System.Diagnostics;
 
 public class TileGenerator : Singleton<TileGenerator>
 {
@@ -23,23 +25,18 @@ public class TileGenerator : Singleton<TileGenerator>
         public Tile[] forestTiles;
     }
 
-    [SerializeField] private Tile[] tiles;
+    // [SerializeField] private Tile[] tiles;
     [SerializeField] private FullTiles fullTiles;
     [SerializeField] private TypeTiles typeTiles; 
 
-    List<Tile> set = new List<Tile>();
+    List<Tile> setQueue = new List<Tile>();
 
     void Start()
     {
-        GenerateStartingSets();
+        InitializeQueue();
     }
 
-    private Tile GetRandomTile()
-    {
-        int randomNum = UnityEngine.Random.Range(0, tiles.Length);
-        return tiles[randomNum];
-    }
-
+    // change to least occuring type
     private Tile.Type GetRandomType()
     {
         return (Tile.Type)UnityEngine.Random.Range(1, 6);
@@ -53,7 +50,7 @@ public class TileGenerator : Singleton<TileGenerator>
         return secondType;
     }
 
-    private Tile GetFullTileOfType(Tile.Type type)
+    private Tile GetFullTile(Tile.Type type)
     {
         Tile[] arr;
         switch (type)
@@ -81,7 +78,7 @@ public class TileGenerator : Singleton<TileGenerator>
         return arr[UnityEngine.Random.Range(0, arr.Length)];
     }
 
-    private Tile GetTypeTileOfType(Tile.Type type)
+    private Tile GetTypeTile(Tile.Type type)
     {
         Tile[] arr;
         switch (type)
@@ -109,33 +106,71 @@ public class TileGenerator : Singleton<TileGenerator>
         return arr[UnityEngine.Random.Range(0, arr.Length)];
     }
 
-    private List<Tile> GenerateSet(Tile.Type type)
+    private List<Tile> CreateTypedSet(Tile.Type type)
     {
         List<Tile> newSet = new List<Tile>();
-        newSet.Add(GetFullTileOfType(type));
-        newSet.Add(GetTypeTileOfType(type));
-        newSet.Add(GetTypeTileOfType(type));
+        newSet.Add(GetFullTile(type));
+        newSet.Add(GetTypeTile(type));
+        newSet.Add(GetTypeTile(type));
+        newSet = newSet.OrderBy(x => Random.value).ToList();
         return newSet;
     }
 
-    private void GenerateStartingSets()
+    // will not be so random after least occuring edge is implemented
+    private List<Tile> CreateRandomSet(Tile.Type type)
+    {
+        List<Tile> randomSet = new List<Tile>();
+        randomSet.Add(Random.Range(0, 2) == 0 ? GetFullTile(type) : GetTypeTile(type));
+        randomSet.Add(Random.Range(0, 2) == 0 ? GetFullTile(type) : GetTypeTile(type));
+        randomSet.Add(Random.Range(0, 2) == 0 ? GetFullTile(type) : GetTypeTile(type));
+
+        int rand = Random.Range(0, 100);
+        if (rand >= 85)
+        {
+            randomSet.Add(GetRandomTile());
+            randomSet.Add(GetRandomTile());
+        }
+        else if (rand >= 70)
+        {
+            randomSet.Add(GetRandomTile());
+        }
+
+        return randomSet;
+    }
+
+    private void RefillQueue(Tile.Type type)
+    {
+        if (setQueue.Count < 3)
+        {
+            setQueue.AddRange(CreateRandomSet(type));
+        } 
+    }
+
+    private void InitializeQueue()
     {
         Tile.Type type1 = GetRandomType();
         Tile.Type type2 = GetRandomTypeExcluding(type1);
-        set.AddRange(GenerateSet(type1));
-        set.AddRange(GenerateSet(type2));
-        Debug.Log("Queue has " + set.Count + " tiles!");
+        setQueue.AddRange(CreateTypedSet(type1));
+        setQueue.AddRange(CreateTypedSet(type2));
+    }
+
+    private Tile GetRandomTile()
+    {
+        Tile.Type randomType = GetRandomType();
+        Tile randomTile = Random.Range(0, 2) == 0 ? GetFullTile(randomType) : GetTypeTile(randomType);
+        return randomTile;
     }
 
     public Tile ShowNextTile()
     {
-        return set[0];
+        return setQueue[0];
     }
 
     public Tile GetNextTile()
     {
-        Tile prevTile = set[0];
-        set.RemoveAt(0);
+        RefillQueue(GetRandomType());
+        Tile prevTile = setQueue[0];
+        setQueue.RemoveAt(0);
         return prevTile;
     }
 }

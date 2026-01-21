@@ -76,6 +76,7 @@ public class TileGridController : Singleton<TileGridController>
 
         Tile nextTilePrefab = TileGenerator.Instance.ShowNextTile();
         Tile spawnedTile = Instantiate(nextTilePrefab, tilePreviewInstance.transform);
+        spawnedTile.transform.localPosition = new Vector3(0, 0.5f, 0);
         tilePreviewInstance.SetTile(spawnedTile);
 
         TilePreviewInputInterpreter.Instance.SetTilePreview(tilePreviewInstance);
