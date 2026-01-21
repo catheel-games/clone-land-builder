@@ -173,4 +173,9 @@ public class TileGenerator : Singleton<TileGenerator>
         setQueue.RemoveAt(0);
         return prevTile;
     }
+
+    public List<Tile> GetQueue()
+    {
+        return setQueue;
+    }
 }
