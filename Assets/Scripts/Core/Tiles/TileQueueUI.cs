@@ -10,7 +10,11 @@ public class TileQueueUI : Singleton<TileQueueUI>
 
     void Start()
     {
-        UpdateDisplay();
+        DOVirtual.DelayedCall(0.01f, () =>
+        {
+            UpdateDisplay();
+        });
+
     }
 
     public void UpdateDisplay()
@@ -27,8 +31,9 @@ public class TileQueueUI : Singleton<TileQueueUI>
         {
             GameObject whitePlate = Instantiate(
                 whitePlatePrefab,
-                tileSlots[i].position + new Vector3(0, -0.1f, 0),
-                Quaternion.identity
+                tileSlots[i].position + new Vector3(0, 0, 0),
+                Quaternion.identity,
+                tileSlots[i].transform
             );
             whitePlate.transform.localScale = new Vector3(1.1f, 1f, 1f);
             whitePlate.layer = 3;
@@ -37,19 +42,18 @@ public class TileQueueUI : Singleton<TileQueueUI>
             GameObject newTile = Instantiate(
                 queue[i].gameObject,
                 tileSlots[i].position,
-                Quaternion.identity
+                Quaternion.identity,
+                whitePlate.transform
             );
             newTile.layer = 3;
             displayedTiles.Add(newTile);
 
             if (i == 0)
             {
-                newTile.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 0.1f); 
                 whitePlate.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 0.1f);
             }
             else
             {
-                newTile.transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
                 whitePlate.transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
             }
         }
