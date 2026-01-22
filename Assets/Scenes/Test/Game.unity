@@ -1183,6 +1183,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -6180411969508138142, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
+      propertyPath: whitePlatePrefab
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: f5e79635e2991bc4089350b04a482f6a, type: 3}
+    - target: {fileID: -6180411969508138142, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
       propertyPath: 'tileSlots.Array.data[0]'
       value: 
       objectReference: {fileID: 1815196936}
