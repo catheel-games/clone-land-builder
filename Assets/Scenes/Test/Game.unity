@@ -119,6 +119,42 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &2783002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2783003}
+  m_Layer: 0
+  m_Name: Slot 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2783003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783002}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 17622612}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &17622612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 262380289828140502, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
+  m_PrefabInstance: {fileID: 5738521264501983387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &439464423 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8882862855357961664, guid: ef6b51a2f9d1c1840949cf614c9d1235, type: 3}
@@ -436,6 +472,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
+--- !u!1 &583337001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 583337002}
+  m_Layer: 0
+  m_Name: Slot 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &583337002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583337001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 17622612}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &612047236 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6138085773297411304, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
@@ -979,6 +1046,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8885d04d65a6b594799fa584d1a7cc28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopupContainer
+--- !u!1 &1815196935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1815196936}
+  m_Layer: 0
+  m_Name: Slot 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1815196936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815196935}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.65, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 17622612}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1902411374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1084,6 +1182,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6180411969508138142, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
+      propertyPath: 'tileSlots.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1815196936}
+    - target: {fileID: -6180411969508138142, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
+      propertyPath: 'tileSlots.Array.data[1]'
+      value: 
+      objectReference: {fileID: 583337002}
+    - target: {fileID: -6180411969508138142, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
+      propertyPath: 'tileSlots.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2783003}
     - target: {fileID: 3601467556510192477, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1129,8 +1239,20 @@ PrefabInstance:
       value: 3D Generator UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8289145977797665413, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
+    - {fileID: 4608484190821133300, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
+    - {fileID: 9090010078142179307, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 262380289828140502, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1815196936}
+    - targetCorrespondingSourceObject: {fileID: 262380289828140502, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 583337002}
+    - targetCorrespondingSourceObject: {fileID: 262380289828140502, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2783003}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed94c9a6c38925946830b8f4cc489f79, type: 3}
 --- !u!1001 &6529454660414019212

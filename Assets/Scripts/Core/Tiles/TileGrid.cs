@@ -101,5 +101,6 @@ public class TileGridController : Singleton<TileGridController>
         Destroy(tilePreviewInstance.gameObject);
         setTile(tilePreviewCoords);
         LevelController.Instance.ExitTileViewMode();
+        TileQueueUI.Instance.UpdateDisplay();
     }
 }

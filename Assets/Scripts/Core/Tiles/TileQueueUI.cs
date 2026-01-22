@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class TileQueueUI : MonoBehaviour
+public class TileQueueUI : Singleton<TileQueueUI>
 {
     [SerializeField] private Transform[] tileSlots;
     private List<GameObject> displayedTiles = new List<GameObject>();
@@ -28,6 +28,7 @@ public class TileQueueUI : MonoBehaviour
                 tileSlots[i].position,
                 Quaternion.identity
             );
+            newTile.layer = 3;
             displayedTiles.Add(newTile);
         }
     }
