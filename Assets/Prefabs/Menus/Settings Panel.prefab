@@ -1576,3 +1576,5 @@ MonoBehaviour:
   activeMode: 0
   fadeDuration: 0.3
   topBar: {fileID: 0}
+  scalableTransform: {fileID: 4995797126651991138}
+  scalingDuration: 0.25

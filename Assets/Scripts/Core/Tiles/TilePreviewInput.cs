@@ -4,6 +4,7 @@ using UnityEngine;
 public class TilePreviewInput : MonoBehaviour
 { 
     [SerializeField] private float rotationCoefficient = 0.5f;
+    private TilePreview tilePreviewInstance;
 
     private bool isRotatable = false;
 

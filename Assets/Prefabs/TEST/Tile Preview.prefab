@@ -61,7 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bb097fe62790f408f44771c33b0ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilePreviewInputInterpreter
-  tilePreview: {fileID: 915202331465559182}
   rotationCoefficient: 2000
 --- !u!114 &6723847697331905257
 MonoBehaviour:
