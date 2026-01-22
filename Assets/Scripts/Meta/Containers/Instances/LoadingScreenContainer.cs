@@ -4,7 +4,7 @@ using TMPro;
 using DG.Tweening;
 using System.Collections;
 
-public class LoadingScreen :FadingContainer
+public class LoadingScreenContainer : FadingContainer
 {
     [SerializeField] private Slider progressBar;
     [SerializeField] private TextMeshProUGUI progressText;

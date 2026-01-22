@@ -1,9 +1,17 @@
+using System;
 using UnityEngine;
 
-public class TilePreviewInputInterpreter : Singleton<TilePreviewInputInterpreter>
-{   
+public class TilePreviewInput : MonoBehaviour
+{ 
     [SerializeField] private float rotationCoefficient = 0.5f;
     private TilePreview tilePreviewInstance;
+
+    private bool isRotatable = false;
+
+    public void LockRotation() => isRotatable = false;
+    public void UnlockRotation() => isRotatable = true;
+
+    public event Action<float> OnRotation;
 
     void OnEnable()
     {
@@ -19,30 +27,27 @@ public class TilePreviewInputInterpreter : Singleton<TilePreviewInputInterpreter
 
     private void OnOneFingerSlide(InputManager.OneFingerSlideEvent slideEvent)
     {
-        if (tilePreviewInstance == null) return;
+        if (isRotatable)
+        {
+            Vector2 distanceNormal = -slideEvent.Position.normalized;
+            Vector2 distanceTangent = new Vector2(-distanceNormal.y, distanceNormal.x);
 
-        Vector2 distanceNormal = -slideEvent.Position.normalized;
-        Vector2 distanceTangent = new Vector2(-distanceNormal.y, distanceNormal.x);
+            float deltaAlongTangent = Vector2.Dot(slideEvent.Delta, distanceTangent);
 
-        float deltaAlongTangent = Vector2.Dot(slideEvent.Delta, distanceTangent);
-
-        tilePreviewInstance.ChangeRotation(deltaAlongTangent * rotationCoefficient);
+            OnRotation?.Invoke(deltaAlongTangent * rotationCoefficient);
+        }
     }
 
     private void OnMouseLeftClickSlide(InputManager.MouseClickEvent clickEvent)
     {
-        if (tilePreviewInstance == null) return;
+        if (isRotatable)
+        {
+            Vector2 distanceNormal = -clickEvent.Position.normalized;
+            Vector2 distanceTangent = new Vector2(-distanceNormal.y, distanceNormal.x);
 
-        Vector2 distanceNormal = -clickEvent.Position.normalized;
-        Vector2 distanceTangent = new Vector2(-distanceNormal.y, distanceNormal.x);
+            float deltaAlongTangent = Vector2.Dot(clickEvent.Delta, distanceTangent);
 
-        float deltaAlongTangent = Vector2.Dot(clickEvent.Delta, distanceTangent);
-
-        tilePreviewInstance.ChangeRotation(deltaAlongTangent * rotationCoefficient);
-    }
-
-    public void SetTilePreview(TilePreview preview)
-    {
-        tilePreviewInstance = preview;
+            OnRotation?.Invoke(deltaAlongTangent * rotationCoefficient);
+        }
     }
 }

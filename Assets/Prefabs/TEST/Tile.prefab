@@ -58,14 +58,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 39a0732b6a701424fb842fb6088191db, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 534292831841679959}
+      addedObject: {fileID: 4781014257256802339}
   m_SourcePrefab: {fileID: 100100000, guid: 39a0732b6a701424fb842fb6088191db, type: 3}
 --- !u!1 &5187210741690564836 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 39a0732b6a701424fb842fb6088191db, type: 3}
   m_PrefabInstance: {fileID: 5421706672009887157}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &534292831841679959
+--- !u!114 &4781014257256802339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,5 +77,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39723d17e390ef7478fb82949dc21561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  borderTypes: 
+  borderTypes: 000000000000000000000000000000000000000000000000
   centerType: 0

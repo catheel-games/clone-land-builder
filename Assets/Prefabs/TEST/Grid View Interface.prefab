@@ -120,9 +120,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-        m_MethodName: OnRotateRight
+      - m_Target: {fileID: 2656486690847361711}
+        m_TargetAssemblyTypeName: CameraControlContainer, Assembly-CSharp
+        m_MethodName: RotateRight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -252,9 +252,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-        m_MethodName: OnRotateLeft
+      - m_Target: {fileID: 2656486690847361711}
+        m_TargetAssemblyTypeName: CameraControlContainer, Assembly-CSharp
+        m_MethodName: RotateLeft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -384,9 +384,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-        m_MethodName: OnZoomIn
+      - m_Target: {fileID: 2656486690847361711}
+        m_TargetAssemblyTypeName: CameraControlContainer, Assembly-CSharp
+        m_MethodName: ZoomIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -516,9 +516,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-        m_MethodName: OnZoomOut
+      - m_Target: {fileID: 2656486690847361711}
+        m_TargetAssemblyTypeName: CameraControlContainer, Assembly-CSharp
+        m_MethodName: ZoomOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -538,6 +538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2719422857074411877}
   - component: {fileID: 7824406831793619288}
+  - component: {fileID: 2656486690847361711}
   m_Layer: 5
   m_Name: Grid View Interface
   m_TagString: Untagged
@@ -580,3 +581,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2656486690847361711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887677476901743848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b07825e3cdedd4ca3eb5a41c55dc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraControlContainer
+  childContainers: []
+  canvasGroup: {fileID: 7824406831793619288}
+  activeMode: 1

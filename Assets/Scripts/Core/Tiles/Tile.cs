@@ -2,30 +2,45 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public enum Type
+    [SerializeField] private Hexagons.Type[] borderTypes = new Hexagons.Type[6];
+    [SerializeField] private Hexagons.Type centerType;
+    [SerializeField] private float rotationLerpCoefficient = 10f;
+
+    private int rotationOffset = 0;
+    private float rotationOffsetDiscrete = 0f;
+    private bool isPlaced = false;
+
+    void Update()
     {
-        Null,
-        Town,
-        Grass,
-        Forest,
-        Yellow,
-        Water    
+        if (!isPlaced)
+        {
+            transform.rotation = Quaternion.Lerp(
+                transform.rotation,
+                Quaternion.Euler(0f, rotationOffsetDiscrete, 0f),
+                rotationLerpCoefficient * Time.deltaTime
+            );
+        }
     }
 
-    [SerializeField] private Type[] borderTypes;
-    [SerializeField] private Type centerType;
-
-    private int rotationOffset;
-
-    void Awake() {
-        rotationOffset = 0;
+    public void Rotate(float newRotationOffset)
+    {
+        if (!isPlaced)
+        {
+            rotationOffsetDiscrete = newRotationOffset;
+            rotationOffset = (int)Mathf.Floor(-rotationOffsetDiscrete / 60f);
+        }
     }
 
-    public Type GetSideType(int side) { 
-        return borderTypes[(rotationOffset + side) % 6];
+    public void Place()
+    {
+        if (!isPlaced)
+        {
+            isPlaced = true;
+            transform.rotation = Quaternion.Euler(0f, rotationOffsetDiscrete, 0f);
+        }
     }
 
-    public void TypeSetter(int i, Type type) {
-        borderTypes[i] = type;
+    public Hexagons.Type GetSide(int side) { 
+        return borderTypes[Tools.Modulo(rotationOffset + side, 6)];
     }
 }

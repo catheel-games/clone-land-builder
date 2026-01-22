@@ -1,106 +1,72 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileGridController : Singleton<TileGridController>
+public class TileGrid : MonoBehaviour
 {
-    [SerializeField] private Transform tilePlacerContainerTransform;
-    [SerializeField] private Tile tilePrefab;
+    [SerializeField] private UIContainer tilePlacerContainer;
     [SerializeField] private TilePlacer tilePlacerPrefab;
-    [SerializeField] private TilePreview tilePreviewPrefab;
-
-    private TilePreview tilePreviewInstance;
-    Hexagons.Coords tilePreviewCoords;
 
     private Dictionary<Hexagons.Coords, TilePlacer> frontier = new Dictionary<Hexagons.Coords, TilePlacer>();
     private Dictionary<Hexagons.Coords, Tile> tiles = new Dictionary<Hexagons.Coords, Tile>();
 
-    private float rotationValue;
+    public event Action<Hexagons.Coords> OnTilePlacerClick;
 
     void Start()
     {
-        setTilePlacer(new Hexagons.Coords(0, 0));
+        SetTilePlacer(new Hexagons.Coords(0, 0));
     }
     
-    private void setTilePlacer(Hexagons.Coords coords)
+    private void SetTilePlacer(Hexagons.Coords coords)
     {
         if (!frontier.ContainsKey(coords))
         {
             if (!tiles.ContainsKey(coords))
             {
-                TilePlacer newTilePlacer = Instantiate(
-                    tilePlacerPrefab,
-                    Hexagons.HexToWorld(coords),
-                    tilePlacerPrefab.transform.rotation,
-                    tilePlacerContainerTransform
-                );
-
-                newTilePlacer.Init(coords);
-
+                TilePlacer newTilePlacer = Instantiate(tilePlacerPrefab, tilePlacerContainer.transform);
+                newTilePlacer.Setup(coords);
+                newTilePlacer.OnClick += Lock;
                 frontier.Add(coords, newTilePlacer);
             }
         }
     }
 
-    private void setTile(Hexagons.Coords coords)
+    public void SetTile(Hexagons.Coords coords, Tile tile)
     {
         if (frontier.ContainsKey(coords))
         {
             if (!tiles.ContainsKey(coords))
             {
-                Destroy(frontier[coords].gameObject);
-
+                TilePlacer oldTilePlacer = frontier[coords];
+                oldTilePlacer.OnClick -= Lock;
+                Destroy(oldTilePlacer.gameObject);
                 frontier.Remove(coords);
 
-                Tile newTile = Instantiate(
-                    TileGenerator.Instance.GetNextTile(),
-                    Hexagons.HexToWorld(coords),
-                    Quaternion.Euler(0f, rotationValue, 0f),
-                    transform
-                );
-
-                tiles.Add(coords, newTile);
+                tile.transform.SetParent(transform, false);
+                tile.transform.position = Hexagons.HexToWorld(coords);
+                tiles.Add(coords, tile);
                 
-                Hexagons.IterateHexNeighbors(coords, (Hexagons.Coords neighbor) => {
-                    setTilePlacer(neighbor);
+                Hexagons.IterateNeighbours(coords, (int side, Hexagons.Coords neighbor) => {
+                    SetTilePlacer(neighbor);
                 });
             }
         }
     }
-
-    public void CreatePreviewTile(Hexagons.Coords coords)
+    
+    public Tile GetTile(Hexagons.Coords coords)
     {
-        tilePreviewInstance = Instantiate(
-            tilePreviewPrefab,
-            Hexagons.HexToWorld(coords),
-            Quaternion.identity,
-            transform
-        );
-
-        Tile nextTilePrefab = TileGenerator.Instance.ShowNextTile();
-        Tile spawnedTile = Instantiate(nextTilePrefab, tilePreviewInstance.transform);
-        spawnedTile.transform.localPosition = new Vector3(0, 0.5f, 0);
-        spawnedTile.transform.localRotation = Quaternion.Euler(0f, rotationValue, 0f); 
-        tilePreviewInstance.SetTile(spawnedTile);
-
-        TilePreviewInputInterpreter.Instance.SetTilePreview(tilePreviewInstance);
-
-        tilePreviewCoords = coords;
-        LevelController.Instance.EnterTileViewMode(coords);
+        tiles.TryGetValue(coords, out Tile tile);
+        return tile;
     }
 
-    public void DeclinePreviewTile()
+    private void Lock(Hexagons.Coords coords)
     {
-        rotationValue = tilePreviewInstance.GetTargetRotation();
-        Destroy(tilePreviewInstance.gameObject);
-        LevelController.Instance.ExitTileViewMode();
+        tilePlacerContainer.Hide();
+        OnTilePlacerClick?.Invoke(coords);
     }
 
-    public void AcceptPreviewTile()
+    public void Unlock()
     {
-        rotationValue = tilePreviewInstance.GetTargetRotation();
-        Destroy(tilePreviewInstance.gameObject);
-        setTile(tilePreviewCoords);
-        LevelController.Instance.ExitTileViewMode();
-        TileQueueUI.Instance.UpdateDisplay();
+        tilePlacerContainer.Show();
     }
 }
