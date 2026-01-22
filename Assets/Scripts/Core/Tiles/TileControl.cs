@@ -24,7 +24,7 @@ public class TileControl : MonoBehaviour
 
     private void EnterTilePreview(Hexagons.Coords coords)
     {
-        previewTile = tileGenerator.GetRandomTile();
+        previewTile = Instantiate(tileGenerator.ShowNextTile(), transform);
         previewTileCoords = coords;
 
         OnTilePlacerClick?.Invoke(coords);
@@ -36,6 +36,7 @@ public class TileControl : MonoBehaviour
         if (isTileAccepted)
         {
             tileGrid.SetTile(previewTileCoords, previewTile);
+            tileGenerator.GetNextTile();
         }
 
         tilePreview.EndPreview(isTileAccepted);

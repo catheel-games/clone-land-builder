@@ -35,8 +35,8 @@ public class TilePreview : MonoBehaviour
         
         transform.position = Hexagons.HexToWorld(coords);
 
-        tile.transform.SetParent(transform, false);
-        tile.transform.localPosition = new Vector3(0f, tileElevevation, 0f);
+        tileInstance.transform.SetParent(transform, false);
+        tileInstance.transform.localPosition = new Vector3(0f, tileElevevation, 0f);
         
         tilePreviewInput.UnlockRotation();
         tileCalculator.CalculateBonuses(tileInstanceCoords, tileInstance);

@@ -37,37 +37,37 @@ public class TileGenerator : Singleton<TileGenerator>
     }
 
     // change to least occuring type
-    private Tile.Type GetRandomType()
+    private Hexagons.Type GetRandomType()
     {
-        return (Tile.Type)UnityEngine.Random.Range(1, 6);
+        return (Hexagons.Type)Random.Range(1, 6);
     } 
 
-    private Tile.Type GetRandomTypeExcluding(Tile.Type firstType)
+    private Hexagons.Type GetRandomTypeExcluding(Hexagons.Type firstType)
     {
-        Tile.Type secondType = GetRandomType();
+        Hexagons.Type secondType = GetRandomType();
         if (secondType == firstType)
             return GetRandomTypeExcluding(firstType);
         return secondType;
     }
 
-    private Tile GetFullTile(Tile.Type type)
+    private Tile GetFullTile(Hexagons.Type type)
     {
         Tile[] arr;
         switch (type)
         {
-            case Tile.Type.Grass:
+            case Hexagons.Type.Grass:
                 arr = fullTiles.fullGrassTiles;
                 break;
-            case Tile.Type.Water:
+            case Hexagons.Type.Water:
                 arr = fullTiles.fullWaterTiles;
                 break;
-            case Tile.Type.Town:
+            case Hexagons.Type.Town:
                 arr = fullTiles.fullTownTiles;
                 break;
-            case Tile.Type.Yellow:
+            case Hexagons.Type.Yellow:
                 arr = fullTiles.fullYellowTiles;
                 break;
-            case Tile.Type.Forest:
+            case Hexagons.Type.Forest:
                 arr = fullTiles.fullForestTiles;
                 break;
             default: 
@@ -75,27 +75,27 @@ public class TileGenerator : Singleton<TileGenerator>
                 break;
         }
 
-        return arr[UnityEngine.Random.Range(0, arr.Length)];
+        return arr[Random.Range(0, arr.Length)];
     }
 
-    private Tile GetTypeTile(Tile.Type type)
+    private Tile GetTypeTile(Hexagons.Type type)
     {
         Tile[] arr;
         switch (type)
         {
-            case Tile.Type.Grass:
+            case Hexagons.Type.Grass:
                 arr = typeTiles.grassTiles;
                 break;
-            case Tile.Type.Water:
+            case Hexagons.Type.Water:
                 arr = typeTiles.waterTiles;
                 break;
-            case Tile.Type.Town:
+            case Hexagons.Type.Town:
                 arr = typeTiles.townTiles;
                 break;
-            case Tile.Type.Yellow:
+            case Hexagons.Type.Yellow:
                 arr = typeTiles.yellowTiles;
                 break;
-            case Tile.Type.Forest:
+            case Hexagons.Type.Forest:
                 arr = typeTiles.forestTiles;
                 break;
             default:
@@ -103,10 +103,10 @@ public class TileGenerator : Singleton<TileGenerator>
                 break;
         }
 
-        return arr[UnityEngine.Random.Range(0, arr.Length)];
+        return arr[Random.Range(0, arr.Length)];
     }
 
-    private List<Tile> CreateTypedSet(Tile.Type type)
+    private List<Tile> CreateTypedSet(Hexagons.Type type)
     {
         List<Tile> newSet = new List<Tile>();
         newSet.Add(GetFullTile(type));
@@ -117,7 +117,7 @@ public class TileGenerator : Singleton<TileGenerator>
     }
 
     // will not be so random after least occuring edge is implemented
-    private List<Tile> CreateRandomSet(Tile.Type type)
+    private List<Tile> CreateRandomSet(Hexagons.Type type)
     {
         List<Tile> randomSet = new List<Tile>();
         randomSet.Add(Random.Range(0, 2) == 0 ? GetFullTile(type) : GetTypeTile(type));
@@ -138,7 +138,7 @@ public class TileGenerator : Singleton<TileGenerator>
         return randomSet;
     }
 
-    private void RefillQueue(Tile.Type type)
+    private void RefillQueue(Hexagons.Type type)
     {
         if (setQueue.Count < 3)
         {
@@ -148,15 +148,15 @@ public class TileGenerator : Singleton<TileGenerator>
 
     private void InitializeQueue()
     {
-        Tile.Type type1 = GetRandomType();
-        Tile.Type type2 = GetRandomTypeExcluding(type1);
+        Hexagons.Type type1 = GetRandomType();
+        Hexagons.Type type2 = GetRandomTypeExcluding(type1);
         setQueue.AddRange(CreateTypedSet(type1));
         setQueue.AddRange(CreateTypedSet(type2));
     }
 
     private Tile GetRandomTile()
     {
-        Tile.Type randomType = GetRandomType();
+        Hexagons.Type randomType = GetRandomType();
         Tile randomTile = Random.Range(0, 2) == 0 ? GetFullTile(randomType) : GetTypeTile(randomType);
         return randomTile;
     }
