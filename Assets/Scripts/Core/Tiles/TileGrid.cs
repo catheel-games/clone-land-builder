@@ -1,105 +1,72 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileGrid : Singleton<TileGrid>
+public class TileGrid : MonoBehaviour
 {
-    [SerializeField] private Transform tilePlacerContainerTransform;
-
-    [SerializeField] private Tile tilePrefab;
+    [SerializeField] private UIContainer tilePlacerContainer;
     [SerializeField] private TilePlacer tilePlacerPrefab;
-    [SerializeField] private TilePreview tilePreviewPrefab;
-
-    private TilePreview tilePreviewInstance;
-    Hexagons.Coords tilePreviewCoords;
 
     private Dictionary<Hexagons.Coords, TilePlacer> frontier = new Dictionary<Hexagons.Coords, TilePlacer>();
     private Dictionary<Hexagons.Coords, Tile> tiles = new Dictionary<Hexagons.Coords, Tile>();
 
+    public event Action<Hexagons.Coords> OnTilePlacerClick;
+
     void Start()
     {
-        setTilePlacer(new Hexagons.Coords(0, 0), 0);
+        SetTilePlacer(new Hexagons.Coords(0, 0));
     }
     
-    private void setTilePlacer(Hexagons.Coords coords, int i)
+    private void SetTilePlacer(Hexagons.Coords coords)
     {
         if (!frontier.ContainsKey(coords))
         {
             if (!tiles.ContainsKey(coords))
             {
-                TilePlacer newTilePlacer = Instantiate(
-                    tilePlacerPrefab,
-                    Hexagons.HexToWorld(coords),
-                    tilePlacerPrefab.transform.rotation,
-                    tilePlacerContainerTransform
-                );
-
-                newTilePlacer.gameObject.name = $"asadasd {i}";
-
-                newTilePlacer.Init(coords);
-
+                TilePlacer newTilePlacer = Instantiate(tilePlacerPrefab, tilePlacerContainer.transform);
+                newTilePlacer.Setup(coords);
+                newTilePlacer.OnClick += Lock;
                 frontier.Add(coords, newTilePlacer);
             }
         }
     }
 
-    private void setTile(Hexagons.Coords coords)
+    public void SetTile(Hexagons.Coords coords, Tile tile)
     {
         if (frontier.ContainsKey(coords))
         {
             if (!tiles.ContainsKey(coords))
             {
-                Destroy(frontier[coords].gameObject);
-
+                TilePlacer oldTilePlacer = frontier[coords];
+                oldTilePlacer.OnClick -= Lock;
+                Destroy(oldTilePlacer.gameObject);
                 frontier.Remove(coords);
 
-                Tile newTile = tilePreviewInstance.PlaceTile();
-                newTile.transform.position = Hexagons.HexToWorld(tilePreviewCoords);
-
-                tiles.Add(coords, newTile);
+                tile.transform.SetParent(transform, false);
+                tile.transform.position = Hexagons.HexToWorld(coords);
+                tiles.Add(coords, tile);
                 
                 Hexagons.IterateNeighbours(coords, (int side, Hexagons.Coords neighbor) => {
-                    setTilePlacer(neighbor, side);
+                    SetTilePlacer(neighbor);
                 });
             }
         }
     }
-
+    
     public Tile GetTile(Hexagons.Coords coords)
     {
         tiles.TryGetValue(coords, out Tile tile);
         return tile;
     }
 
-    public void CreatePreviewTile(Hexagons.Coords coords)
+    private void Lock(Hexagons.Coords coords)
     {
-        tilePreviewInstance = Instantiate(
-            tilePreviewPrefab,
-            Hexagons.HexToWorld(coords),
-            Quaternion.identity,
-            transform
-        );
-
-        tilePreviewCoords = coords;
-
-        tilePreviewInstance.Init(this, coords);
-
-        LevelController.Instance.EnterTileViewMode(coords);
+        tilePlacerContainer.Hide();
+        OnTilePlacerClick?.Invoke(coords);
     }
 
-    public void DeclinePreviewTile()
+    public void Unlock()
     {
-        Destroy(tilePreviewInstance.gameObject);
-        LevelController.Instance.ExitTileViewMode();
-
-        tilePreviewInstance = null;
-    }
-
-    public void AcceptPreviewTile()
-    {
-        setTile(tilePreviewCoords);
-        Destroy(tilePreviewInstance.gameObject);
-        LevelController.Instance.ExitTileViewMode();
-
-        tilePreviewInstance = null;
+        tilePlacerContainer.Show();
     }
 }

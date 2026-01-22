@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public  class TileCalculator : MonoBehaviour
@@ -7,29 +8,19 @@ public  class TileCalculator : MonoBehaviour
 
     [SerializeField] private TilePreviewStar starPrefab;
     [SerializeField] private TilePreviewCombo comboPrefab;
-
-    private Tile tileInstance;
-    private TileGrid tileGrid;
-    private Hexagons.Coords coords;
+    [SerializeField] private TileGrid tileGrid; // idk
 
     private TilePreviewStar[] stars = new TilePreviewStar[6];
     private TilePreviewCombo combo;
 
-    public void Init(Tile tileInstance, TileGrid tileGrid, Hexagons.Coords coords)
-    {
-        this.tileInstance = tileInstance;
-        this.tileGrid = tileGrid;
-        this.coords = coords;
-    }
-
-    public void Process()
+    public void CalculateBonuses(Hexagons.Coords coords, Tile tile)
     {
         int combinationAmount = 0;
 
         Hexagons.IterateNeighbours(coords, (side, neighborCoords) => {
             Tile neighbor = tileGrid.GetTile(neighborCoords);
             Hexagons.Type neighbourType = Hexagons.Type.Null;
-            Hexagons.Type instanceType = tileInstance.GetSide(side);
+            Hexagons.Type instanceType = tile.GetSide(side);
 
             if (neighbor != null)
             {
@@ -82,6 +73,22 @@ public  class TileCalculator : MonoBehaviour
             );
 
             combo.transform.localPosition = new Vector3(0f, elementElevation, 0f);
+        }
+    }
+
+    public void ProcessBonsuses()
+    {
+        foreach(TilePreviewStar star in stars)
+        {
+            if (star != null)
+            {
+                Destroy(star.gameObject);
+            }
+        }
+
+        if (combo != null)
+        {
+            Destroy(combo.gameObject);
         }
     }
 }

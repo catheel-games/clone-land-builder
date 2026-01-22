@@ -98,6 +98,10 @@ PrefabInstance:
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 4237911085899303490}
+    - target: {fileID: 1281724211304642246, guid: 63c202a2ff48c554689c08447dd366bf, type: 3}
+      propertyPath: loadingScreenContainer
+      value: 
+      objectReference: {fileID: 4237911085899303490}
     - target: {fileID: 2713999093718921203, guid: 63c202a2ff48c554689c08447dd366bf, type: 3}
       propertyPath: m_Name
       value: Managers
@@ -207,10 +211,6 @@ PrefabInstance:
     - target: {fileID: 4493301679815975801, guid: b9e74418cba68c648ac106b7d654ab00, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5230291542795655136, guid: b9e74418cba68c648ac106b7d654ab00, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5709589177634096042, guid: b9e74418cba68c648ac106b7d654ab00, type: 3}
       propertyPath: m_Name

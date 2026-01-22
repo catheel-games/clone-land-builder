@@ -5,53 +5,69 @@ public class TilePreview : MonoBehaviour
 {
     [SerializeField] private float tileElevevation = 0.5f;
     [SerializeField] private TileCalculator tileCalculator;
-
-    private Tile tileInstance;
-    private TileGrid tileGrid;
+    [SerializeField] private TilePreviewInput tilePreviewInput;
 
     private float targetRotationContinuous;
     private float targetRotationDiscrete;
-    private float newRotationDiscrete;
 
-    public void Init(TileGrid tileGrid, Hexagons.Coords coords)
+    private Tile tileInstance;
+    private Hexagons.Coords tileInstanceCoords;
+
+    public Tile PreviewTile => tileInstance;
+
+    void OnEnable()
     {
-        this.tileGrid = tileGrid;
+        tilePreviewInput.OnRotation += RotatePreviewTile;
+    }
+
+    void OnDisable()
+    {
+        tilePreviewInput.OnRotation -= RotatePreviewTile;
+    }
+
+    public void StartPreviewAtCoords(Tile tile, Hexagons.Coords coords)
+    {
+        tileInstance = tile;
+        tileInstanceCoords = coords;
         
-        SetupTile();
-        tileCalculator.Init(tileInstance, tileGrid, coords);
-        tileCalculator.Process();
-    }
-
-    private void SetupTile()
-    {
-        tileInstance = TileGenerator.Instance.GetRandomTile();
-        tileInstance.transform.SetParent(transform, false);
-        tileInstance.transform.localPosition = new Vector3(0f, tileElevevation, 0f);
-    }
-
-    public Tile PlaceTile()
-    {
-        tileInstance.Place();
-        tileInstance.transform.SetParent(tileGrid.transform, true);
+        targetRotationContinuous = 0f;
+        targetRotationDiscrete = 0f;
         
-        return tileInstance;
+        transform.position = Hexagons.HexToWorld(coords);
+
+        tile.transform.SetParent(transform, false);
+        tile.transform.localPosition = new Vector3(0f, tileElevevation, 0f);
+        
+        tilePreviewInput.UnlockRotation();
+        tileCalculator.CalculateBonuses(tileInstanceCoords, tileInstance);
     }
 
-    public void RotateContinuously(float rotationAmount)
+    private void RotatePreviewTile(float rotationAmount)
     {
-        targetRotationContinuous += rotationAmount;
-        newRotationDiscrete = Mathf.Floor(targetRotationContinuous / 60f) * 60f;
-
-        if (newRotationDiscrete != targetRotationDiscrete)
+        if (tileInstance != null)
         {
-            targetRotationDiscrete = newRotationDiscrete;
-            RotateDiscretely();
+            targetRotationContinuous += rotationAmount;
+            float newRotationDiscrete = Mathf.Floor(targetRotationContinuous / 60f) * 60f;
+
+            if (newRotationDiscrete != targetRotationDiscrete)
+            {
+                targetRotationDiscrete = newRotationDiscrete;
+                tileInstance.Rotate(targetRotationDiscrete);
+                tileCalculator.CalculateBonuses(tileInstanceCoords, tileInstance);
+            }
         }
     }
 
-    private void RotateDiscretely()
+    public void EndPreview(bool isTileAccepted)
     {
-        tileInstance.Rotate(targetRotationDiscrete);
-        tileCalculator.Process();
+        tilePreviewInput.LockRotation();
+        tileCalculator.ProcessBonsuses();
+
+        if (!isTileAccepted)
+        {
+            Destroy(tileInstance.gameObject);
+        }
+        
+        tileInstance = null;
     }
 }

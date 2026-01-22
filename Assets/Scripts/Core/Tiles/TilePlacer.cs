@@ -7,18 +7,22 @@ public class TilePlacer : MonoBehaviour
 
     private Hexagons.Coords coords;
 
+    public event Action<Hexagons.Coords> OnClick;
+
     void LateUpdate()
     {
-        tilePlacerPlus.localRotation = Quaternion.Euler(0f, 0f, -LevelController.Instance.CameraPivotRotation);
+        tilePlacerPlus.localRotation = Quaternion.Euler(0f, 0f, -LevelControl.Instance.CameraPivotRotation);
     }
 
-    public void Init(Hexagons.Coords coords)
+    public void Setup(Hexagons.Coords coords)
     {
         this.coords = coords;
+        
+        transform.position = Hexagons.HexToWorld(coords);
     }
 
     public void Click()
     {
-        TileGrid.Instance.CreatePreviewTile(coords);
+        OnClick?.Invoke(coords);
     }
 }

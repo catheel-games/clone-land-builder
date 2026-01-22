@@ -163,7 +163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3655100828832201250}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -183,8 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8133389fe134f4fa31ced29d2a7402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  cameraRef: {fileID: 2105410679390395758}
+  controlledCamera: {fileID: 2105410679390395758}
   pivotTransform: {fileID: 638401228234249165}
+  cameraInput: {fileID: 5301659811425245732}
   zoomLerpCoefficient: 10
   rotationLerpCoefficient: 10
   translationLerpCoefficient: 10
@@ -204,8 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cfe85e35792984b9fb4356ce3e42bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraInputInterpreter
-  cameraController: {fileID: 602406319762784280}
-  cameraRef: {fileID: 2105410679390395758}
   zoomCoefficient: 80
   rotationCoefficient: 1000
   translationCoefficient: 40
