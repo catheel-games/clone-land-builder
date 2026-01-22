@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TileGenerator : Singleton<TileGenerator>
+public class TileGenerator : MonoBehaviour
 {
     [SerializeField] private Tile[] allTilePrefabs;
 
