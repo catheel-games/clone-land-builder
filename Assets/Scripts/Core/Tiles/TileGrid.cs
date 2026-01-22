@@ -4,7 +4,6 @@ using UnityEngine;
 public class TileGridController : Singleton<TileGridController>
 {
     [SerializeField] private Transform tilePlacerContainerTransform;
-
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private TilePlacer tilePlacerPrefab;
     [SerializeField] private TilePreview tilePreviewPrefab;
@@ -14,6 +13,8 @@ public class TileGridController : Singleton<TileGridController>
 
     private Dictionary<Hexagons.Coords, TilePlacer> frontier = new Dictionary<Hexagons.Coords, TilePlacer>();
     private Dictionary<Hexagons.Coords, Tile> tiles = new Dictionary<Hexagons.Coords, Tile>();
+
+    private float rotationValue;
 
     void Start()
     {
@@ -51,9 +52,9 @@ public class TileGridController : Singleton<TileGridController>
                 frontier.Remove(coords);
 
                 Tile newTile = Instantiate(
-                    tilePrefab,
+                    TileGenerator.Instance.GetNextTile(),
                     Hexagons.HexToWorld(coords),
-                    Quaternion.identity,
+                    Quaternion.Euler(0f, rotationValue, 0f),
                     transform
                 );
 
@@ -75,21 +76,31 @@ public class TileGridController : Singleton<TileGridController>
             transform
         );
 
-        tilePreviewCoords = coords;
+        Tile nextTilePrefab = TileGenerator.Instance.ShowNextTile();
+        Tile spawnedTile = Instantiate(nextTilePrefab, tilePreviewInstance.transform);
+        spawnedTile.transform.localPosition = new Vector3(0, 0.5f, 0);
+        spawnedTile.transform.localRotation = Quaternion.Euler(0f, rotationValue, 0f); 
+        tilePreviewInstance.SetTile(spawnedTile);
 
+        TilePreviewInputInterpreter.Instance.SetTilePreview(tilePreviewInstance);
+
+        tilePreviewCoords = coords;
         LevelController.Instance.EnterTileViewMode(coords);
     }
 
     public void DeclinePreviewTile()
     {
+        rotationValue = tilePreviewInstance.GetTargetRotation();
         Destroy(tilePreviewInstance.gameObject);
         LevelController.Instance.ExitTileViewMode();
     }
 
     public void AcceptPreviewTile()
     {
+        rotationValue = tilePreviewInstance.GetTargetRotation();
         Destroy(tilePreviewInstance.gameObject);
         setTile(tilePreviewCoords);
         LevelController.Instance.ExitTileViewMode();
+        TileQueueUI.Instance.UpdateDisplay();
     }
 }
