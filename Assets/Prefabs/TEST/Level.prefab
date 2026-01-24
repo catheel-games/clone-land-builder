@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad89029f78b32d47b26fa92cdd93aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelController
-  levelInterface: {fileID: 5910485773956897194}
+  levelCanvasControl: {fileID: 5910485773956897194}
   cameraControl: {fileID: 1445327820400637963}
   tileControl: {fileID: 8548033040556924597}
 --- !u!1 &9085088534459739970

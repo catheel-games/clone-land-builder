@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LevelControl : Singleton<LevelControl>
 {
-    [SerializeField] private LevelInterface levelInterface;
+    [SerializeField] private LevelCanvasControl levelCanvasControl;
     [SerializeField] private CameraControl cameraControl;
     [SerializeField] private TileControl tileControl;
 
@@ -11,20 +11,22 @@ public class LevelControl : Singleton<LevelControl>
     void OnEnable()
     {
         tileControl.OnTilePlacerClick += EnterTileViewMode;
-        levelInterface.OnTilePreviewControlClick += ExitTileViewMode;
-        levelInterface.OnCameraControlClick += CameraControlClick;
+        tileControl.OnTileGeneratorUpdate += levelCanvasControl.TileQueueUpdate;
+        levelCanvasControl.OnTilePreviewControlClick += ExitTileViewMode;
+        levelCanvasControl.OnCameraControlClick += CameraControlClick;
     }
 
     void OnDisable()
     {
         tileControl.OnTilePlacerClick -= EnterTileViewMode;
-        levelInterface.OnTilePreviewControlClick -= ExitTileViewMode;
-        levelInterface.OnCameraControlClick -= CameraControlClick;
+        tileControl.OnTileGeneratorUpdate -= levelCanvasControl.TileQueueUpdate;
+        levelCanvasControl.OnTilePreviewControlClick -= ExitTileViewMode;
+        levelCanvasControl.OnCameraControlClick -= CameraControlClick;
     }
 
     private void EnterTileViewMode(Hexagons.Coords coords)
     {
-        levelInterface.EnterTileViewMode();
+        levelCanvasControl.EnterTileViewMode();
         cameraControl.LockPosition(Hexagons.HexToWorld(coords));
     }
 

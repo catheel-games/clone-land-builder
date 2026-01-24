@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TileControl : MonoBehaviour
@@ -11,6 +12,7 @@ public class TileControl : MonoBehaviour
     private Hexagons.Coords previewTileCoords;
 
     public event Action<Hexagons.Coords> OnTilePlacerClick;
+    public event Action<List<Tile>> OnTileGeneratorUpdate;
 
     void OnEnable()
     {
@@ -20,6 +22,12 @@ public class TileControl : MonoBehaviour
     void OnDisable()
     {
         tileGrid.OnTilePlacerClick -= EnterTilePreview;   
+    }
+
+    void Start()
+    {
+        tileGenerator.InitializeQueue();
+        OnTileGeneratorUpdate?.Invoke(tileGenerator.GetQueue());
     }
 
     private void EnterTilePreview(Hexagons.Coords coords)
@@ -37,6 +45,7 @@ public class TileControl : MonoBehaviour
         {
             tileGrid.SetTile(previewTileCoords, previewTile);
             tileGenerator.GetNextTile();
+            OnTileGeneratorUpdate?.Invoke(tileGenerator.GetQueue());
         }
 
         tilePreview.EndPreview(isTileAccepted);

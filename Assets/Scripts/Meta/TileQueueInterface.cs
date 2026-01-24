@@ -2,30 +2,21 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
 
-public class TileQueueUI : Singleton<TileQueueUI>
+public class TileQueueInterface : MonoBehaviour
 {
     [SerializeField] private Transform[] tileSlots;
     [SerializeField] private GameObject whitePlatePrefab;
+
     private List<GameObject> displayedTiles = new List<GameObject>();
 
-    void Start()
-    {
-        DOVirtual.DelayedCall(0.01f, () =>
-        {
-            UpdateDisplay();
-        });
-
-    }
-
-    public void UpdateDisplay()
+    public void UpdateDisplay(List<Tile> queue)
     {
         foreach (GameObject tile in displayedTiles)
+        {
             Destroy(tile);
+        }
+
         displayedTiles.Clear();
-
-        List<Tile> queue = TileGenerator.Instance.GetQueue();
-
-        if (queue.Count == 0) return;
 
         for (int i = 0; i < tileSlots.Length && i < queue.Count; i++)
         {
@@ -35,8 +26,9 @@ public class TileQueueUI : Singleton<TileQueueUI>
                 Quaternion.identity,
                 tileSlots[i].transform
             );
+
             whitePlate.transform.localScale = new Vector3(1.1f, 1f, 1f);
-            whitePlate.layer = 3;
+            whitePlate.layer = LayerMask.NameToLayer("3D UI");
             displayedTiles.Add(whitePlate);
 
             GameObject newTile = Instantiate(
@@ -45,7 +37,8 @@ public class TileQueueUI : Singleton<TileQueueUI>
                 Quaternion.identity,
                 whitePlate.transform
             );
-            newTile.layer = 3;
+
+            newTile.layer = LayerMask.NameToLayer("3D UI");
             displayedTiles.Add(newTile);
 
             if (i == 0)

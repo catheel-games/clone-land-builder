@@ -1,10 +1,12 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelInterface : MonoBehaviour
+public class LevelCanvasControl : MonoBehaviour
 {
     [SerializeField] private TilePreviewControlContainer tilePreviewControlContainer;
     [SerializeField] private CameraControlContainer cameraControlContainer;
+    [SerializeField] private TileQueueInterface tileQueueInterface;
 
     public event Action<bool> OnTilePreviewControlClick;
     public event Action<CameraControlContainer.ControlButton> OnCameraControlClick;
@@ -35,5 +37,10 @@ public class LevelInterface : MonoBehaviour
     private void CameraControlClick(CameraControlContainer.ControlButton controlButton)
     {
         OnCameraControlClick?.Invoke(controlButton);
+    }
+
+    public void TileQueueUpdate(List<Tile> queue)
+    {
+        tileQueueInterface.UpdateDisplay(queue);
     }
 }

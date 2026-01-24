@@ -1,9 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-// using System.Diagnostics;
 
-public class TileGenerator : Singleton<TileGenerator>
+public class TileGenerator : MonoBehaviour
 {
     [System.Serializable]
     public class FullTiles
@@ -30,11 +29,6 @@ public class TileGenerator : Singleton<TileGenerator>
     [SerializeField] private TypeTiles typeTiles; 
 
     List<Tile> setQueue = new List<Tile>();
-
-    void Start()
-    {
-        InitializeQueue();
-    }
 
     // change to least occuring type
     private Hexagons.Type GetRandomType()
@@ -146,7 +140,7 @@ public class TileGenerator : Singleton<TileGenerator>
         } 
     }
 
-    private void InitializeQueue()
+    public void InitializeQueue()
     {
         Hexagons.Type type1 = GetRandomType();
         Hexagons.Type type2 = GetRandomTypeExcluding(type1);
