@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: m_LocalRotation.w
@@ -97,5 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39723d17e390ef7478fb82949dc21561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  borderTypes: 050000000500000005000000010000000100000001000000
+  borderTypes: 050000000500000001000000010000000100000005000000
   centerType: 5
+  rotationLerpCoefficient: 10
