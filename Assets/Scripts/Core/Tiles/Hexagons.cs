@@ -18,6 +18,16 @@ public static class Hexagons
         }
     }
 
+    public enum Type
+    {
+        Null,
+        Town,
+        Grass,
+        Forest,
+        Yellow,
+        Water    
+    }
+
     public static Vector3 HexToWorld(Coords hex)
     {
         return new Vector3(
@@ -27,13 +37,14 @@ public static class Hexagons
         );
     }
 
-    public static void IterateHexNeighbors(Coords hex, Action<Coords> action)
+    public static void IterateNeighbours(Coords hex, Action<int, Coords> action)
     {
-        action(new Coords(hex.x - 1 + 2 * Tools.Modulo(hex.y, 2), hex.y));
-        action(new Coords(hex.x + Tools.Modulo(hex.y, 2), hex.y + 1));
-        action(new Coords(hex.x - (1 - Tools.Modulo(hex.y, 2)), hex.y + 1));
-        action(new Coords(hex.x + 1 - 2 * Tools.Modulo(hex.y, 2), hex.y));
-        action(new Coords(hex.x, hex.y - 1));
-        action(new Coords(hex.x - 1 + 2 * Tools.Modulo(hex.y, 2), hex.y - 1));
+        action(0, new Coords(hex.x + Tools.Modulo(hex.y, 2), hex.y + 1));
+        action(1, new Coords(hex.x + 1, hex.y));
+        action(2, new Coords(hex.x + Tools.Modulo(hex.y, 2), hex.y - 1));
+        action(3, new Coords(hex.x - 1 + Tools.Modulo(hex.y, 2), hex.y - 1));
+        action(4, new Coords(hex.x - 1, hex.y));
+        action(5, new Coords(hex.x - 1 + Tools.Modulo(hex.y, 2), hex.y + 1));
     }
 }
+    

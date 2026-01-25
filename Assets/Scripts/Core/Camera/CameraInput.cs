@@ -1,13 +1,20 @@
+using System;
 using UnityEngine;
 
 public class CameraInput : MonoBehaviour
 {
-    [SerializeField] private CameraController cameraController;
-    [SerializeField] private Camera cameraRef;
-
     [SerializeField] private float zoomCoefficient = 2f;
     [SerializeField] private float rotationCoefficient = 0.5f;
     [SerializeField] private float translationCoefficient = 4f;
+
+    private bool isTranslatable = true;
+
+    public void LockPosition() => isTranslatable = false;
+    public void UnlockPosition() => isTranslatable = true;
+
+    public event Action<Vector3> OnTranslation;
+    public event Action<float> OnRotation;
+    public event Action<float> OnZoom;
 
     void OnEnable()
     {
@@ -27,13 +34,16 @@ public class CameraInput : MonoBehaviour
 
     private void OnOneFingerSlide(InputManager.OneFingerSlideEvent slideEvent)
     {
-        Vector2 touchPositionA = slideEvent.Position - slideEvent.Delta;
-        Vector2 touchPositionB = slideEvent.Position;
+        if (isTranslatable)
+        {
+            Vector2 touchPositionA = slideEvent.Position - slideEvent.Delta;
+            Vector2 touchPositionB = slideEvent.Position;
 
-        Vector3 touchPositionA3 = new Vector3(touchPositionA.x, 0f, touchPositionA.y);
-        Vector3 touchPositionB3 = new Vector3(touchPositionB.x, 0f, touchPositionB.y);
+            Vector3 touchPositionA3 = new Vector3(touchPositionA.x, 0f, touchPositionA.y);
+            Vector3 touchPositionB3 = new Vector3(touchPositionB.x, 0f, touchPositionB.y);
 
-        cameraController.ChangePosition((touchPositionB3 - touchPositionA3) * translationCoefficient);
+            OnTranslation?.Invoke((touchPositionB3 - touchPositionA3) * translationCoefficient);
+        }
     }
 
     private void OnTwoFingerSlide(InputManager.TwoFingerSlideEvent slideEvent)
@@ -50,19 +60,22 @@ public class CameraInput : MonoBehaviour
         float secondDeltaAlongNormal = Vector2.Dot(slideEvent.SecondFinger.Delta, secondDistanceNormal);
         float secondDeltaAlongTangent = Vector2.Dot(slideEvent.SecondFinger.Delta, secondDistanceTangent);
 
-        cameraController.ChangeRotation((firstDeltaAlongTangent + secondDeltaAlongTangent) * rotationCoefficient);
-        cameraController.ChangeZoom((firstDeltaAlongNormal + secondDeltaAlongNormal) * zoomCoefficient);
+        OnRotation?.Invoke((firstDeltaAlongTangent + secondDeltaAlongTangent) * rotationCoefficient);
+        OnZoom?.Invoke((firstDeltaAlongNormal + secondDeltaAlongNormal) * zoomCoefficient);
     }
 
     private void OnMouseLeftClickSlide(InputManager.MouseClickEvent clickEvent)
     {
-        Vector2 mousePositionA = clickEvent.Position - clickEvent.Delta;
-        Vector2 mousePositionB = clickEvent.Position;
+        if (isTranslatable)
+        {
+            Vector2 mousePositionA = clickEvent.Position - clickEvent.Delta;
+            Vector2 mousePositionB = clickEvent.Position;
 
-        Vector3 mousePositionA3 = new Vector3(mousePositionA.x, 0f, mousePositionA.y);
-        Vector3 mousePositionB3 = new Vector3(mousePositionB.x, 0f, mousePositionB.y);
+            Vector3 mousePositionA3 = new Vector3(mousePositionA.x, 0f, mousePositionA.y);
+            Vector3 mousePositionB3 = new Vector3(mousePositionB.x, 0f, mousePositionB.y);
 
-        cameraController.ChangePosition((mousePositionB3 - mousePositionA3) * translationCoefficient);
+            OnTranslation?.Invoke((mousePositionB3 - mousePositionA3) * translationCoefficient);
+        }
     }
 
     private void OnMouseRightClickSlide(InputManager.MouseClickEvent clickEvent)
@@ -73,7 +86,7 @@ public class CameraInput : MonoBehaviour
         float firstDeltaAlongNormal = Vector2.Dot(clickEvent.Delta, firstDistanceNormal);
         float firstDeltaAlongTangent = Vector2.Dot(clickEvent.Delta, firstDistanceTangent);   
 
-        cameraController.ChangeRotation(firstDeltaAlongTangent * rotationCoefficient);
-        cameraController.ChangeZoom(firstDeltaAlongNormal * zoomCoefficient);
+        OnRotation?.Invoke(firstDeltaAlongTangent * rotationCoefficient);
+        OnZoom?.Invoke(firstDeltaAlongNormal * zoomCoefficient);
     }
 }
