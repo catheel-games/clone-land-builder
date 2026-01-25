@@ -12,6 +12,7 @@ public class LevelControl : Singleton<LevelControl>
     {
         tileControl.OnTilePlacerClick += EnterTileViewMode;
         tileControl.OnTileGeneratorUpdate += levelCanvasControl.TileQueueUpdate;
+        tileControl.OnTileQueueFirstTileRequest += levelCanvasControl.TileQueueFirstTile;
         levelCanvasControl.OnTilePreviewControlClick += ExitTileViewMode;
         levelCanvasControl.OnCameraControlClick += CameraControlClick;
     }
@@ -20,6 +21,7 @@ public class LevelControl : Singleton<LevelControl>
     {
         tileControl.OnTilePlacerClick -= EnterTileViewMode;
         tileControl.OnTileGeneratorUpdate -= levelCanvasControl.TileQueueUpdate;
+        tileControl.OnTileQueueFirstTileRequest -= levelCanvasControl.TileQueueFirstTile;
         levelCanvasControl.OnTilePreviewControlClick -= ExitTileViewMode;
         levelCanvasControl.OnCameraControlClick -= CameraControlClick;
     }

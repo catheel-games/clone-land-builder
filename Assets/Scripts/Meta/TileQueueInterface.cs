@@ -8,6 +8,9 @@ public class TileQueueInterface : MonoBehaviour
     [SerializeField] private GameObject whitePlatePrefab;
 
     private List<GameObject> displayedTiles = new List<GameObject>();
+    private Tile firstTile;
+
+    public Tile FirstTile() => firstTile;
 
     public void UpdateDisplay(List<Tile> queue)
     {
@@ -20,34 +23,34 @@ public class TileQueueInterface : MonoBehaviour
 
         for (int i = 0; i < tileSlots.Length && i < queue.Count; i++)
         {
+
+            Tile newTile = Instantiate(
+                queue[i],
+                tileSlots[i].position,
+                Quaternion.identity
+            );
+
+            newTile.gameObject.layer = LayerMask.NameToLayer("3D UI");
+
             GameObject whitePlate = Instantiate(
                 whitePlatePrefab,
-                tileSlots[i].position + new Vector3(0, 0, 0),
-                Quaternion.identity,
-                tileSlots[i].transform
-            );
-
-            whitePlate.transform.localScale = new Vector3(1.1f, 1f, 1f);
-            whitePlate.layer = LayerMask.NameToLayer("3D UI");
-            displayedTiles.Add(whitePlate);
-
-            GameObject newTile = Instantiate(
-                queue[i].gameObject,
                 tileSlots[i].position,
                 Quaternion.identity,
-                whitePlate.transform
+                newTile.transform
             );
+            
+            whitePlate.layer = LayerMask.NameToLayer("3D UI");
 
-            newTile.layer = LayerMask.NameToLayer("3D UI");
-            displayedTiles.Add(newTile);
+            displayedTiles.Add(newTile.gameObject);
 
             if (i == 0)
             {
-                whitePlate.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 0.1f);
+                firstTile = newTile;
+                newTile.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 0.1f);
             }
             else
             {
-                whitePlate.transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
+                newTile.transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
             }
         }
     }

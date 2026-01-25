@@ -8,6 +8,8 @@ public class LevelCanvasControl : MonoBehaviour
     [SerializeField] private CameraControlContainer cameraControlContainer;
     [SerializeField] private TileQueueInterface tileQueueInterface;
 
+    public Tile TileQueueFirstTile() => tileQueueInterface.FirstTile();
+
     public event Action<bool> OnTilePreviewControlClick;
     public event Action<CameraControlContainer.ControlButton> OnCameraControlClick;
 

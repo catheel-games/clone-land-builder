@@ -13,6 +13,7 @@ public class TileControl : MonoBehaviour
 
     public event Action<Hexagons.Coords> OnTilePlacerClick;
     public event Action<List<Tile>> OnTileGeneratorUpdate;
+    public event Func<Tile> OnTileQueueFirstTileRequest;
 
     void OnEnable()
     {
@@ -32,11 +33,15 @@ public class TileControl : MonoBehaviour
 
     private void EnterTilePreview(Hexagons.Coords coords)
     {
+        Tile tileUI = OnTileQueueFirstTileRequest?.Invoke();
+
         previewTile = Instantiate(tileGenerator.ShowNextTile(), transform);
         previewTileCoords = coords;
 
+        previewTile.RotateInstantly(tileUI.RotationOffsetDiscrete);
+
         OnTilePlacerClick?.Invoke(coords);
-        tilePreview.StartPreviewAtCoords(previewTile, coords);
+        tilePreview.StartPreviewAtCoords(previewTile, tileUI, coords);
     }
 
     public void ExitTilePreview(bool isTileAccepted)

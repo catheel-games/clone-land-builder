@@ -10,6 +10,8 @@ public class Tile : MonoBehaviour
     private float rotationOffsetDiscrete = 0f;
     private bool isPlaced = false;
 
+    public float RotationOffsetDiscrete => rotationOffsetDiscrete; 
+
     void Update()
     {
         if (!isPlaced)
@@ -28,6 +30,16 @@ public class Tile : MonoBehaviour
         {
             rotationOffsetDiscrete = newRotationOffset;
             rotationOffset = (int)Mathf.Floor(-rotationOffsetDiscrete / 60f);
+        }
+    }
+
+    public void RotateInstantly(float newRotationOffset)
+    {    
+        if (!isPlaced)
+        {
+            rotationOffsetDiscrete = newRotationOffset;
+            rotationOffset = (int)Mathf.Floor(-rotationOffsetDiscrete / 60f);
+            transform.rotation = Quaternion.Euler(0f, rotationOffsetDiscrete, 0f);
         }
     }
 
