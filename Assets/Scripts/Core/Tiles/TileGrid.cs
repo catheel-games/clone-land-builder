@@ -16,6 +16,16 @@ public class TileGrid : MonoBehaviour
     {
         SetTilePlacer(new Hexagons.Coords(0, 0));
     }
+
+    void OnEnable()
+    {
+        TileGenerator.Instance.OnRequestLeastType += GetLeastOccurringSide;
+    }
+
+    void OnDisable()
+    {
+        TileGenerator.Instance.OnRequestLeastType -= GetLeastOccurringSide;
+    }
     
     private void SetTilePlacer(Hexagons.Coords coords)
     {
@@ -57,6 +67,39 @@ public class TileGrid : MonoBehaviour
     {
         tiles.TryGetValue(coords, out Tile tile);
         return tile;
+    }
+
+    public Hexagons.Type GetLeastOccurringSide()
+    {
+        int[] sideCounts = new int[6];
+        int smallestCount = int.MaxValue;
+        int smallestIndex = 1;
+
+        foreach (Hexagons.Coords frontierCoord in frontier.Keys)
+        {
+            Hexagons.IterateNeighbours(frontierCoord, (int side, Hexagons.Coords neighbor) => {
+                if(tiles.ContainsKey(neighbor))
+                {
+                    Tile neighborTile = GetTile(neighbor);
+                    if (neighborTile != null)
+                    {
+                        Hexagons.Type neighborType = neighborTile.GetSide(Tools.Modulo(side + 3, 6));
+                        sideCounts[(int)neighborType]++;
+                    }
+                }
+            });
+        }
+
+        for (int i = 1; i < sideCounts.Length; i++)
+        {
+            if (sideCounts[i] < smallestCount)
+            {
+                smallestCount = sideCounts[i];
+                smallestIndex = i;
+            }
+        }
+
+        return (Hexagons.Type)smallestIndex;
     }
 
     private void Lock(Hexagons.Coords coords)

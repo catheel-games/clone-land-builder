@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-// using System.Diagnostics;
+using System;
+using Random = UnityEngine.Random;
 
 public class TileGenerator : Singleton<TileGenerator>
 {
@@ -31,16 +32,22 @@ public class TileGenerator : Singleton<TileGenerator>
 
     List<Tile> setQueue = new List<Tile>();
 
+    public Func<Hexagons.Type> OnRequestLeastType;
+
     void Start()
     {
         InitializeQueue();
     }
 
-    // change to least occuring type
     private Hexagons.Type GetRandomType()
     {
         return (Hexagons.Type)Random.Range(1, 6);
     } 
+
+    private Hexagons.Type GetLeastOccurringType()
+    {
+        return OnRequestLeastType?.Invoke() ?? Hexagons.Type.Grass;
+    }
 
     private Hexagons.Type GetRandomTypeExcluding(Hexagons.Type firstType)
     {
@@ -70,10 +77,13 @@ public class TileGenerator : Singleton<TileGenerator>
             case Hexagons.Type.Forest:
                 arr = fullTiles.fullForestTiles;
                 break;
-            default: 
+            default:
                 arr = fullTiles.fullGrassTiles;
                 break;
         }
+
+        if (arr.Length == 0)
+            return GetFullTile(GetRandomType());
 
         return arr[Random.Range(0, arr.Length)];
     }
@@ -103,6 +113,9 @@ public class TileGenerator : Singleton<TileGenerator>
                 break;
         }
 
+        if (arr.Length == 0)
+            return GetTypeTile(GetRandomType());
+
         return arr[Random.Range(0, arr.Length)];
     }
 
@@ -116,13 +129,14 @@ public class TileGenerator : Singleton<TileGenerator>
         return newSet;
     }
 
-    // will not be so random after least occuring edge is implemented
     private List<Tile> CreateRandomSet(Hexagons.Type type)
     {
         List<Tile> randomSet = new List<Tile>();
-        randomSet.Add(Random.Range(0, 2) == 0 ? GetFullTile(type) : GetTypeTile(type));
-        randomSet.Add(Random.Range(0, 2) == 0 ? GetFullTile(type) : GetTypeTile(type));
-        randomSet.Add(Random.Range(0, 2) == 0 ? GetFullTile(type) : GetTypeTile(type));
+        randomSet.Add(GetFullTile(type));
+        randomSet.Add(GetTypeTile(type));
+        randomSet.Add(GetTypeTile(type));
+
+        randomSet = randomSet.OrderBy(x => Random.value).ToList();
 
         int rand = Random.Range(0, 100);
         if (rand >= 85)
@@ -143,7 +157,7 @@ public class TileGenerator : Singleton<TileGenerator>
         if (setQueue.Count < 3)
         {
             setQueue.AddRange(CreateRandomSet(type));
-        } 
+        }
     }
 
     private void InitializeQueue()
@@ -170,7 +184,7 @@ public class TileGenerator : Singleton<TileGenerator>
     {
         Tile prevTile = setQueue[0];
         setQueue.RemoveAt(0);
-        RefillQueue(GetRandomType());
+        RefillQueue(GetLeastOccurringType());
         return prevTile;
     }
 

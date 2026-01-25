@@ -20,7 +20,10 @@ public class TileQueueUI : Singleton<TileQueueUI>
     public void UpdateDisplay()
     {
         foreach (GameObject tile in displayedTiles)
+        {
             Destroy(tile);
+
+        }
         displayedTiles.Clear();
 
         List<Tile> queue = TileGenerator.Instance.GetQueue();
