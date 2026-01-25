@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TileControl : MonoBehaviour
@@ -11,6 +12,8 @@ public class TileControl : MonoBehaviour
     private Hexagons.Coords previewTileCoords;
 
     public event Action<Hexagons.Coords> OnTilePlacerClick;
+    public event Action<List<Tile>> OnTileGeneratorUpdate;
+    public event Func<Tile> OnTileQueueFirstTileRequest;
 
     void OnEnable()
     {
@@ -22,13 +25,23 @@ public class TileControl : MonoBehaviour
         tileGrid.OnTilePlacerClick -= EnterTilePreview;   
     }
 
+    void Start()
+    {
+        tileGenerator.InitializeQueue();
+        OnTileGeneratorUpdate?.Invoke(tileGenerator.GetQueue());
+    }
+
     private void EnterTilePreview(Hexagons.Coords coords)
     {
+        Tile tileUI = OnTileQueueFirstTileRequest?.Invoke();
+
         previewTile = Instantiate(tileGenerator.ShowNextTile(), transform);
         previewTileCoords = coords;
 
+        previewTile.RotateInstantly(tileUI.RotationOffsetDiscrete);
+
         OnTilePlacerClick?.Invoke(coords);
-        tilePreview.StartPreviewAtCoords(previewTile, coords);
+        tilePreview.StartPreviewAtCoords(previewTile, tileUI, coords);
     }
 
     public void ExitTilePreview(bool isTileAccepted)
@@ -37,6 +50,7 @@ public class TileControl : MonoBehaviour
         {
             tileGrid.SetTile(previewTileCoords, previewTile);
             tileGenerator.GetNextTile();
+            OnTileGeneratorUpdate?.Invoke(tileGenerator.GetQueue());
         }
 
         tilePreview.EndPreview(isTileAccepted);

@@ -1,10 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-using Random = UnityEngine.Random;
 
-public class TileGenerator : Singleton<TileGenerator>
+public class TileGenerator : MonoBehaviour
 {
     [System.Serializable]
     public class FullTiles

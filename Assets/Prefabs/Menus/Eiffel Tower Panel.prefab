@@ -2615,7 +2615,8 @@ MonoBehaviour:
   fadeDuration: 0.3
   topBar: {fileID: 0}
   scalableTransform: {fileID: 4210855592277852499}
-  scalingDuration: 0.25
+  showScalingDuration: 0.25
+  hideScalingDuration: 0.4
 --- !u!1 &8676882728448629175
 GameObject:
   m_ObjectHideFlags: 0

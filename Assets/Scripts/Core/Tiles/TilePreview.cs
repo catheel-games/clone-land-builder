@@ -11,6 +11,7 @@ public class TilePreview : MonoBehaviour
     private float targetRotationDiscrete;
 
     private Tile tileInstance;
+    private Tile tileInstanceUI;
     private Hexagons.Coords tileInstanceCoords;
 
     public Tile PreviewTile => tileInstance;
@@ -25,13 +26,14 @@ public class TilePreview : MonoBehaviour
         tilePreviewInput.OnRotation -= RotatePreviewTile;
     }
 
-    public void StartPreviewAtCoords(Tile tile, Hexagons.Coords coords)
+    public void StartPreviewAtCoords(Tile tile, Tile tileUI, Hexagons.Coords coords)
     {
         tileInstance = tile;
+        tileInstanceUI = tileUI;
         tileInstanceCoords = coords;
         
-        targetRotationContinuous = 0f;
-        targetRotationDiscrete = 0f;
+        targetRotationContinuous = tile.RotationOffsetDiscrete;
+        targetRotationDiscrete = tile.RotationOffsetDiscrete;
         
         transform.position = Hexagons.HexToWorld(coords);
 
@@ -53,6 +55,7 @@ public class TilePreview : MonoBehaviour
             {
                 targetRotationDiscrete = newRotationDiscrete;
                 tileInstance.Rotate(targetRotationDiscrete);
+                tileInstanceUI.Rotate(targetRotationDiscrete);
                 tileCalculator.CalculateBonuses(tileInstanceCoords, tileInstance);
             }
         }
