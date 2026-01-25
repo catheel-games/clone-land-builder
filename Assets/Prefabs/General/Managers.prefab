@@ -89,7 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302a858cbd5cbd9459999abfcfd54228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  cameraRef: {fileID: 0}
 --- !u!1 &2713999093718921203
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +123,7 @@ Transform:
   - {fileID: 4550490868399663348}
   - {fileID: 6249612583120922985}
   - {fileID: 9121654701336659958}
+  - {fileID: 5297039828429174237}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4374990219833839159
@@ -266,3 +266,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f006c4fd716ac418433d3ebc74ead7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+--- !u!1 &7404164699721898750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5297039828429174237}
+  - component: {fileID: 6284852437820836109}
+  m_Layer: 0
+  m_Name: SaveLoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5297039828429174237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7404164699721898750}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -264.5, y: -281, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 655218588046002055}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6284852437820836109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7404164699721898750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698d91ffbcefd06489f2725deaa37cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveDataJson
+  gameData:
+    levelsProgress: []
+    currentLevelID: 0
+  levelDatas:
+  - {fileID: 11400000, guid: a7b06bdac5835a9419d471c88bc9cb34, type: 2}
+  - {fileID: 11400000, guid: 5344e11ef7915f243b3b273aa9106a96, type: 2}
+  - {fileID: 11400000, guid: bd6abef103ae19241ba0a421d25d70cd, type: 2}
