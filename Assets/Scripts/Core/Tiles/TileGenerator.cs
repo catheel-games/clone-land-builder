@@ -32,7 +32,10 @@ public class TileGenerator : Singleton<TileGenerator>
 
     List<Tile> setQueue = new List<Tile>();
 
-    public Func<Hexagons.Type> OnRequestLeastType;
+    public Func<Hexagons.Type, (Hexagons.Type type, int count)> OnRequestLeastType;
+    private int tilesPlaced = 0;
+    private Hexagons.Type ignoredType = Hexagons.Type.Null;
+    private int ignoreCounter = 0;
 
     void Start()
     {
@@ -44,9 +47,9 @@ public class TileGenerator : Singleton<TileGenerator>
         return (Hexagons.Type)Random.Range(1, 6);
     } 
 
-    private Hexagons.Type GetLeastOccurringType()
+    private (Hexagons.Type type, int count) GetLeastOccurringType(Hexagons.Type excludeType = Hexagons.Type.Null)
     {
-        return OnRequestLeastType?.Invoke() ?? Hexagons.Type.Grass;
+        return OnRequestLeastType?.Invoke(excludeType) ?? (Hexagons.Type.Grass, 0);
     }
 
     private Hexagons.Type GetRandomTypeExcluding(Hexagons.Type firstType)
@@ -152,11 +155,29 @@ public class TileGenerator : Singleton<TileGenerator>
         return randomSet;
     }
 
-    private void RefillQueue(Hexagons.Type type)
+    private void RefillQueue()
     {
         if (setQueue.Count < 3)
         {
-            setQueue.AddRange(CreateRandomSet(type));
+            var leastType = GetLeastOccurringType();
+
+            if (tilesPlaced >= 15 && leastType.count <= 2 && ignoreCounter == 0)
+            {
+                ignoredType = leastType.type;
+                ignoreCounter = 8;
+            }
+
+            Hexagons.Type typeToUse;
+            if(ignoreCounter > 0 && leastType.type == ignoredType)
+            {
+                typeToUse = GetLeastOccurringType(ignoredType).type;
+            }
+            else
+            {
+                typeToUse = leastType.type;
+            }
+
+            setQueue.AddRange(CreateRandomSet(typeToUse));
         }
     }
 
@@ -184,7 +205,11 @@ public class TileGenerator : Singleton<TileGenerator>
     {
         Tile prevTile = setQueue[0];
         setQueue.RemoveAt(0);
-        RefillQueue(GetLeastOccurringType());
+
+        tilesPlaced++;
+        if (ignoreCounter > 0) ignoreCounter--;
+
+        RefillQueue();
         return prevTile;
     }
 

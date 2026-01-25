@@ -69,7 +69,7 @@ public class TileGrid : MonoBehaviour
         return tile;
     }
 
-    public Hexagons.Type GetLeastOccurringSide()
+    public (Hexagons.Type type, int count) GetLeastOccurringSide(Hexagons.Type excludeType = Hexagons.Type.Null)
     {
         int[] sideCounts = new int[6];
         int smallestCount = int.MaxValue;
@@ -92,6 +92,8 @@ public class TileGrid : MonoBehaviour
 
         for (int i = 1; i < sideCounts.Length; i++)
         {
+            if ((Hexagons.Type)i == excludeType) continue;
+
             if (sideCounts[i] < smallestCount)
             {
                 smallestCount = sideCounts[i];
@@ -99,7 +101,7 @@ public class TileGrid : MonoBehaviour
             }
         }
 
-        return (Hexagons.Type)smallestIndex;
+        return ((Hexagons.Type)smallestIndex, smallestCount);
     }
 
     private void Lock(Hexagons.Coords coords)
