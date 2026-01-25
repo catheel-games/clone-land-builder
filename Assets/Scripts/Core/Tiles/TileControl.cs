@@ -17,12 +17,14 @@ public class TileControl : MonoBehaviour
 
     void OnEnable()
     {
-        tileGrid.OnTilePlacerClick += EnterTilePreview;   
+        tileGrid.OnTilePlacerClick += EnterTilePreview;
+        tileGenerator.OnLeastTypeRequest += tileGrid.GetLeastOccurringSide;
     }
 
     void OnDisable()
     {
-        tileGrid.OnTilePlacerClick -= EnterTilePreview;   
+        tileGrid.OnTilePlacerClick -= EnterTilePreview;
+        tileGenerator.OnLeastTypeRequest -= tileGrid.GetLeastOccurringSide;
     }
 
     void Start()

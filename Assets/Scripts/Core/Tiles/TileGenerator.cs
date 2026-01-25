@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class TileGenerator : MonoBehaviour
 {
-    [System.Serializable]
+    [Serializable]
     public class FullTiles
     {
         public Tile[] fullGrassTiles;
@@ -14,7 +15,7 @@ public class TileGenerator : MonoBehaviour
         public Tile[] fullForestTiles;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class TypeTiles
     {
         public Tile[] grassTiles;
@@ -30,17 +31,18 @@ public class TileGenerator : MonoBehaviour
 
     List<Tile> setQueue = new List<Tile>();
 
-    public Func<Hexagons.Type, (Hexagons.Type type, int count)> OnRequestLeastType;
-    private int tilesPlaced = 0;
     private Hexagons.Type ignoredType = Hexagons.Type.Null;
     private int ignoreCounter = 0;
+    private int tilesPlaced = 0;
+
+    public Func<Hexagons.Type, (Hexagons.Type type, int count)> OnLeastTypeRequest;
 
     void Start()
     {
         InitializeQueue();
     }
 
-    private void InitializeQueue()
+    public void InitializeQueue()
     {
         Hexagons.Type type1 = GetRandomType();
         Hexagons.Type type2 = GetRandomTypeExcluding(type1);
@@ -51,18 +53,18 @@ public class TileGenerator : MonoBehaviour
     private Tile GetRandomTile()
     {
         Hexagons.Type randomType = GetRandomType();
-        Tile randomTile = Random.Range(0, 2) == 0 ? GetFullTile(randomType) : GetTypeTile(randomType);
+        Tile randomTile = UnityEngine.Random.Range(0, 2) == 0 ? GetFullTile(randomType) : GetTypeTile(randomType);
         return randomTile;
     }
 
     private Hexagons.Type GetRandomType()
     {
-        return (Hexagons.Type)Random.Range(1, 6);
+        return (Hexagons.Type)UnityEngine.Random.Range(1, 6);
     } 
 
     private (Hexagons.Type type, int count) GetLeastOccurringType(Hexagons.Type excludeType = Hexagons.Type.Null)
     {
-        return OnRequestLeastType?.Invoke(excludeType) ?? (Hexagons.Type.Grass, 0);
+        return OnLeastTypeRequest?.Invoke(excludeType) ?? (Hexagons.Type.Grass, 0);
     }
 
     private Hexagons.Type GetRandomTypeExcluding(Hexagons.Type firstType)
@@ -79,7 +81,7 @@ public class TileGenerator : MonoBehaviour
 
         do
         {
-            picked = arr[Random.Range(0, arr.Length)];
+            picked = arr[UnityEngine.Random.Range(0, arr.Length)];
         }
         while (usedTiles.Contains(picked));
 
@@ -114,7 +116,7 @@ public class TileGenerator : MonoBehaviour
         if (arr.Length == 0)
             return GetFullTile(GetRandomType());
 
-        return arr[Random.Range(0, arr.Length)];
+        return arr[UnityEngine.Random.Range(0, arr.Length)];
     }
 
     private Tile GetTypeTile(Hexagons.Type type)
@@ -145,7 +147,7 @@ public class TileGenerator : MonoBehaviour
         if (arr.Length == 0)
             return GetTypeTile(GetRandomType());
 
-        return arr[Random.Range(0, arr.Length)];
+        return arr[UnityEngine.Random.Range(0, arr.Length)];
     }
 
     private List<Tile> CreateTypedSet(Hexagons.Type type)
@@ -160,7 +162,7 @@ public class TileGenerator : MonoBehaviour
         }
         newSet.Add(typed1);
         newSet.Add(typed2);
-        newSet = newSet.OrderBy(x => Random.value).ToList();
+        newSet = newSet.OrderBy(x => UnityEngine.Random.value).ToList();
         return newSet;
     }
 
@@ -177,9 +179,9 @@ public class TileGenerator : MonoBehaviour
         randomSet.Add(typed1);
         randomSet.Add(typed2);
 
-        randomSet = randomSet.OrderBy(x => Random.value).ToList();
+        randomSet = randomSet.OrderBy(x => UnityEngine.Random.value).ToList();
 
-        int rand = Random.Range(0, 100);
+        int rand = UnityEngine.Random.Range(0, 100);
         if (rand >= 85)
         {
             Tile random1 = GetRandomTile();

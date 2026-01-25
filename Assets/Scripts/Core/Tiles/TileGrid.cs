@@ -16,16 +16,6 @@ public class TileGrid : MonoBehaviour
     {
         SetTilePlacer(new Hexagons.Coords(0, 0));
     }
-
-    void OnEnable()
-    {
-        TileGenerator.Instance.OnRequestLeastType += GetLeastOccurringSide;
-    }
-
-    void OnDisable()
-    {
-        TileGenerator.Instance.OnRequestLeastType -= GetLeastOccurringSide;
-    }
     
     private void SetTilePlacer(Hexagons.Coords coords)
     {
