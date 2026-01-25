@@ -42,6 +42,21 @@ public class TileGenerator : Singleton<TileGenerator>
         InitializeQueue();
     }
 
+    private void InitializeQueue()
+    {
+        Hexagons.Type type1 = GetRandomType();
+        Hexagons.Type type2 = GetRandomTypeExcluding(type1);
+        setQueue.AddRange(CreateTypedSet(type1));
+        setQueue.AddRange(CreateTypedSet(type2));
+    }
+
+    private Tile GetRandomTile()
+    {
+        Hexagons.Type randomType = GetRandomType();
+        Tile randomTile = Random.Range(0, 2) == 0 ? GetFullTile(randomType) : GetTypeTile(randomType);
+        return randomTile;
+    }
+
     private Hexagons.Type GetRandomType()
     {
         return (Hexagons.Type)Random.Range(1, 6);
@@ -58,6 +73,19 @@ public class TileGenerator : Singleton<TileGenerator>
         if (secondType == firstType)
             return GetRandomTypeExcluding(firstType);
         return secondType;
+    }
+
+    private Tile GetUniqueTile(Tile[] arr, List<Tile> usedTiles)
+    {
+        Tile picked;
+
+        do
+        {
+            picked = arr[Random.Range(0, arr.Length)];
+        }
+        while (usedTiles.Contains(picked));
+
+        return picked;
     }
 
     private Tile GetFullTile(Hexagons.Type type)
@@ -126,8 +154,14 @@ public class TileGenerator : Singleton<TileGenerator>
     {
         List<Tile> newSet = new List<Tile>();
         newSet.Add(GetFullTile(type));
-        newSet.Add(GetTypeTile(type));
-        newSet.Add(GetTypeTile(type));
+        Tile typed1 = GetTypeTile(type);
+        Tile typed2 = GetTypeTile(type);
+        while (typed2 == typed1)
+        {
+            typed2 = GetTypeTile(type);
+        }
+        newSet.Add(typed1);
+        newSet.Add(typed2);
         newSet = newSet.OrderBy(x => Random.value).ToList();
         return newSet;
     }
@@ -136,16 +170,28 @@ public class TileGenerator : Singleton<TileGenerator>
     {
         List<Tile> randomSet = new List<Tile>();
         randomSet.Add(GetFullTile(type));
-        randomSet.Add(GetTypeTile(type));
-        randomSet.Add(GetTypeTile(type));
+        Tile typed1 = GetTypeTile(type);
+        Tile typed2 = GetTypeTile(type);
+        while (typed2 == typed1)
+        {
+            typed2 = GetTypeTile(type);
+        }
+        randomSet.Add(typed1);
+        randomSet.Add(typed2);
 
         randomSet = randomSet.OrderBy(x => Random.value).ToList();
 
         int rand = Random.Range(0, 100);
         if (rand >= 85)
         {
-            randomSet.Add(GetRandomTile());
-            randomSet.Add(GetRandomTile());
+            Tile random1 = GetRandomTile();
+            Tile random2 = GetRandomTile();
+            while (random2 == random1)
+            {
+                random2 = GetRandomTile();
+            }
+            randomSet.Add(random1);
+            randomSet.Add(random2);
         }
         else if (rand >= 70)
         {
@@ -179,21 +225,6 @@ public class TileGenerator : Singleton<TileGenerator>
 
             setQueue.AddRange(CreateRandomSet(typeToUse));
         }
-    }
-
-    private void InitializeQueue()
-    {
-        Hexagons.Type type1 = GetRandomType();
-        Hexagons.Type type2 = GetRandomTypeExcluding(type1);
-        setQueue.AddRange(CreateTypedSet(type1));
-        setQueue.AddRange(CreateTypedSet(type2));
-    }
-
-    private Tile GetRandomTile()
-    {
-        Hexagons.Type randomType = GetRandomType();
-        Tile randomTile = Random.Range(0, 2) == 0 ? GetFullTile(randomType) : GetTypeTile(randomType);
-        return randomTile;
     }
 
     public Tile ShowNextTile()
