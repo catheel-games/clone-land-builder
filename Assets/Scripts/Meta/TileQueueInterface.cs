@@ -23,11 +23,11 @@ public class TileQueueInterface : MonoBehaviour
 
         for (int i = 0; i < tileSlots.Length && i < queue.Count; i++)
         {
-
             Tile newTile = Instantiate(
                 queue[i],
                 tileSlots[i].position,
-                Quaternion.identity
+                Quaternion.identity,
+                tileSlots[i]
             );
 
             newTile.gameObject.layer = LayerMask.NameToLayer("3D UI");

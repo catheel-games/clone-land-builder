@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelInterface
   tilePreviewControlContainer: {fileID: 4538006066792537542}
   cameraControlContainer: {fileID: 1910575976310628578}
+  tileQueueInterface: {fileID: 5248833698963942154}
 --- !u!1001 &456052117639033481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231,6 +232,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3935632088181059373, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
   m_PrefabInstance: {fileID: 456052117639033481}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5248833698963942154 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5657544281656138115, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
+  m_PrefabInstance: {fileID: 456052117639033481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a738794c4eba3e4a985f3e1665cf122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileQueueUI
 --- !u!114 &6138085773297411304 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6015371496899548769, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
@@ -250,38 +262,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9087443946784728261}
     m_Modifications:
-    - target: {fileID: 59499481130288081, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 59499481130288081, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 59499481130288081, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 59499481130288081, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 987131041569629311, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 987131041569629311, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 987131041569629311, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 987131041569629311, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3558770820351329689, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
       propertyPath: m_Name
       value: Restart Panel
@@ -364,42 +344,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5737122130447730549, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6435754400867312242, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8210730836032052761, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8210730836032052761, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8210730836032052761, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8210730836032052761, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8436963360728806825, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8436963360728806825, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8436963360728806825, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8436963360728806825, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8639443571114196316, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
@@ -537,14 +481,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9087443946784728261}
     m_Modifications:
-    - target: {fileID: 459043800351329547, guid: 7b38410efa30eb64ab86d4ad226c9655, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1910575976310628578}
-    - target: {fileID: 2365659381581572655, guid: 7b38410efa30eb64ab86d4ad226c9655, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1910575976310628578}
     - target: {fileID: 2719422857074411877, guid: 7b38410efa30eb64ab86d4ad226c9655, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -625,14 +561,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4967636189637785760, guid: 7b38410efa30eb64ab86d4ad226c9655, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1910575976310628578}
-    - target: {fileID: 8828854284538792787, guid: 7b38410efa30eb64ab86d4ad226c9655, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1910575976310628578}
     - target: {fileID: 8887677476901743848, guid: 7b38410efa30eb64ab86d4ad226c9655, type: 3}
       propertyPath: m_Name
       value: Grid View Interface
@@ -847,10 +775,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9087443946784728261}
     m_Modifications:
-    - target: {fileID: 153200550565321259, guid: 1426e3c29cf9abb46a60e33f5f96681f, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2099742715006160843, guid: 1426e3c29cf9abb46a60e33f5f96681f, type: 3}
       propertyPath: m_Name
       value: Level Completed Panel
@@ -961,10 +885,6 @@ PrefabInstance:
       propertyPath: topBar
       value: 
       objectReference: {fileID: 6138085773297411304}
-    - target: {fileID: 2792379830004484124, guid: 2556ea1dcf0cddc4fb3aa98e8b772099, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5044717279844040566, guid: 2556ea1dcf0cddc4fb3aa98e8b772099, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1155,10 +1075,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Failed Panel
       objectReference: {fileID: 0}
-    - target: {fileID: 9128413362390885384, guid: 4a8c965b80d148345abea611d5fbb82d, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1263,10 +1179,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6582441954151754867, guid: f57bf2b0e9136584888a1462728f2cb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7845122232196855635, guid: f57bf2b0e9136584888a1462728f2cb6, type: 3}
-      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
