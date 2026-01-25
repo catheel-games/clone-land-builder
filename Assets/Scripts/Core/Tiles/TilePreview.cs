@@ -1,0 +1,76 @@
+using UnityEngine;
+
+[RequireComponent(typeof(TileCalculator))]
+public class TilePreview : MonoBehaviour
+{
+    [SerializeField] private float tileElevevation = 0.5f;
+    [SerializeField] private TileCalculator tileCalculator;
+    [SerializeField] private TilePreviewInput tilePreviewInput;
+
+    private float targetRotationContinuous;
+    private float targetRotationDiscrete;
+
+    private Tile tileInstance;
+    private Tile tileInstanceUI;
+    private Hexagons.Coords tileInstanceCoords;
+
+    public Tile PreviewTile => tileInstance;
+
+    void OnEnable()
+    {
+        tilePreviewInput.OnRotation += RotatePreviewTile;
+    }
+
+    void OnDisable()
+    {
+        tilePreviewInput.OnRotation -= RotatePreviewTile;
+    }
+
+    public void StartPreviewAtCoords(Tile tile, Tile tileUI, Hexagons.Coords coords)
+    {
+        tileInstance = tile;
+        tileInstanceUI = tileUI;
+        tileInstanceCoords = coords;
+        
+        targetRotationContinuous = tile.RotationOffsetDiscrete;
+        targetRotationDiscrete = tile.RotationOffsetDiscrete;
+        
+        transform.position = Hexagons.HexToWorld(coords);
+
+        tileInstance.transform.SetParent(transform, false);
+        tileInstance.transform.localPosition = new Vector3(0f, tileElevevation, 0f);
+        
+        tilePreviewInput.UnlockRotation();
+        tileCalculator.CalculateBonuses(tileInstanceCoords, tileInstance);
+    }
+
+    private void RotatePreviewTile(float rotationAmount)
+    {
+        if (tileInstance != null)
+        {
+            targetRotationContinuous += rotationAmount;
+            float newRotationDiscrete = Mathf.Floor(targetRotationContinuous / 60f) * 60f;
+
+            if (newRotationDiscrete != targetRotationDiscrete)
+            {
+                targetRotationDiscrete = newRotationDiscrete;
+                tileInstance.Rotate(targetRotationDiscrete);
+                tileInstanceUI.Rotate(targetRotationDiscrete);
+                tileCalculator.CalculateBonuses(tileInstanceCoords, tileInstance);
+            }
+        }
+    }
+
+    public void EndPreview(bool isTileAccepted)
+    {
+        tilePreviewInput.LockRotation();
+        tileCalculator.ProcessBonsuses();
+
+        if (!isTileAccepted)
+        {
+            Destroy(tileInstance.gameObject);
+        }
+        
+        tileInstance = null;
+    }
+}

@@ -98,6 +98,10 @@ PrefabInstance:
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 4237911085899303490}
+    - target: {fileID: 1281724211304642246, guid: 63c202a2ff48c554689c08447dd366bf, type: 3}
+      propertyPath: loadingScreenContainer
+      value: 
+      objectReference: {fileID: 4237911085899303490}
     - target: {fileID: 2713999093718921203, guid: 63c202a2ff48c554689c08447dd366bf, type: 3}
       propertyPath: m_Name
       value: Managers
