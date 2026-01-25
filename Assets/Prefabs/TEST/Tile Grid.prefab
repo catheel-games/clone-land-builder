@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729833632504538225}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45,10 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741264558baec5d4f8d8b32d697b90df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileGrid
-  tilePlacerContainerTransform: {fileID: 1820596602849179620}
-  tilePrefab: {fileID: 534292831841679959, guid: bcd7f819e3cd6ce4693371fb7f0ea128, type: 3}
+  tilePlacerContainer: {fileID: 5600508474634021388}
   tilePlacerPrefab: {fileID: 168078730613406418, guid: 37e64f1b541356b4c9a5bd4f553c28af, type: 3}
-  tilePreviewPrefab: {fileID: 915202331465559182, guid: 759dc8165c084924586d50e8ab72025f, type: 3}
 --- !u!1 &7963308776948811205
 GameObject:
   m_ObjectHideFlags: 0
