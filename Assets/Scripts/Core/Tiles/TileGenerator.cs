@@ -30,11 +30,40 @@ public class TileGenerator : MonoBehaviour
 
     List<Tile> setQueue = new List<Tile>();
 
-    // change to least occuring type
+    public Func<Hexagons.Type, (Hexagons.Type type, int count)> OnRequestLeastType;
+    private int tilesPlaced = 0;
+    private Hexagons.Type ignoredType = Hexagons.Type.Null;
+    private int ignoreCounter = 0;
+
+    void Start()
+    {
+        InitializeQueue();
+    }
+
+    private void InitializeQueue()
+    {
+        Hexagons.Type type1 = GetRandomType();
+        Hexagons.Type type2 = GetRandomTypeExcluding(type1);
+        setQueue.AddRange(CreateTypedSet(type1));
+        setQueue.AddRange(CreateTypedSet(type2));
+    }
+
+    private Tile GetRandomTile()
+    {
+        Hexagons.Type randomType = GetRandomType();
+        Tile randomTile = Random.Range(0, 2) == 0 ? GetFullTile(randomType) : GetTypeTile(randomType);
+        return randomTile;
+    }
+
     private Hexagons.Type GetRandomType()
     {
         return (Hexagons.Type)Random.Range(1, 6);
     } 
+
+    private (Hexagons.Type type, int count) GetLeastOccurringType(Hexagons.Type excludeType = Hexagons.Type.Null)
+    {
+        return OnRequestLeastType?.Invoke(excludeType) ?? (Hexagons.Type.Grass, 0);
+    }
 
     private Hexagons.Type GetRandomTypeExcluding(Hexagons.Type firstType)
     {
@@ -42,6 +71,19 @@ public class TileGenerator : MonoBehaviour
         if (secondType == firstType)
             return GetRandomTypeExcluding(firstType);
         return secondType;
+    }
+
+    private Tile GetUniqueTile(Tile[] arr, List<Tile> usedTiles)
+    {
+        Tile picked;
+
+        do
+        {
+            picked = arr[Random.Range(0, arr.Length)];
+        }
+        while (usedTiles.Contains(picked));
+
+        return picked;
     }
 
     private Tile GetFullTile(Hexagons.Type type)
@@ -64,10 +106,13 @@ public class TileGenerator : MonoBehaviour
             case Hexagons.Type.Forest:
                 arr = fullTiles.fullForestTiles;
                 break;
-            default: 
+            default:
                 arr = fullTiles.fullGrassTiles;
                 break;
         }
+
+        if (arr.Length == 0)
+            return GetFullTile(GetRandomType());
 
         return arr[Random.Range(0, arr.Length)];
     }
@@ -97,6 +142,9 @@ public class TileGenerator : MonoBehaviour
                 break;
         }
 
+        if (arr.Length == 0)
+            return GetTypeTile(GetRandomType());
+
         return arr[Random.Range(0, arr.Length)];
     }
 
@@ -104,25 +152,44 @@ public class TileGenerator : MonoBehaviour
     {
         List<Tile> newSet = new List<Tile>();
         newSet.Add(GetFullTile(type));
-        newSet.Add(GetTypeTile(type));
-        newSet.Add(GetTypeTile(type));
+        Tile typed1 = GetTypeTile(type);
+        Tile typed2 = GetTypeTile(type);
+        while (typed2 == typed1)
+        {
+            typed2 = GetTypeTile(type);
+        }
+        newSet.Add(typed1);
+        newSet.Add(typed2);
         newSet = newSet.OrderBy(x => Random.value).ToList();
         return newSet;
     }
 
-    // will not be so random after least occuring edge is implemented
     private List<Tile> CreateRandomSet(Hexagons.Type type)
     {
         List<Tile> randomSet = new List<Tile>();
-        randomSet.Add(Random.Range(0, 2) == 0 ? GetFullTile(type) : GetTypeTile(type));
-        randomSet.Add(Random.Range(0, 2) == 0 ? GetFullTile(type) : GetTypeTile(type));
-        randomSet.Add(Random.Range(0, 2) == 0 ? GetFullTile(type) : GetTypeTile(type));
+        randomSet.Add(GetFullTile(type));
+        Tile typed1 = GetTypeTile(type);
+        Tile typed2 = GetTypeTile(type);
+        while (typed2 == typed1)
+        {
+            typed2 = GetTypeTile(type);
+        }
+        randomSet.Add(typed1);
+        randomSet.Add(typed2);
+
+        randomSet = randomSet.OrderBy(x => Random.value).ToList();
 
         int rand = Random.Range(0, 100);
         if (rand >= 85)
         {
-            randomSet.Add(GetRandomTile());
-            randomSet.Add(GetRandomTile());
+            Tile random1 = GetRandomTile();
+            Tile random2 = GetRandomTile();
+            while (random2 == random1)
+            {
+                random2 = GetRandomTile();
+            }
+            randomSet.Add(random1);
+            randomSet.Add(random2);
         }
         else if (rand >= 70)
         {
@@ -132,27 +199,30 @@ public class TileGenerator : MonoBehaviour
         return randomSet;
     }
 
-    private void RefillQueue(Hexagons.Type type)
+    private void RefillQueue()
     {
         if (setQueue.Count < 3)
         {
-            setQueue.AddRange(CreateRandomSet(type));
-        } 
-    }
+            var leastType = GetLeastOccurringType();
 
-    public void InitializeQueue()
-    {
-        Hexagons.Type type1 = GetRandomType();
-        Hexagons.Type type2 = GetRandomTypeExcluding(type1);
-        setQueue.AddRange(CreateTypedSet(type1));
-        setQueue.AddRange(CreateTypedSet(type2));
-    }
+            if (tilesPlaced >= 15 && leastType.count <= 2 && ignoreCounter == 0)
+            {
+                ignoredType = leastType.type;
+                ignoreCounter = 8;
+            }
 
-    private Tile GetRandomTile()
-    {
-        Hexagons.Type randomType = GetRandomType();
-        Tile randomTile = Random.Range(0, 2) == 0 ? GetFullTile(randomType) : GetTypeTile(randomType);
-        return randomTile;
+            Hexagons.Type typeToUse;
+            if(ignoreCounter > 0 && leastType.type == ignoredType)
+            {
+                typeToUse = GetLeastOccurringType(ignoredType).type;
+            }
+            else
+            {
+                typeToUse = leastType.type;
+            }
+
+            setQueue.AddRange(CreateRandomSet(typeToUse));
+        }
     }
 
     public Tile ShowNextTile()
@@ -164,7 +234,11 @@ public class TileGenerator : MonoBehaviour
     {
         Tile prevTile = setQueue[0];
         setQueue.RemoveAt(0);
-        RefillQueue(GetRandomType());
+
+        tilesPlaced++;
+        if (ignoreCounter > 0) ignoreCounter--;
+
+        RefillQueue();
         return prevTile;
     }
 
