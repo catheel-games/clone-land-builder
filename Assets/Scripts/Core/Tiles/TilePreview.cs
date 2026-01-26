@@ -38,6 +38,8 @@ public class TilePreview : MonoBehaviour
 
         tilePlacementFeedback.Activate(tileInstance.transform);
 
+        AudioManager.Instance.PlaySound("Tile", "Tile Choosing");
+
         targetRotationContinuous = tile.RotationOffsetDiscrete;
         targetRotationDiscrete = tile.RotationOffsetDiscrete;
         
@@ -59,6 +61,8 @@ public class TilePreview : MonoBehaviour
 
             if (newRotationDiscrete != targetRotationDiscrete)
             {
+                AudioManager.Instance.PlaySound("Tile", "Tile Rotating");
+
                 targetRotationDiscrete = newRotationDiscrete;
                 tileInstance.Rotate(targetRotationDiscrete);
                 tileInstanceUI.Rotate(targetRotationDiscrete);

@@ -26,6 +26,11 @@ public class LevelControl : Singleton<LevelControl>
         levelCanvasControl.OnCameraControlClick -= CameraControlClick;
     }
 
+    private void Start()
+    {
+        AudioManager.Instance.PlaySound("Other", "Level Start");
+    }
+
     private void EnterTileViewMode(Hexagons.Coords coords)
     {
         levelCanvasControl.EnterTileViewMode();
