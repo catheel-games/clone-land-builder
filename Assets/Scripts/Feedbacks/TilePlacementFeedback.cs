@@ -51,7 +51,7 @@ public class TilePlacementFeedback : MonoBehaviour
         currentTileTransform.DOMoveY(-hoveringValue, hoveringDuration)
                                                 .SetRelative().SetEase(Ease.InOutSine);
         yield return new WaitForSeconds(hoveringDuration);
-        StartCoroutine(Hovering());
+        hoveringCoroutine = StartCoroutine(Hovering());
     }
 
 }
