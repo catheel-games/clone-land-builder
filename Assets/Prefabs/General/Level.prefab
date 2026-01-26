@@ -62,6 +62,8 @@ GameObject:
   - component: {fileID: 2840889560057333610}
   - component: {fileID: 2233200009079879115}
   - component: {fileID: 8543410338195015949}
+  - component: {fileID: 6460730150504474535}
+  - component: {fileID: 2045349941397977568}
   m_Layer: 0
   m_Name: Tile Preview
   m_TagString: Untagged
@@ -96,9 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2e812bb3b1ff240bfc6371c270dad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilePreview
-  tileElevevation: 0.5
+  tileElevevation: 0
   tileCalculator: {fileID: 8543410338195015949}
   tilePreviewInput: {fileID: 2233200009079879115}
+  tileDenyingPreviewFeedback: {fileID: 6460730150504474535}
+  tilePlacementFeedback: {fileID: 2045349941397977568}
 --- !u!114 &2233200009079879115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +133,37 @@ MonoBehaviour:
   starPrefab: {fileID: -2632900541491632531, guid: 371a973c6fcac23418bf5e8352b0c9ca, type: 3}
   comboPrefab: {fileID: -6755935781523852239, guid: 44ade7acb2c044f41b2ad671917b04eb, type: 3}
   tileGrid: {fileID: 8882862855357961664}
+--- !u!114 &6460730150504474535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447158719506465897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1033c637e9dcb684986766cec9f37631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileDenyingFeedback
+  scaleTo0Duration: 0.5
+  scaleTo1Duration: 0.6
+--- !u!114 &2045349941397977568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447158719506465897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820a6a829e1d67441823a11dd1812fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TilePlacementFeedback
+  scaleTo1Duration: 0.1
+  punchScaleDuration: 0.2
+  punchScaleVector: {x: 0.1, y: 0.1, z: 0.1}
+  hoveringValue: 0.075
+  hoveringDuration: 1.5
 --- !u!1 &7954233154541574880
 GameObject:
   m_ObjectHideFlags: 0
