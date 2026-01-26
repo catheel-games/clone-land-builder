@@ -7,6 +7,10 @@ public class TilePreview : MonoBehaviour
     [SerializeField] private TileCalculator tileCalculator;
     [SerializeField] private TilePreviewInput tilePreviewInput;
 
+    [Header("Feedbacks")]
+    [SerializeField] private TileDenyingPreviewFeedback tileDenyingPreviewFeedback;
+    [SerializeField] private TilePlacementFeedback tilePlacementFeedback;
+
     private float targetRotationContinuous;
     private float targetRotationDiscrete;
 
@@ -31,7 +35,11 @@ public class TilePreview : MonoBehaviour
         tileInstance = tile;
         tileInstanceUI = tileUI;
         tileInstanceCoords = coords;
-        
+
+        tilePlacementFeedback.Activate(tileInstance.transform);
+
+        AudioManager.Instance.PlaySound("Tile", "Tile Choosing");
+
         targetRotationContinuous = tile.RotationOffsetDiscrete;
         targetRotationDiscrete = tile.RotationOffsetDiscrete;
         
@@ -53,6 +61,8 @@ public class TilePreview : MonoBehaviour
 
             if (newRotationDiscrete != targetRotationDiscrete)
             {
+                AudioManager.Instance.PlaySound("Tile", "Tile Rotating");
+
                 targetRotationDiscrete = newRotationDiscrete;
                 tileInstance.Rotate(targetRotationDiscrete);
                 tileInstanceUI.Rotate(targetRotationDiscrete);
@@ -66,9 +76,12 @@ public class TilePreview : MonoBehaviour
         tilePreviewInput.LockRotation();
         tileCalculator.ProcessBonsuses();
 
+        tilePlacementFeedback.StopHovering();
+
+
         if (!isTileAccepted)
         {
-            Destroy(tileInstance.gameObject);
+            tileDenyingPreviewFeedback.Activate(tileInstance.gameObject);
         }
         
         tileInstance = null;
