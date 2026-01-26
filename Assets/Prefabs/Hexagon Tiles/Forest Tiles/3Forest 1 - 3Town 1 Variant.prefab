@@ -89,6 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39723d17e390ef7478fb82949dc21561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  borderTypes: 030000000300000002000000020000000200000003000000
+  borderTypes: 030000000300000001000000010000000100000003000000
   centerType: 3
   rotationLerpCoefficient: 10
