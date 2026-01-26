@@ -189,8 +189,8 @@ MonoBehaviour:
   zoomLerpCoefficient: 10
   rotationLerpCoefficient: 10
   translationLerpCoefficient: 10
-  zoomMin: 1
-  zoomMax: 80
+  zoomMin: 5
+  zoomMax: 60
   zoomStep: 2
   rotationStep: 20
 --- !u!114 &5301659811425245732
@@ -205,9 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cfe85e35792984b9fb4356ce3e42bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraInputInterpreter
-  zoomCoefficient: 80
-  rotationCoefficient: 1000
-  translationCoefficient: 40
+  zoomCoefficient: 20
+  rotationCoefficient: 500
+  translationCoefficient: 25
 --- !u!1 &4226790927997402425
 GameObject:
   m_ObjectHideFlags: 0
