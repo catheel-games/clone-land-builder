@@ -205,9 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cfe85e35792984b9fb4356ce3e42bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraInputInterpreter
-  zoomCoefficient: 20
-  rotationCoefficient: 500
-  translationCoefficient: 25
+  zoomCoefficient: 15
+  rotationCoefficient: 200
+  translationCoefficient: 10
 --- !u!1 &4226790927997402425
 GameObject:
   m_ObjectHideFlags: 0
