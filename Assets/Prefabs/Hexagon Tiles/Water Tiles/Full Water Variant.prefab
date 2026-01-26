@@ -21,8 +21,16 @@ PrefabInstance:
       value: Full Water Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8530140560371257740, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530140560371257740, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530140560371257740, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: m_LocalRotation.w
