@@ -89,7 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302a858cbd5cbd9459999abfcfd54228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  cameraRef: {fileID: 0}
 --- !u!1 &2713999093718921203
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +123,7 @@ Transform:
   - {fileID: 4550490868399663348}
   - {fileID: 6249612583120922985}
   - {fileID: 9121654701336659958}
+  - {fileID: 5297039828429174237}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4374990219833839159
@@ -174,7 +174,69 @@ MonoBehaviour:
   audioSourcePrefab: {fileID: 694854792018272022, guid: 9c24dccd6e06e3e4e834b8934bf7761f, type: 3}
   musicFadeDuration: 2
   soundMixerGroup: {fileID: -8750258603494275546, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
-  soundGroups: []
+  soundGroups:
+  - name: UI
+    sounds:
+    - name: Open UI
+      clip: {fileID: 8300000, guid: b1254e95d90f86b4ca070a25381b5fe2, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Close UI
+      clip: {fileID: 8300000, guid: 16520f960632f174d92ff7dc86099f24, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Tutorial Olivia
+      clip: {fileID: 8300000, guid: 6fa9c16e6d3deb54d8d39ea9978a4198, type: 3}
+      pitch: {x: 1, y: 1}
+  - name: Tile
+    sounds:
+    - name: Tile Choosing
+      clip: {fileID: 8300000, guid: fbccbc0f2285a95469a9bdaa6354a82f, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Tile Denying
+      clip: {fileID: 8300000, guid: fbab0e3ae3433d54d98f7ea6b0073e50, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Tile Accepting
+      clip: {fileID: 8300000, guid: d042075ed65a6884e8e91bf67a68bd52, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Tile Rotating
+      clip: {fileID: 8300000, guid: c8a1d35357c37a748b311e9b7eeb537b, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Tile Accepting in Stars
+      clip: {fileID: 8300000, guid: 02698d659c13b8e43ac980e69180d419, type: 3}
+      pitch: {x: 1, y: 1}
+  - name: Plus
+    sounds:
+    - name: Star 1
+      clip: {fileID: 8300000, guid: 8818e5fe40efaca4c86aad6bee481340, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Star 1 Double
+      clip: {fileID: 8300000, guid: 728b2c28d808d7141a5af35ed5c6f089, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Star 2
+      clip: {fileID: 8300000, guid: 76763c0bfbff7f9448724fd7438cf485, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Tile Plus
+      clip: {fileID: 8300000, guid: d57c7c0c82bf8ab44bcfa5efd4bbac9c, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Paris Blue Sphere
+      clip: {fileID: 8300000, guid: 52c7668124b46864b99ce683fcc60284, type: 3}
+      pitch: {x: 1, y: 1}
+  - name: Other
+    sounds:
+    - name: Level Start
+      clip: {fileID: 8300000, guid: 4ebaee3b10cd4d2408c450b90184f78e, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Level Complete
+      clip: {fileID: 8300000, guid: 628692435f309454ab032cf2b8a24cb4, type: 3}
+      pitch: {x: 1, y: 1}
+    - name: Level Fail
+      clip: {fileID: 0}
+      pitch: {x: 1, y: 1}
+    - name: New Tile Unlocked
+      clip: {fileID: 0}
+      pitch: {x: 1, y: 1}
+    - name: Eiffel Unlocked
+      clip: {fileID: 0}
+      pitch: {x: 1, y: 1}
   musicMixerGroup: {fileID: -2426639153622354055, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
   musicGroups: []
 --- !u!1 &5149440950281139509
@@ -266,3 +328,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f006c4fd716ac418433d3ebc74ead7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+--- !u!1 &7404164699721898750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5297039828429174237}
+  - component: {fileID: 6284852437820836109}
+  m_Layer: 0
+  m_Name: SaveLoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5297039828429174237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7404164699721898750}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -264.5, y: -281, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 655218588046002055}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6284852437820836109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7404164699721898750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698d91ffbcefd06489f2725deaa37cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveDataJson
+  gameData:
+    levelsProgress: []
+    currentLevelID: 0
+  levelDatas:
+  - {fileID: 11400000, guid: a7b06bdac5835a9419d471c88bc9cb34, type: 2}
+  - {fileID: 11400000, guid: 5344e11ef7915f243b3b273aa9106a96, type: 2}
+  - {fileID: 11400000, guid: bd6abef103ae19241ba0a421d25d70cd, type: 2}

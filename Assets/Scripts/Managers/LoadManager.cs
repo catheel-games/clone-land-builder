@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadManager : Singleton<LoadManager>
 {
-    [SerializeField] private LoadingScreen loadingScreen;
+    [SerializeField] private LoadingScreenContainer loadingScreenContainer;
 
     private AsyncOperation operation;
 
@@ -18,9 +18,9 @@ public class LoadManager : Singleton<LoadManager>
 
     IEnumerator LoadSceneCoroutine(string sceneName)
     {
-        loadingScreen.Show();
-        loadingScreen.SetProgress(0);
-        loadingScreen.TitleScaling();
+        loadingScreenContainer.Show();
+        loadingScreenContainer.SetProgress(0);
+        loadingScreenContainer.TitleScaling();
 
         operation = SceneManager.LoadSceneAsync(sceneName);
         operation.allowSceneActivation = false;
@@ -44,7 +44,7 @@ public class LoadManager : Singleton<LoadManager>
 
             randomDisplaying = Random.Range(0, 7);
             if (randomDisplaying == 0 || displayedProgress >= stopPercent)
-                loadingScreen.SetProgress(Mathf.Round(displayedProgress * 100f));
+                loadingScreenContainer.SetProgress(Mathf.Round(displayedProgress * 100f));
 
             elapsedTime += Time.deltaTime;
             yield return null;
@@ -56,15 +56,15 @@ public class LoadManager : Singleton<LoadManager>
         {
             displayedProgress = Mathf.MoveTowards (displayedProgress, 1f, fakeSpeed * Time.deltaTime);
 
-            loadingScreen.SetProgress(Mathf.Round(displayedProgress * 100f));
+            loadingScreenContainer.SetProgress(Mathf.Round(displayedProgress * 100f));
             yield return null;
         }
 
-        loadingScreen.StopAllCoroutines();
+        loadingScreenContainer.StopAllCoroutines();
 
         operation.allowSceneActivation = true;
         operation = null;
 
-        loadingScreen.Hide();
+        loadingScreenContainer.Hide();
     }
 }

@@ -1,28 +1,89 @@
 using UnityEngine;
 
+[RequireComponent(typeof(TileCalculator))]
 public class TilePreview : MonoBehaviour
 {
-    [SerializeField] private float rotationLerpCoefficient = 10f;
-    [SerializeField] private Tile tileInstance;
+    [SerializeField] private float tileElevevation = 0.5f;
+    [SerializeField] private TileCalculator tileCalculator;
+    [SerializeField] private TilePreviewInput tilePreviewInput;
 
-    private float targetRotation;
+    [Header("Feedbacks")]
+    [SerializeField] private TileDenyingPreviewFeedback tileDenyingPreviewFeedback;
+    [SerializeField] private TilePlacementFeedback tilePlacementFeedback;
 
-    void Awake()
+    private float targetRotationContinuous;
+    private float targetRotationDiscrete;
+
+    private Tile tileInstance;
+    private Tile tileInstanceUI;
+    private Hexagons.Coords tileInstanceCoords;
+
+    public Tile PreviewTile => tileInstance;
+
+    void OnEnable()
     {
-        targetRotation = tileInstance.transform.rotation.eulerAngles.y;
+        tilePreviewInput.OnRotation += RotatePreviewTile;
     }
 
-    void Update()
+    void OnDisable()
     {
-        tileInstance.transform.rotation = Quaternion.Lerp(
-            tileInstance.transform.rotation,
-            Quaternion.Euler(0f, Mathf.Floor(targetRotation / 60f) * 60f, 0f),
-            rotationLerpCoefficient * Time.deltaTime
-        );
+        tilePreviewInput.OnRotation -= RotatePreviewTile;
     }
 
-    public void ChangeRotation(float rotationAmount)
+    public void StartPreviewAtCoords(Tile tile, Tile tileUI, Hexagons.Coords coords)
     {
-        targetRotation += rotationAmount;
+        tileInstance = tile;
+        tileInstanceUI = tileUI;
+        tileInstanceCoords = coords;
+
+        tilePlacementFeedback.Activate(tileInstance.transform);
+
+        AudioManager.Instance.PlaySound("Tile", "Tile Choosing");
+
+        targetRotationContinuous = tile.RotationOffsetDiscrete;
+        targetRotationDiscrete = tile.RotationOffsetDiscrete;
+        
+        transform.position = Hexagons.HexToWorld(coords);
+
+        tileInstance.transform.SetParent(transform, false);
+        tileInstance.transform.localPosition = new Vector3(0f, tileElevevation, 0f);
+        
+        tilePreviewInput.UnlockRotation();
+        tileCalculator.CalculateBonuses(tileInstanceCoords, tileInstance);
+    }
+
+    private void RotatePreviewTile(float rotationAmount)
+    {
+        if (tileInstance != null)
+        {
+            targetRotationContinuous += rotationAmount;
+            float newRotationDiscrete = Mathf.Floor(targetRotationContinuous / 60f) * 60f;
+
+            if (newRotationDiscrete != targetRotationDiscrete)
+            {
+                AudioManager.Instance.PlaySound("Tile", "Tile Rotating");
+
+                targetRotationDiscrete = newRotationDiscrete;
+                tileInstance.Rotate(targetRotationDiscrete);
+                tileInstanceUI.Rotate(targetRotationDiscrete);
+                tileCalculator.CalculateBonuses(tileInstanceCoords, tileInstance);
+            }
+        }
+    }
+
+    public void EndPreview(bool isTileAccepted)
+    {
+        tilePreviewInput.LockRotation();
+        tileCalculator.ProcessBonsuses();
+
+        tilePlacementFeedback.StopHovering();
+
+
+        if (!isTileAccepted)
+        {
+            tileDenyingPreviewFeedback.Activate(tileInstance.gameObject);
+        }
+        
+        tileInstance = null;
     }
 }
