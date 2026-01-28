@@ -1,10 +1,16 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class LevelControl : Singleton<LevelControl>
 {
     [SerializeField] private LevelCanvasControl levelCanvasControl;
     [SerializeField] private CameraControl cameraControl;
     [SerializeField] private TileControl tileControl;
+
+    [SerializeField] private StarCollecting starCollecting;
+
+    public int starScore;
+    public int tileScore = 50;
 
     public float CameraPivotRotation => cameraControl.PivotRotation;
 
@@ -61,4 +67,10 @@ public class LevelControl : Singleton<LevelControl>
                 break;
         }
     }
+
+    public void SetPlusObjects(int starAmount, List<GameObject> starObjects, GameObject tileObject)
+    {
+        starCollecting.GetPlusObjects(starAmount, starObjects, tileObject);
+    }
+
 }

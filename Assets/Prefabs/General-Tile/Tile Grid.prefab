@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5974018506004725441}
   - component: {fileID: 8734218967770000859}
   - component: {fileID: 8641147687487046534}
+  - component: {fileID: 1620176562725715289}
   m_Layer: 0
   m_Name: Tile Grid
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   tilePlacerContainer: {fileID: 5600508474634021388}
   tilePlacerPrefab: {fileID: 168078730613406418, guid: 37e64f1b541356b4c9a5bd4f553c28af, type: 3}
   tileDenyingGridFeedback: {fileID: 8641147687487046534}
+  tileAcceptingGridFeedback: {fileID: 1620176562725715289}
 --- !u!114 &8641147687487046534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +63,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03db9d0e2fa97b48a98cccd5762796b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileDenyingGridFeedback
+  scaleTo1Duration: 0.6
+--- !u!114 &1620176562725715289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729833632504538225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175f31dce372bed4296014a07cc23520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileAcceptingGridFeedback
   scaleTo1Duration: 0.6
 --- !u!1 &7963308776948811205
 GameObject:
