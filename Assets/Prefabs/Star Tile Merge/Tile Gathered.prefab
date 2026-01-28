@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: -8679921383154817045}
   - component: {fileID: -5754084199372789682}
   - component: {fileID: -7511558181221131132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile Gathered
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 195185613883144473}
   - component: {fileID: 5679149304770568127}
   - component: {fileID: 2332752384169943372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Combination Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}

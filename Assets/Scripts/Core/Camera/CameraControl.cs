@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    [SerializeField] private Camera controlledCamera;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Camera previewCamera;
     [SerializeField] private Transform pivotTransform;
     [SerializeField] private CameraInput cameraInput;
 
@@ -38,15 +39,21 @@ public class CameraControl : MonoBehaviour
 
     void Awake()
     {
-        zoomTarget = controlledCamera.orthographicSize;
+        zoomTarget = mainCamera.orthographicSize;
         rotationTarget = pivotTransform.transform.rotation.y;
         positionTarget = transform.position;
     }
 
     void Update()
     {
-        controlledCamera.orthographicSize = Mathf.Lerp(
-            controlledCamera.orthographicSize,
+        mainCamera.orthographicSize = Mathf.Lerp(
+            mainCamera.orthographicSize,
+            zoomTarget,
+            zoomLerpCoefficient * Time.deltaTime
+        );
+
+        previewCamera.orthographicSize = Mathf.Lerp(
+            previewCamera.orthographicSize,
             zoomTarget,
             zoomLerpCoefficient * Time.deltaTime
         );

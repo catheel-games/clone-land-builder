@@ -75,7 +75,22 @@ public  class TileCalculator : MonoBehaviour
 
             combo.transform.localPosition = new Vector3(0f, elementElevation * 0.6f, 0f);
 
-            combo.Setup(combinationAmount, stars);
+            switch (combinationAmount)
+            {
+                case 3:
+                    combo.Setup(1, stars);
+                    break;
+                case 4:
+                    combo.Setup(2, stars);
+                    break;
+                case 5:
+                    combo.Setup(3, stars);
+                    break;
+                case 6:
+                    combo.Setup(6, stars);
+                    break;
+            }
+
         }
     }
 
