@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -41,10 +42,10 @@ public  class TileCalculator : MonoBehaviour
                     );
 
                     newStar.transform.SetParent(transform, false);
-
                     newStar.transform.localPosition = Vector3.up * elementElevation + Quaternion.AngleAxis(angle, Vector3.up) * Vector3.forward * starRadius;
-
                     newStar.transform.localRotation = Quaternion.Euler(0f, angle, 0f);
+
+                    newStar.Setup(neighborCoords);
 
                     stars[side] = newStar;
                 }
@@ -72,7 +73,9 @@ public  class TileCalculator : MonoBehaviour
                 transform
             );
 
-            combo.transform.localPosition = new Vector3(0f, elementElevation, 0f);
+            combo.transform.localPosition = new Vector3(0f, elementElevation * 0.6f, 0f);
+
+            combo.Setup(combinationAmount, stars);
         }
     }
 
@@ -82,12 +85,16 @@ public  class TileCalculator : MonoBehaviour
         {
             if (star != null)
             {
+                star.Kill();
+
                 Destroy(star.gameObject);
             }
         }
 
         if (combo != null)
         {
+            combo.Kill();
+
             Destroy(combo.gameObject);
         }
     }

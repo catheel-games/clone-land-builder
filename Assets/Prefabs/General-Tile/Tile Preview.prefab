@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930316904897645614}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -78,10 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08546a7e280de414b970a73cd2a71eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileCalculator
-  elementElevation: 0.8
+  elementElevation: 0.6
   starRadius: 0.866
   starPrefab: {fileID: -2632900541491632531, guid: 371a973c6fcac23418bf5e8352b0c9ca, type: 3}
-  comboPrefab: {fileID: -6755935781523852239, guid: 44ade7acb2c044f41b2ad671917b04eb, type: 3}
+  comboPrefab: {fileID: 7860111104573322058, guid: c4b4fa0d8aa519c4f8ac6988614b2a9b, type: 3}
   tileGrid: {fileID: 0}
 --- !u!114 &7563587593489117152
 MonoBehaviour:

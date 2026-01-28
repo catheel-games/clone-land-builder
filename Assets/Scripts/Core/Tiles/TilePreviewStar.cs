@@ -5,9 +5,20 @@ public class TilePreviewStar : MonoBehaviour
     [SerializeField] private float rotationCoefficient = 40f;
     [SerializeField] private TilePreviewStarScaleInFeedback scaleInFeedback;
 
-    void Start()
+    private Hexagons.Coords coords;
+
+    public Hexagons.Coords SideCoords => coords;
+
+    public void Setup(Hexagons.Coords coords)
     {
+        this.coords = coords;
+
         scaleInFeedback.Play();
+    }
+
+    public void Kill()
+    {
+        scaleInFeedback.Kill();
     }
 
     void Update()
