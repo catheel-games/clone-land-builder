@@ -246,6 +246,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85d4c427b5609624a930e5ae854c77c6, type: 3}
+--- !u!1 &1313459797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2039248648598772869, guid: ef6b51a2f9d1c1840949cf614c9d1235, type: 3}
+  m_PrefabInstance: {fileID: 1902411374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1313459799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313459797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a46c44ffad983924eb9bf1ecd8b0d2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileUpgrade
+  tileGrid: {fileID: 8734218967770000859, guid: 18c02bc59ef94ce4dac75088f883677a, type: 3}
+  cityTilePrefabs:
+  - {fileID: 7348327155288334026, guid: d4a6fd205a22a1847a46deeaa78c4536, type: 3}
+  - {fileID: -879753657287651595, guid: 869462e2e74a97046bdf675af353c90d, type: 3}
+  - {fileID: -3805275080146430983, guid: ecf474658490ef445af8a61d7d277fc5, type: 3}
+  - {fileID: -4055906844765838606, guid: 2bfab47d033d20145a120a81687be3d0, type: 3}
+  bigCityTilePrefabs:
+  - {fileID: -971691992253998583, guid: 81f54e1363c47fc498ccf0f8529ac601, type: 3}
+  - {fileID: 8523314424066943370, guid: fad9ea3e2a841724bbcd3858f915db3b, type: 3}
+  - {fileID: 4591298315598215776, guid: 38973c43386276d42b9438928079c38f, type: 3}
 --- !u!1001 &1902411374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -362,10 +389,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8548033040556924597, guid: ef6b51a2f9d1c1840949cf614c9d1235, type: 3}
+      propertyPath: tileUpgrade
+      value: 
+      objectReference: {fileID: 1313459799}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2039248648598772869, guid: ef6b51a2f9d1c1840949cf614c9d1235, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1313459799}
   m_SourcePrefab: {fileID: 100100000, guid: ef6b51a2f9d1c1840949cf614c9d1235, type: 3}
 --- !u!4 &486294692709197874
 Transform:
