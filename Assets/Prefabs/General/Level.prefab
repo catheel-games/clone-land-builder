@@ -50,120 +50,6 @@ MonoBehaviour:
   tileGrid: {fileID: 8882862855357961664}
   tilePreview: {fileID: 2840889560057333610}
   tileGenerator: {fileID: 4635629327788690381}
---- !u!1 &4447158719506465897
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1337417749381583245}
-  - component: {fileID: 2840889560057333610}
-  - component: {fileID: 2233200009079879115}
-  - component: {fileID: 8543410338195015949}
-  - component: {fileID: 6460730150504474535}
-  - component: {fileID: 2045349941397977568}
-  m_Layer: 0
-  m_Name: Tile Preview
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1337417749381583245
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4447158719506465897}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1607275714137605913}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2840889560057333610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4447158719506465897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad2e812bb3b1ff240bfc6371c270dad5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TilePreview
-  tileElevevation: 0
-  tileCalculator: {fileID: 8543410338195015949}
-  tilePreviewInput: {fileID: 2233200009079879115}
-  tileDenyingPreviewFeedback: {fileID: 6460730150504474535}
-  tilePlacementFeedback: {fileID: 2045349941397977568}
---- !u!114 &2233200009079879115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4447158719506465897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5bb097fe62790f408f44771c33b0ce0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TilePreviewInputInterpreter
-  rotationCoefficient: 2000
---- !u!114 &8543410338195015949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4447158719506465897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08546a7e280de414b970a73cd2a71eb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TileCalculator
-  elementElevation: 1
-  starRadius: 0.6
-  starPrefab: {fileID: -2632900541491632531, guid: 371a973c6fcac23418bf5e8352b0c9ca, type: 3}
-  comboPrefab: {fileID: -6755935781523852239, guid: 44ade7acb2c044f41b2ad671917b04eb, type: 3}
-  tileGrid: {fileID: 8882862855357961664}
---- !u!114 &6460730150504474535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4447158719506465897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1033c637e9dcb684986766cec9f37631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TileDenyingFeedback
-  scaleTo0Duration: 0.5
-  scaleTo1Duration: 0.6
---- !u!114 &2045349941397977568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4447158719506465897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 820a6a829e1d67441823a11dd1812fc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TilePlacementFeedback
-  scaleTo1Duration: 0.1
-  punchScaleDuration: 0.2
-  punchScaleVector: {x: 0.1, y: 0.1, z: 0.1}
-  hoveringValue: 0.075
-  hoveringDuration: 1.5
 --- !u!1 &7954233154541574880
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +432,83 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9087443946784728261, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
   m_PrefabInstance: {fileID: 2857457287182247609}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3557383013790763079
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1607275714137605913}
+    m_Modifications:
+    - target: {fileID: 930316904897645614, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: m_Name
+      value: Tile Preview
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580891734509672906, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580891734509672906, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580891734509672906, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580891734509672906, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580891734509672906, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580891734509672906, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580891734509672906, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580891734509672906, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580891734509672906, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580891734509672906, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174098795348246858, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+      propertyPath: tileGrid
+      value: 
+      objectReference: {fileID: 8882862855357961664}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+--- !u!4 &1337417749381583245 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2580891734509672906, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+  m_PrefabInstance: {fileID: 3557383013790763079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2840889560057333610 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1599484853732282157, guid: f768acf3b9f1db64cb9857b372115b6f, type: 3}
+  m_PrefabInstance: {fileID: 3557383013790763079}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2e812bb3b1ff240bfc6371c270dad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TilePreview
 --- !u!1001 &8677587553855057302
 PrefabInstance:
   m_ObjectHideFlags: 0
