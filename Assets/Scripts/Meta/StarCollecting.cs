@@ -1,10 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine.UI;
 using DG.Tweening;
 
-public class StarCollecting : MonoBehaviour
+public class StarCollecting : Singleton<StarCollecting>
 {
     [SerializeField] private Transform starCircleTransform;
     [SerializeField] private Transform tileCounterTransform;
@@ -26,6 +25,13 @@ public class StarCollecting : MonoBehaviour
     [SerializeField] private string[] starPlusesSounds;
     private string currentPlusSound;
 
+    [Header("Star Pre-Accept Scoring")]
+    [SerializeField] private float offMaskPosition = 125f;
+    [SerializeField] private float slideDuration = 0.2f;
+    [SerializeField] private RectTransform starScoreMainText;
+    [SerializeField] private RectTransform starScoreBonusText;
+    [SerializeField] private TextMeshProUGUI starScoringBonus;
+
     private int starAmount = 0;
     private int tileAmount = 0;
     private List<GameObject> starObjects = new();
@@ -33,6 +39,15 @@ public class StarCollecting : MonoBehaviour
 
     private List<RectTransform> spawnedStars = new();
     private List<RectTransform> spawnedTiles = new();
+
+    private Sequence starScoringBonusSlide;
+    private bool isStarScoreBonusMode = false;
+    private int starScoreBonusAmount = 0;
+
+    void Start()
+    {
+        SetStarScoreMainMode();
+    }
 
     public void SetMaximumStars() {
         //Set starText2 to LevelData Max
@@ -151,6 +166,65 @@ public class StarCollecting : MonoBehaviour
             }
 
 
+        }
+    }
+
+    public void SetStarScoreMainMode()
+    {   
+        if (isStarScoreBonusMode)
+        {
+            isStarScoreBonusMode = false;
+
+            if (starScoringBonusSlide == null || !starScoringBonusSlide.IsActive())
+            {
+                Sequence slideSequence = DOTween.Sequence();
+
+                slideSequence.Append(starScoreMainText.DOAnchorPosX(0, slideDuration));
+                slideSequence.Join(starScoreBonusText.DOAnchorPosX(-offMaskPosition, slideDuration));
+                slideSequence.AppendCallback(() =>
+                {
+                    starScoreMainText.anchoredPosition = new Vector2(0, starScoreMainText.anchoredPosition.y);
+                    starScoreBonusText.anchoredPosition = new Vector2(offMaskPosition, starScoreBonusText.anchoredPosition.y);
+
+                    if (isStarScoreBonusMode)
+                    {
+                        SetStarScoreBonusMode(starScoreBonusAmount);
+                    }
+                });
+
+                starScoringBonusSlide = slideSequence;
+            }
+        }
+    }
+
+    public void SetStarScoreBonusMode(int starAmount)
+    {
+        starScoreBonusAmount = starAmount;
+        starScoringBonus.text = "+" + starAmount;
+
+        if (!isStarScoreBonusMode)
+        {
+            isStarScoreBonusMode = true;
+
+            if (starScoringBonusSlide == null || !starScoringBonusSlide.IsActive())
+            {
+                Sequence slideSequence = DOTween.Sequence();
+
+                slideSequence.Append(starScoreMainText.DOAnchorPosX(-offMaskPosition, slideDuration));
+                slideSequence.Join(starScoreBonusText.DOAnchorPosX(0, slideDuration));
+                slideSequence.AppendCallback(() =>
+                {
+                    starScoreMainText.anchoredPosition = new Vector2(offMaskPosition, starScoreMainText.anchoredPosition.y);
+                    starScoreBonusText.anchoredPosition = new Vector2(0, starScoreBonusText.anchoredPosition.y);
+
+                    if (!isStarScoreBonusMode)
+                    {
+                        SetStarScoreMainMode();
+                    }
+                });
+
+                starScoringBonusSlide = slideSequence;
+            }
         }
     }
 

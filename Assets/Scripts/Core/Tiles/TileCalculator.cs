@@ -98,12 +98,20 @@ public class TileCalculator : MonoBehaviour
         }
 
         starAmount = combinationAmount;
+
+        if (starAmount > 0)
+        {
+            StarCollecting.Instance.SetStarScoreBonusMode(starAmount);
+        }
+        else
+        {
+            StarCollecting.Instance.SetStarScoreMainMode();
+        }
     }
 
     public void ProcessBonsuses()
     {
         List<GameObject> starObjects = new List<GameObject>();
-
 
         foreach (TilePreviewStar star in stars)
         {
@@ -121,7 +129,6 @@ public class TileCalculator : MonoBehaviour
         {
             LevelControl.Instance.SetPlusObjects(starAmount, starObjects, null);
         }
-
     }
 
     public void DestroyBonsuses()

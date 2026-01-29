@@ -72,5 +72,4 @@ public class LevelControl : Singleton<LevelControl>
     {
         starCollecting.GetPlusObjects(starAmount, starObjects, tileObject);
     }
-
 }

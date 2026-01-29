@@ -155,6 +155,10 @@ MonoBehaviour:
   - Star 1
   - Star 1 Double
   - Star 2
+  offMaskPosition: 125
+  starScoreMainText: {fileID: 1389343057295849319}
+  starScoreBonusText: {fileID: 4783425655380262048}
+  starScoringBonus: {fileID: 2839364928333094977}
 --- !u!1001 &456052117639033481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -300,6 +304,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
+--- !u!224 &1389343057295849319 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1518778339588195822, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
+  m_PrefabInstance: {fileID: 456052117639033481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2839364928333094977 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2392339010951271112, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
+  m_PrefabInstance: {fileID: 456052117639033481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &3515644948912889252 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3935632088181059373, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
@@ -319,6 +339,11 @@ MonoBehaviour:
 --- !u!224 &4602491156310628613 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4146528477144017804, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
+  m_PrefabInstance: {fileID: 456052117639033481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4783425655380262048 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4915147611878346281, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
   m_PrefabInstance: {fileID: 456052117639033481}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &4960509752276817145 stripped
