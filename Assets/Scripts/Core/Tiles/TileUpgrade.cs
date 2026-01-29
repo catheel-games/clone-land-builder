@@ -26,7 +26,7 @@ public class TileUpgrade : MonoBehaviour
         newTile.Place();
 
         Sequence seq = DOTween.Sequence();
-        seq.Append(newTile.transform.DOScale(0, 0)).Append(newTile.transform.DOScale(1, 0.3f).SetEase(Ease.OutBack));
+        seq.Append(newTile.transform.DOScaleY(0, 0)).Append(newTile.transform.DOScaleY(1, 0.3f).SetEase(Ease.OutBack));
     }
 
     private void UpgradeCount(Hexagons.Coords coords)

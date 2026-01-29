@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1607275714137605913}
   - component: {fileID: 8548033040556924597}
+  - component: {fileID: 5687391209592846766}
   m_Layer: 0
   m_Name: Tiles
   m_TagString: Untagged
@@ -49,7 +50,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileControl
   tileGrid: {fileID: 8882862855357961664}
   tilePreview: {fileID: 2840889560057333610}
+  tileUpgrade: {fileID: 0}
   tileGenerator: {fileID: 4635629327788690381}
+--- !u!114 &5687391209592846766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039248648598772869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a46c44ffad983924eb9bf1ecd8b0d2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileUpgrade
+  tileGrid: {fileID: 8882862855357961664}
+  cityTilePrefabs:
+  - {fileID: 7348327155288334026, guid: d4a6fd205a22a1847a46deeaa78c4536, type: 3}
+  - {fileID: -879753657287651595, guid: 869462e2e74a97046bdf675af353c90d, type: 3}
+  - {fileID: -3805275080146430983, guid: ecf474658490ef445af8a61d7d277fc5, type: 3}
+  - {fileID: -4055906844765838606, guid: 2bfab47d033d20145a120a81687be3d0, type: 3}
+  bigCityTilePrefabs:
+  - {fileID: -971691992253998583, guid: 81f54e1363c47fc498ccf0f8529ac601, type: 3}
+  - {fileID: 8523314424066943370, guid: fad9ea3e2a841724bbcd3858f915db3b, type: 3}
+  - {fileID: 4591298315598215776, guid: 38973c43386276d42b9438928079c38f, type: 3}
 --- !u!1 &4447158719506465897
 GameObject:
   m_ObjectHideFlags: 0
