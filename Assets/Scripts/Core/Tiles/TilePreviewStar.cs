@@ -23,6 +23,6 @@ public class TilePreviewStar : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.up, rotationCoefficient * Time.deltaTime);
+        transform.rotation = Quaternion.AngleAxis((Time.time * rotationCoefficient) % 360, Vector3.up);
     }
 }
