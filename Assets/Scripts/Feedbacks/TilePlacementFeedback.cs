@@ -38,8 +38,6 @@ public class TilePlacementFeedback : MonoBehaviour
         StopCoroutine(hoveringCoroutine);
         hoveringCoroutine = null;
         currentTileTransform.DOKill();
-
-        Debug.Log("Hovering Stopped");
     }
 
     IEnumerator Hovering()
