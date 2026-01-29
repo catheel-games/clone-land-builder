@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
 
-public  class TileCalculator : MonoBehaviour
+public class TileCalculator : MonoBehaviour
 {
     [SerializeField] private float elementElevation = 1.0f;
     [SerializeField] private float starRadius = 0.6f;
@@ -14,11 +15,14 @@ public  class TileCalculator : MonoBehaviour
     private TilePreviewStar[] stars = new TilePreviewStar[6];
     private TilePreviewCombo combo;
 
+    private int starAmount = 0;
+
     public void CalculateBonuses(Hexagons.Coords coords, Tile tile)
     {
         int combinationAmount = 0;
 
-        Hexagons.IterateNeighbours(coords, (side, neighborCoords) => {
+        Hexagons.IterateNeighbours(coords, (side, neighborCoords) =>
+        {
             Tile neighbor = tileGrid.GetTile(neighborCoords);
             Hexagons.Type neighbourType = Hexagons.Type.Null;
             Hexagons.Type instanceType = tile.GetSide(side);
@@ -31,7 +35,7 @@ public  class TileCalculator : MonoBehaviour
             if (neighbourType == instanceType)
             {
                 combinationAmount += 1;
-             
+
                 if (stars[side] == null)
                 {
                     float angle = side * 60f + 30f;
@@ -49,7 +53,7 @@ public  class TileCalculator : MonoBehaviour
 
                     stars[side] = newStar;
                 }
-            } 
+            }
             else
             {
                 if (stars[side] != null)
@@ -92,11 +96,37 @@ public  class TileCalculator : MonoBehaviour
             }
 
         }
+
+        starAmount = combinationAmount;
     }
 
     public void ProcessBonsuses()
     {
-        foreach(TilePreviewStar star in stars)
+        List<GameObject> starObjects = new List<GameObject>();
+
+
+        foreach (TilePreviewStar star in stars)
+        {
+            if (star != null)
+            {
+                starObjects.Add(star.gameObject);
+            }
+        }
+
+        if (combo != null)
+        {
+            LevelControl.Instance.SetPlusObjects(starAmount, starObjects, combo.gameObject);
+        }
+        else
+        {
+            LevelControl.Instance.SetPlusObjects(starAmount, starObjects, null);
+        }
+
+    }
+
+    public void DestroyBonsuses()
+    {
+        foreach (TilePreviewStar star in stars)
         {
             if (star != null)
             {

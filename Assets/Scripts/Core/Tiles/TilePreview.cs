@@ -74,14 +74,18 @@ public class TilePreview : MonoBehaviour
     public void EndPreview(bool isTileAccepted)
     {
         tilePreviewInput.LockRotation();
-        tileCalculator.ProcessBonsuses();
 
         tilePlacementFeedback.StopHovering();
 
 
         if (!isTileAccepted)
         {
+            tileCalculator.DestroyBonsuses();
             tileDenyingPreviewFeedback.Activate(tileInstance.gameObject);
+        }
+
+        else if (isTileAccepted) {
+            tileCalculator.ProcessBonsuses();
         }
         
         tileInstance = null;

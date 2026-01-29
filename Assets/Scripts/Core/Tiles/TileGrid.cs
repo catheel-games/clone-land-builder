@@ -8,6 +8,7 @@ public class TileGrid : MonoBehaviour
     [SerializeField] private TilePlacer tilePlacerPrefab;
 
     [SerializeField] private TileDenyingGridFeedback tileDenyingGridFeedback;
+    [SerializeField] private TileAcceptingGridFeedback tileAcceptingGridFeedback;
 
     private Dictionary<Hexagons.Coords, TilePlacer> frontier = new Dictionary<Hexagons.Coords, TilePlacer>();
     private Dictionary<Hexagons.Coords, Tile> tiles = new Dictionary<Hexagons.Coords, Tile>();
@@ -98,6 +99,7 @@ public class TileGrid : MonoBehaviour
 
     private void Lock(Hexagons.Coords coords)
     {
+        tileAcceptingGridFeedback.Activate(frontier);
         tilePlacerContainer.Hide();
         OnTilePlacerClick?.Invoke(coords);
     }

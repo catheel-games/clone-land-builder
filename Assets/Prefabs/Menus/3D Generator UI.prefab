@@ -241,6 +241,19 @@ MonoBehaviour:
   - {fileID: 96295032441022904}
   - {fileID: 2432837184238507246}
   whitePlatePrefab: {fileID: 919132149155446097, guid: f5e79635e2991bc4089350b04a482f6a, type: 3}
+  tilePositionsX:
+  - 0
+  - 2.4
+  - 5
+  tileTargetPositionsX:
+  - -2.65
+  - 0
+  - 2.4
+  tileMovementDuration:
+  - 0.4
+  - 0.4
+  - 0.4
+  lastTileMovementDelay: 0.2
 --- !u!1 &8562287598115846356
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class LevelCanvasControl : MonoBehaviour
     [SerializeField] private TilePreviewControlContainer tilePreviewControlContainer;
     [SerializeField] private CameraControlContainer cameraControlContainer;
     [SerializeField] private TileQueueInterface tileQueueInterface;
+    [SerializeField] private StarCollecting starCollecting;
 
     public Tile TileQueueFirstTile() => tileQueueInterface.FirstTile();
 
@@ -34,6 +35,11 @@ public class LevelCanvasControl : MonoBehaviour
     {
         tilePreviewControlContainer.Hide();
         OnTilePreviewControlClick?.Invoke(isTileAccepted);
+
+        if (isTileAccepted)
+        {
+            starCollecting.SetAcceptFeedback();
+        }
     }
 
     private void CameraControlClick(CameraControlContainer.ControlButton controlButton)

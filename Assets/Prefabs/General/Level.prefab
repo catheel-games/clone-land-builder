@@ -100,6 +100,9 @@ MonoBehaviour:
   levelCanvasControl: {fileID: 5910485773956897194}
   cameraControl: {fileID: 1445327820400637963}
   tileControl: {fileID: 8548033040556924597}
+  starCollecting: {fileID: 5992874025009319088}
+  starScore: 0
+  tileScore: 50
 --- !u!1001 &175756195208329243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -427,6 +430,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12838366a0cd075498679edd2f2f7917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelInterface
+--- !u!114 &5992874025009319088 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8398454023396649481, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
+  m_PrefabInstance: {fileID: 2857457287182247609}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c4d795fa22a564090ab32d031b230c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarCollecting
 --- !u!224 &6465669726973051516 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9087443946784728261, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
