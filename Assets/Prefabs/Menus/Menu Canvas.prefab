@@ -991,6 +991,7 @@ RectTransform:
   - {fileID: 2802221177107056624}
   - {fileID: 916439992369399127}
   - {fileID: 1492227591122507801}
+  - {fileID: 5271933912178589113}
   m_Father: {fileID: 6455152531067341338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -1269,7 +1270,7 @@ GameObject:
   - component: {fileID: 7746134997053231591}
   - component: {fileID: 737390764189939806}
   m_Layer: 5
-  m_Name: StarsText
+  m_Name: CoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3085,6 +3086,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2652193934728794998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5271933912178589113}
+  - component: {fileID: 4991834907575049115}
+  - component: {fileID: 1086958617182884852}
+  m_Layer: 5
+  m_Name: Yellow Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5271933912178589113
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2652193934728794998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4026889597649525534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4991834907575049115
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2652193934728794998}
+  m_CullTransparentMesh: 1
+--- !u!114 &1086958617182884852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2652193934728794998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 23f2064632cf6fd4bbdd29458db88dcb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3062322505523605135
 GameObject:
   m_ObjectHideFlags: 0
@@ -4515,6 +4591,7 @@ GameObject:
   - component: {fileID: 1561814511204467247}
   - component: {fileID: 2933488973005067996}
   - component: {fileID: 5499559046063775119}
+  - component: {fileID: 6769162326336196223}
   m_Layer: 5
   m_Name: Level Selection Panel
   m_TagString: Untagged
@@ -4612,6 +4689,32 @@ MonoBehaviour:
   scalableTransform: {fileID: 1534158601954512029}
   showScalingDuration: 0.25
   hideScalingDuration: 0.4
+--- !u!114 &6769162326336196223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620857481309901453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9ba6174766ff2419866377e4862cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelSelectionPanel
+  starText: {fileID: 1442377404803999958}
+  infoStarText: {fileID: 8696389104247682270}
+  coinText: {fileID: 737390764189939806}
+  newTypeTextObject: {fileID: 4756785609067904660}
+  playedBottomPart: {fileID: 4861857886433862454}
+  playedTopPart: {fileID: 365294614762495190}
+  notPlayedBottomPart: {fileID: 5905778106029669288}
+  notPlayedTopPart: {fileID: 2258583816987851608}
+  resources:
+  - {fileID: 2593206407739122242}
+  - {fileID: 5896145819572894504}
+  - {fileID: 1640451818245892392}
+  - {fileID: 6850206236468334745}
+  - {fileID: 2652193934728794998}
 --- !u!1 &4621323299056703102
 GameObject:
   m_ObjectHideFlags: 0
@@ -9528,6 +9631,7 @@ GameObject:
   - component: {fileID: 1803194731830422992}
   - component: {fileID: 5487346881765511832}
   - component: {fileID: 5095177586797344046}
+  - component: {fileID: 1376781693673474943}
   m_Layer: 5
   m_Name: Completed Level Selection Panel
   m_TagString: Untagged
@@ -9625,6 +9729,27 @@ MonoBehaviour:
   scalableTransform: {fileID: 3900985305590606232}
   showScalingDuration: 0.25
   hideScalingDuration: 0.4
+--- !u!114 &1376781693673474943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9095139317073045797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9ba6174766ff2419866377e4862cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelSelectionPanel
+  starText: {fileID: 0}
+  infoStarText: {fileID: 0}
+  coinText: {fileID: 0}
+  newTypeTextObject: {fileID: 0}
+  playedBottomPart: {fileID: 0}
+  playedTopPart: {fileID: 0}
+  notPlayedBottomPart: {fileID: 0}
+  notPlayedTopPart: {fileID: 0}
+  resources: []
 --- !u!1001 &2283934368093289457
 PrefabInstance:
   m_ObjectHideFlags: 0
