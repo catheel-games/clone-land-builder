@@ -4701,6 +4701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9ba6174766ff2419866377e4862cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSelectionPanel
+  isCompletedLevelPanel: 0
   starText: {fileID: 1442377404803999958}
   infoStarText: {fileID: 8696389104247682270}
   coinText: {fileID: 737390764189939806}
@@ -9741,6 +9742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9ba6174766ff2419866377e4862cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSelectionPanel
+  isCompletedLevelPanel: 1
   starText: {fileID: 0}
   infoStarText: {fileID: 0}
   coinText: {fileID: 0}
@@ -9749,7 +9751,12 @@ MonoBehaviour:
   playedTopPart: {fileID: 0}
   notPlayedBottomPart: {fileID: 0}
   notPlayedTopPart: {fileID: 0}
-  resources: []
+  resources:
+  - {fileID: 3461192279627340736}
+  - {fileID: 1039621835937501881}
+  - {fileID: 4452316986438620424}
+  - {fileID: 1717636301269798804}
+  - {fileID: 6466380473776515016}
 --- !u!1001 &2283934368093289457
 PrefabInstance:
   m_ObjectHideFlags: 0

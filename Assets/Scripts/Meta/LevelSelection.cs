@@ -8,6 +8,7 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private UIContainer completedLevelSelection;
 
     [SerializeField] private LevelSelectionPanel levelSelectionPanel;
+    [SerializeField] private LevelSelectionPanel completedLevelSelectionPanel;
 
     [SerializeField] private Animator[] levelAnimators;
     [SerializeField] private Image[] levelImages;
@@ -30,6 +31,7 @@ public class LevelSelection : MonoBehaviour
     private void Start()
     {
         levelSelectionPanel = levelSelection.gameObject.GetComponent<LevelSelectionPanel>();
+        completedLevelSelectionPanel = completedLevelSelection.gameObject.GetComponent<LevelSelectionPanel>();
 
         SetLevelButtons();
     }
@@ -105,17 +107,21 @@ public class LevelSelection : MonoBehaviour
         {
             completedLevelSelection.Show();
 
+            completedLevelSelectionPanel.SetResourceValues(levelData.levelTiles);
         }
         else if (progress.state == LevelProgress.LevelState.Blocked)
         {
             Debug.Log("This level is Blocked");
         }
-        else {
+        else
+        {
             levelSelection.Show();
 
             bool played = progress.state == LevelProgress.LevelState.InProgress;
             levelSelectionPanel.SetValues(levelData.goalValue, levelData.coinValue, played, levelData.levelTiles);
         }
 
+        GameData.Instance.currentLevelID = levelData.levelIndex;
+        SaveLoadManager.Instance.SaveData();
     }
 }

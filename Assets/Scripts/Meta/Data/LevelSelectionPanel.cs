@@ -3,6 +3,8 @@ using TMPro;
 
 public class LevelSelectionPanel : MonoBehaviour
 {
+    [SerializeField] private bool isCompletedLevelPanel = false;
+
     [SerializeField] private TextMeshProUGUI starText;
     [SerializeField] private TextMeshProUGUI infoStarText;
     [SerializeField] private TextMeshProUGUI coinText;
@@ -36,5 +38,13 @@ public class LevelSelectionPanel : MonoBehaviour
             resources[i].SetActive(resourcesInLevel[i]);
         }
     }
-    
+
+
+    public void SetResourceValues(bool[] resourcesInLevel)
+    {
+        for (int i = 0; i < resources.Length; i++)
+        {
+            resources[i].SetActive(resourcesInLevel[i]);
+        }
+    }
 }

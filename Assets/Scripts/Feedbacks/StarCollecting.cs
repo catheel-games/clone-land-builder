@@ -34,8 +34,11 @@ public class StarCollecting : MonoBehaviour
     private List<RectTransform> spawnedStars = new();
     private List<RectTransform> spawnedTiles = new();
 
-    public void SetMaximumStars() {
-        //Set starText2 to LevelData Max
+    public void SetDataUI(int maxStarValue)
+    {
+        starText1.text = LevelControl.Instance.starScore.ToString();
+        starText2.text = maxStarValue.ToString();
+        tileText.text = LevelControl.Instance.tileScore.ToString();
     }
 
     public void GetPlusObjects(int starAmountRef, List<GameObject> starObjectsRef, GameObject tileObjectRef)
@@ -144,7 +147,8 @@ public class StarCollecting : MonoBehaviour
             Sequence wholeSeq = DOTween.Sequence();
 
             wholeSeq.Insert(0f, starScoreTransform.DOAnchorPosX(0, 0.1f))
-                    .Insert(0.1f, starsSeq);
+                    .Insert(0.1f, starsSeq)
+                    .InsertCallback(1f, LevelControl.Instance.SaveTile);
 
             if (tileAmount != 0) {
                 wholeSeq.Insert(0.45f, tilesSeq);

@@ -1312,6 +1312,7 @@ GameObject:
   - component: {fileID: 3935632088181059373}
   - component: {fileID: 8083601114522849031}
   - component: {fileID: 932506847147211810}
+  - component: {fileID: 4762130789342674375}
   m_Layer: 5
   m_Name: Level Top Part Interface
   m_TagString: Untagged
@@ -1371,6 +1372,21 @@ MonoBehaviour:
   childContainers: []
   canvasGroup: {fileID: 8083601114522849031}
   activeMode: 1
+--- !u!114 &4762130789342674375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909140094468335752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f9caef061854b4ca945f929a8352e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelInterfaceData
+  starCircleObject: {fileID: 362973688914883724}
+  starCounterObject: {fileID: 6774400488835774819}
+  endLevelPanelObject: {fileID: 2459527681954794719}
 --- !u!1 &4290138132104930685
 GameObject:
   m_ObjectHideFlags: 0

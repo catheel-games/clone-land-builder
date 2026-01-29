@@ -8,6 +8,7 @@ public class LevelControl : Singleton<LevelControl>
     [SerializeField] private TileControl tileControl;
 
     [SerializeField] private StarCollecting starCollecting;
+    [SerializeField] private LevelDataSetup levelDataSetup;
 
     public int starScore;
     public int tileScore = 50;
@@ -71,6 +72,11 @@ public class LevelControl : Singleton<LevelControl>
     public void SetPlusObjects(int starAmount, List<GameObject> starObjects, GameObject tileObject)
     {
         starCollecting.GetPlusObjects(starAmount, starObjects, tileObject);
+    }
+
+    public void SaveTile()
+    {
+        levelDataSetup.SaveData();
     }
 
 }

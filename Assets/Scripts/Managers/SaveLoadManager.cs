@@ -12,10 +12,12 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     private void Start()
     {
         gameData = GameData.Instance;
-        SaveData();
     }
 
-    public void SaveData() {
+    public void SaveData()
+    {
+        gameData = GameData.Instance;
+
         string json = JsonUtility.ToJson(gameData);
         Debug.Log("Saving: " + json);
 
