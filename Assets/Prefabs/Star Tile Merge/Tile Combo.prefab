@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilePreviewCombo
   combinationNumberText: {fileID: 8283147292993487470}
-  visual: {fileID: 6804189914238131827}
+  visual: {fileID: 6135738884895917257}
   pullInFeedback: {fileID: 5401170437051848463}
 --- !u!114 &5401170437051848463
 MonoBehaviour:
@@ -124,11 +124,6 @@ PrefabInstance:
 --- !u!4 &6135738884895917257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 44ade7acb2c044f41b2ad671917b04eb, type: 3}
-  m_PrefabInstance: {fileID: 5957206211638633250}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6804189914238131827 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 44ade7acb2c044f41b2ad671917b04eb, type: 3}
   m_PrefabInstance: {fileID: 5957206211638633250}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8283147292993487470 stripped

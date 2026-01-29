@@ -9,11 +9,13 @@ public class TilePreviewComboPullInFeedback : MonoBehaviour
 
     private Sequence pullInSequence;
 
-    public void Play(GameObject mainVisual, TilePreviewStar[] stars)
+    public void Play(Transform mainVisual, TilePreviewStar[] stars)
     {
         pullInSequence = DOTween.Sequence();
 
-        mainVisual.SetActive(false);
+        Vector3 mainVisualInitialScale = mainVisual.localScale;
+
+        mainVisual.localScale = Vector3.zero;
 
         float linearCoefficient = 4 * shardMaxHeight / duration;
         float quadraticCoefficient = -linearCoefficient / duration;
@@ -49,10 +51,7 @@ public class TilePreviewComboPullInFeedback : MonoBehaviour
             }
         }
 
-        pullInSequence.OnComplete(() =>
-        {
-           mainVisual.SetActive(true); 
-        });
+        pullInSequence.Join(mainVisual.DOScale(mainVisualInitialScale.x, duration * 0.1f).SetDelay(duration * 0.9f));
     }
 
     public void Kill()

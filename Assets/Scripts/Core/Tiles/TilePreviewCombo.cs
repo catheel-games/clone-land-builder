@@ -4,7 +4,7 @@ using UnityEngine;
 public class TilePreviewCombo : MonoBehaviour
 {
     [SerializeField] private TMP_Text combinationNumberText;
-    [SerializeField] private GameObject visual;
+    [SerializeField] private Transform visual;
     [SerializeField] private TilePreviewComboPullInFeedback pullInFeedback;
 
     private int combinationNumber;
