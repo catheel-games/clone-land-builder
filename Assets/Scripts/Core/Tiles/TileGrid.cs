@@ -109,4 +109,13 @@ public class TileGrid : MonoBehaviour
         tileDenyingGridFeedback.Activate(frontier);
         tilePlacerContainer.Show();
     }
+
+    public void ReplaceTile(Hexagons.Coords coords, Tile newTile)
+    {
+        Tile oldTile = tiles[coords];
+        Destroy(oldTile.gameObject);
+        newTile.transform.SetParent(transform, false);
+        newTile.transform.position = Hexagons.HexToWorld(coords);
+        tiles[coords] = newTile;
+    }
 }
