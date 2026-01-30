@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections.Generic;
@@ -45,10 +46,10 @@ public class TileCalculator : MonoBehaviour
                     );
 
                     newStar.transform.SetParent(transform, false);
-
                     newStar.transform.localPosition = Vector3.up * elementElevation + Quaternion.AngleAxis(angle, Vector3.up) * Vector3.forward * starRadius;
-
                     newStar.transform.localRotation = Quaternion.Euler(0f, angle, 0f);
+
+                    newStar.Setup(neighborCoords);
 
                     stars[side] = newStar;
                 }
@@ -76,16 +77,41 @@ public class TileCalculator : MonoBehaviour
                 transform
             );
 
-            combo.transform.localPosition = new Vector3(0f, elementElevation, 0f);
+            combo.transform.localPosition = new Vector3(0f, elementElevation * 0.6f, 0f);
+
+            switch (combinationAmount)
+            {
+                case 3:
+                    combo.Setup(1, stars);
+                    break;
+                case 4:
+                    combo.Setup(2, stars);
+                    break;
+                case 5:
+                    combo.Setup(3, stars);
+                    break;
+                case 6:
+                    combo.Setup(6, stars);
+                    break;
+            }
+
         }
 
         starAmount = combinationAmount;
+
+        if (starAmount > 0)
+        {
+            StarCollecting.Instance.SetStarScoreBonusMode(starAmount);
+        }
+        else
+        {
+            StarCollecting.Instance.SetStarScoreMainMode();
+        }
     }
 
     public void ProcessBonsuses()
     {
         List<GameObject> starObjects = new List<GameObject>();
-
 
         foreach (TilePreviewStar star in stars)
         {
@@ -103,7 +129,6 @@ public class TileCalculator : MonoBehaviour
         {
             LevelControl.Instance.SetPlusObjects(starAmount, starObjects, null);
         }
-
     }
 
     public void DestroyBonsuses()
@@ -112,12 +137,16 @@ public class TileCalculator : MonoBehaviour
         {
             if (star != null)
             {
+                star.Kill();
+
                 Destroy(star.gameObject);
             }
         }
 
         if (combo != null)
         {
+            combo.Kill();
+
             Destroy(combo.gameObject);
         }
     }

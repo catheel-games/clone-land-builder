@@ -88,6 +88,7 @@ public class TilePreview : MonoBehaviour
             tileCalculator.ProcessBonsuses();
         }
         
+        StarCollecting.Instance.SetStarScoreMainMode();
         tileInstance = null;
     }
 }
