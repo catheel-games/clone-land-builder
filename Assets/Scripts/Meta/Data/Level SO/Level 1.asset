@@ -16,3 +16,4 @@ MonoBehaviour:
   goalValue: 40
   coinValue: 40
   reward: 0
+  levelTiles: 0101010000

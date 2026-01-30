@@ -10,6 +10,7 @@ public class LevelDataSO : ScriptableObject
 
     public LevelReward reward;
 
+    public bool[] levelTiles = {false, false, false, false, false};
     public enum LevelReward
     {
         ForestUnlocked,

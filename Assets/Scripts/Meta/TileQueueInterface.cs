@@ -7,6 +7,12 @@ public class TileQueueInterface : MonoBehaviour
     [SerializeField] private Transform[] tileSlots;
     [SerializeField] private GameObject whitePlatePrefab;
 
+    [Header("Animation Values")]
+    [SerializeField] private float[] tilePositionsX;
+    [SerializeField] private float[] tileTargetPositionsX;
+    [SerializeField] private float[] tileMovementDuration;
+    [SerializeField] private float lastTileMovementDelay = 0.2f;
+
     private List<GameObject> displayedTiles = new List<GameObject>();
     private Tile firstTile;
 
@@ -52,6 +58,18 @@ public class TileQueueInterface : MonoBehaviour
             {
                 newTile.transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
             }
+
+            int index = i;
+
+            tileSlots[index].DOLocalMoveX(tilePositionsX[index], 0f);
+
+            if (index == 2) {
+                DOVirtual.DelayedCall (lastTileMovementDelay,
+                    ()=> tileSlots[index].DOLocalMoveX(tileTargetPositionsX[index], tileMovementDuration[index])
+                );
+            }
+            else
+                tileSlots[index].DOLocalMoveX(tileTargetPositionsX[index], tileMovementDuration[index]);
         }
     }
 }
