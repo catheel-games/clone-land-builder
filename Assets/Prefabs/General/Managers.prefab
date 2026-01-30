@@ -238,7 +238,11 @@ MonoBehaviour:
       clip: {fileID: 0}
       pitch: {x: 1, y: 1}
   musicMixerGroup: {fileID: -2426639153622354055, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
-  musicGroups: []
+  musicGroups:
+  - name: Loading
+    musics:
+    - name: LoadingMusic
+      clip: {fileID: 8300000, guid: ae8e28b32328e8b48a183b8bf7ad46bd, type: 3}
 --- !u!1 &5149440950281139509
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c709804a54e7e8347b8b422743a1e84c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadManager
-  loadingScreen: {fileID: 0}
+  loadingScreenContainer: {fileID: 0}
 --- !u!1 &5956306157709956483
 GameObject:
   m_ObjectHideFlags: 0
