@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8602073074647150088}
   - component: {fileID: 8218377590523387013}
   - component: {fileID: 4872902363011930995}
-  - component: {fileID: 5226884457338262486}
   m_Layer: 5
   m_Name: Level
   m_TagString: Untagged
@@ -139,18 +138,6 @@ MonoBehaviour:
   levelSelection: {fileID: 483531536068804134}
   button: {fileID: 8218377590523387013}
   levelIndex: 2
---- !u!114 &5226884457338262486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 166593111827872660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ff6b95d20c6db40b5f9b5326cfcd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelData
 --- !u!1 &187191082998541109
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +573,6 @@ GameObject:
   - component: {fileID: 3754321456243941700}
   - component: {fileID: 1480326213236559715}
   - component: {fileID: 8065912436159212056}
-  - component: {fileID: 5576204652917468610}
   m_Layer: 5
   m_Name: Level
   m_TagString: Untagged
@@ -712,18 +698,6 @@ MonoBehaviour:
   levelSelection: {fileID: 483531536068804134}
   button: {fileID: 1480326213236559715}
   levelIndex: 0
---- !u!114 &5576204652917468610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018265307052760889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ff6b95d20c6db40b5f9b5326cfcd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelData
 --- !u!1 &1851747179523485240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,7 +1674,6 @@ GameObject:
   - component: {fileID: 7866891238380153714}
   - component: {fileID: 7426006680907533441}
   - component: {fileID: 4644172178642159930}
-  - component: {fileID: 1290648158895321896}
   m_Layer: 5
   m_Name: Level
   m_TagString: Untagged
@@ -1826,18 +1799,6 @@ MonoBehaviour:
   levelSelection: {fileID: 483531536068804134}
   button: {fileID: 7426006680907533441}
   levelIndex: 1
---- !u!114 &1290648158895321896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4387593013154679582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ff6b95d20c6db40b5f9b5326cfcd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelData
 --- !u!1 &4556870053720878157
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,6 +2622,7 @@ MonoBehaviour:
   levelSelection: {fileID: 0}
   completedLevelSelection: {fileID: 0}
   levelSelectionPanel: {fileID: 0}
+  completedLevelSelectionPanel: {fileID: 0}
   levelAnimators:
   - {fileID: 8495740155713731745}
   - {fileID: 6027536334781571870}

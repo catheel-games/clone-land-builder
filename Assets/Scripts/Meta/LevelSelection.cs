@@ -44,6 +44,19 @@ public class LevelSelection : MonoBehaviour
 
             LevelProgress.LevelState _state = progress != null ? progress.state : LevelProgress.LevelState.Blocked;
 
+            if (progress == null)
+            {
+                progress = new LevelProgress
+                {
+                    levelIndex = i + 1,
+                    currentScore = 0,
+                    currentTilesLeft = 50,
+                    state = LevelProgress.LevelState.Blocked
+                };
+
+                GameData.Instance.levelsProgress.Add(progress);
+            }
+
             levelInProgressObjects[i].SetActive(false);
 
             if (i != 0)

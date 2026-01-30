@@ -5,29 +5,9 @@ using System;
 
 public class TileGenerator : MonoBehaviour
 {
-    [Serializable]
-    public class FullTiles
-    {
-        public Tile[] fullGrassTiles;
-        public Tile[] fullWaterTiles;
-        public Tile[] fullTownTiles;
-        public Tile[] fullYellowTiles;
-        public Tile[] fullForestTiles;
-    }
+    [SerializeField] TileGeneratorSO[] tileGeneratorSO;
 
-    [Serializable]
-    public class TypeTiles
-    {
-        public Tile[] grassTiles;
-        public Tile[] waterTiles;
-        public Tile[] townTiles;
-        public Tile[] yellowTiles;
-        public Tile[] forestTiles;
-    }
-
-    // [SerializeField] private Tile[] tiles;
-    [SerializeField] private FullTiles fullTiles;
-    [SerializeField] private TypeTiles typeTiles; 
+    private TileGeneratorSO currentGenerator;
 
     List<Tile> setQueue = new List<Tile>();
 
@@ -39,6 +19,8 @@ public class TileGenerator : MonoBehaviour
 
     void Start()
     {
+        currentGenerator = tileGeneratorSO[GameData.Instance.currentLevelID - 1];
+
         InitializeQueue();
     }
 
@@ -94,22 +76,22 @@ public class TileGenerator : MonoBehaviour
         switch (type)
         {
             case Hexagons.Type.Grass:
-                arr = fullTiles.fullGrassTiles;
+                arr = currentGenerator.fullTiles.fullGrassTiles;
                 break;
             case Hexagons.Type.Water:
-                arr = fullTiles.fullWaterTiles;
+                arr = currentGenerator.fullTiles.fullWaterTiles;
                 break;
             case Hexagons.Type.Town:
-                arr = fullTiles.fullTownTiles;
+                arr = currentGenerator.fullTiles.fullTownTiles;
                 break;
             case Hexagons.Type.Yellow:
-                arr = fullTiles.fullYellowTiles;
+                arr = currentGenerator.fullTiles.fullYellowTiles;
                 break;
             case Hexagons.Type.Forest:
-                arr = fullTiles.fullForestTiles;
+                arr = currentGenerator.fullTiles.fullForestTiles;
                 break;
             default:
-                arr = fullTiles.fullGrassTiles;
+                arr = currentGenerator.fullTiles.fullGrassTiles;
                 break;
         }
 
@@ -125,22 +107,22 @@ public class TileGenerator : MonoBehaviour
         switch (type)
         {
             case Hexagons.Type.Grass:
-                arr = typeTiles.grassTiles;
+                arr = currentGenerator.typeTiles.grassTiles;
                 break;
             case Hexagons.Type.Water:
-                arr = typeTiles.waterTiles;
+                arr = currentGenerator.typeTiles.waterTiles;
                 break;
             case Hexagons.Type.Town:
-                arr = typeTiles.townTiles;
+                arr = currentGenerator.typeTiles.townTiles;
                 break;
             case Hexagons.Type.Yellow:
-                arr = typeTiles.yellowTiles;
+                arr = currentGenerator.typeTiles.yellowTiles;
                 break;
             case Hexagons.Type.Forest:
-                arr = typeTiles.forestTiles;
+                arr = currentGenerator.typeTiles.forestTiles;
                 break;
             default:
-                arr = typeTiles.grassTiles;
+                arr = currentGenerator.typeTiles.grassTiles;
                 break;
         }
 
