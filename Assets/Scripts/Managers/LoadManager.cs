@@ -12,7 +12,7 @@ public class LoadManager : Singleton<LoadManager>
     {
         if (operation == null)
         {
-            AudioManager.Instance.PlayMusicGroup("Loading");
+            AudioManager.Instance.PlaySound("Other", "Loading");
             StartCoroutine(LoadSceneCoroutine(sceneName));
         }
     }

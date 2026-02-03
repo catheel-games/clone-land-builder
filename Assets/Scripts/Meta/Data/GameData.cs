@@ -26,10 +26,7 @@ public class GameData
 
     public void SetData(List<LevelProgress> levels)
     {
-        for (int i = 0; i < levelsProgress.Count; i++)
-        {
-            levelsProgress[i] = levels[i];
-        }
+        levelsProgress = new List<LevelProgress>(levels);
     }
 
 }

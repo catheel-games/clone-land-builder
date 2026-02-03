@@ -14,5 +14,10 @@ public class DataTesting : MonoBehaviour
         {
             SaveLoadManager.Instance.SaveData();
         }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            SaveLoadManager.Instance.DeleteData();
+        }
     }
 }

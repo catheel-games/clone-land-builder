@@ -237,6 +237,9 @@ MonoBehaviour:
     - name: Eiffel Unlocked
       clip: {fileID: 0}
       pitch: {x: 1, y: 1}
+    - name: Loading
+      clip: {fileID: 8300000, guid: ae8e28b32328e8b48a183b8bf7ad46bd, type: 3}
+      pitch: {x: 1, y: 1}
   musicMixerGroup: {fileID: -2426639153622354055, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
   musicGroups:
   - name: Loading
@@ -383,3 +386,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a7b06bdac5835a9419d471c88bc9cb34, type: 2}
   - {fileID: 11400000, guid: 5344e11ef7915f243b3b273aa9106a96, type: 2}
   - {fileID: 11400000, guid: bd6abef103ae19241ba0a421d25d70cd, type: 2}
+  levelCount: 3

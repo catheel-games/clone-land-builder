@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class LevelSelection : MonoBehaviour
 {
@@ -33,7 +34,10 @@ public class LevelSelection : MonoBehaviour
         levelSelectionPanel = levelSelection.gameObject.GetComponent<LevelSelectionPanel>();
         completedLevelSelectionPanel = completedLevelSelection.gameObject.GetComponent<LevelSelectionPanel>();
 
-        SetLevelButtons();
+        DOVirtual.DelayedCall(0.02f, ()=>
+        {
+            SetLevelButtons();
+        });
     }
 
     public void SetLevelButtons()
@@ -43,19 +47,6 @@ public class LevelSelection : MonoBehaviour
             LevelProgress progress = GameData.Instance.GetLevelProgress(i+1);
 
             LevelProgress.LevelState _state = progress != null ? progress.state : LevelProgress.LevelState.Blocked;
-
-            if (progress == null)
-            {
-                progress = new LevelProgress
-                {
-                    levelIndex = i + 1,
-                    currentScore = 0,
-                    currentTilesLeft = 50,
-                    state = LevelProgress.LevelState.Blocked
-                };
-
-                GameData.Instance.levelsProgress.Add(progress);
-            }
 
             levelInProgressObjects[i].SetActive(false);
 
@@ -102,19 +93,6 @@ public class LevelSelection : MonoBehaviour
         levelData = SaveLoadManager.Instance.levelDatas[level];
 
         progress = GameData.Instance.GetLevelProgress(levelData.levelIndex);
-
-        if (progress == null)
-        {
-            progress = new LevelProgress
-            {
-                levelIndex = levelData.levelIndex,
-                currentScore = 0,
-                currentTilesLeft = 50,
-                state = LevelProgress.LevelState.Blocked
-            };
-
-            GameData.Instance.levelsProgress.Add(progress);
-        }
 
         if (progress.state == LevelProgress.LevelState.Finished)
         {
