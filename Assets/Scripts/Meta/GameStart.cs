@@ -4,6 +4,10 @@ public class GameStart : MonoBehaviour
 {
     void Start()
     {
-        LoadManager.Instance.LoadScene("Menu");
+        if (GameData.Instance.currentLevelID == 0)
+            LoadManager.Instance.LoadScene("Menu");
+
+        else
+            LoadManager.Instance.LoadScene("Game");
     }
 }
