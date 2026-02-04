@@ -10,6 +10,12 @@ public class LoadManager : Singleton<LoadManager>
 
     public void LoadScene(string sceneName)
     {
+        if (sceneName == "Menu")
+        {
+            GameData.Instance.currentLevelID = 0;
+            SaveLoadManager.Instance.SaveData();
+        }
+
         if (operation == null)
         {
             AudioManager.Instance.PlaySound("Other", "Loading");
