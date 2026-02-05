@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8476330011625406227}
   - component: {fileID: 8398454023396649481}
   - component: {fileID: 890474196991159146}
+  - component: {fileID: 5438516041203987422}
   m_Layer: 5
   m_Name: Level Scene Canvas
   m_TagString: Untagged
@@ -175,12 +176,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d71bc06d6b5e940b5a3cf4b9309c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelStartFeedbacks
+  _FTUE: {fileID: 5438516041203987422}
   _FTUECommentContainer: {fileID: 7171265357070871510}
-  _FTUEPanelDefaultContainer: {fileID: 5768274575782547440}
   starCircleRectTransform: {fileID: 4960509752276817145}
   starCounterRectTransform: {fileID: 8430892082976758902}
   starTargetX: 125
   starStartX: -100
+--- !u!114 &5438516041203987422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3145964109104998210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1682d5aa87646f449a43849f21e6c1bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FTUE
+  cameraControl: {fileID: 0}
+  secondTilePosition: {x: 1.732051, y: 0, z: 0}
+  _FTUEPanelDefaultContainer: {fileID: 5768274575782547440}
+  handRectTransform: {fileID: 5000705963843810629}
+  handAnimator: {fileID: 2828683686998211365}
+  acceptPos: {x: 100, y: -700}
+  tileSetPos: {x: 50, y: -175}
+  rotatePos: {x: -200, y: -300}
+  rotateArrowsObject: {fileID: 3033450686794205754}
+  declineButton: {fileID: 8589532537886704303}
+  declineButtonImage: {fileID: 1234599232109246948}
+  declineFtueSprite: {fileID: 21300000, guid: 7f645d633b11a1f42a14c903b8eddde7, type: 3}
+  declineDefaultSprite: {fileID: 21300000, guid: 323c58330372a684886018f907c30174, type: 3}
 --- !u!1001 &456052117639033481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -669,6 +695,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8987a0fbe7c4424facfe828b3e469fd, type: 3}
+--- !u!114 &1234599232109246948 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2931018961444511541, guid: b8987a0fbe7c4424facfe828b3e469fd, type: 3}
+  m_PrefabInstance: {fileID: 4147603336797021905}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &4538006066792537542 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 537339286383393559, guid: b8987a0fbe7c4424facfe828b3e469fd, type: 3}
@@ -685,6 +722,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6667439666796085330, guid: b8987a0fbe7c4424facfe828b3e469fd, type: 3}
   m_PrefabInstance: {fileID: 4147603336797021905}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8589532537886704303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5673155746412848254, guid: b8987a0fbe7c4424facfe828b3e469fd, type: 3}
+  m_PrefabInstance: {fileID: 4147603336797021905}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &4494036248219970125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1394,6 +1442,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc57dcc184c7e3048aa3da37c0681920, type: 3}
+--- !u!95 &2828683686998211365 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8809009574057806785, guid: bc57dcc184c7e3048aa3da37c0681920, type: 3}
+  m_PrefabInstance: {fileID: 6736931333437878500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3033450686794205754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8603731304637004510, guid: bc57dcc184c7e3048aa3da37c0681920, type: 3}
+  m_PrefabInstance: {fileID: 6736931333437878500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5000705963843810629 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1736261689987630497, guid: bc57dcc184c7e3048aa3da37c0681920, type: 3}
+  m_PrefabInstance: {fileID: 6736931333437878500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5768274575782547440 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 969228780733005588, guid: bc57dcc184c7e3048aa3da37c0681920, type: 3}

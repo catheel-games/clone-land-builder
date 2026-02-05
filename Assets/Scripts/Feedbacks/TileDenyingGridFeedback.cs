@@ -10,11 +10,13 @@ public class TileDenyingGridFeedback : MonoBehaviour
     {       
         foreach (KeyValuePair<Hexagons.Coords, TilePlacer> pair in frontier)
         {
+            pair.Value.gameObject.SetActive(false);
             pair.Value.transform.DOScale(0, 0);
         }
 
         foreach (KeyValuePair<Hexagons.Coords, TilePlacer> pair in frontier)
         {
+            pair.Value.gameObject.SetActive(true);
             pair.Value.transform.DOScale(1, scaleTo1Duration);
         }
 

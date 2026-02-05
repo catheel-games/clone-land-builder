@@ -3,9 +3,8 @@ using DG.Tweening;
 
 public class LevelStartFeedbacks : MonoBehaviour
 {
-
+    [SerializeField] private FTUE _FTUE;
     [SerializeField] private CommentContainer _FTUECommentContainer;
-    [SerializeField] private DefaultContainer _FTUEPanelDefaultContainer;
 
     [SerializeField] private RectTransform starCircleRectTransform;
     [SerializeField] private RectTransform starCounterRectTransform;
@@ -13,8 +12,12 @@ public class LevelStartFeedbacks : MonoBehaviour
     [SerializeField] private float starTargetX;
     [SerializeField] private float starStartX;
 
+    private bool isFTUE = false;
+
     void Start()
     {
+        isFTUE = !GameData.Instance.ftueIsEnded;
+
         SetStartAnimations();
     }
 
@@ -29,11 +32,14 @@ public class LevelStartFeedbacks : MonoBehaviour
                 .Join(starCounterRectTransform.DOAnchorPosX(starTargetX + 20, 0.5f))
                 .Append(starCircleRectTransform.DOAnchorPosX(starTargetX, 0.15f))
                 .Join(starCounterRectTransform.DOAnchorPosX(starTargetX, 0.15f))
-                .AppendCallback(() => _FTUECommentContainer.Show())
-                // If FTUE >>
-                .AppendCallback(() => _FTUEPanelDefaultContainer.Show());             
-    }
+                .AppendCallback(() => _FTUECommentContainer.Show());
 
+                if (isFTUE)
+                {
+                    startSeq.InsertCallback(0.25f, () => _FTUE.Setup());
+                }
+
+    }
 
 
 }

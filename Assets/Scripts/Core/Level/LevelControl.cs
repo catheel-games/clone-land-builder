@@ -9,6 +9,7 @@ public class LevelControl : Singleton<LevelControl>
 
     [SerializeField] private StarCollecting starCollecting;
     [SerializeField] private LevelDataSetup levelDataSetup;
+    [SerializeField] private FTUE _FTUE;
 
     public int starScore;
     public int tileScore = 50;
@@ -40,6 +41,7 @@ public class LevelControl : Singleton<LevelControl>
 
     private void EnterTileViewMode(Hexagons.Coords coords)
     {
+        _FTUE.SetTile();
         levelCanvasControl.EnterTileViewMode();
         cameraControl.LockPosition(Hexagons.HexToWorld(coords));
     }
@@ -48,6 +50,9 @@ public class LevelControl : Singleton<LevelControl>
     {
         cameraControl.UnlockPosition();
         tileControl.ExitTilePreview(isTileAccepted);
+
+        if (isTileAccepted)
+            _FTUE.TileAccept();
     }
 
     private void CameraControlClick(CameraControlContainer.ControlButton controlButton)

@@ -17,17 +17,17 @@ public class TileGrid : MonoBehaviour
 
     void Start()
     {
-        SetTilePlacer(new Hexagons.Coords(0, 0));
+        SetTilePlacer(new Hexagons.Coords(0, 0), true);
     }
     
-    private void SetTilePlacer(Hexagons.Coords coords)
+    private void SetTilePlacer(Hexagons.Coords coords, bool isFirstTile = false)
     {
         if (!frontier.ContainsKey(coords))
         {
             if (!tiles.ContainsKey(coords))
             {
                 TilePlacer newTilePlacer = Instantiate(tilePlacerPrefab, tilePlacerContainer.transform);
-                newTilePlacer.Setup(coords);
+                newTilePlacer.Setup(coords, isFirstTile);
                 newTilePlacer.OnClick += Lock;
                 frontier.Add(coords, newTilePlacer);
             }

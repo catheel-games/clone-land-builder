@@ -7,6 +7,7 @@ public class GameData
 {
     public List<LevelProgress> levelsProgress = new();
     public int currentLevelID = 1;
+    public bool ftueIsEnded = false;
 
     private static GameData _instance = null;
     public static GameData Instance

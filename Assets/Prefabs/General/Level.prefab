@@ -127,6 +127,7 @@ MonoBehaviour:
   tileControl: {fileID: 8548033040556924597}
   starCollecting: {fileID: 5992874025009319088}
   levelDataSetup: {fileID: 6976633817952614991}
+  _FTUE: {fileID: 7844927249955640679}
   starScore: 0
   tileScore: 50
 --- !u!114 &6976633817952614991
@@ -446,6 +447,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5438516041203987422, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
+      propertyPath: cameraControl
+      value: 
+      objectReference: {fileID: 1445327820400637963}
     - target: {fileID: 7204459747358388189, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
       propertyPath: activeMode
       value: 0
@@ -562,6 +567,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9087443946784728261, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
   m_PrefabInstance: {fileID: 2857457287182247609}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7844927249955640679 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5438516041203987422, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
+  m_PrefabInstance: {fileID: 2857457287182247609}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1682d5aa87646f449a43849f21e6c1bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FTUE
 --- !u!1001 &3557383013790763079
 PrefabInstance:
   m_ObjectHideFlags: 0
