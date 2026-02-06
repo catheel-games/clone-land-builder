@@ -6,6 +6,7 @@ using System;
 public class TileGenerator : MonoBehaviour
 {
     [SerializeField] TileGeneratorSO[] tileGeneratorSO;
+    [SerializeField] private Tile tileFTUE;
 
     private TileGeneratorSO currentGenerator;
 
@@ -21,7 +22,10 @@ public class TileGenerator : MonoBehaviour
     {
         currentGenerator = tileGeneratorSO[GameData.Instance.currentLevelID - 1];
 
-        InitializeQueue();
+        if (GameData.Instance.ftueIsEnded)
+            InitializeQueue();
+        else if (!GameData.Instance.ftueIsEnded)
+            InitializeFTUEQueue();
     }
 
     public void InitializeQueue()
@@ -30,6 +34,12 @@ public class TileGenerator : MonoBehaviour
         Hexagons.Type type2 = GetRandomTypeExcluding(type1);
         setQueue.AddRange(CreateTypedSet(type1));
         setQueue.AddRange(CreateTypedSet(type2));
+    }
+
+    public void InitializeFTUEQueue()
+    {
+        Hexagons.Type hexType = Hexagons.Type.Grass;
+        setQueue.AddRange(CreateFTUETypedSet(hexType));
     }
 
     private Tile GetRandomTile()
@@ -145,6 +155,17 @@ public class TileGenerator : MonoBehaviour
         newSet.Add(typed1);
         newSet.Add(typed2);
         newSet = newSet.OrderBy(x => UnityEngine.Random.value).ToList();
+        return newSet;
+    }
+
+    private List<Tile> CreateFTUETypedSet(Hexagons.Type type)
+    {
+        List<Tile> newSet = new List<Tile>();
+
+        newSet.Add(GetFullTile(type));
+        newSet.Add(tileFTUE);
+        newSet.Add(GetFullTile(type));
+
         return newSet;
     }
 

@@ -77,6 +77,10 @@ public class TileCalculator : MonoBehaviour
                 transform
             );
 
+            if (!GameData.Instance.matched3Tiles) {
+                LevelControl.Instance.Match3Tiles();
+            }
+
             combo.transform.localPosition = new Vector3(0f, elementElevation * 0.6f, 0f);
 
             switch (combinationAmount)

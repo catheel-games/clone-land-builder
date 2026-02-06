@@ -128,6 +128,7 @@ MonoBehaviour:
   starCollecting: {fileID: 5992874025009319088}
   levelDataSetup: {fileID: 6976633817952614991}
   _FTUE: {fileID: 7844927249955640679}
+  fTUEtileID: 0
   starScore: 0
   tileScore: 50
 --- !u!114 &6976633817952614991

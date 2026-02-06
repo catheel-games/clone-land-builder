@@ -11,6 +11,7 @@ public class LevelControl : Singleton<LevelControl>
     [SerializeField] private LevelDataSetup levelDataSetup;
     [SerializeField] private FTUE _FTUE;
 
+    public int fTUEtileID = 0;
     public int starScore;
     public int tileScore = 50;
 
@@ -41,23 +42,24 @@ public class LevelControl : Singleton<LevelControl>
 
     private void EnterTileViewMode(Hexagons.Coords coords)
     {
-        _FTUE.SetTile();
         levelCanvasControl.EnterTileViewMode();
         cameraControl.LockPosition(Hexagons.HexToWorld(coords));
+
+        _FTUE.SetTile();
     }
 
     private void ExitTileViewMode(bool isTileAccepted)
     {
+        _FTUE.TileAccept(isTileAccepted);
+
         cameraControl.UnlockPosition();
         tileControl.ExitTilePreview(isTileAccepted);
 
-        if (isTileAccepted)
-            _FTUE.TileAccept();
     }
 
     private void CameraControlClick(CameraControlContainer.ControlButton controlButton)
     {
-        switch(controlButton)
+        switch (controlButton)
         {
             case CameraControlContainer.ControlButton.RotateLeft:
                 cameraControl.RotateLeft();
@@ -77,6 +79,19 @@ public class LevelControl : Singleton<LevelControl>
     public void SetPlusObjects(int starAmount, List<GameObject> starObjects, GameObject tileObject)
     {
         starCollecting.GetPlusObjects(starAmount, starObjects, tileObject);
+
+        if (tileObject != null)
+            _FTUE.TileMatchingTutorial();
+    }
+
+    public void RotateTileFTUE()
+    {
+        _FTUE.TileRotate();
+    }
+
+    public void Match3Tiles()
+    {
+        _FTUE.Match3TilesTutorial();
     }
 
     public void SaveTile()

@@ -48,10 +48,26 @@ public class TileGrid : MonoBehaviour
                 tile.transform.SetParent(transform, false);
                 tile.transform.position = Hexagons.HexToWorld(coords);
                 tiles.Add(coords, tile);
-                
-                Hexagons.IterateNeighbours(coords, (int side, Hexagons.Coords neighbor) => {
-                    SetTilePlacer(neighbor);
-                });
+
+                if (GameData.Instance.ftueIsEnded)
+                {
+                    Hexagons.IterateNeighbours(coords, (int side, Hexagons.Coords neighbor) =>
+                    {
+                        SetTilePlacer(neighbor);
+                    });
+                }
+
+                else if (!GameData.Instance.ftueIsEnded)
+                {
+                    switch (LevelControl.Instance.fTUEtileID) {
+                        case 1:
+                            SetTilePlacer(new Hexagons.Coords(1, 0));
+                            break;
+                        case 2:
+                            SetTilePlacer(new Hexagons.Coords(Tools.Modulo(0, 2), 1));
+                            break;
+                    }
+                }
             }
         }
     }
