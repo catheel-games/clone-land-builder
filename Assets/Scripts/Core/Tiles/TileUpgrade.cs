@@ -8,6 +8,16 @@ public class TileUpgrade : MonoBehaviour
     [SerializeField] private Tile[] cityTilePrefabs;
     [SerializeField] private Tile[] bigCityTilePrefabs;
 
+    public void Upgrade(Hexagons.Coords coords, Tile upgradePrefab)
+    {
+        Tile newTile = Instantiate(upgradePrefab, tileGrid.transform);
+        tileGrid.ReplaceTile(coords, newTile);
+        newTile.Place();
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(newTile.transform.DOScaleY(0, 0)).Append(newTile.transform.DOScaleY(1, 0.3f).SetEase(Ease.OutBack));
+    }
+
     public void CheckUpgrade(Hexagons.Coords coords)
     {
         UpgradeCount(coords);
@@ -17,16 +27,6 @@ public class TileUpgrade : MonoBehaviour
             if (neighbor == null) return;
             UpgradeCount(neighborCoords);
         });
-    }
-
-    public void Upgrade(Hexagons.Coords coords, Tile upgradePrefab)
-    {
-        Tile newTile = Instantiate(upgradePrefab, tileGrid.transform);
-        tileGrid.ReplaceTile(coords, newTile);
-        newTile.Place();
-
-        Sequence seq = DOTween.Sequence();
-        seq.Append(newTile.transform.DOScaleY(0, 0)).Append(newTile.transform.DOScaleY(1, 0.3f).SetEase(Ease.OutBack));
     }
 
     private void UpgradeCount(Hexagons.Coords coords)

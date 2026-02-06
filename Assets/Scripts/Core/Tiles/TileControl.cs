@@ -7,6 +7,7 @@ public class TileControl : MonoBehaviour
     [SerializeField] private TileGrid tileGrid;
     [SerializeField] private TilePreview tilePreview;
     [SerializeField] private TileUpgrade tileUpgrade;
+    [SerializeField] private TileDecoration tileDecoration;
     [SerializeField] private TileGenerator tileGenerator;
 
     private Tile previewTile;
@@ -53,6 +54,7 @@ public class TileControl : MonoBehaviour
         {
             tileGrid.SetTile(previewTileCoords, previewTile);
             tileUpgrade.CheckUpgrade(previewTileCoords);
+            tileDecoration.CheckTile(previewTileCoords);
             tileGenerator.GetNextTile();
             OnTileGeneratorUpdate?.Invoke(tileGenerator.GetQueue());
         }
