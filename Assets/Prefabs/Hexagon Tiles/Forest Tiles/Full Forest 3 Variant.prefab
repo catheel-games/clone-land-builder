@@ -13,9 +13,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -13995438816412159, guid: 3bc6502f85ad8bf4a94a4a34fbec5273, type: 3}
     - target: {fileID: 7881820332124483673, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881820332124483673, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e4f8e2dd0566a7649b6f78d3c36963d0, type: 2}
+    - target: {fileID: 7881820332124483673, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 668413c622843bc48ad77c11b03204a6, type: 2}
     - target: {fileID: 8530140560371257740, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: m_Name
       value: Full Forest 3 Variant
@@ -91,3 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tile
   borderTypes: 030000000300000003000000030000000300000003000000
   centerType: 3
+  rotationLerpCoefficient: 10

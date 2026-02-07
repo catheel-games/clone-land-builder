@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Hexagon Material
     second: {fileID: 2100000, guid: e4f8e2dd0566a7649b6f78d3c36963d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hexagon Spherical Material
+    second: {fileID: 2100000, guid: 668413c622843bc48ad77c11b03204a6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
