@@ -1,7 +1,7 @@
 void GetLight_float(float3 WorldPosition, out float3 Direction, out float3 Color, out float Attenuation)
 {
     #if defined(SHADERGRAPH_PREVIEW)
-        Direction = 1;
+        Direction = float3(1, 1, 0);
         Color = 1;
         Attenuation = 1;
     #else
