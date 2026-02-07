@@ -11,6 +11,7 @@ public class StarCollecting : Singleton<StarCollecting>
     [SerializeField] private TextMeshProUGUI starText1;
     [SerializeField] private TextMeshProUGUI starText2;
     [SerializeField] private TextMeshProUGUI tileText;
+    [SerializeField] private TextMeshProUGUI coinText;
 
     [Header("Instantiating Prefabs")]
     [SerializeField] private RectTransform tileFlyPrefab;
@@ -43,6 +44,7 @@ public class StarCollecting : Singleton<StarCollecting>
     private Sequence starScoringBonusSlide;
     private bool isStarScoreBonusMode = false;
     private int starScoreBonusAmount = 0;
+    private int maxStarScore;
 
     void Start()
     {
@@ -54,6 +56,9 @@ public class StarCollecting : Singleton<StarCollecting>
         starText1.text = LevelControl.Instance.starScore.ToString();
         starText2.text = maxStarValue.ToString();
         tileText.text = LevelControl.Instance.tileScore.ToString();
+
+        maxStarScore = maxStarValue;
+        coinText.text = GameData.Instance.coin.ToString();
     }
 
     public void GetPlusObjects(int starAmountRef, List<GameObject> starObjectsRef, GameObject tileObjectRef)
@@ -130,7 +135,8 @@ public class StarCollecting : Singleton<StarCollecting>
                     .AppendInterval(0.125f)
                     .Join(starCircleTransform.DOScale(1.25f, 0.1f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo))
                     .AppendCallback(() => SetScore(LevelControl.Instance.starScore, starAmount, starText1))
-                    .AppendCallback(() => LevelControl.Instance.starScore += starAmount);
+                    .AppendCallback(() => LevelControl.Instance.starScore += starAmount)
+                    .AppendCallback(CheckWinning);
 
 
             starsSeq.Pause();
@@ -297,4 +303,12 @@ public class StarCollecting : Singleton<StarCollecting>
             });
     }
 
+
+    private void CheckWinning()
+    {
+        if (LevelControl.Instance.starScore >= maxStarScore)
+        {
+            LevelControl.Instance.Winning();
+        }
+    }
 }

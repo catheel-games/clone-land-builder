@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5237928470144045580}
-  - component: {fileID: 329791072452769215}
+  - component: {fileID: 603524154432162876}
   m_Layer: 0
   m_Name: Tiles
   m_TagString: Untagged
@@ -162,7 +162,7 @@ Transform:
   - {fileID: 4688614669868135712}
   m_Father: {fileID: 2081816878025352973}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &329791072452769215
+--- !u!114 &603524154432162876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,10 +171,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1801470252250217164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e73b0147bb63042aafce4402281349, type: 3}
+  m_Script: {fileID: 11500000, guid: 852d6c06e2033e045ad1dc7da055eda7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Rotate
-  target: {fileID: 1801470252250217164}
+  m_EditorClassIdentifier: Assembly-CSharp::TileUnlockRotate
 --- !u!1 &8131981473575780993
 GameObject:
   m_ObjectHideFlags: 0
