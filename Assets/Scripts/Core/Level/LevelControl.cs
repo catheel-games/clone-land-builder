@@ -94,6 +94,10 @@ public class LevelControl : Singleton<LevelControl>
         _FTUE.Match3TilesTutorial();
     }
 
+    public void EndingFTUEGrid() {
+        tileControl.Tilegrid.TileSetFTUEEnded();
+    }
+
     public void SaveTile()
     {
         levelDataSetup.SaveData();

@@ -28,12 +28,17 @@ public class InputManager : Singleton<InputManager>
 
     private Vector2 screenCenter = new Vector2(0.5f, 0.5f * Screen.height / Screen.width);
 
+    private bool inputIsEnabled = true;
+
     void Update()
     {
-        handleOneFingerSlide();
-        handleTwoFingerSlide();
-        handleMouseLeftClick();
-        handleMouseRightClick();
+        if (inputIsEnabled)
+        {
+            handleOneFingerSlide();
+            handleTwoFingerSlide();
+            handleMouseLeftClick();
+            handleMouseRightClick();
+        }
     }
 
     private Vector2 processInputPosition(Vector2 positionInput)
@@ -113,5 +118,13 @@ public class InputManager : Singleton<InputManager>
 
             OnMouseRightClickSlide?.Invoke(clickEvent);
         }
+    }
+
+    public void DisableInput() {
+        inputIsEnabled = false;
+    }
+
+    public void EnableInput() {
+        inputIsEnabled = true;
     }
 }

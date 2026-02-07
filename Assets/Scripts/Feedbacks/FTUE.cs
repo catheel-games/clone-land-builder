@@ -58,6 +58,8 @@ public class FTUE : MonoBehaviour
                 declineButton.enabled = false;
                 declineButtonImage.sprite = declineFtueSprite;
                 handRectTransform.localPosition = acceptPos;
+
+                InputManager.Instance.DisableInput();
             }
             else if (LevelControl.Instance.fTUEtileID == 1)
             {
@@ -70,6 +72,7 @@ public class FTUE : MonoBehaviour
             }
             else if (LevelControl.Instance.fTUEtileID == 2)
             {
+                _FTUEPanelDefaultContainer.Show();
                 SetOliviaText(0);
                 MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.475f), 0f);
                 AnimateCircleHoleRadius(0.5f, 0.08f, 0.2f);
@@ -114,11 +117,11 @@ public class FTUE : MonoBehaviour
                 _FTUEPanelDefaultContainer.Hide();
 
                 LevelControl.Instance.fTUEtileID++;
-                Debug.Log(LevelControl.Instance.fTUEtileID);
 
 
                 if (LevelControl.Instance.fTUEtileID == 1)
                 {
+                    InputManager.Instance.EnableInput();
 
                     DOVirtual.DelayedCall(0.5f, () =>
                     {
@@ -151,6 +154,7 @@ public class FTUE : MonoBehaviour
                     GameData.Instance.ftueIsEnded = true;
                     fTUEisOn = false;
                     SaveLoadManager.Instance.SaveData();
+                    LevelControl.Instance.EndingFTUEGrid();
                 }
             }
         }
@@ -169,6 +173,8 @@ public class FTUE : MonoBehaviour
 
     private void SetOliviaText(int textID)
     {
+        InputManager.Instance.DisableInput();
+
         dialoguePanel.SetActive(true);
 
         for (int i = 0; i < oliviaDialogues.Length; i++) {
@@ -200,6 +206,7 @@ public class FTUE : MonoBehaviour
     public void DialogueSkip()
     {
         dialoguePanel.SetActive(false);
+        InputManager.Instance.EnableInput();
     }
 
     public void Match3TilesTutorial()

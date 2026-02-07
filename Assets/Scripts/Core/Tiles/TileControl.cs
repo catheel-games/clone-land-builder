@@ -16,6 +16,8 @@ public class TileControl : MonoBehaviour
     public event Action<List<Tile>> OnTileGeneratorUpdate;
     public event Func<Tile> OnTileQueueFirstTileRequest;
 
+    public TileGrid Tilegrid => tileGrid;
+
     void OnEnable()
     {
         tileGrid.OnTilePlacerClick += EnterTilePreview;

@@ -71,6 +71,18 @@ public class TileGrid : MonoBehaviour
             }
         }
     }
+
+    public void TileSetFTUEEnded()
+    {
+        for (int i = 0; i < tiles.Count; i++) {
+            foreach (KeyValuePair<Hexagons.Coords, Tile> tile in tiles) {
+                Hexagons.IterateNeighbours(tile.Key, (int side, Hexagons.Coords neighbor) =>
+                {
+                    SetTilePlacer(neighbor);
+                });
+            }
+        }
+    }
     
     public Tile GetTile(Hexagons.Coords coords)
     {
