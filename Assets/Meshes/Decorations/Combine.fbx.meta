@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: deed326da4e60214da3a7d53f56a93e2
+guid: 83d5d19204178bd458d037d3941f458f
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
+      name: Decoration Texture
     second: {fileID: 2100000, guid: 7e1f5f205a7deec4faf99b7262f37f3e, type: 2}
   materials:
     materialImportMode: 2
