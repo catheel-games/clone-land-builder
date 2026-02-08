@@ -5,8 +5,15 @@ using DG.Tweening;
 
 public class TileDecoration : MonoBehaviour
 {
+    [Serializable]
+    public struct Decoration
+    {
+        public GameObject decorationPrefab;
+        public Hexagons.Type tileType;
+        [NonSerialized] public int spawnCount;
+    }
     [SerializeField] private TileGrid tileGrid;
-    [SerializeField] private GameObject sheep;
+    [SerializeField] private Decoration[] decorations;
     
     public void SpawnDecoration(Hexagons.Coords hex, GameObject decoration)
     {
@@ -21,18 +28,23 @@ public class TileDecoration : MonoBehaviour
 
     public void CheckTile(Hexagons.Coords coords)
     {
-        List<Hexagons.Coords> visited = new List<Hexagons.Coords>();
-        int areaCount = CountConnectedTiles(coords, visited);
-
-        int count = areaCount / 3;
-
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < decorations.Length; i++)
         {
-            SpawnDecoration(coords, sheep);
+            List<Hexagons.Coords> visited = new List<Hexagons.Coords>();
+            int areaCount = CountConnectedTiles(coords, visited, decorations[i].tileType);
+
+            int count = areaCount / 3;
+            int countToSpawn = count - decorations[i].spawnCount;
+
+            for (int j = 0; j < countToSpawn; j++)
+            {
+                SpawnDecoration(coords, decorations[i].decorationPrefab);
+                decorations[i].spawnCount++;
+            }
         }
     }
 
-    private int CountConnectedTiles(Hexagons.Coords coords, List<Hexagons.Coords> visited)
+    private int CountConnectedTiles(Hexagons.Coords coords, List<Hexagons.Coords> visited, Hexagons.Type type)
     {
         Tile tile = tileGrid.GetTile(coords);
         visited.Add(coords);
@@ -51,10 +63,10 @@ public class TileDecoration : MonoBehaviour
             }
             else
             {
-                if (instanceType == Hexagons.Type.Grass && neighbourType == Hexagons.Type.Grass)
+                if (instanceType == type && neighbourType == type)
                 {
                     visited.Add(neighborCoords);
-                    CountConnectedTiles(neighborCoords, visited);
+                    CountConnectedTiles(neighborCoords, visited, type);
                 }
             }
         });
