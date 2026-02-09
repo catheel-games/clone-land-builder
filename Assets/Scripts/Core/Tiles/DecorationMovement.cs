@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using DG.Tweening;
 
 public class DecorationMovement : MonoBehaviour
@@ -7,6 +8,17 @@ public class DecorationMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private float rotationOffset = 180f;
     [SerializeField] private float wanderRadius = 3f;
+
+    public static List<DecorationMovement> AllDecorations = new List<DecorationMovement>();
+    public int GroupIndex {get; set; }
+    public int PrefabIndex {get; set; }
+    public Hexagons.Coords SpawnCoord {get; set; }
+
+    public Hexagons.Type TileType { get; set; }
+    public TileGrid Grid { get; set; }
+
+    void OnEnable() => AllDecorations.Add(this);
+    void OnDisable() => AllDecorations.Remove(this);
 
     private float height;
     private Vector3 lastPosition;

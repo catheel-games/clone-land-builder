@@ -6,22 +6,29 @@ using DG.Tweening;
 public class TileDecoration : MonoBehaviour
 {
     [Serializable]
-    public struct Decoration
+    public struct DecorationGroup
     {
-        public GameObject decorationPrefab;
+        public GameObject[] prefabs;
         public Hexagons.Type tileType;
         public float spawnHeight;
-        [NonSerialized] public int spawnCount;
     }
-    [SerializeField] private TileGrid tileGrid;
-    [SerializeField] private Decoration[] decorations;
 
-    public void SpawnDecoration(Hexagons.Coords hex, Decoration decoration)
+    [SerializeField] private TileGrid tileGrid;
+    [SerializeField] private DecorationGroup[] decorationGroups;
+
+    private void SpawnDecoration(Hexagons.Coords hex, DecorationGroup group, int groupIndex, int prefabIndex)
     {
         Vector3 spawnPosition = Hexagons.HexToWorld(hex);
-        spawnPosition.y = decoration.spawnHeight;
-        GameObject newDecoration = Instantiate(decoration.decorationPrefab, spawnPosition, Quaternion.identity);
-        newDecoration.GetComponent<DecorationMovement>().Initialize(decoration.spawnHeight);
+        spawnPosition.y = group.spawnHeight;
+        GameObject newDecoration = Instantiate(group.prefabs[prefabIndex], spawnPosition, Quaternion.identity);
+
+        DecorationMovement movement = newDecoration.GetComponent<DecorationMovement>();
+        movement.GroupIndex = groupIndex;
+        movement.PrefabIndex = prefabIndex;
+        movement.SpawnCoord = hex;
+        movement.TileType = group.tileType;
+        movement.Grid = tileGrid;
+        movement.Initialize(group.spawnHeight);
 
         Sequence seq = DOTween.Sequence();
         seq.Append(newDecoration.transform.DOScale(0, 0));
@@ -31,25 +38,46 @@ public class TileDecoration : MonoBehaviour
 
     public void CheckTile(Hexagons.Coords coords)
     {
-        for (int i = 0; i < decorations.Length; i++)
+        for (int i = 0; i < decorationGroups.Length; i++)
         {
             List<Hexagons.Coords> visited = new List<Hexagons.Coords>();
-            int areaCount = CountConnectedTiles(coords, visited, decorations[i].tileType);
+            int areaCount = CountConnectedTiles(coords, visited, decorationGroups[i].tileType);
+
+            int prefabIndex = DecorationPicker(visited, decorationGroups[i], i);
+
+            int existingInRegion = 0;
+            foreach (var dec in DecorationMovement.AllDecorations)
+            {
+                if (dec.GroupIndex == i && visited.Contains(dec.SpawnCoord))
+                    existingInRegion++;
+            }
 
             int count = areaCount / 3;
-            int countToSpawn = count - decorations[i].spawnCount;
+            int countToSpawn = count - existingInRegion;
 
             for (int j = 0; j < countToSpawn; j++)
             {
-                SpawnDecoration(coords, decorations[i]);
-                decorations[i].spawnCount++;
+                SpawnDecoration(coords, decorationGroups[i], i, prefabIndex);
             }
         }
+    }
+
+    private int DecorationPicker(List<Hexagons.Coords> regionTiles, DecorationGroup group, int groupIndex)
+    {
+        foreach (DecorationMovement dec in DecorationMovement.AllDecorations)
+        {
+            if (regionTiles.Contains(dec.SpawnCoord) && dec.GroupIndex == groupIndex)
+            {
+                return dec.PrefabIndex;
+            }
+        }
+        return UnityEngine.Random.Range(0, group.prefabs.Length);
     }
 
     private int CountConnectedTiles(Hexagons.Coords coords, List<Hexagons.Coords> visited, Hexagons.Type type)
     {
         Tile tile = tileGrid.GetTile(coords);
+        if (tile == null) return visited.Count;
         visited.Add(coords);
 
         Hexagons.IterateNeighbours(coords, (side, neighborCoords) => {

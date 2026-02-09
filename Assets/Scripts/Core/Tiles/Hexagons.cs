@@ -37,6 +37,13 @@ public static class Hexagons
         );
     }
 
+    public static Coords WorldToHex(Vector3 world)
+    {
+        int y = Mathf.RoundToInt(world.z / 1.5f);
+        int x = Mathf.RoundToInt((world.x - sqrt3half * Tools.Modulo(y, 2)) / sqrt3);
+        return new Coords(x, y);
+    }
+
     public static void IterateNeighbours(Coords hex, Action<int, Coords> action)
     {
         action(0, new Coords(hex.x + Tools.Modulo(hex.y, 2), hex.y + 1));
