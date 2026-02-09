@@ -43,11 +43,10 @@ public class DecorationMovement : MonoBehaviour
 
     private void Movement()
     {
-        Vector3[] waypoints = new Vector3[3];
-        int found = 0;
-        int attempts = 0;
+        Vector3 target = Vector3.zero;
+        int attempts = 25;
 
-        while (found < 3 && attempts < 20)
+        while (attempts > 0)
         {
             Vector2 randomOffset = Random.insideUnitCircle * wanderRadius;
             Vector3 candidate = transform.position + new Vector3(randomOffset.x, 0, randomOffset.y);
@@ -55,29 +54,24 @@ public class DecorationMovement : MonoBehaviour
             if (IsValidPosition(candidate))
             {
                 candidate.y = height;
-                waypoints[found] = candidate;
-                found++;
+                target = candidate;
+                break;
             }
-            attempts++;
+            attempts--;
         }
 
-        if (found < 3)
+        if (target != Vector3.zero)
         {
-            for (int i = found; i < 3; i++)
-            {
-                waypoints[i] = transform.position;
-            }
+            transform.DOMove(target, 1).OnComplete(() => Movement());
         }
-
-        transform.DOPath(waypoints, moveDuration, PathType.CatmullRom)
-            .OnComplete(() => Movement());
     }
 
     private bool IsValidPosition(Vector3 point)
     {
         RaycastHit hit;
-        if (Physics.Raycast(point + Vector3.up * 5f, Vector3.down, out hit, 10f))
+        if (Physics.Raycast(point + Vector3.up * 3f, Vector3.down, out hit, 10f))
         {
+            Debug.DrawLine(Vector3.zero, hit.point, Color.blue, 10000f);
             return Mathf.Abs(hit.point.y - height) < 0.03f;
         }
         return false;
