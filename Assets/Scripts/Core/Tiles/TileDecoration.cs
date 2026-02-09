@@ -10,15 +10,18 @@ public class TileDecoration : MonoBehaviour
     {
         public GameObject decorationPrefab;
         public Hexagons.Type tileType;
+        public float spawnHeight;
         [NonSerialized] public int spawnCount;
     }
     [SerializeField] private TileGrid tileGrid;
     [SerializeField] private Decoration[] decorations;
-    
-    public void SpawnDecoration(Hexagons.Coords hex, GameObject decoration)
+
+    public void SpawnDecoration(Hexagons.Coords hex, Decoration decoration)
     {
         Vector3 spawnPosition = Hexagons.HexToWorld(hex);
-        GameObject newDecoration = Instantiate(decoration, spawnPosition, Quaternion.identity);
+        spawnPosition.y = decoration.spawnHeight;
+        GameObject newDecoration = Instantiate(decoration.decorationPrefab, spawnPosition, Quaternion.identity);
+        newDecoration.GetComponent<DecorationMovement>().Initialize(decoration.spawnHeight);
 
         Sequence seq = DOTween.Sequence();
         seq.Append(newDecoration.transform.DOScale(0, 0));
@@ -38,7 +41,7 @@ public class TileDecoration : MonoBehaviour
 
             for (int j = 0; j < countToSpawn; j++)
             {
-                SpawnDecoration(coords, decorations[i].decorationPrefab);
+                SpawnDecoration(coords, decorations[i]);
                 decorations[i].spawnCount++;
             }
         }
@@ -65,7 +68,6 @@ public class TileDecoration : MonoBehaviour
             {
                 if (instanceType == type && neighbourType == type)
                 {
-                    visited.Add(neighborCoords);
                     CountConnectedTiles(neighborCoords, visited, type);
                 }
             }
