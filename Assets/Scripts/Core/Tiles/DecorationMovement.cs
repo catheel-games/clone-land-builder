@@ -38,7 +38,7 @@ public class DecorationMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector3 direction = (transform.position - lastPosition).normalized;
+        Vector3 direction = (lastPosition - transform.position).normalized;
         if (direction.magnitude > 0.001f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction) * Quaternion.Euler(0, rotationOffset, 0);

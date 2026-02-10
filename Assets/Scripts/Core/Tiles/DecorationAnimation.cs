@@ -30,6 +30,7 @@ public class DecorationAnimation : MonoBehaviour
 
         seq.Insert(0, transform.DOLocalRotate(new Vector3(maxTilt, 0, 0), archDuration).SetEase(Ease.InOutSine));
 
+        seq.AppendCallback(() => transform.localRotation = Quaternion.Euler(0, 0, 0));
         seq.AppendInterval(underwaterTime);
 
         seq.OnComplete(() => AnimateCycle());
