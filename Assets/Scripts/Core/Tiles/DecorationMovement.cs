@@ -21,12 +21,18 @@ public class DecorationMovement : MonoBehaviour
     void OnDisable() => AllDecorations.Remove(this);
 
     private float height;
+    private float groundHeight;
     private Vector3 lastPosition;
 
     public void Initialize(float height)
     {
         this.height = height;
         lastPosition = transform.position;
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.up * 3f, Vector3.down, out hit, 10f))
+            groundHeight = hit.point.y;
+
         Movement();
     }
 
@@ -71,8 +77,7 @@ public class DecorationMovement : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(point + Vector3.up * 3f, Vector3.down, out hit, 10f))
         {
-            Debug.DrawLine(Vector3.zero, hit.point, Color.blue, 10000f);
-            return Mathf.Abs(hit.point.y - height - 0.1f) < 0.03f;
+            return Mathf.Abs(hit.point.y - groundHeight) < 0.15f;
         }
         return false;
     }
