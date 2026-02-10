@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Hexagon Spherical Material
+    second: {fileID: 2100000, guid: 668413c622843bc48ad77c11b03204a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Water Mat
     second: {fileID: 2100000, guid: f737f1ce3c6900243b7dedd8cc7ce6b8, type: 2}
   materials:
