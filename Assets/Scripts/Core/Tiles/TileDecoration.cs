@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using System.Text.RegularExpressions;
 
 public class TileDecoration : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class TileDecoration : MonoBehaviour
 
     private void SpawnDecoration(Hexagons.Coords hex, DecorationGroup group, int groupIndex, int prefabIndex)
     {
-        Vector3 spawnPosition = Hexagons.HexToWorld(hex);
+        Vector3 spawnPosition = GetEdgeSpawnPosition(hex, group.tileType);
         spawnPosition.y = group.spawnHeight;
         GameObject newDecoration = Instantiate(group.prefabs[prefabIndex], spawnPosition, Quaternion.identity);
 
@@ -102,5 +103,29 @@ public class TileDecoration : MonoBehaviour
         });
 
         return visited.Count;
+    }
+
+    private Vector3 GetEdgeSpawnPosition(Hexagons.Coords hex, Hexagons.Type tileType)
+    {
+        Tile tile = tileGrid.GetTile(hex);
+        Vector3 spawnPos = Hexagons.HexToWorld(hex);
+
+        Hexagons.IterateNeighbours(hex, (side, neighborCoords) => {
+            Tile neighbor = tileGrid.GetTile(neighborCoords);
+            if (neighbor == null) return;
+            Hexagons.Type neighbourType = Hexagons.Type.Null;
+            Hexagons.Type instanceType = tile.GetSide(side);
+
+            neighbourType = neighbor.GetSide(Tools.Modulo(side + 3, 6));
+
+            if (tile.GetSide(side) == tileType)
+            {
+                Vector3 hexCenter = Hexagons.HexToWorld(hex);
+                Vector3 neighborCenter = Hexagons.HexToWorld(neighborCoords);
+                spawnPos = hexCenter + (neighborCenter - hexCenter) * 0.4f;
+            }
+        });
+
+        return spawnPos;
     }
 }

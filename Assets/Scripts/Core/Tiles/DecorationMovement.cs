@@ -62,7 +62,7 @@ public class DecorationMovement : MonoBehaviour
 
         if (target != Vector3.zero)
         {
-            transform.DOMove(target, 1).OnComplete(() => Movement());
+            transform.DOMove(target, moveDuration).OnComplete(() => Movement());
         }
     }
 
@@ -72,7 +72,7 @@ public class DecorationMovement : MonoBehaviour
         if (Physics.Raycast(point + Vector3.up * 3f, Vector3.down, out hit, 10f))
         {
             Debug.DrawLine(Vector3.zero, hit.point, Color.blue, 10000f);
-            return Mathf.Abs(hit.point.y - height) < 0.03f;
+            return Mathf.Abs(hit.point.y - height - 0.1f) < 0.03f;
         }
         return false;
     }

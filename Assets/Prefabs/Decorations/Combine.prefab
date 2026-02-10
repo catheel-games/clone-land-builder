@@ -48,6 +48,7 @@ MonoBehaviour:
   moveDuration: 30
   rotationSpeed: 1
   rotationOffset: 180
+  wanderRadius: 3
 --- !u!1001 &713441577457257764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,10 +136,76 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7491053788001797225, guid: 83d5d19204178bd458d037d3941f458f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7272360445501367502}
+    - targetCorrespondingSourceObject: {fileID: -7608086461030264095, guid: 83d5d19204178bd458d037d3941f458f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4400647299452044091}
+    - targetCorrespondingSourceObject: {fileID: -339222225377367486, guid: 83d5d19204178bd458d037d3941f458f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4150567914213066735}
   m_SourcePrefab: {fileID: 100100000, guid: 83d5d19204178bd458d037d3941f458f, type: 3}
 --- !u!4 &1039238774634638031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 83d5d19204178bd458d037d3941f458f, type: 3}
   m_PrefabInstance: {fileID: 713441577457257764}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2273195184638435269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7608086461030264095, guid: 83d5d19204178bd458d037d3941f458f, type: 3}
+  m_PrefabInstance: {fileID: 713441577457257764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4400647299452044091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2273195184638435269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d52aab161cb78684291e1afc75f73917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DecorationSpin
+  rotationAxis: {x: 1, y: 0, z: 0}
+  speed: 30
+--- !u!1 &7931743767435184461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7491053788001797225, guid: 83d5d19204178bd458d037d3941f458f, type: 3}
+  m_PrefabInstance: {fileID: 713441577457257764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7272360445501367502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7931743767435184461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d52aab161cb78684291e1afc75f73917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DecorationSpin
+  rotationAxis: {x: -1, y: 0, z: 0}
+  speed: 20
+--- !u!1 &8263103091447129958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -339222225377367486, guid: 83d5d19204178bd458d037d3941f458f, type: 3}
+  m_PrefabInstance: {fileID: 713441577457257764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4150567914213066735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263103091447129958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d52aab161cb78684291e1afc75f73917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DecorationSpin
+  rotationAxis: {x: 1, y: 0, z: 0}
+  speed: 30
