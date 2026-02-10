@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
@@ -6,6 +8,9 @@ using TMPro;
 public class LevelWinFeedback : MonoBehaviour
 {
     [SerializeField] private LevelCanvasControl levelCanvasControl;
+    [SerializeField] private CoinCollecting coinCollecting;
+
+    [SerializeField] private TextMeshProUGUI coinText;
 
     [SerializeField] private Image starCircle;
     [SerializeField] private RectTransform starCounter;
@@ -17,7 +22,10 @@ public class LevelWinFeedback : MonoBehaviour
     [SerializeField] private Sprite newStarCircleSprite;
     [SerializeField] private Sprite newStarCounterSprite;
 
+
     private float starCounterTargetWidth = 85f;
+
+    public TextMeshProUGUI _coinText => coinText;
 
     public void LevelWinning()
     {
@@ -32,13 +40,7 @@ public class LevelWinFeedback : MonoBehaviour
               .AppendCallback(() => starCircle.sprite = newStarCircleSprite)
               .AppendCallback(() => tickObject.gameObject.SetActive(true))
               .Append(tickObject.DOShakeScale(0.5f, 0.25f))
-              .AppendCallback(() => levelCanvasControl._levelTopPartContainer.Hide())
               .AppendCallback(() => levelCanvasControl._coinContainer.Show());
     }
 
-    public void ClaimCoin() {
-        Sequence coinSeq = DOTween.Sequence();
-
-        coinSeq.AppendCallback(() => levelCanvasControl._newTileUnlockContainer.Show());
-    }
 }

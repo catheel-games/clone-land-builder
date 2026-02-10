@@ -5,13 +5,14 @@ using DG.Tweening;
 
 public class StarCollecting : Singleton<StarCollecting>
 {
+    [SerializeField] private LevelWinFeedback levelWinFeedback;
+
     [SerializeField] private Transform starCircleTransform;
     [SerializeField] private Transform tileCounterTransform;
     [SerializeField] private RectTransform starScoreTransform;
     [SerializeField] private TextMeshProUGUI starText1;
     [SerializeField] private TextMeshProUGUI starText2;
     [SerializeField] private TextMeshProUGUI tileText;
-    [SerializeField] private TextMeshProUGUI coinText;
 
     [Header("Instantiating Prefabs")]
     [SerializeField] private RectTransform tileFlyPrefab;
@@ -58,7 +59,7 @@ public class StarCollecting : Singleton<StarCollecting>
         tileText.text = LevelControl.Instance.tileScore.ToString();
 
         maxStarScore = maxStarValue;
-        coinText.text = GameData.Instance.coin.ToString();
+        levelWinFeedback._coinText.text = GameData.Instance.coin.ToString();
     }
 
     public void GetPlusObjects(int starAmountRef, List<GameObject> starObjectsRef, GameObject tileObjectRef)

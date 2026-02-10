@@ -132,11 +132,11 @@ MonoBehaviour:
   generatorDefaultContainer: {fileID: 7455352743775903130}
   starCollecting: {fileID: 8398454023396649481}
   levelWinFeedback: {fileID: 7618756910434710015}
-  topPartDefaultContainer: {fileID: 6138085773297411304}
   levelCompletedContainer: {fileID: 3257065388213849581}
   coinPanelContainer: {fileID: 9116225919910454381}
   levelTopPartContainer: {fileID: 766974186330803883}
   newTileUnlockContainer: {fileID: 7693090773711110257}
+  settingsIconObject: {fileID: 5224087870272464103}
 --- !u!114 &8398454023396649481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c4d795fa22a564090ab32d031b230c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarCollecting
+  levelWinFeedback: {fileID: 7618756910434710015}
   starCircleTransform: {fileID: 4960509752276817145}
   tileCounterTransform: {fileID: 4602491156310628613}
   starScoreTransform: {fileID: 7056326314684679932}
@@ -182,6 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelWinFeedback
   levelCanvasControl: {fileID: 8476330011625406227}
+  coinCollecting: {fileID: 6822143277666244998}
+  coinText: {fileID: 1701666421140149644}
   starCircle: {fileID: 5356483927875725731}
   starCounter: {fileID: 8430892082976758902}
   starCounterImage: {fileID: 2697099921575555821}
@@ -344,6 +347,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1518778339588195822, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
   m_PrefabInstance: {fileID: 456052117639033481}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1701666421140149644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1281749512652891909, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
+  m_PrefabInstance: {fileID: 456052117639033481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &2697099921575555821 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2538410517602418788, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
@@ -366,6 +380,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!224 &3335967716963636493 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2891174667118815108, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
+  m_PrefabInstance: {fileID: 456052117639033481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3515644948912889252 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3935632088181059373, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
@@ -402,6 +421,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4792812599423166064, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
   m_PrefabInstance: {fileID: 456052117639033481}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5224087870272464103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5632746122573518446, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
+  m_PrefabInstance: {fileID: 456052117639033481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5248833698963942154 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5657544281656138115, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
@@ -424,6 +448,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!224 &5421180300941291777 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5579922824459649928, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
+  m_PrefabInstance: {fileID: 456052117639033481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5663574887719528765 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5245910328866773940, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
@@ -685,27 +714,55 @@ PrefabInstance:
     - target: {fileID: 6730688748826363320, guid: c3931b94037ac28478541f59c4629983, type: 3}
       propertyPath: topBar
       value: 
-      objectReference: {fileID: 6138085773297411304}
+      objectReference: {fileID: 0}
     - target: {fileID: 8176642284160265110, guid: c3931b94037ac28478541f59c4629983, type: 3}
       propertyPath: m_Name
       value: Coin Panel
       objectReference: {fileID: 0}
     - target: {fileID: 8439130020390853477, guid: c3931b94037ac28478541f59c4629983, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8439130020390853477, guid: c3931b94037ac28478541f59c4629983, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8439130020390853477, guid: c3931b94037ac28478541f59c4629983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7618756910434710015}
+      objectReference: {fileID: 6822143277666244998}
     - target: {fileID: 8439130020390853477, guid: c3931b94037ac28478541f59c4629983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ClaimCoin
       objectReference: {fileID: 0}
     - target: {fileID: 8439130020390853477, guid: c3931b94037ac28478541f59c4629983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LevelWinFeedback, Assembly-CSharp
+      value: CoinCollecting, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8439130020390853477, guid: c3931b94037ac28478541f59c4629983, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 9027040798103222355, guid: c3931b94037ac28478541f59c4629983, type: 3}
+      propertyPath: canvasTransform
+      value: 
+      objectReference: {fileID: 9087443946784728261}
+    - target: {fileID: 9027040798103222355, guid: c3931b94037ac28478541f59c4629983, type: 3}
+      propertyPath: levelWinFeedback
+      value: 
+      objectReference: {fileID: 7618756910434710015}
+    - target: {fileID: 9027040798103222355, guid: c3931b94037ac28478541f59c4629983, type: 3}
+      propertyPath: coinPanelTransform
+      value: 
+      objectReference: {fileID: 5421180300941291777}
+    - target: {fileID: 9027040798103222355, guid: c3931b94037ac28478541f59c4629983, type: 3}
+      propertyPath: levelCanvasControl
+      value: 
+      objectReference: {fileID: 8476330011625406227}
+    - target: {fileID: 9027040798103222355, guid: c3931b94037ac28478541f59c4629983, type: 3}
+      propertyPath: targetCoinRectTransform
+      value: 
+      objectReference: {fileID: 3335967716963636493}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -716,6 +773,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 726573432540589996, guid: c3931b94037ac28478541f59c4629983, type: 3}
   m_PrefabInstance: {fileID: 2588271181974675925}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6822143277666244998 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9027040798103222355, guid: c3931b94037ac28478541f59c4629983, type: 3}
+  m_PrefabInstance: {fileID: 2588271181974675925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e9a3b5c91e70f4e966818a19ee902e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinCollecting
 --- !u!114 &9116225919910454381 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6730688748826363320, guid: c3931b94037ac28478541f59c4629983, type: 3}
@@ -1474,7 +1542,7 @@ PrefabInstance:
     - target: {fileID: 753440588750325596, guid: f57bf2b0e9136584888a1462728f2cb6, type: 3}
       propertyPath: topBar
       value: 
-      objectReference: {fileID: 6138085773297411304}
+      objectReference: {fileID: 0}
     - target: {fileID: 4531488694474655925, guid: f57bf2b0e9136584888a1462728f2cb6, type: 3}
       propertyPath: m_Name
       value: New Tile Unlocked Panel

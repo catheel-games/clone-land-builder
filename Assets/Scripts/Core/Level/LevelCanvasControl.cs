@@ -11,17 +11,16 @@ public class LevelCanvasControl : MonoBehaviour
     [SerializeField] private DefaultContainer generatorDefaultContainer;
     [SerializeField] private StarCollecting starCollecting;
     [SerializeField] private LevelWinFeedback levelWinFeedback;
-    [SerializeField] private DefaultContainer topPartDefaultContainer;
     [SerializeField] private PopupContainer levelCompletedContainer;
     [SerializeField] private PopupContainer coinPanelContainer;
     [SerializeField] private DefaultContainer levelTopPartContainer;
     [SerializeField] private PopupContainer newTileUnlockContainer;
+    [SerializeField] private GameObject settingsIconObject;
 
     public PopupContainer _levelCompletedContainer => levelCompletedContainer;
     public PopupContainer _coinContainer => coinPanelContainer;
-    public DefaultContainer _levelTopPartContainer => levelTopPartContainer;
-
     public PopupContainer _newTileUnlockContainer => newTileUnlockContainer;
+
 
     public Tile TileQueueFirstTile() => tileQueueInterface.FirstTile();
 
@@ -75,7 +74,7 @@ public class LevelCanvasControl : MonoBehaviour
         tilePreviewControlContainer.Hide();
         cameraControlContainer.Hide();
         generatorDefaultContainer.Hide();
-        topPartDefaultContainer.Hide();
+        settingsIconObject.SetActive(false);
     }
 
 }
