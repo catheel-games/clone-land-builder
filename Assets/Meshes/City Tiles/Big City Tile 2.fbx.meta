@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: City Material
     second: {fileID: 2100000, guid: ac9a47f6f9ab0ea45b5ef8892aa8eee0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: City Spherical Material
+    second: {fileID: 2100000, guid: 4c2ea427895a5c647a65ceab20e124b2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
