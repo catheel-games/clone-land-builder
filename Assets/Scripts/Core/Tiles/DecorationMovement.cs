@@ -5,14 +5,15 @@ using DG.Tweening;
 public class DecorationMovement : MonoBehaviour
 {
     [SerializeField] private float moveDuration = 8f;
-    [SerializeField] private float rotationSpeed = 2f;
+    [SerializeField] private float rotationSpeed = 8f;
     [SerializeField] private float rotationOffset = 180f;
-    [SerializeField] private float wanderRadius = 3f;
+    [SerializeField] private float wanderRadius = 0.8f;
+    [SerializeField] private float centerRadius = 0.35f;
 
     public static List<DecorationMovement> AllDecorations = new List<DecorationMovement>();
-    public int GroupIndex {get; set; }
-    public int PrefabIndex {get; set; }
-    public Hexagons.Coords SpawnCoord {get; set; }
+    public int GroupIndex { get; set; }
+    public int PrefabIndex { get; set; }
+    public Hexagons.Coords SpawnCoord { get; set; }
 
     public Hexagons.Type TileType { get; set; }
     public TileGrid Grid { get; set; }
@@ -21,41 +22,34 @@ public class DecorationMovement : MonoBehaviour
     void OnDisable() => AllDecorations.Remove(this);
 
     private float height;
-    private float groundHeight;
-    private Vector3 lastPosition;
+    private Vector3 moveDirection;
+    private Vector3 spawnPosition;
 
     public void Initialize(float height)
     {
         this.height = height;
-        lastPosition = transform.position;
-
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position + Vector3.up * 3f, Vector3.down, out hit, 10f))
-            groundHeight = hit.point.y;
-
+        spawnPosition = transform.position;
         Movement();
     }
 
     private void Update()
     {
-        Vector3 direction = (lastPosition - transform.position).normalized;
-        if (direction.magnitude > 0.001f)
+        if (moveDirection.sqrMagnitude > 0.001f)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(direction) * Quaternion.Euler(0, rotationOffset, 0);
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection) * Quaternion.Euler(0, rotationOffset, 0);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
-        lastPosition = transform.position;
     }
 
     private void Movement()
     {
         Vector3 target = Vector3.zero;
-        int attempts = 25;
+        int attempts = 50;
 
         while (attempts > 0)
         {
             Vector2 randomOffset = Random.insideUnitCircle * wanderRadius;
-            Vector3 candidate = transform.position + new Vector3(randomOffset.x, 0, randomOffset.y);
+            Vector3 candidate = spawnPosition + new Vector3(randomOffset.x, 0, randomOffset.y);
 
             if (IsValidPosition(candidate))
             {
@@ -68,17 +62,43 @@ public class DecorationMovement : MonoBehaviour
 
         if (target != Vector3.zero)
         {
-            transform.DOMove(target, moveDuration).OnComplete(() => Movement());
+            Vector3 dir = transform.position - target;
+            dir.y = 0;
+            if (dir.sqrMagnitude > 0.001f)
+                moveDirection = dir.normalized;
+
+            float distance = Vector3.Distance(transform.position, target);
+            float duration = Mathf.Max(2f, moveDuration * (distance / wanderRadius));
+            float pause = Random.Range(0.5f, 2f);
+
+            transform.DOMove(target, duration)
+                .SetDelay(pause)
+                .SetEase(Ease.InOutSine)
+                .OnComplete(() => Movement());
+        }
+        else
+        {
+            Invoke(nameof(Movement), 2f);
         }
     }
 
     private bool IsValidPosition(Vector3 point)
     {
-        RaycastHit hit;
-        if (Physics.Raycast(point + Vector3.up * 3f, Vector3.down, out hit, 10f))
-        {
-            return Mathf.Abs(hit.point.y - groundHeight) < 0.15f;
-        }
-        return false;
+        Hexagons.Coords hex = Hexagons.WorldToHex(point);
+        Tile tile = Grid.GetTile(hex);
+        if (tile == null) return false;
+
+        Vector3 hexCenter = Hexagons.HexToWorld(hex);
+        Vector3 offset = point - hexCenter;
+        offset.y = 0;
+
+        if (offset.magnitude < centerRadius)
+            return tile.CenterType == TileType;
+
+        float angle = Mathf.Atan2(offset.x, offset.z) * Mathf.Rad2Deg;
+        if (angle < 0) angle += 360f;
+        int side = Mathf.FloorToInt(angle / 60f) % 6;
+
+        return tile.GetSide(side) == TileType;
     }
 }

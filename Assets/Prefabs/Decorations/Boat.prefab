@@ -48,7 +48,8 @@ MonoBehaviour:
   moveDuration: 30
   rotationSpeed: 1
   rotationOffset: 180
-  wanderRadius: 3
+  wanderRadius: 0.8
+  centerRadius: 0.35
 --- !u!1001 &8132609401073330407
 PrefabInstance:
   m_ObjectHideFlags: 0

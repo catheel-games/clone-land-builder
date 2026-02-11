@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d22bb5ba7d2cd48868f61217d9ffc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DecorationMovement
-  moveDuration: 30
+  moveDuration: 4
   rotationSpeed: 1
   rotationOffset: 180
-  wanderRadius: 3
+  wanderRadius: 0.8
+  centerRadius: 0.35
 --- !u!1001 &4704981063903839025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DecorationAnimation
   archHeight: 0.05
-  diveDepth: 0.5
+  diveDepth: 0.3
   archDuration: 2
   underwaterTime: 4
   maxTilt: 75

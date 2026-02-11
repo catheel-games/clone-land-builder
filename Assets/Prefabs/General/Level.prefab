@@ -653,6 +653,14 @@ PrefabInstance:
       propertyPath: tileGrid
       value: 
       objectReference: {fileID: 8882862855357961664}
+    - target: {fileID: 4663422722088625320, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: 'decorationGroups.Array.data[0].prefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2548367544696216464, guid: e8dba64d2e151be4db1e0016960ed419, type: 3}
+    - target: {fileID: 4663422722088625320, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: 'decorationGroups.Array.data[0].prefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6903643519771881796, guid: 58d417912f93fd046b944918712e43f0, type: 3}
     - target: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.11086
