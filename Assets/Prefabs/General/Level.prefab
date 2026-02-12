@@ -34,6 +34,7 @@ Transform:
   - {fileID: 5807272396619646682}
   - {fileID: 1337417749381583245}
   - {fileID: 3713988204760163096}
+  - {fileID: 1402532854121365381}
   m_Father: {fileID: 5417790446154678725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8548033040556924597
@@ -51,6 +52,7 @@ MonoBehaviour:
   tileGrid: {fileID: 8882862855357961664}
   tilePreview: {fileID: 2840889560057333610}
   tileUpgrade: {fileID: 5314599729690916480}
+  tileDecoration: {fileID: 1726253356571463103}
   tileGenerator: {fileID: 4304075197831753414}
 --- !u!114 &5314599729690916480
 MonoBehaviour:
@@ -801,3 +803,80 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5357769116551524250, guid: a77bb06a04d394f4f9f5f027fed85095, type: 3}
   m_PrefabInstance: {fileID: 4354906955949415816}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6287917926692907287
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1607275714137605913}
+    m_Modifications:
+    - target: {fileID: 404875312955825449, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: m_Name
+      value: TileDecorations
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663422722088625320, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: tileGrid
+      value: 
+      objectReference: {fileID: 8882862855357961664}
+    - target: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+--- !u!4 &1402532854121365381 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4915081104683210386, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+  m_PrefabInstance: {fileID: 6287917926692907287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1726253356571463103 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4663422722088625320, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+  m_PrefabInstance: {fileID: 6287917926692907287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be68c68d4a7517a4ca0317117f5a5af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileDecoration
