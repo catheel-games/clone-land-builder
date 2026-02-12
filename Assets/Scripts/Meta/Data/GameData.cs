@@ -8,6 +8,9 @@ public class GameData
     public List<LevelProgress> levelsProgress = new();
     public int currentLevelID = 1;
     public int coin = 0;
+    public bool ftueIsEnded = false;
+    public bool matched3Tiles = false;
+   
 
     private static GameData _instance = null;
     public static GameData Instance

@@ -13,6 +13,7 @@ public class StarCollecting : Singleton<StarCollecting>
     [SerializeField] private TextMeshProUGUI starText1;
     [SerializeField] private TextMeshProUGUI starText2;
     [SerializeField] private TextMeshProUGUI tileText;
+    [SerializeField] private TextMeshProUGUI starFTUEText;
 
     [Header("Instantiating Prefabs")]
     [SerializeField] private RectTransform tileFlyPrefab;
@@ -58,6 +59,7 @@ public class StarCollecting : Singleton<StarCollecting>
         starText2.text = maxStarValue.ToString();
         tileText.text = LevelControl.Instance.tileScore.ToString();
 
+		starFTUEText.text = maxStarValue.ToString();
         maxStarScore = maxStarValue;
         levelWinFeedback._coinText.text = GameData.Instance.coin.ToString();
     }

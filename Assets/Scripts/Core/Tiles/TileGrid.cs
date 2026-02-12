@@ -17,17 +17,17 @@ public class TileGrid : MonoBehaviour
 
     void Start()
     {
-        SetTilePlacer(new Hexagons.Coords(0, 0));
+        SetTilePlacer(new Hexagons.Coords(0, 0), true);
     }
     
-    private void SetTilePlacer(Hexagons.Coords coords)
+    private void SetTilePlacer(Hexagons.Coords coords, bool isFirstTile = false)
     {
         if (!frontier.ContainsKey(coords))
         {
             if (!tiles.ContainsKey(coords))
             {
                 TilePlacer newTilePlacer = Instantiate(tilePlacerPrefab, tilePlacerContainer.transform);
-                newTilePlacer.Setup(coords);
+                newTilePlacer.Setup(coords, isFirstTile);
                 newTilePlacer.OnClick += Lock;
                 frontier.Add(coords, newTilePlacer);
             }
@@ -48,8 +48,36 @@ public class TileGrid : MonoBehaviour
                 tile.transform.SetParent(transform, false);
                 tile.transform.position = Hexagons.HexToWorld(coords);
                 tiles.Add(coords, tile);
-                
-                Hexagons.IterateNeighbours(coords, (int side, Hexagons.Coords neighbor) => {
+
+                if (GameData.Instance.ftueIsEnded)
+                {
+                    Hexagons.IterateNeighbours(coords, (int side, Hexagons.Coords neighbor) =>
+                    {
+                        SetTilePlacer(neighbor);
+                    });
+                }
+
+                else if (!GameData.Instance.ftueIsEnded)
+                {
+                    switch (LevelControl.Instance.fTUEtileID) {
+                        case 1:
+                            SetTilePlacer(new Hexagons.Coords(1, 0));
+                            break;
+                        case 2:
+                            SetTilePlacer(new Hexagons.Coords(Tools.Modulo(0, 2), 1));
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
+    public void TileSetFTUEEnded()
+    {
+        for (int i = 0; i < tiles.Count; i++) {
+            foreach (KeyValuePair<Hexagons.Coords, Tile> tile in tiles) {
+                Hexagons.IterateNeighbours(tile.Key, (int side, Hexagons.Coords neighbor) =>
+                {
                     SetTilePlacer(neighbor);
                 });
             }
