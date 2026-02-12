@@ -8,6 +8,8 @@ public class LevelCanvasControl : MonoBehaviour
     [SerializeField] private CameraControlContainer cameraControlContainer;
     [SerializeField] private TileQueueInterface tileQueueInterface;
 
+    [SerializeField] private LevelTileUnlocking levelTileUnlocking;
+
     [SerializeField] private DefaultContainer generatorDefaultContainer;
     [SerializeField] private StarCollecting starCollecting;
     [SerializeField] private LevelWinFeedback levelWinFeedback;
@@ -15,7 +17,6 @@ public class LevelCanvasControl : MonoBehaviour
     [SerializeField] private PopupContainer coinPanelContainer;
     [SerializeField] private DefaultContainer levelTopPartContainer;
     [SerializeField] private PopupContainer newTileUnlockContainer;
-    [SerializeField] private GameObject settingsIconObject;
 
     public PopupContainer _levelCompletedContainer => levelCompletedContainer;
     public PopupContainer _coinContainer => coinPanelContainer;
@@ -69,12 +70,26 @@ public class LevelCanvasControl : MonoBehaviour
         levelWinFeedback.LevelWinning();
     }
 
+    public void NewTileUnlocked()
+    {
+        levelTileUnlocking.SetUnlockedObject();
+        levelWinFeedback._levelCompletedTextTransform.gameObject.SetActive(false);
+        coinPanelContainer.Hide();
+        newTileUnlockContainer.Show();
+    }
+
     public void DisableWinContainers()
     {
         tilePreviewControlContainer.Hide();
         cameraControlContainer.Hide();
         generatorDefaultContainer.Hide();
-        settingsIconObject.SetActive(false);
     }
 
+    public void ContinueToNextLevelPanel()
+    {
+        newTileUnlockContainer.Hide();
+        levelCompletedContainer.Show();
+
+        levelWinFeedback.LevelCompletedTextAnimation();
+    }
 }

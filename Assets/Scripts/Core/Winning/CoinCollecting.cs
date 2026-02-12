@@ -33,7 +33,7 @@ public class CoinCollecting : MonoBehaviour
 
         Sequence coinSeq = DOTween.Sequence();
 
-        coinSeq.AppendCallback(() => levelCanvasControl._newTileUnlockContainer.Show())
+        coinSeq.AppendCallback(() => levelCanvasControl.NewTileUnlocked())
                .AppendCallback(() => SpawningCoins());
     }
 
@@ -135,7 +135,7 @@ public class CoinCollecting : MonoBehaviour
                 ScalingCoinPanel(1.2f, 0.2f)
             );
 
-        GameData.Instance.coin = currentValue;
+        GameData.Instance.coin = finalAmount;
     }
 
     private void ScalingCoinPanel(float scaleValue, float duration)

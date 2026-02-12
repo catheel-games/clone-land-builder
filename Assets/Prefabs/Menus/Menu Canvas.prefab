@@ -9248,6 +9248,7 @@ GameObject:
   - component: {fileID: 6666882762380908303}
   - component: {fileID: 6634832312392733623}
   - component: {fileID: 2644350010578124325}
+  - component: {fileID: 74612493563250271}
   m_Layer: 5
   m_Name: Menu Panel
   m_TagString: Untagged
@@ -9341,6 +9342,19 @@ MonoBehaviour:
   childContainers: []
   canvasGroup: {fileID: 6634832312392733623}
   activeMode: 1
+--- !u!114 &74612493563250271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8465925595861510694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112542b222e98064483aa1cb60bdd07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuCoinSetup
+  coinText: {fileID: 6394309581539345069}
 --- !u!1 &8622806782416803335
 GameObject:
   m_ObjectHideFlags: 0

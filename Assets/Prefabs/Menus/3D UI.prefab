@@ -160,6 +160,7 @@ Transform:
   m_Children:
   - {fileID: 8723393567239845192}
   - {fileID: 4688614669868135712}
+  - {fileID: 507603532504077169}
   m_Father: {fileID: 2081816878025352973}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &603524154432162876
@@ -207,6 +208,76 @@ Transform:
   - {fileID: 5237928470144045580}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &36565102322709658
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5237928470144045580}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_Name
+      value: Big City Tile 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+--- !u!4 &507603532504077169 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+  m_PrefabInstance: {fileID: 36565102322709658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5087932118702592715
 PrefabInstance:
   m_ObjectHideFlags: 0

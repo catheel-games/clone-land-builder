@@ -11,6 +11,7 @@ public class LevelWinFeedback : MonoBehaviour
     [SerializeField] private CoinCollecting coinCollecting;
 
     [SerializeField] private TextMeshProUGUI coinText;
+    [SerializeField] private TextMeshProUGUI rewardCoinText;
 
     [SerializeField] private Image starCircle;
     [SerializeField] private RectTransform starCounter;
@@ -18,6 +19,8 @@ public class LevelWinFeedback : MonoBehaviour
     [SerializeField] private GameObject starScoreCanvasObject;
     [SerializeField] private CanvasGroup starScoreCanvasGroup;
     [SerializeField] private RectTransform tickObject;
+
+    [SerializeField] private RectTransform levelCompletedTextTransform;
 
     [SerializeField] private Sprite newStarCircleSprite;
     [SerializeField] private Sprite newStarCounterSprite;
@@ -27,8 +30,15 @@ public class LevelWinFeedback : MonoBehaviour
 
     public TextMeshProUGUI _coinText => coinText;
 
+    public RectTransform _levelCompletedTextTransform => levelCompletedTextTransform;
+
     public void LevelWinning()
     {
+        int currentLevel = GameData.Instance.currentLevelID;
+        LevelDataSO currentlevelDataSO = SaveLoadManager.Instance.levelDatas[currentLevel - 1];
+
+        rewardCoinText.text = currentlevelDataSO.coinValue.ToString();
+
         Sequence winSeq = DOTween.Sequence();
 
         winSeq.AppendCallback(levelCanvasControl.DisableWinContainers)
@@ -40,7 +50,21 @@ public class LevelWinFeedback : MonoBehaviour
               .AppendCallback(() => starCircle.sprite = newStarCircleSprite)
               .AppendCallback(() => tickObject.gameObject.SetActive(true))
               .Append(tickObject.DOShakeScale(0.5f, 0.25f))
-              .AppendCallback(() => levelCanvasControl._coinContainer.Show());
+              .AppendCallback(() => levelCanvasControl._coinContainer.Show())
+              .AppendCallback(() => LevelCompletedTextAnimation());
+
+
+    }
+
+    public void LevelCompletedTextAnimation()
+    {
+        Sequence winSeq = DOTween.Sequence();
+
+        winSeq.Append(levelCompletedTextTransform.DOScale(0, 0))
+              .AppendCallback(() => levelCompletedTextTransform.gameObject.SetActive(true))
+              .Append(levelCompletedTextTransform.DOScale(1f, 0.3f))
+              .Append(levelCompletedTextTransform.DOScale(0.7f, 0.1f)).SetEase(Ease.InSine)
+              .Append(levelCompletedTextTransform.DOScale(1f, 0.1f)).SetEase(Ease.OutSine);
     }
 
 }
