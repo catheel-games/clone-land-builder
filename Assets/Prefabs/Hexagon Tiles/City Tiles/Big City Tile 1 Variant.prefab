@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 3478767257623290553, guid: 096cd915c6f547b45a0a7349eb2fb289, type: 3}
+    - target: {fileID: 7881820332124483673, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881820332124483673, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c2ea427895a5c647a65ceab20e124b2, type: 2}
     - target: {fileID: 8530140560371257740, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: m_Name
       value: Big City Tile 1 Variant
@@ -87,3 +95,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tile
   borderTypes: 010000000100000001000000010000000100000001000000
   centerType: 1
+  rotationLerpCoefficient: 10

@@ -13,9 +13,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8491971585657991018, guid: f1ee71a22508a814a9071a8d030e1f3e, type: 3}
     - target: {fileID: 7881820332124483673, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881820332124483673, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e4f8e2dd0566a7649b6f78d3c36963d0, type: 2}
+    - target: {fileID: 7881820332124483673, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 668413c622843bc48ad77c11b03204a6, type: 2}
     - target: {fileID: 8530140560371257740, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: m_Name
       value: 3Grass 1 - 3Forest 2 Variant
