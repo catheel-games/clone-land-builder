@@ -52,7 +52,9 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public Hexagons.Type GetSide(int side) { 
+    public Hexagons.Type CenterType => centerType;
+
+    public Hexagons.Type GetSide(int side) {
         return borderTypes[Tools.Modulo(rotationOffset + side, 6)];
     }
 }

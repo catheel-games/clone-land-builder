@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4124033741735466243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4951425619407785039}
+  - component: {fileID: 2150975395826410508}
+  m_Layer: 0
+  m_Name: Tile Decoration
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4951425619407785039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4124033741735466243}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.08835, y: 0, z: -0.46538}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2150975395826410508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4124033741735466243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be68c68d4a7517a4ca0317117f5a5af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileDecoration
+  tileGrid: {fileID: 8734218967770000859, guid: 18c02bc59ef94ce4dac75088f883677a, type: 3}
+  decorationGroups:
+  - prefabs:
+    - {fileID: 6903643519771881796, guid: 58d417912f93fd046b944918712e43f0, type: 3}
+    - {fileID: 2548367544696216464, guid: e8dba64d2e151be4db1e0016960ed419, type: 3}
+    tileType: 5
+    spawnHeight: 0.1
+  - prefabs:
+    - {fileID: 8787564955645923661, guid: 69b1ddcc288a02842b85f6c06458cf3f, type: 3}
+    tileType: 2
+    spawnHeight: 0.15
+  - prefabs:
+    - {fileID: 2043037591980130156, guid: 29157c5e02ecfb941b4cd3eb5cffe3f7, type: 3}
+    tileType: 4
+    spawnHeight: 0.17
