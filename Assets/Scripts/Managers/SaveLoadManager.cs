@@ -34,7 +34,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
 
         gameData.levelsProgress.Clear();
 
-/*        for (int i = 1; i <= levelCount; i++)
+        for (int i = 1; i <= levelCount; i++)
         {
             gameData.levelsProgress.Add(new LevelProgress
             {
@@ -45,10 +45,10 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
                     ? LevelProgress.LevelState.Unlocked
                     : LevelProgress.LevelState.Blocked
             });
-        }*/
+        }
 
         // Creating 3Level Test Default Data
-            for (int i = 1; i <= levelCount; i++)
+/*            for (int i = 1; i <= levelCount; i++)
             {
                 gameData.levelsProgress.Add(new LevelProgress
                 {
@@ -62,7 +62,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
                         3 => LevelProgress.LevelState.Unlocked
                     }
                 });
-            }
+            }*/
 
         gameData.currentLevelID = 1;
     }

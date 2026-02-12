@@ -132,7 +132,7 @@ public class FTUE : MonoBehaviour
                 }
                 else if (LevelControl.Instance.fTUEtileID == 2)
                 {
-                    handRectTransform.gameObject.SetActive(false);
+                    handAnimator.gameObject.SetActive(false);
 
                     DOVirtual.DelayedCall(0.5f, () =>
                     {
