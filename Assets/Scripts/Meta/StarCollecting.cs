@@ -35,6 +35,12 @@ public class StarCollecting : Singleton<StarCollecting>
     [SerializeField] private RectTransform starScoreBonusText;
     [SerializeField] private TextMeshProUGUI starScoringBonus;
 
+    [Header("End Star Pre-Accept Scoring")]
+    [SerializeField] private TextMeshProUGUI endStarText;
+    [SerializeField] private float endOffMaskPosition = 125f;
+    [SerializeField] private RectTransform endStarScoreRect;
+    [SerializeField] private TextMeshProUGUI endStarScoringBonus;
+
     private int starAmount = 0;
     private int tileAmount = 0;
     private List<GameObject> starObjects = new();
@@ -48,6 +54,9 @@ public class StarCollecting : Singleton<StarCollecting>
     private int starScoreBonusAmount = 0;
     private int maxStarScore;
 
+    private LevelProgress levelProgress;
+    private int currentLevel;
+
     void Start()
     {
         SetStarScoreMainMode();
@@ -55,6 +64,10 @@ public class StarCollecting : Singleton<StarCollecting>
 
     public void SetDataUI(int maxStarValue)
     {
+        currentLevel = GameData.Instance.currentLevelID;
+        levelProgress = GameData.Instance.GetLevelProgress(currentLevel);
+
+        endStarText.text = LevelControl.Instance.starScore.ToString();
         starText1.text = LevelControl.Instance.starScore.ToString();
         starText2.text = maxStarValue.ToString();
         tileText.text = LevelControl.Instance.tileScore.ToString();
@@ -138,6 +151,7 @@ public class StarCollecting : Singleton<StarCollecting>
                     .AppendInterval(0.125f)
                     .Join(starCircleTransform.DOScale(1.25f, 0.1f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo))
                     .AppendCallback(() => SetScore(LevelControl.Instance.starScore, starAmount, starText1))
+                    .AppendCallback(() => SetScore(LevelControl.Instance.starScore, starAmount, endStarText))
                     .AppendCallback(() => LevelControl.Instance.starScore += starAmount)
                     .AppendCallback(CheckWinning);
 
@@ -180,6 +194,10 @@ public class StarCollecting : Singleton<StarCollecting>
 
 
         }
+
+        else {
+            LevelControl.Instance.SaveTile();
+        }
     }
 
     public void SetStarScoreMainMode()
@@ -190,22 +208,43 @@ public class StarCollecting : Singleton<StarCollecting>
 
             if (starScoringBonusSlide == null || !starScoringBonusSlide.IsActive())
             {
-                Sequence slideSequence = DOTween.Sequence();
-
-                slideSequence.Append(starScoreMainText.DOAnchorPosX(0, slideDuration));
-                slideSequence.Join(starScoreBonusText.DOAnchorPosX(-offMaskPosition, slideDuration));
-                slideSequence.AppendCallback(() =>
+                if (levelProgress.state != LevelProgress.LevelState.Finished)
                 {
-                    starScoreMainText.anchoredPosition = new Vector2(0, starScoreMainText.anchoredPosition.y);
-                    starScoreBonusText.anchoredPosition = new Vector2(offMaskPosition, starScoreBonusText.anchoredPosition.y);
+                    Sequence slideSequence = DOTween.Sequence();
 
-                    if (isStarScoreBonusMode)
+                    slideSequence.Append(starScoreMainText.DOAnchorPosX(0, slideDuration));
+                    slideSequence.Join(starScoreBonusText.DOAnchorPosX(-offMaskPosition, slideDuration));
+                    slideSequence.AppendCallback(() =>
                     {
-                        SetStarScoreBonusMode(starScoreBonusAmount);
-                    }
-                });
+                        starScoreMainText.anchoredPosition = new Vector2(0, starScoreMainText.anchoredPosition.y);
+                        starScoreBonusText.anchoredPosition = new Vector2(offMaskPosition, starScoreBonusText.anchoredPosition.y);
 
-                starScoringBonusSlide = slideSequence;
+                        if (isStarScoreBonusMode)
+                        {
+                            SetStarScoreBonusMode(starScoreBonusAmount);
+                        }
+                    });
+
+                    starScoringBonusSlide = slideSequence;
+                }
+
+                else if (levelProgress.state == LevelProgress.LevelState.Finished)
+                {
+                    Sequence slideSequence = DOTween.Sequence();
+
+                    slideSequence.Append(endStarScoreRect.DOAnchorPosX(0, slideDuration));
+                    slideSequence.AppendCallback(() =>
+                    {
+                        endStarScoreRect.anchoredPosition = new Vector2(0, endStarScoreRect.anchoredPosition.y);
+
+                        if (isStarScoreBonusMode)
+                        {
+                            SetStarScoreBonusMode(starScoreBonusAmount);
+                        }
+                    });
+
+                    starScoringBonusSlide = slideSequence;
+                }
             }
         }
     }
@@ -214,6 +253,7 @@ public class StarCollecting : Singleton<StarCollecting>
     {
         starScoreBonusAmount = starAmount;
         starScoringBonus.text = "+" + starAmount;
+        endStarScoringBonus.text = "+" + starAmount;
 
         if (!isStarScoreBonusMode)
         {
@@ -221,22 +261,41 @@ public class StarCollecting : Singleton<StarCollecting>
 
             if (starScoringBonusSlide == null || !starScoringBonusSlide.IsActive())
             {
-                Sequence slideSequence = DOTween.Sequence();
-
-                slideSequence.Append(starScoreMainText.DOAnchorPosX(-offMaskPosition, slideDuration));
-                slideSequence.Join(starScoreBonusText.DOAnchorPosX(0, slideDuration));
-                slideSequence.AppendCallback(() =>
+                if (levelProgress.state != LevelProgress.LevelState.Finished)
                 {
-                    starScoreMainText.anchoredPosition = new Vector2(offMaskPosition, starScoreMainText.anchoredPosition.y);
-                    starScoreBonusText.anchoredPosition = new Vector2(0, starScoreBonusText.anchoredPosition.y);
+                    Sequence slideSequence = DOTween.Sequence();
 
-                    if (!isStarScoreBonusMode)
+                    slideSequence.Append(starScoreMainText.DOAnchorPosX(-offMaskPosition, slideDuration));
+                    slideSequence.Join(starScoreBonusText.DOAnchorPosX(0, slideDuration));
+                    slideSequence.AppendCallback(() =>
                     {
-                        SetStarScoreMainMode();
-                    }
-                });
+                        starScoreMainText.anchoredPosition = new Vector2(offMaskPosition, starScoreMainText.anchoredPosition.y);
+                        starScoreBonusText.anchoredPosition = new Vector2(0, starScoreBonusText.anchoredPosition.y);
 
-                starScoringBonusSlide = slideSequence;
+                        if (!isStarScoreBonusMode)
+                        {
+                            SetStarScoreMainMode();
+                        }
+                    });
+
+                    starScoringBonusSlide = slideSequence;
+                }
+
+                else if (levelProgress.state == LevelProgress.LevelState.Finished)
+                {
+                    Sequence slideSequence = DOTween.Sequence();
+
+                    slideSequence.Append(endStarScoreRect.DOAnchorPosX(-endOffMaskPosition, slideDuration));
+                    slideSequence.AppendCallback(() =>
+                    {
+                        if (!isStarScoreBonusMode)
+                        {
+                            SetStarScoreMainMode();
+                        }
+                    });
+
+                    starScoringBonusSlide = slideSequence;
+                }
             }
         }
     }
@@ -311,7 +370,10 @@ public class StarCollecting : Singleton<StarCollecting>
     {
         if (LevelControl.Instance.starScore >= maxStarScore)
         {
-            LevelControl.Instance.Winning();
+            if (levelProgress.state != LevelProgress.LevelState.Finished)
+            {
+                LevelControl.Instance.Winning();
+            }
         }
     }
 }

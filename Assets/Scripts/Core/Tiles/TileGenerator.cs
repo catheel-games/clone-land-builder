@@ -18,7 +18,7 @@ public class TileGenerator : MonoBehaviour
 
     public Func<Hexagons.Type, (Hexagons.Type type, int count)> OnLeastTypeRequest;
 
-    void Start()
+    void Awake()
     {
         currentGenerator = tileGeneratorSO[GameData.Instance.currentLevelID - 1];
 

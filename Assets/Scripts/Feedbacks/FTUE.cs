@@ -213,6 +213,7 @@ public class FTUE : MonoBehaviour
     public void Match3TilesTutorial()
     {
         _FTUEPanelDefaultContainer.Show();
+        handAnimator.gameObject.SetActive(false);
         SetOliviaText(2);
         MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.525f), 0f);
         AnimateCircleHoleRadius(0.5f, 0.12f, 0.2f);
@@ -227,6 +228,7 @@ public class FTUE : MonoBehaviour
             DOVirtual.DelayedCall(0.3f, () =>
             {
                 _FTUEPanelDefaultContainer.Show();
+                handAnimator.gameObject.SetActive(false);
                 SetOliviaText(3);
                 MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(0.62f, 0.785f), 0f);
                 AnimateCircleHoleRadius(0.5f, 0.04f, 0.2f);

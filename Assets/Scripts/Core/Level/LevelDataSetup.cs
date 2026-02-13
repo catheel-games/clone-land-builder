@@ -30,6 +30,10 @@ public class LevelDataSetup : MonoBehaviour
 
     public void SaveData()
     {
+        if (progress.state == LevelProgress.LevelState.Unlocked) {
+            progress.state = LevelProgress.LevelState.InProgress;
+        }
+
         GameData.Instance.levelsProgress[currentLevel - 1].currentScore = LevelControl.Instance.starScore;
         GameData.Instance.levelsProgress[currentLevel - 1].currentTilesLeft = LevelControl.Instance.tileScore;
 

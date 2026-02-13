@@ -21,7 +21,7 @@ public class LevelCanvasControl : MonoBehaviour
     public PopupContainer _levelCompletedContainer => levelCompletedContainer;
     public PopupContainer _coinContainer => coinPanelContainer;
     public PopupContainer _newTileUnlockContainer => newTileUnlockContainer;
-
+    public DefaultContainer _levelTopPartContainer => levelTopPartContainer;
 
     public Tile TileQueueFirstTile() => tileQueueInterface.FirstTile();
 

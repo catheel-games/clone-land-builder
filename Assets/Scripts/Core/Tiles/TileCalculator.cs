@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class TileCalculator : MonoBehaviour
 {

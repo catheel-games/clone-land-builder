@@ -54,6 +54,17 @@ public class LevelWinFeedback : MonoBehaviour
               .AppendCallback(() => levelCanvasControl._coinContainer.Show())
               .AppendCallback(() => LevelCompletedTextAnimation());
 
+    }
+
+    public void EndingWonLevel()
+    {
+        Sequence endSeq = DOTween.Sequence();
+
+        endSeq.AppendCallback(levelCanvasControl.DisableWinContainers)
+              .AppendCallback(() => AudioManager.Instance.PlaySound("Other", "Level Complete"))
+              .Append(tickObject.DOShakeScale(0.5f, 0.25f))
+              .AppendCallback(() => levelCanvasControl._levelTopPartContainer.Hide())
+              .AppendCallback(() => levelCanvasControl.ContinueToNextLevelPanel());
 
     }
 
