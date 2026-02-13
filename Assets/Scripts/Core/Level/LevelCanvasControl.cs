@@ -72,6 +72,7 @@ public class LevelCanvasControl : MonoBehaviour
 
     public void NewTileUnlocked()
     {
+        AudioManager.Instance.PlaySound("Other", "New Tile Unlocked");
         levelTileUnlocking.SetUnlockedObject();
         levelWinFeedback._levelCompletedTextTransform.gameObject.SetActive(false);
         coinPanelContainer.Hide();

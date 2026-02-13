@@ -49,6 +49,7 @@ public class LevelWinFeedback : MonoBehaviour
               .AppendCallback(() => starCounterImage.pixelsPerUnitMultiplier = 5.5f)
               .AppendCallback(() => starCircle.sprite = newStarCircleSprite)
               .AppendCallback(() => tickObject.gameObject.SetActive(true))
+              .AppendCallback(() => AudioManager.Instance.PlaySound("Other", "Level Complete"))
               .Append(tickObject.DOShakeScale(0.5f, 0.25f))
               .AppendCallback(() => levelCanvasControl._coinContainer.Show())
               .AppendCallback(() => LevelCompletedTextAnimation());

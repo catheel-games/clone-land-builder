@@ -174,6 +174,7 @@ public class FTUE : MonoBehaviour
     private void SetOliviaText(int textID)
     {
         InputManager.Instance.DisableInput();
+        AudioManager.Instance.PlaySound("UI", "Tutorial Olivia");
 
         dialoguePanel.SetActive(true);
 

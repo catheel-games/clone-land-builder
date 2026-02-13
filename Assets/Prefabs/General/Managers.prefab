@@ -178,7 +178,7 @@ MonoBehaviour:
   - name: UI
     sounds:
     - name: Open UI
-      clip: {fileID: 8300000, guid: b1254e95d90f86b4ca070a25381b5fe2, type: 3}
+      clip: {fileID: 8300000, guid: 4ecd7f7b63a74f84aac5332d0bfacd22, type: 3}
       pitch: {x: 1, y: 1}
     - name: Close UI
       clip: {fileID: 8300000, guid: 16520f960632f174d92ff7dc86099f24, type: 3}
@@ -192,7 +192,7 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: fbccbc0f2285a95469a9bdaa6354a82f, type: 3}
       pitch: {x: 1, y: 1}
     - name: Tile Denying
-      clip: {fileID: 8300000, guid: fbab0e3ae3433d54d98f7ea6b0073e50, type: 3}
+      clip: {fileID: 8300000, guid: d0bcdd2954aeac44498e043b813e4c00, type: 3}
       pitch: {x: 1, y: 1}
     - name: Tile Accepting
       clip: {fileID: 8300000, guid: d042075ed65a6884e8e91bf67a68bd52, type: 3}
@@ -229,16 +229,13 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: 628692435f309454ab032cf2b8a24cb4, type: 3}
       pitch: {x: 1, y: 1}
     - name: Level Fail
-      clip: {fileID: 0}
+      clip: {fileID: 8300000, guid: 5476b4a7b31611c43bcd91de0b9b18ad, type: 3}
       pitch: {x: 1, y: 1}
     - name: New Tile Unlocked
-      clip: {fileID: 0}
+      clip: {fileID: 8300000, guid: 9408ac15431fbc4439e464be4f22ec31, type: 3}
       pitch: {x: 1, y: 1}
     - name: Eiffel Unlocked
-      clip: {fileID: 0}
-      pitch: {x: 1, y: 1}
-    - name: Loading
-      clip: {fileID: 8300000, guid: ae8e28b32328e8b48a183b8bf7ad46bd, type: 3}
+      clip: {fileID: 8300000, guid: 9d0cd413255dd8a43817d16d0c45b99c, type: 3}
       pitch: {x: 1, y: 1}
   musicMixerGroup: {fileID: -2426639153622354055, guid: 52e3aef6b043b0940b66333999eac6a6, type: 2}
   musicGroups:
@@ -246,6 +243,20 @@ MonoBehaviour:
     musics:
     - name: LoadingMusic
       clip: {fileID: 8300000, guid: ae8e28b32328e8b48a183b8bf7ad46bd, type: 3}
+  - name: Menu
+    musics:
+    - name: Menu
+      clip: {fileID: 8300000, guid: 7d2213c93fd9e5e44bbf503dcbc42352, type: 3}
+  - name: Level
+    musics:
+    - name: Background 1 Start
+      clip: {fileID: 8300000, guid: 747706882b3bb7146b6848bf57b3d2b5, type: 3}
+    - name: Background 1 Loop
+      clip: {fileID: 8300000, guid: 08287b0b2626bbb43abc67b2f5f5cc1c, type: 3}
+    - name: Background 2 Start
+      clip: {fileID: 8300000, guid: 122ab7916ac774448b81071da5a392cb, type: 3}
+    - name: Background 2 Loop
+      clip: {fileID: 8300000, guid: 01e0a074865b7d4428ab5971c51e0169, type: 3}
 --- !u!1 &5149440950281139509
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +393,9 @@ MonoBehaviour:
   gameData:
     levelsProgress: []
     currentLevelID: 0
+    coin: 0
+    ftueIsEnded: 0
+    matched3Tiles: 0
   levelDatas:
   - {fileID: 11400000, guid: a7b06bdac5835a9419d471c88bc9cb34, type: 2}
   - {fileID: 11400000, guid: 5344e11ef7915f243b3b273aa9106a96, type: 2}

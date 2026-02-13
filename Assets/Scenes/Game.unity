@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1416998036712531010, guid: d18cf69ebc9e9bb47b0e89b668d4a0a4, type: 3}
+      propertyPath: musicType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4044064752852493315, guid: d18cf69ebc9e9bb47b0e89b668d4a0a4, type: 3}
       propertyPath: m_Name
       value: Setup Elements
