@@ -108,4 +108,8 @@ public class LevelControl : Singleton<LevelControl>
         levelWin.Winning();
         levelCanvasControl.LevelWinning();
     }
+
+    public void Losing() {
+        levelCanvasControl.LevelLosing();
+    }
 }

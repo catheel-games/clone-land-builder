@@ -152,8 +152,7 @@ public class StarCollecting : Singleton<StarCollecting>
                     .Join(starCircleTransform.DOScale(1.25f, 0.1f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo))
                     .AppendCallback(() => SetScore(LevelControl.Instance.starScore, starAmount, starText1))
                     .AppendCallback(() => SetScore(LevelControl.Instance.starScore, starAmount, endStarText))
-                    .AppendCallback(() => LevelControl.Instance.starScore += starAmount)
-                    .AppendCallback(CheckWinning);
+                    .AppendCallback(() => LevelControl.Instance.starScore += starAmount);
 
 
             starsSeq.Pause();
@@ -186,7 +185,8 @@ public class StarCollecting : Singleton<StarCollecting>
 
             wholeSeq.Insert(0f, starScoreTransform.DOAnchorPosX(0, 0.1f))
                     .Insert(0.1f, starsSeq)
-                    .InsertCallback(1f, LevelControl.Instance.SaveTile);
+                    .InsertCallback(1f, LevelControl.Instance.SaveTile)
+                    .InsertCallback(1f, CheckLosing);
 
             if (tileAmount != 0) {
                 wholeSeq.Insert(0.45f, tilesSeq);
@@ -197,6 +197,7 @@ public class StarCollecting : Singleton<StarCollecting>
 
         else {
             LevelControl.Instance.SaveTile();
+            CheckLosing();
         }
     }
 
@@ -374,6 +375,15 @@ public class StarCollecting : Singleton<StarCollecting>
             {
                 LevelControl.Instance.Winning();
             }
+        }
+    }
+
+    private void CheckLosing()
+    {
+        Debug.Log("Tile Score:" + LevelControl.Instance.tileScore);
+        if (LevelControl.Instance.tileScore == 0)
+        {
+            LevelControl.Instance.Losing();    
         }
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1133087972073629504}
   - component: {fileID: 9160682876046122797}
   m_Layer: 5
-  m_Name: Coin Panel
+  m_Name: Coin Section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 7618756910434710015}
   - component: {fileID: 5231703073426394927}
   - component: {fileID: 8961054986154910580}
+  - component: {fileID: 7704333492877151539}
   m_Layer: 5
   m_Name: Level Scene Canvas
   m_TagString: Untagged
@@ -239,15 +240,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelInterface
   tilePreviewControlContainer: {fileID: 4538006066792537542}
   cameraControlContainer: {fileID: 1910575976310628578}
-  tileQueueInterface: {fileID: 5248833698963942154}
+  tileQueueInterface: {fileID: 0}
   levelTileUnlocking: {fileID: 8082248334833899311}
-  generatorDefaultContainer: {fileID: 7455352743775903130}
   starCollecting: {fileID: 8398454023396649481}
   levelWinFeedback: {fileID: 7618756910434710015}
+  levelLoseFeedback: {fileID: 7704333492877151539}
+  generatorDefaultContainer: {fileID: 7455352743775903130}
   levelCompletedContainer: {fileID: 3257065388213849581}
   coinPanelContainer: {fileID: 9116225919910454381}
   levelTopPartContainer: {fileID: 766974186330803883}
   newTileUnlockContainer: {fileID: 7693090773711110257}
+  levelFailContainer: {fileID: 7593815028284640716}
 --- !u!114 &8398454023396649481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,6 +371,19 @@ MonoBehaviour:
   starCounterRectTransform: {fileID: 8430892082976758902}
   starTargetX: 125
   starStartX: -100
+--- !u!114 &7704333492877151539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3145964109104998210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc10b27dfa4f2324dbf099339619b9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelLoseFeedback
+  levelCanvasControl: {fileID: 8476330011625406227}
 --- !u!1 &5782691104390321307
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,17 +991,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4792812599423166064, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
   m_PrefabInstance: {fileID: 456052117639033481}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5248833698963942154 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5657544281656138115, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
-  m_PrefabInstance: {fileID: 456052117639033481}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a738794c4eba3e4a985f3e1665cf122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TileQueueUI
 --- !u!114 &5356483927875725731 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5476998631618730794, guid: 148e7ce3c82782e40bb8739e68a2c11e, type: 3}
@@ -2331,6 +2336,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6750378975371752492, guid: 4a8c965b80d148345abea611d5fbb82d, type: 3}
   m_PrefabInstance: {fileID: 6339157909257239241}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7593815028284640716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4511357785418462981, guid: 4a8c965b80d148345abea611d5fbb82d, type: 3}
+  m_PrefabInstance: {fileID: 6339157909257239241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8885d04d65a6b594799fa584d1a7cc28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PopupContainer
 --- !u!1001 &6969209878349989677
 PrefabInstance:
   m_ObjectHideFlags: 0

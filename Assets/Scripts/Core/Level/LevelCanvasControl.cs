@@ -10,18 +10,24 @@ public class LevelCanvasControl : MonoBehaviour
 
     [SerializeField] private LevelTileUnlocking levelTileUnlocking;
 
-    [SerializeField] private DefaultContainer generatorDefaultContainer;
     [SerializeField] private StarCollecting starCollecting;
     [SerializeField] private LevelWinFeedback levelWinFeedback;
+    [SerializeField] private LevelLoseFeedback levelLoseFeedback;
+
+    [SerializeField] private DefaultContainer generatorDefaultContainer;
     [SerializeField] private PopupContainer levelCompletedContainer;
     [SerializeField] private PopupContainer coinPanelContainer;
     [SerializeField] private DefaultContainer levelTopPartContainer;
     [SerializeField] private PopupContainer newTileUnlockContainer;
+    [SerializeField] private PopupContainer levelFailContainer;
+    [SerializeField] private DefaultContainer coinSectionContainer;
 
     public PopupContainer _levelCompletedContainer => levelCompletedContainer;
     public PopupContainer _coinContainer => coinPanelContainer;
     public PopupContainer _newTileUnlockContainer => newTileUnlockContainer;
     public DefaultContainer _levelTopPartContainer => levelTopPartContainer;
+    public PopupContainer _levelFailContainer => levelFailContainer;
+    public DefaultContainer _coinSectionContainer => coinSectionContainer;
 
     public Tile TileQueueFirstTile() => tileQueueInterface.FirstTile();
 
@@ -68,6 +74,10 @@ public class LevelCanvasControl : MonoBehaviour
 
     public void LevelWinning() {
         levelWinFeedback.LevelWinning();
+    }
+
+    public void LevelLosing() {
+        levelLoseFeedback.LevelLosing();
     }
 
     public void NewTileUnlocked()
