@@ -119,4 +119,9 @@ public class LevelControl : Singleton<LevelControl>
         LoadManager.Instance.LoadScene("Game");
     }
 
+    public void CameraPresentation()
+    {
+        Vector3 centerCoordinates = tileControl.Tilegrid.TileGridCenter();
+        cameraControl.CityPresentation(centerCoordinates);
+    }
 }

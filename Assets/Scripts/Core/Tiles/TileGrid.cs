@@ -15,6 +15,8 @@ public class TileGrid : MonoBehaviour
 
     public event Action<Hexagons.Coords> OnTilePlacerClick;
 
+    private Vector3 centerCoordinates;
+
     void Start()
     {
         SetTilePlacer(new Hexagons.Coords(0, 0), true);
@@ -146,4 +148,17 @@ public class TileGrid : MonoBehaviour
         newTile.transform.position = Hexagons.HexToWorld(coords);
         tiles[coords] = newTile;
     }
+
+    public Vector3 TileGridCenter()
+    {
+        foreach (KeyValuePair<Hexagons.Coords, Tile> tile in tiles)
+        {
+            centerCoordinates += Hexagons.HexToWorld(tile.Key);
+        }
+
+        centerCoordinates /= tiles.Count;
+
+        return centerCoordinates;
+    }
+
 }

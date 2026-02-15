@@ -52,6 +52,7 @@ public class LevelWinFeedback : MonoBehaviour
               .AppendCallback(() => AudioManager.Instance.PlaySound("Other", "Level Complete"))
               .Append(tickObject.DOShakeScale(0.5f, 0.25f))
               .AppendCallback(() => levelCanvasControl._coinContainer.Show())
+              .AppendCallback(() => LevelControl.Instance.CameraPresentation())
               .AppendCallback(() => LevelCompletedTextAnimation());
 
     }

@@ -17,6 +17,10 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private float zoomStep = 2f;
     [SerializeField] private float rotationStep = 20f;
 
+    [SerializeField] private float presentationRotationStep = -10f;
+
+    private bool staticRotation = false;
+
     private float zoomTarget;
     private float rotationTarget;
     private Vector3 positionTarget;
@@ -57,6 +61,10 @@ public class CameraControl : MonoBehaviour
             zoomTarget,
             zoomLerpCoefficient * Time.deltaTime
         );
+
+        if (staticRotation) {
+            rotationTarget += presentationRotationStep * Time.deltaTime;
+        }
 
         pivotTransform.transform.rotation = Quaternion.Lerp(
             pivotTransform.transform.rotation,
@@ -117,5 +125,11 @@ public class CameraControl : MonoBehaviour
     public void ZoomOut()
     {
         ChangeZoom(zoomStep);
+    }
+
+    public void CityPresentation(Vector3 newPosition)
+    {
+        LockPosition(newPosition);
+        staticRotation = true;
     }
 }

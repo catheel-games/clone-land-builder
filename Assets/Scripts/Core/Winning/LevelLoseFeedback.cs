@@ -20,6 +20,7 @@ public class LevelLoseFeedback : MonoBehaviour
               .Append(exitToMenuCanvasGroup.DOFade(0, 0))
               .AppendCallback(() => levelCanvasControl._levelFailContainer.Show())
               .AppendCallback(() => SaveLoadManager.Instance.RefreshLevelData())
+              .AppendCallback(() => LevelControl.Instance.CameraPresentation())
 
               .AppendInterval(1f)
               .Append(exitToMenuCanvasGroup.DOFade(1, 0.2f));
