@@ -17,6 +17,9 @@ public class LevelSelectionPanel : MonoBehaviour
     [SerializeField] private GameObject notPlayedBottomPart;
     [SerializeField] private GameObject notPlayedTopPart;
 
+    [SerializeField] private TextMeshProUGUI levelText1;
+    [SerializeField] private TextMeshProUGUI levelText2;
+
     [SerializeField] private GameObject[] resources;
 
     public void SetValues(int starValue, int coinValue, bool played, bool[] resourcesInLevel)
@@ -39,6 +42,12 @@ public class LevelSelectionPanel : MonoBehaviour
         }
     }
 
+    public void SetLevelIDText(int levelID)
+    {
+        levelText1.text = "Level " + levelID;
+        levelText2.text = "Level " + levelID;
+    }
+
 
     public void SetResourceValues(bool[] resourcesInLevel)
     {
@@ -46,5 +55,11 @@ public class LevelSelectionPanel : MonoBehaviour
         {
             resources[i].SetActive(resourcesInLevel[i]);
         }
+    }
+
+    public void RestartLevel()
+    {
+        SaveLoadManager.Instance.RefreshLevelData();
+        LoadManager.Instance.LoadScene("Game");
     }
 }

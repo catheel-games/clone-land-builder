@@ -3845,7 +3845,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4694763951290294285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6769162326336196223}
+        m_TargetAssemblyTypeName: LevelSelectionPanel, Assembly-CSharp
+        m_MethodName: RestartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4168482564151221376
 GameObject:
   m_ObjectHideFlags: 0
@@ -4154,7 +4166,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2420927764115732959}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1376781693673474943}
+        m_TargetAssemblyTypeName: LevelSelectionPanel, Assembly-CSharp
+        m_MethodName: RestartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4267208059996846018
 GameObject:
   m_ObjectHideFlags: 0
@@ -4710,6 +4734,8 @@ MonoBehaviour:
   playedTopPart: {fileID: 365294614762495190}
   notPlayedBottomPart: {fileID: 5905778106029669288}
   notPlayedTopPart: {fileID: 2258583816987851608}
+  levelText1: {fileID: 5573694885062241349}
+  levelText2: {fileID: 1553978079744972682}
   resources:
   - {fileID: 2593206407739122242}
   - {fileID: 5896145819572894504}
@@ -9765,6 +9791,8 @@ MonoBehaviour:
   playedTopPart: {fileID: 0}
   notPlayedBottomPart: {fileID: 0}
   notPlayedTopPart: {fileID: 0}
+  levelText1: {fileID: 4554232308967552634}
+  levelText2: {fileID: 4554232308967552634}
   resources:
   - {fileID: 3461192279627340736}
   - {fileID: 1039621835937501881}

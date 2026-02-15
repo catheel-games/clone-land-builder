@@ -103,6 +103,16 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         }
     }
 
+    public void RefreshLevelData()
+    {
+        int currentLevel = GameData.Instance.currentLevelID;
+        LevelProgress currentLevelProgress = GameData.Instance.GetLevelProgress(currentLevel);
+
+        currentLevelProgress.currentScore = 0;
+        currentLevelProgress.currentTilesLeft = 50;
+
+        SaveData();
+    }
 }
 
 

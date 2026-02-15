@@ -72,4 +72,25 @@ public class TileQueueInterface : MonoBehaviour
                 tileSlots[index].DOLocalMoveX(tileTargetPositionsX[index], tileMovementDuration[index]);
         }
     }
+
+    public void CheckTileLeft()
+    {
+        if (LevelControl.Instance.tileScore < 3)
+        {
+            int tileScore = LevelControl.Instance.tileScore;
+            for (int i = 0; i < tileSlots.Length; i++) {
+                tileSlots[i].gameObject.SetActive(true);
+            }
+
+            for (int i = tileScore; i < tileSlots.Length; i++) {
+                tileSlots[i].gameObject.SetActive(false);
+            }
+        }
+        else {
+            for (int i = 0; i < tileSlots.Length; i++)
+            {
+                tileSlots[i].gameObject.SetActive(true);
+            }
+        }
+    }
 }

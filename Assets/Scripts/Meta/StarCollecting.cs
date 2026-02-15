@@ -5,7 +5,9 @@ using DG.Tweening;
 
 public class StarCollecting : Singleton<StarCollecting>
 {
+    [SerializeField] private LevelCanvasControl levelCanvasControl;
     [SerializeField] private LevelWinFeedback levelWinFeedback;
+    [SerializeField] private TileScoreBlinkFeedback tileScoreBlinkFeedback;
 
     [SerializeField] private Transform starCircleTransform;
     [SerializeField] private Transform tileCounterTransform;
@@ -75,6 +77,8 @@ public class StarCollecting : Singleton<StarCollecting>
 		starFTUEText.text = maxStarValue.ToString();
         maxStarScore = maxStarValue;
         levelWinFeedback._coinText.text = GameData.Instance.coin.ToString();
+
+        ChangeTileCounter();
     }
 
     public void GetPlusObjects(int starAmountRef, List<GameObject> starObjectsRef, GameObject tileObjectRef)
@@ -94,6 +98,9 @@ public class StarCollecting : Singleton<StarCollecting>
         LevelControl.Instance.tileScore--;
         tileText.text = LevelControl.Instance.tileScore.ToString();
         tileText.transform.DOScale(1.2f, 0.1f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo);
+        ChangeTileCounter();
+        levelCanvasControl._tileQueueInterface.CheckTileLeft();
+
 
         if (starAmount != 0)
         {
@@ -152,7 +159,8 @@ public class StarCollecting : Singleton<StarCollecting>
                     .Join(starCircleTransform.DOScale(1.25f, 0.1f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo))
                     .AppendCallback(() => SetScore(LevelControl.Instance.starScore, starAmount, starText1))
                     .AppendCallback(() => SetScore(LevelControl.Instance.starScore, starAmount, endStarText))
-                    .AppendCallback(() => LevelControl.Instance.starScore += starAmount);
+                    .AppendCallback(() => LevelControl.Instance.starScore += starAmount)
+                    .AppendCallback(() => CheckWinning());
 
 
             starsSeq.Pause();
@@ -177,7 +185,8 @@ public class StarCollecting : Singleton<StarCollecting>
                     .AppendInterval(0.1f)
                     .Join(tileCounterTransform.DOScale(1.25f, 0.1f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo))
                     .AppendCallback(() => SetScore(LevelControl.Instance.tileScore, tileAmount, tileText))
-                    .AppendCallback(() => LevelControl.Instance.tileScore += tileAmount);
+                    .AppendCallback(() => LevelControl.Instance.tileScore += tileAmount)
+                    .AppendCallback(() => ChangeTileCounter());
 
             tilesSeq.Pause();
 
@@ -196,9 +205,23 @@ public class StarCollecting : Singleton<StarCollecting>
         }
 
         else {
-            LevelControl.Instance.SaveTile();
-            CheckLosing();
+            Sequence seq = DOTween.Sequence();
+
+            seq.InsertCallback(0f, () => LevelControl.Instance.SaveTile())
+               .InsertCallback(0.5f, () => CheckLosing());
         }
+    }
+
+    private void ChangeTileCounter()
+    {
+        if (LevelControl.Instance.tileScore <= 4)
+        {
+            levelCanvasControl._tileQueueInterface.CheckTileLeft();
+            tileScoreBlinkFeedback.ChangeCounterLowColor();
+        }
+
+        else
+            tileScoreBlinkFeedback.ChangeCounterDefaultColor();
     }
 
     public void SetStarScoreMainMode()

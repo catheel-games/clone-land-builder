@@ -4,11 +4,10 @@ using DG.Tweening;
 public class LevelLoseFeedback : MonoBehaviour
 {
     [SerializeField] private LevelCanvasControl levelCanvasControl;
+    [SerializeField] private CanvasGroup exitToMenuCanvasGroup;
 
     public void LevelLosing()
     {
-        Debug.Log("Level Losing");
-
         Sequence winSeq = DOTween.Sequence();
 
         winSeq.AppendCallback(() => InputManager.Instance.DisableInput())
@@ -16,7 +15,14 @@ public class LevelLoseFeedback : MonoBehaviour
               .AppendCallback(() => levelCanvasControl._levelTopPartContainer.Hide())
               .AppendCallback(() => levelCanvasControl._coinSectionContainer.Hide())
               .AppendInterval(0.2f)
+
               .AppendCallback(() => AudioManager.Instance.PlaySound("Other", "Level Fail"))
-              .AppendCallback(() => levelCanvasControl._levelFailContainer.Show());
+              .Append(exitToMenuCanvasGroup.DOFade(0, 0))
+              .AppendCallback(() => levelCanvasControl._levelFailContainer.Show())
+              .AppendCallback(() => SaveLoadManager.Instance.RefreshLevelData())
+
+              .AppendInterval(1f)
+              .Append(exitToMenuCanvasGroup.DOFade(1, 0.2f));
+
     }
 }

@@ -10,6 +10,8 @@ public class LoadManager : Singleton<LoadManager>
 
     public void LoadScene(string sceneName)
     {
+        InputManager.Instance.EnableInput();
+
         if (sceneName == "Menu")
         {
             GameData.Instance.currentLevelID = 0;

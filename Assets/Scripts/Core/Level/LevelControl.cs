@@ -112,4 +112,11 @@ public class LevelControl : Singleton<LevelControl>
     public void Losing() {
         levelCanvasControl.LevelLosing();
     }
+
+    public void Restart()
+    {
+        SaveLoadManager.Instance.RefreshLevelData();
+        LoadManager.Instance.LoadScene("Game");
+    }
+
 }

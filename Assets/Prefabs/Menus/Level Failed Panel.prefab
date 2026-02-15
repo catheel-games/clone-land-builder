@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 4372317361051758337}
   - component: {fileID: 1891186896144850447}
   - component: {fileID: 2040164423626051927}
+  - component: {fileID: 5950609188751972455}
   m_Layer: 5
   m_Name: Exit to Menu
   m_TagString: Untagged
@@ -272,6 +273,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoadButton
   button: {fileID: 1891186896144850447}
   sceneName: Menu
+--- !u!225 &5950609188751972455
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603968387411459295}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1299506139520701277
 GameObject:
   m_ObjectHideFlags: 0

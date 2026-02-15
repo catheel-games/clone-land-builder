@@ -99,6 +99,7 @@ public class LevelSelection : MonoBehaviour
             completedLevelSelection.Show();
 
             completedLevelSelectionPanel.SetResourceValues(levelData.levelTiles);
+            completedLevelSelectionPanel.SetLevelIDText(level+1);
         }
         else if (progress.state == LevelProgress.LevelState.Blocked)
         {
@@ -110,6 +111,7 @@ public class LevelSelection : MonoBehaviour
 
             bool played = progress.state == LevelProgress.LevelState.InProgress;
             levelSelectionPanel.SetValues(levelData.goalValue, levelData.coinValue, played, levelData.levelTiles);
+            levelSelectionPanel.SetLevelIDText(level+1);
         }
 
         GameData.Instance.currentLevelID = levelData.levelIndex;

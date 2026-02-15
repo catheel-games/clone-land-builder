@@ -12,7 +12,8 @@ public class PopupContainer : FadingContainer
     public override void Show()
     {
         base.Show();
-        topBar.Hide();
+        if (topBar != null)
+            topBar.Hide();
 
         Sequence sequence = DOTween.Sequence();
         if (scalableTransform != null)
@@ -27,7 +28,8 @@ public class PopupContainer : FadingContainer
     public override void Hide()
     {
         base.Hide();
-        topBar.Show();
+        if (topBar != null)
+            topBar.Show();
 
         Sequence sequence = DOTween.Sequence();
 

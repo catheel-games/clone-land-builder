@@ -22,6 +22,7 @@ public class LevelCanvasControl : MonoBehaviour
     [SerializeField] private PopupContainer levelFailContainer;
     [SerializeField] private DefaultContainer coinSectionContainer;
 
+    public TileQueueInterface _tileQueueInterface => tileQueueInterface;
     public PopupContainer _levelCompletedContainer => levelCompletedContainer;
     public PopupContainer _coinContainer => coinPanelContainer;
     public PopupContainer _newTileUnlockContainer => newTileUnlockContainer;
