@@ -2,16 +2,31 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] private Hexagons.Type[] borderTypes = new Hexagons.Type[6];
-    [SerializeField] private Hexagons.Type centerType;
     [SerializeField] private float rotationLerpCoefficient = 10f;
+    [SerializeField] private Hexagons.Type centerType;
+    [SerializeField] private Hexagons.Type[] borderTypes = new Hexagons.Type[6];
+    [SerializeField] private GameObject centerExpansion;
+    [SerializeField] private GameObject[] borderExpansions = new GameObject[6];
 
     private int rotationOffset = 0;
     private float rotationOffsetDiscrete = 0f;
+    
     private bool isPlaced = false;
+    private bool isExpanded = false;
+    private bool[] isBorderExpanded = new bool[6] {false, false, false, false, false, false};
+    
+    public float RotationOffsetDiscrete => rotationOffsetDiscrete;
 
-    public float RotationOffsetDiscrete => rotationOffsetDiscrete; 
+    void Start()
+    {
+        centerExpansion.SetActive(false);
 
+        foreach (GameObject borderExpansion in borderExpansions)
+        {
+            borderExpansion.SetActive(false);
+        }
+    }
+    
     void Update()
     {
         if (!isPlaced)
@@ -54,5 +69,24 @@ public class Tile : MonoBehaviour
 
     public Hexagons.Type GetSide(int side) { 
         return borderTypes[Tools.Modulo(rotationOffset + side, 6)];
+    }
+
+    public void ExpandCenter()
+    {
+        if (!isPlaced) return;
+        if (isExpanded) return;
+        
+        isExpanded = true;
+        centerExpansion.SetActive(true);
+    }
+
+    public void ExpandSide(int side, Hexagons.Type neighborType)
+    {
+        if (!isPlaced) return;
+        if (isBorderExpanded[side]) return;
+        if ((int)borderTypes[side] <= (int)neighborType) return;
+        
+        isBorderExpanded[side] = true;
+        borderExpansions[side].SetActive(true);
     }
 }

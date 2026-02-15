@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1607275714137605913}
   - component: {fileID: 8548033040556924597}
   - component: {fileID: 5314599729690916480}
+  - component: {fileID: 3991347518223200085}
   m_Layer: 0
   m_Name: Tiles
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   tileGrid: {fileID: 8882862855357961664}
   tilePreview: {fileID: 2840889560057333610}
   tileUpgrade: {fileID: 5314599729690916480}
+  tileExpansion: {fileID: 3991347518223200085}
   tileGenerator: {fileID: 4304075197831753414}
 --- !u!114 &5314599729690916480
 MonoBehaviour:
@@ -74,6 +76,19 @@ MonoBehaviour:
   - {fileID: -971691992253998583, guid: 81f54e1363c47fc498ccf0f8529ac601, type: 3}
   - {fileID: 8523314424066943370, guid: fad9ea3e2a841724bbcd3858f915db3b, type: 3}
   - {fileID: 4591298315598215776, guid: 38973c43386276d42b9438928079c38f, type: 3}
+--- !u!114 &3991347518223200085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039248648598772869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7b87f92f4b71d4ca985d9ba96e5fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileExpansion
+  tileGrid: {fileID: 8882862855357961664}
 --- !u!1 &7954233154541574880
 GameObject:
   m_ObjectHideFlags: 0
