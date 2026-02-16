@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 6952920101856386042}
   - component: {fileID: 1375223157879388567}
   - component: {fileID: 713064811577612070}
+  - component: {fileID: 8163962113934723160}
   m_Layer: 5
   m_Name: Pause Panel
   m_TagString: Untagged
@@ -382,6 +383,18 @@ MonoBehaviour:
   scalableTransform: {fileID: 4965071081207436618}
   showScalingDuration: 0.25
   hideScalingDuration: 0.4
+--- !u!114 &8163962113934723160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427803172001187703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaf7f3e833a9b142af7d48cd437f9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pausing
 --- !u!1 &2778879677316733618
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,6 +856,18 @@ MonoBehaviour:
       - m_Target: {fileID: 713064811577612070}
         m_TargetAssemblyTypeName: PopupContainer, Assembly-CSharp
         m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8163962113934723160}
+        m_TargetAssemblyTypeName: Pausing, Assembly-CSharp
+        m_MethodName: UnPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2599,6 +2624,18 @@ MonoBehaviour:
       - m_Target: {fileID: 713064811577612070}
         m_TargetAssemblyTypeName: PopupContainer, Assembly-CSharp
         m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8163962113934723160}
+        m_TargetAssemblyTypeName: Pausing, Assembly-CSharp
+        m_MethodName: UnPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

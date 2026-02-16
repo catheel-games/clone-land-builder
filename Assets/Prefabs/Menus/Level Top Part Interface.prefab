@@ -1509,7 +1509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -40, y: 50}
+  m_AnchoredPosition: {x: -42, y: 50}
   m_SizeDelta: {x: 70, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7204469501751626471
@@ -1762,6 +1762,7 @@ MonoBehaviour:
   starCircleObject: {fileID: 362973688914883724}
   starCounterObject: {fileID: 6774400488835774819}
   endLevelPanelObject: {fileID: 2459527681954794719}
+  coinSection: {fileID: 0}
 --- !u!1 &4290138132104930685
 GameObject:
   m_ObjectHideFlags: 0

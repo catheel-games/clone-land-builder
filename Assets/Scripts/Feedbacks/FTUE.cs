@@ -33,6 +33,9 @@ public class FTUE : MonoBehaviour
     [SerializeField] private Sprite declineFtueSprite;
     [SerializeField] private Sprite declineDefaultSprite;
 
+
+    private float _screenModifier;
+
     private void Start()
     {
         uiCircleHoleMat = Instantiate(dialoguePanelImage.material);
@@ -44,9 +47,11 @@ public class FTUE : MonoBehaviour
         fTUEisOn = true;
 
         _FTUEPanelDefaultContainer.Show();
+        cameraControlContainer.Hide();
         handRectTransform.localPosition = tileSetPos;
 
         cameraControl.LockPosition(tilePositions[0]);
+        InputManager.Instance.DisableInput();
     }
 
     public void SetTile()
@@ -58,26 +63,25 @@ public class FTUE : MonoBehaviour
                 declineButton.enabled = false;
                 declineButtonImage.sprite = declineFtueSprite;
                 handRectTransform.localPosition = acceptPos;
-
-                InputManager.Instance.DisableInput();
             }
             else if (LevelControl.Instance.fTUEtileID == 1)
             {
+                InputManager.Instance.EnableInput();
+
                 declineButton.enabled = true;
                 declineButtonImage.sprite = declineDefaultSprite;
                 handRectTransform.localPosition = rotatePos;
 
                 handAnimator.SetTrigger("Rotate");
-                DOVirtual.DelayedCall(0.02f, () => tilePreviewControlContainer.Hide());
             }
             else if (LevelControl.Instance.fTUEtileID == 2)
             {
+                InputManager.Instance.EnableInput();
+
                 _FTUEPanelDefaultContainer.Show();
                 SetOliviaText(0);
-                MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.475f), 0f);
+                MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(0, -50), 0f, new Vector2(0.5f, 0.5f));
                 AnimateCircleHoleRadius(0.5f, 0.08f, 0.2f);
-
-                DOVirtual.DelayedCall(0.02f, () => cameraControlContainer.Hide());
             }
         }
     }
@@ -86,6 +90,9 @@ public class FTUE : MonoBehaviour
     {
         if (fTUEisOn)
         {
+            InputManager.Instance.DisableInput();
+            DOVirtual.DelayedCall(0.02f, () => cameraControlContainer.Hide());
+
             if (!isTileAccepted)
             {
                 _FTUEPanelDefaultContainer.Hide();
@@ -107,7 +114,6 @@ public class FTUE : MonoBehaviour
                     DOVirtual.DelayedCall(0.2f, () =>
                     {
                         cameraControl.LockPosition(tilePositions[2]);
-                        cameraControlContainer.Show();
                     });
                 }
             }
@@ -118,10 +124,9 @@ public class FTUE : MonoBehaviour
 
                 LevelControl.Instance.fTUEtileID++;
 
-
                 if (LevelControl.Instance.fTUEtileID == 1)
                 {
-                    InputManager.Instance.EnableInput();
+                    //InputManager.Instance.EnableInput();
 
                     DOVirtual.DelayedCall(0.5f, () =>
                     {
@@ -145,10 +150,10 @@ public class FTUE : MonoBehaviour
                 else if (LevelControl.Instance.fTUEtileID == 3)
                 {
                     _FTUEPanelDefaultContainer.Show();
-                    cameraControlContainer.Show();
+                    DOVirtual.DelayedCall(0.03f, () => cameraControlContainer.Show());
 
                     SetOliviaText(1);
-                    MoveCircleHoleCenter(new Vector2(0.5f, 0.475f), new Vector2(0.115f, 0.8f), 0f);
+                    MoveCircleHoleCenter(new Vector2(0.5f, 0.475f), new Vector2(125f, -350f), 0f, new Vector2(0, 1));
                     AnimateCircleHoleRadius(0.5f, 0.045f, 0.2f);
 
                     GameData.Instance.ftueIsEnded = true;
@@ -167,6 +172,7 @@ public class FTUE : MonoBehaviour
             {
                 _FTUEPanelDefaultContainer.Hide();
                 tilePreviewControlContainer.Show();
+                cameraControlContainer.Show();
             }
         }
     }
@@ -195,9 +201,23 @@ public class FTUE : MonoBehaviour
                         .SetEase(Ease.OutCubic);
     }
 
-    private void MoveCircleHoleCenter(Vector2 from, Vector2 to, float duration)
+    private void MoveCircleHoleCenter(Vector2 from, Vector2 newPos, float duration, Vector2 anchor)
     {
+        _screenModifier = 1;
+
+        if (Screen.width < 1080) {
+            _screenModifier = 1080f / Screen.width;
+            Debug.Log(_screenModifier);
+        }
+
+
+        Vector4 screenVector = new Vector4(Screen.width * _screenModifier, Screen.height * _screenModifier, 0, 0);
+
+        uiCircleHoleMat.SetVector("_RectSize", screenVector);
+
         uiCircleHoleMat.SetVector("_Center", from);
+
+        Vector2 to = new Vector2 ((newPos.x / screenVector.x) + anchor.x, (newPos.y / screenVector.y) + anchor.y);
 
         DOTween.To( () => (Vector2)uiCircleHoleMat.GetVector("_Center"),
                         x => uiCircleHoleMat.SetVector("_Center", x),
@@ -215,7 +235,7 @@ public class FTUE : MonoBehaviour
         _FTUEPanelDefaultContainer.Show();
         handAnimator.gameObject.SetActive(false);
         SetOliviaText(2);
-        MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.525f), 0f);
+        MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(0, 50), 0f, new Vector2 (0.5f, 0.5f));
         AnimateCircleHoleRadius(0.5f, 0.12f, 0.2f);
     }
 
@@ -230,7 +250,7 @@ public class FTUE : MonoBehaviour
                 _FTUEPanelDefaultContainer.Show();
                 handAnimator.gameObject.SetActive(false);
                 SetOliviaText(3);
-                MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(0.62f, 0.785f), 0f);
+                MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(-410, -390), 0f, new Vector2(1,1));
                 AnimateCircleHoleRadius(0.5f, 0.04f, 0.2f);
 
                 GameData.Instance.matched3Tiles = true;

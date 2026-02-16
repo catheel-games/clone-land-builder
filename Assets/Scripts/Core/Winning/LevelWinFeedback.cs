@@ -26,6 +26,8 @@ public class LevelWinFeedback : MonoBehaviour
     [SerializeField] private Sprite newStarCircleSprite;
     [SerializeField] private Sprite newStarCounterSprite;
 
+    [SerializeField] private GameObject coinSection;
+
     [SerializeField] private ParticleSystem coinShineParticles;
 
     [SerializeField] private GameObject fireworkParticleObject;
@@ -57,6 +59,7 @@ public class LevelWinFeedback : MonoBehaviour
               .AppendCallback(() => AudioManager.Instance.PlaySound("Other", "Level Complete"))
               .Append(tickObject.DOShakeScale(0.5f, 0.25f))
               .AppendCallback(() => levelCanvasControl._coinContainer.Show())
+              .AppendCallback(() => coinSection.SetActive(true))
               .AppendCallback(() => coinShineParticles.Play())
               .AppendCallback(() => LevelControl.Instance.CameraPresentation())
               .AppendCallback(() => CreatingFireworks())

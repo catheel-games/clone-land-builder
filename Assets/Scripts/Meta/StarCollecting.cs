@@ -17,13 +17,19 @@ public class StarCollecting : Singleton<StarCollecting>
     [SerializeField] private TextMeshProUGUI tileText;
     [SerializeField] private TextMeshProUGUI starFTUEText;
 
+    [SerializeField] private Color starTextRedColor;
+    [SerializeField] private Color starTextDefaultColor;
+
+
     [Header("Instantiating Prefabs")]
     [SerializeField] private RectTransform tileFlyPrefab;
     [SerializeField] private RectTransform starFlyPrefab;
     [SerializeField] private Transform canvasTransform;
 
     [Header("Targets")]
-    [SerializeField] private RectTransform starTarget;
+    private RectTransform starTarget;
+    [SerializeField] private RectTransform starDefaultTarget;
+    [SerializeField] private RectTransform starEndTarget;
     [SerializeField] private RectTransform tileTarget;
 
     [Header("Star Plus Sounds")]
@@ -74,7 +80,11 @@ public class StarCollecting : Singleton<StarCollecting>
         starText2.text = maxStarValue.ToString();
         tileText.text = LevelControl.Instance.tileScore.ToString();
 
-		starFTUEText.text = maxStarValue.ToString();
+        if (LevelControl.Instance.starScore == 0)
+            starText1.color = starTextRedColor;
+
+
+        starFTUEText.text = maxStarValue.ToString();
         maxStarScore = maxStarValue;
         levelWinFeedback._coinText.text = GameData.Instance.coin.ToString();
 
@@ -101,6 +111,7 @@ public class StarCollecting : Singleton<StarCollecting>
         ChangeTileCounter();
         levelCanvasControl._tileQueueInterface.CheckTileLeft();
 
+        starTarget = levelProgress.state == LevelProgress.LevelState.Finished ? starEndTarget : starDefaultTarget;
 
         if (starAmount != 0)
         {
@@ -142,6 +153,9 @@ public class StarCollecting : Singleton<StarCollecting>
             Sequence starsSeq = DOTween.Sequence();
 
             Sequence innerStarsSeq = DOTween.Sequence();
+
+            innerStarsSeq.AppendInterval(0.1f);
+
             for (int i = 0; i < spawnedStars.Count; i++)
             {
                 int index = i;
@@ -158,6 +172,7 @@ public class StarCollecting : Singleton<StarCollecting>
                     .AppendInterval(0.125f)
                     .Join(starCircleTransform.DOScale(1.25f, 0.1f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo))
                     .AppendCallback(() => SetScore(LevelControl.Instance.starScore, starAmount, starText1))
+                    .AppendCallback(() => starText1.color = starTextDefaultColor)
                     .AppendCallback(() => SetScore(LevelControl.Instance.starScore, starAmount, endStarText))
                     .AppendCallback(() => LevelControl.Instance.starScore += starAmount)
                     .AppendCallback(() => CheckWinning());
@@ -168,6 +183,9 @@ public class StarCollecting : Singleton<StarCollecting>
             Sequence tilesSeq = DOTween.Sequence();
 
             Sequence innerTilesSeq = DOTween.Sequence();
+
+            innerTilesSeq.AppendInterval(0.1f);
+
             for (int i = 0; i < spawnedTiles.Count; i++)
             {
                 int index = i;
@@ -355,7 +373,7 @@ public class StarCollecting : Singleton<StarCollecting>
         spawnedStars.Add(fly);
 
         fly.localScale = Vector3.one * 0.8f;
-        fly.DOMoveY(100f, 0.075f).SetRelative();
+        fly.DOMoveY(100f, 0.15f).SetRelative();
     }
 
     private void SpawnTileFly(Vector3 screenPos)
@@ -376,8 +394,8 @@ public class StarCollecting : Singleton<StarCollecting>
 
     private void AnimateToSlot(RectTransform fly, RectTransform target, bool withVoice)
     {
-        fly.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
-        fly.DOMove(target.position, 0.35f)
+        fly.DOScale(1f, 0.4f).SetEase(Ease.OutBack);
+        fly.DOMove(target.position, 0.6f)
             .SetEase(Ease.OutCubic)
             .OnComplete(() =>
             {

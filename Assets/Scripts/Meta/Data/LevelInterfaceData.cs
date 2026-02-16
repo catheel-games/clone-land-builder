@@ -6,6 +6,7 @@ public class LevelInterfaceData : MonoBehaviour
     [SerializeField] private GameObject starCounterObject;
 
     [SerializeField] private GameObject endLevelPanelObject;
+    [SerializeField] private GameObject coinSection;
 
 
     private void Start()
@@ -19,6 +20,7 @@ public class LevelInterfaceData : MonoBehaviour
             starCircleObject.SetActive(false);
             starCounterObject.SetActive(false);
             endLevelPanelObject.SetActive(true);
+            coinSection.SetActive(true);
         }
 
         else
@@ -26,6 +28,11 @@ public class LevelInterfaceData : MonoBehaviour
             starCircleObject.SetActive(true);
             starCounterObject.SetActive(true);
             endLevelPanelObject.SetActive(false);
+
+            if (currentLevel == 1)
+                coinSection.SetActive(false);
+            else
+                coinSection.SetActive(true);
         }
     }
 }

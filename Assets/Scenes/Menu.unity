@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 328682182}
   - component: {fileID: 328682185}
   - component: {fileID: 328682186}
+  - component: {fileID: 328682187}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -357,6 +358,20 @@ MonoBehaviour:
   highlightColor:
     serializedVersion: 2
     rgba: 4280032284
+--- !u!114 &328682187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328682181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 997c018a369211f4885988ffed63ee46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuCamera
+  targetWorldWidth: 11
+  cam: {fileID: 328682183}
 --- !u!1001 &866791931
 PrefabInstance:
   m_ObjectHideFlags: 0
