@@ -902,6 +902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FloatingDecorations
   tileGrid: {fileID: 8882862855357961664}
   floatingDecorations:
-  - {fileID: 2043037591980130156, guid: 29157c5e02ecfb941b4cd3eb5cffe3f7, type: 3}
-  - {fileID: 6903643519771881796, guid: 58d417912f93fd046b944918712e43f0, type: 3}
-  speed: 1
+  - {fileID: 1954616164567661590, guid: 2580cfae314c0d0478d7096dec6e838a, type: 3}
+  - {fileID: 3047960412562793888, guid: f674bb8419609994cbe662bdfc65c175, type: 3}
+  airplaneSpeed: 1
+  cloudSpeed: 0.05
