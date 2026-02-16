@@ -403,7 +403,6 @@ public class StarCollecting : Singleton<StarCollecting>
 
     private void CheckLosing()
     {
-        Debug.Log("Tile Score:" + LevelControl.Instance.tileScore);
         if (LevelControl.Instance.tileScore == 0)
         {
             LevelControl.Instance.Losing();    

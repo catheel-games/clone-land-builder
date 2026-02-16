@@ -196,6 +196,8 @@ MonoBehaviour:
   zoomStep: 1
   rotationStep: 20
   presentationRotationStep: -10
+  presentationYPos: 7
+  presentationRotation: {x: 30, y: 0, z: 0}
 --- !u!114 &5301659811425245732
 MonoBehaviour:
   m_ObjectHideFlags: 0

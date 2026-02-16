@@ -18,6 +18,8 @@ public class LevelControl : Singleton<LevelControl>
 
     public float CameraPivotRotation => cameraControl.PivotRotation;
 
+    public TileControl _tileControl => tileControl;
+
     void OnEnable()
     {
         tileControl.OnTilePlacerClick += EnterTileViewMode;
@@ -124,4 +126,5 @@ public class LevelControl : Singleton<LevelControl>
         Vector3 centerCoordinates = tileControl.Tilegrid.TileGridCenter();
         cameraControl.CityPresentation(centerCoordinates);
     }
+
 }

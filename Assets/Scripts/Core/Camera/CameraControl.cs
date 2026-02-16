@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class CameraControl : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private float rotationStep = 20f;
 
     [SerializeField] private float presentationRotationStep = -10f;
+    [SerializeField] private float presentationYPos = 7f;
+    [SerializeField] private Vector3 presentationRotation;
 
     private bool staticRotation = false;
 
@@ -129,6 +132,9 @@ public class CameraControl : MonoBehaviour
 
     public void CityPresentation(Vector3 newPosition)
     {
+        mainCamera.transform.DOMoveY(presentationYPos, 0.5f);
+        mainCamera.transform.DOLocalRotate(presentationRotation, 0.5f);
+
         LockPosition(newPosition);
         staticRotation = true;
     }
