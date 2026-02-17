@@ -53,9 +53,9 @@ MonoBehaviour:
     spawnHeight: 0.1
   - prefabs:
     - {fileID: 8787564955645923661, guid: 69b1ddcc288a02842b85f6c06458cf3f, type: 3}
-    tileType: 2
+    tileType: 4
     spawnHeight: 0.15
   - prefabs:
     - {fileID: 2043037591980130156, guid: 29157c5e02ecfb941b4cd3eb5cffe3f7, type: 3}
-    tileType: 4
+    tileType: 3
     spawnHeight: 0.17
