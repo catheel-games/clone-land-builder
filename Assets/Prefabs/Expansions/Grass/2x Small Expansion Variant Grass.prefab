@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5977457455378858622, guid: e6256ccbab7833846972a5ce0ec64725, type: 3}
       propertyPath: m_Name
-      value: 2x Small Expansion Variant
+      value: 2x Small Expansion Variant Grass
       objectReference: {fileID: 0}
     - target: {fileID: 7145924622239304209, guid: e6256ccbab7833846972a5ce0ec64725, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

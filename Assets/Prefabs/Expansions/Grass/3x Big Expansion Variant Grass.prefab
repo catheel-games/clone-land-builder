@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3fe0b695155662646a59781d364fe71f, type: 2}
     - target: {fileID: 6199158885416771346, guid: 0a3fce7385fd4c74ca94dd890f057b7b, type: 3}
       propertyPath: m_Name
-      value: 3x Big Expansion Variant
+      value: 3x Big Expansion Variant Grass
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

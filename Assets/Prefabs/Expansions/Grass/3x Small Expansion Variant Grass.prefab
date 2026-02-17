@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 18824799115606293, guid: 52e17806d8a536e4481d7447e3a0567b, type: 3}
       propertyPath: m_Name
-      value: 3x Small Expansion Variant
+      value: 3x Small Expansion Variant Grass
       objectReference: {fileID: 0}
     - target: {fileID: 2765180738677574540, guid: 52e17806d8a536e4481d7447e3a0567b, type: 3}
       propertyPath: m_LocalScale.y
