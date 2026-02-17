@@ -25,7 +25,7 @@ public class MusicStarter : MonoBehaviour
 
         else if (musicType == MusicType.Level)
         {
-            AudioManager.Instance.PlayMusicGroup("Level");
+            AudioManager.Instance.PlayMusicGroup("Level", true);
         }
     }
 }

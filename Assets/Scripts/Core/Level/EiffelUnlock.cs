@@ -36,6 +36,7 @@ public class EiffelUnlock : MonoBehaviour
                  .Append(eiffelIconRect.DOAnchorPos(Vector2.zero, 0.25f).SetEase(Ease.OutCubic))
 
                  .AppendCallback(() => levelTileUnlocking.SetEiffelTower())
+                 .AppendCallback(() => AudioManager.Instance.PlaySound("Other", "Eiffel Unlocked"))
                  .AppendCallback(() => levelCanvasControl._eiffelPopupContainer.Show())
                  .AppendInterval(0.3f)
                  .AppendCallback(() => eiffelIconRect.gameObject.SetActive(false));

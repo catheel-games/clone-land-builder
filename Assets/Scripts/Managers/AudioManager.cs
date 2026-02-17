@@ -56,6 +56,8 @@ public class AudioManager : Singleton<AudioManager>
     private AudioSource currentMusicSource;
     private Sequence currentMusicSequence;
 
+    private int randomMusicID;
+
     protected override void Awake()
     {
         base.Awake();
@@ -112,7 +114,7 @@ public class AudioManager : Singleton<AudioManager>
         return null;
     }
 
-    public AudioSource PlayMusicGroup(string groupName)
+    public AudioSource PlayMusicGroup(string groupName, bool isRandom = false, bool isRandomSet = false)
     {
         if (musicRegistry.TryGetValue(groupName, out var group))
         {
@@ -124,21 +126,45 @@ public class AudioManager : Singleton<AudioManager>
             }
 
             currentMusicSequence = DOTween.Sequence();
+            if (!isRandom)
+            {
+                foreach (Music music in group.musics)
+                {
+                    currentMusicSequence.AppendCallback(() =>
+                    {
+                        musicAudioSource.clip = music.clip;
+                        musicAudioSource.loop = false;
+                        musicAudioSource.Play();
+                    });
 
-            foreach (Music music in group.musics)
+                    currentMusicSequence.AppendInterval(music.clip.length);
+                }
+
+                currentMusicSequence.SetLoops(-1, LoopType.Restart);
+            }
+
+            else if (isRandom && !isRandomSet)
             {
                 currentMusicSequence.AppendCallback(() =>
                 {
-                    musicAudioSource.clip = music.clip;
+                    randomMusicID = UnityEngine.Random.Range(0, group.musics.Length);
+                    musicAudioSource.clip = group.musics[randomMusicID].clip;
+                    musicAudioSource.loop = false;
                     musicAudioSource.Play();
                 });
 
-                currentMusicSequence.AppendInterval(music.clip.length);
+                currentMusicSequence.AppendInterval(group.musics[randomMusicID].clip.length);
+                currentMusicSequence.AppendCallback(() => PlayMusicGroup("Level Loop", true, true));
             }
 
-            currentMusicSequence.SetLoops(-1, LoopType.Restart);
+            else if (isRandom && isRandomSet)
+            {
+                musicAudioSource.clip = group.musics[randomMusicID].clip;
+                musicAudioSource.loop = true;
+                musicAudioSource.Play();
+            }
 
-            if (currentMusicSource != null)
+            if (currentMusicSource != null && !isRandomSet)
             {
                 Sequence sequence = DOTween.Sequence();
 
@@ -148,7 +174,13 @@ public class AudioManager : Singleton<AudioManager>
                     currentMusicSource.Stop();
                     currentMusicSource = musicAudioSource;
                 });
-            } else
+            }
+            else if (currentMusicSource != null && isRandomSet)
+            {
+                currentMusicSource.Stop();
+                currentMusicSource = musicAudioSource;
+            }
+            else
             {
                 musicAudioSource.volume = 1f;
                 currentMusicSource = musicAudioSource;
@@ -168,7 +200,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (isMusicOn)
         {
-            audioMixer.SetFloat("MusicVolume", 0);
+            audioMixer.SetFloat("MusicVolume", -20);
         } else
         {
             audioMixer.SetFloat("MusicVolume", -80);               
@@ -179,7 +211,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (isSoundOn)
         {
-            audioMixer.SetFloat("SoundVolume", 0);
+            audioMixer.SetFloat("SoundVolume", -10);
         } else
         {
             audioMixer.SetFloat("SoundVolume", -80);               
