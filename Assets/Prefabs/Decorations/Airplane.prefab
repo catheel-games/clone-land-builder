@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5827490755082722818}
+  - component: {fileID: -8505190198731970256}
   m_Layer: 0
   m_Name: Airplane
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   - {fileID: 806408467432686825}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8505190198731970256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954616164567661590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea76f3f6db38811468f762ddd7cb1704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AirplaneVisibility
 --- !u!1001 &917126047635088130
 PrefabInstance:
   m_ObjectHideFlags: 0
