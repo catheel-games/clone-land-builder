@@ -49,3 +49,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 37316f1d1cb9c4343841e48b85c99650, type: 2}
   - {fileID: 11400000, guid: e8232d5e1c2b98840aaa3bb5214f6a84, type: 2}
   tileFTUE: {fileID: -2239358894983149028, guid: 172e7d8e21791fa4985a3c71b84ec67a, type: 3}
+  eiffelTile: {fileID: 1519268791557801016, guid: c8688f8c65edf864781dd179c27f8788, type: 3}
+  eiffelTileChance: 20

@@ -7,8 +7,11 @@ public class TileGenerator : MonoBehaviour
 {
     [SerializeField] TileGeneratorSO[] tileGeneratorSO;
     [SerializeField] private Tile tileFTUE;
+    [SerializeField] private Tile eiffelTile;
+    [SerializeField] private float eiffelTileChance;
 
     private TileGeneratorSO currentGenerator;
+    private bool eiffelIsSpawned = false;
 
     List<Tile> setQueue = new List<Tile>();
 
@@ -42,10 +45,27 @@ public class TileGenerator : MonoBehaviour
         setQueue.AddRange(CreateFTUETypedSet(hexType));
     }
 
+    public void InitializeEiffelTileQueue()
+    {
+        setQueue.Insert(0, eiffelTile);
+        LevelControl.Instance._tileControl.SetEiffelTowerGenerator();
+    }
+
     private Tile GetRandomTile()
     {
+        float uniqueTileChance = UnityEngine.Random.Range(0, 100);
+
+        Debug.Log(uniqueTileChance);
+
+        if (!eiffelIsSpawned && uniqueTileChance <= eiffelTileChance && GameData.Instance.eiffelIsUnlocked)
+        {
+            eiffelIsSpawned = true;
+            return eiffelTile;
+        }
+
         Hexagons.Type randomType = GetRandomType();
         Tile randomTile = UnityEngine.Random.Range(0, 2) == 0 ? GetFullTile(randomType) : GetTypeTile(randomType);
+
         return randomTile;
     }
 
@@ -65,19 +85,6 @@ public class TileGenerator : MonoBehaviour
         if (secondType == firstType)
             return GetRandomTypeExcluding(firstType);
         return secondType;
-    }
-
-    private Tile GetUniqueTile(Tile[] arr, List<Tile> usedTiles)
-    {
-        Tile picked;
-
-        do
-        {
-            picked = arr[UnityEngine.Random.Range(0, arr.Length)];
-        }
-        while (usedTiles.Contains(picked));
-
-        return picked;
     }
 
     private Tile GetFullTile(Hexagons.Type type)
@@ -196,7 +203,7 @@ public class TileGenerator : MonoBehaviour
             randomSet.Add(random1);
             randomSet.Add(random2);
         }
-        else if (rand >= 70)
+        else if (rand >= 60)
         {
             randomSet.Add(GetRandomTile());
         }

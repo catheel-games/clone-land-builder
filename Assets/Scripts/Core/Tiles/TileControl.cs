@@ -18,6 +18,7 @@ public class TileControl : MonoBehaviour
     public event Func<Tile> OnTileQueueFirstTileRequest;
 
     public TileGrid Tilegrid => tileGrid;
+    public TileGenerator _tileGenerator => tileGenerator;
 
     void OnEnable()
     {
@@ -63,5 +64,10 @@ public class TileControl : MonoBehaviour
 
         tilePreview.EndPreview(isTileAccepted);
         tileGrid.Unlock();
+    }
+
+    public void SetEiffelTowerGenerator()
+    {
+        OnTileGeneratorUpdate?.Invoke(tileGenerator.GetQueue());
     }
 }

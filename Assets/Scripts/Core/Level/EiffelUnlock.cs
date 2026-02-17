@@ -14,7 +14,7 @@ public class EiffelUnlock : MonoBehaviour
 
     private void Start()
     {
-        DOVirtual.DelayedCall(1f, () => EiffelUnlocking());
+        // DOVirtual.DelayedCall(1f, () => EiffelUnlocking());
     }
 
     public void EiffelUnlocking()
@@ -43,6 +43,7 @@ public class EiffelUnlock : MonoBehaviour
 
     public void StartTutorials()
     {
+        LevelControl.Instance._tileControl._tileGenerator.InitializeEiffelTileQueue();
         _FTUE.EiffelUnlockingTutorial();
     }
 }

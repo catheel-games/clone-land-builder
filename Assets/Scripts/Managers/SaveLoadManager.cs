@@ -70,7 +70,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     public void SaveData()
     {
         string json = JsonUtility.ToJson(gameData, true);
-        Debug.Log("Saving: " + json);
+        // Debug.Log("Saving: " + json);
 
         File.WriteAllText(SavePath, json);
     }

@@ -36,6 +36,8 @@ public class LevelInterfaceData : MonoBehaviour
                 coinSection.SetActive(true);
         }
 
+        eiffelObject.SetActive(false);
+
         if (currentLevel == 2)
         {
             if (!GameData.Instance.eiffelIsUnlocked)

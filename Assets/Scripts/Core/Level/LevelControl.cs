@@ -19,6 +19,7 @@ public class LevelControl : Singleton<LevelControl>
     public float CameraPivotRotation => cameraControl.PivotRotation;
 
     public TileControl _tileControl => tileControl;
+    public LevelCanvasControl _levelCanvasControl => levelCanvasControl;
 
     void OnEnable()
     {
