@@ -10,6 +10,9 @@ public class TileGenerator : MonoBehaviour
     [SerializeField] private Tile eiffelTile;
     [SerializeField] private float eiffelTileChance;
 
+    [SerializeField] private float random1TileChance = 40;
+    [SerializeField] private float random2TileChance = 15;
+
     private TileGeneratorSO currentGenerator;
     private bool eiffelIsSpawned = false;
 
@@ -192,7 +195,7 @@ public class TileGenerator : MonoBehaviour
         randomSet = randomSet.OrderBy(x => UnityEngine.Random.value).ToList();
 
         int rand = UnityEngine.Random.Range(0, 100);
-        if (rand >= 85)
+        if (rand <= random2TileChance)
         {
             Tile random1 = GetRandomTile();
             Tile random2 = GetRandomTile();
@@ -203,7 +206,7 @@ public class TileGenerator : MonoBehaviour
             randomSet.Add(random1);
             randomSet.Add(random2);
         }
-        else if (rand >= 60)
+        else if (rand <= random1TileChance)
         {
             randomSet.Add(GetRandomTile());
         }

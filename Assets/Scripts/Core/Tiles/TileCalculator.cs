@@ -12,6 +12,7 @@ public class TileCalculator : MonoBehaviour
     [SerializeField] private TileGrid tileGrid; // idk
 
     private TilePreviewStar[] stars = new TilePreviewStar[6];
+    private TilePreviewStar[] stars2 = new TilePreviewStar[6];
     private TilePreviewCombo combo;
 
     private int starAmount = 0;
@@ -39,18 +40,42 @@ public class TileCalculator : MonoBehaviour
                 {
                     float angle = side * 60f + 30f;
 
-                    TilePreviewStar newStar = Instantiate(
-                        starPrefab,
-                        transform
-                    );
+                    if (!LevelControl.Instance.settingEiffel)
+                    {
+                        TilePreviewStar newStar = Instantiate(
+                            starPrefab,
+                            transform
+                        );
 
-                    newStar.transform.SetParent(transform, false);
-                    newStar.transform.localPosition = Vector3.up * elementElevation + Quaternion.AngleAxis(angle, Vector3.up) * Vector3.forward * starRadius;
-                    newStar.transform.localRotation = Quaternion.Euler(0f, angle, 0f);
+                        newStar.transform.SetParent(transform, false);
+                        newStar.transform.localPosition = Vector3.up * elementElevation + Quaternion.AngleAxis(angle, Vector3.up) * Vector3.forward * starRadius;
+                        newStar.transform.localRotation = Quaternion.Euler(0f, angle, 0f);
 
-                    newStar.Setup(neighborCoords);
+                        newStar.Setup(neighborCoords);
 
-                    stars[side] = newStar;
+                        stars[side] = newStar;
+                    }
+
+                    else if (LevelControl.Instance.settingEiffel)
+                    {
+                        TilePreviewStar newStar1 = Instantiate(starPrefab,transform);
+                        TilePreviewStar newStar2 = Instantiate(starPrefab, transform);
+
+                        newStar1.transform.SetParent(transform, false);
+                        newStar1.transform.localPosition = Vector3.up * elementElevation + Quaternion.AngleAxis(angle-15, Vector3.up) * Vector3.forward * starRadius;
+                        newStar1.transform.localRotation = Quaternion.Euler(0f, angle-15f, 0f);
+
+                        newStar1.Setup(neighborCoords);
+
+                        newStar2.transform.SetParent(transform, false);
+                        newStar2.transform.localPosition = Vector3.up * elementElevation + Quaternion.AngleAxis(angle+15, Vector3.up) * Vector3.forward * starRadius;
+                        newStar2.transform.localRotation = Quaternion.Euler(0f, angle+15f, 0f);
+
+                        newStar2.Setup(neighborCoords);
+
+                        stars[side] = newStar1;
+                        stars2[side] = newStar2;
+                    }
                 }
             }
             else
@@ -59,6 +84,11 @@ public class TileCalculator : MonoBehaviour
                 {
                     Destroy(stars[side].gameObject);
                     stars[side] = null;
+                }
+                if (stars2[side] != null)
+                {
+                    Destroy(stars2[side].gameObject);
+                    stars2[side] = null;
                 }
             }
         });
@@ -124,6 +154,14 @@ public class TileCalculator : MonoBehaviour
             }
         }
 
+        foreach (TilePreviewStar star in stars2)
+        {
+            if (star != null)
+            {
+                starObjects.Add(star.gameObject);
+            }
+        }
+
         if (combo != null)
         {
             LevelControl.Instance.SetPlusObjects(starAmount, starObjects, combo.gameObject);
@@ -137,6 +175,16 @@ public class TileCalculator : MonoBehaviour
     public void DestroyBonsuses()
     {
         foreach (TilePreviewStar star in stars)
+        {
+            if (star != null)
+            {
+                star.Kill();
+
+                Destroy(star.gameObject);
+            }
+        }
+
+        foreach (TilePreviewStar star in stars2)
         {
             if (star != null)
             {

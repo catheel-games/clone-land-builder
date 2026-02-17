@@ -66,6 +66,7 @@ public class StarCollecting : Singleton<StarCollecting>
     private int currentLevel;
 
     private bool hasEiffelStars = false;
+    private bool placingEiffel = false;
 
     [SerializeField] private GameObject eiffelScoreBonusObject;
     [SerializeField] private TextMeshProUGUI eiffelScoreText;
@@ -159,6 +160,10 @@ public class StarCollecting : Singleton<StarCollecting>
                 Vector3 screenPos = Camera.main.WorldToScreenPoint(starObjects[i].transform.position);
                 SpawnStarFly(screenPos);
                 Destroy(starObjects[i]);
+            }
+
+            if (LevelControl.Instance.settingEiffel) {
+                starAmount *= 2;
             }
 
             //-------------------------------------------------------- SEQUENCES ------------------------------------------------------------------------------------------
@@ -316,6 +321,10 @@ public class StarCollecting : Singleton<StarCollecting>
 
     public void SetStarScoreBonusMode(int starAmount)
     {
+        if (LevelControl.Instance.settingEiffel) {
+            starAmount *= 2;
+        }
+
         starScoreBonusAmount = starAmount;
         starScoringBonus.text = "+" + starAmount;
         endStarScoringBonus.text = "+" + starAmount;
@@ -465,5 +474,4 @@ public class StarCollecting : Singleton<StarCollecting>
             LevelControl.Instance.UnlockEiffel();
         }
     }
-
 }

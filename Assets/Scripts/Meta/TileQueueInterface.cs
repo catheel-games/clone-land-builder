@@ -47,6 +47,14 @@ public class TileQueueInterface : MonoBehaviour
             
             whitePlate.layer = LayerMask.NameToLayer("3D UI");
 
+            if (newTile.gameObject.GetComponent<EiffelTile>())
+            {
+                if (i != 0)
+                    newTile.gameObject.GetComponent<EiffelTile>().ChangeInsideGenerator(true);
+                else
+                    newTile.gameObject.GetComponent<EiffelTile>().ChangeInsideGenerator(false);
+            }
+
             displayedTiles.Add(newTile.gameObject);
 
             if (i == 0)

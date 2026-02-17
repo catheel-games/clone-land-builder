@@ -12,6 +12,7 @@ public class LevelControl : Singleton<LevelControl>
     [SerializeField] private FTUE _FTUE;
 	[SerializeField] private LevelWin levelWin;
 
+    public bool settingEiffel = false;
     public int fTUEtileID = 0;
     public int starScore;
     public int tileScore = 50;
@@ -20,6 +21,7 @@ public class LevelControl : Singleton<LevelControl>
 
     public TileControl _tileControl => tileControl;
     public LevelCanvasControl _levelCanvasControl => levelCanvasControl;
+    public StarCollecting _starCollecting => starCollecting;
 
     void OnEnable()
     {
