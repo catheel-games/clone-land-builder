@@ -35,6 +35,7 @@ public class FTUE : MonoBehaviour
 
 
     private float _screenModifier;
+    private bool eiffelUnlocked = false;
 
     private void Start()
     {
@@ -195,7 +196,7 @@ public class FTUE : MonoBehaviour
     {
         uiCircleHoleMat.SetFloat("_Radius", from);
 
-        DOTween.To( () => uiCircleHoleMat.GetFloat("_Radius"),
+        DOTween.To(() => uiCircleHoleMat.GetFloat("_Radius"),
                         x => uiCircleHoleMat.SetFloat("_Radius", x),
                         to, duration)
                         .SetEase(Ease.OutCubic);
@@ -217,17 +218,27 @@ public class FTUE : MonoBehaviour
 
         uiCircleHoleMat.SetVector("_Center", from);
 
-        Vector2 to = new Vector2 ((newPos.x / screenVector.x) + anchor.x, (newPos.y / screenVector.y) + anchor.y);
+        Vector2 to = new Vector2((newPos.x / screenVector.x) + anchor.x, (newPos.y / screenVector.y) + anchor.y);
 
-        DOTween.To( () => (Vector2)uiCircleHoleMat.GetVector("_Center"),
+        DOTween.To(() => (Vector2)uiCircleHoleMat.GetVector("_Center"),
                         x => uiCircleHoleMat.SetVector("_Center", x),
-                        to,duration);
+                        to, duration);
     }
 
     public void DialogueSkip()
     {
-        dialoguePanel.SetActive(false);
-        InputManager.Instance.EnableInput();
+        if (!eiffelUnlocked)
+        {
+            uiCircleHoleMat.SetVector("_Color", new Vector4(0, 0, 0, 0.7f));
+            dialoguePanel.SetActive(false);
+            InputManager.Instance.EnableInput();
+        }
+        else
+        {
+            uiCircleHoleMat.SetVector("_Color", new Vector4(0,0,0,0));
+            eiffelUnlocked = false;
+            SetOliviaText(5);
+        }
     }
 
     public void Match3TilesTutorial()
@@ -235,7 +246,7 @@ public class FTUE : MonoBehaviour
         _FTUEPanelDefaultContainer.Show();
         handAnimator.gameObject.SetActive(false);
         SetOliviaText(2);
-        MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(0, 50), 0f, new Vector2 (0.5f, 0.5f));
+        MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(0, 50), 0f, new Vector2(0.5f, 0.5f));
         AnimateCircleHoleRadius(0.5f, 0.12f, 0.2f);
     }
 
@@ -250,12 +261,22 @@ public class FTUE : MonoBehaviour
                 _FTUEPanelDefaultContainer.Show();
                 handAnimator.gameObject.SetActive(false);
                 SetOliviaText(3);
-                MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(-410, -390), 0f, new Vector2(1,1));
+                MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(-410, -390), 0f, new Vector2(1, 1));
                 AnimateCircleHoleRadius(0.5f, 0.04f, 0.2f);
 
                 GameData.Instance.matched3Tiles = true;
                 SaveLoadManager.Instance.SaveData();
             });
         }
+    }
+
+    public void EiffelUnlockingTutorial()
+    {
+        eiffelUnlocked = true;
+
+        handAnimator.gameObject.SetActive(false);
+        _FTUEPanelDefaultContainer.Show();
+        SetOliviaText(4);
+        MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(55, -335), 0f, new Vector2(0.5f, 1f));
     }
 }

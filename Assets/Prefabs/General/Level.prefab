@@ -515,6 +515,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5786373839980337147, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786373839980337147, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786373839980337147, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6102139194712775556, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -543,6 +555,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8082248334833899311, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
+      propertyPath: eiffelTowerObject
+      value: 
+      objectReference: {fileID: 7860527299259903615}
+    - target: {fileID: 8082248334833899311, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
+      propertyPath: tileUnlockedCamera
+      value: 
+      objectReference: {fileID: 2665988372673858173}
     - target: {fileID: 8082248334833899311, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
       propertyPath: 'unlockedObjects.Array.data[0]'
       value: 
@@ -821,6 +841,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2081816878025352973, guid: a77bb06a04d394f4f9f5f027fed85095, type: 3}
   m_PrefabInstance: {fileID: 4354906955949415816}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &2665988372673858173 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1770128514267355125, guid: a77bb06a04d394f4f9f5f027fed85095, type: 3}
+  m_PrefabInstance: {fileID: 4354906955949415816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3472049741828576323 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 882861750680275403, guid: a77bb06a04d394f4f9f5f027fed85095, type: 3}
@@ -829,6 +854,11 @@ GameObject:
 --- !u!1 &5632829242418688634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8233821018669608946, guid: a77bb06a04d394f4f9f5f027fed85095, type: 3}
+  m_PrefabInstance: {fileID: 4354906955949415816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7860527299259903615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5870880970019419127, guid: a77bb06a04d394f4f9f5f027fed85095, type: 3}
   m_PrefabInstance: {fileID: 4354906955949415816}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8517752007696757266 stripped

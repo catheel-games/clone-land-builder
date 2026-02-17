@@ -7,6 +7,7 @@ public class LevelInterfaceData : MonoBehaviour
 
     [SerializeField] private GameObject endLevelPanelObject;
     [SerializeField] private GameObject coinSection;
+    [SerializeField] private GameObject eiffelObject;
 
 
     private void Start()
@@ -33,6 +34,14 @@ public class LevelInterfaceData : MonoBehaviour
                 coinSection.SetActive(false);
             else
                 coinSection.SetActive(true);
+        }
+
+        if (currentLevel == 2)
+        {
+            if (!GameData.Instance.eiffelIsUnlocked)
+            {
+                eiffelObject.SetActive(true);
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ public class LevelCanvasControl : MonoBehaviour
     [SerializeField] private TileQueueInterface tileQueueInterface;
 
     [SerializeField] private LevelTileUnlocking levelTileUnlocking;
+    [SerializeField] private EiffelUnlock eiffelUnlock;
 
     [SerializeField] private StarCollecting starCollecting;
     [SerializeField] private LevelWinFeedback levelWinFeedback;
@@ -21,6 +22,7 @@ public class LevelCanvasControl : MonoBehaviour
     [SerializeField] private PopupContainer newTileUnlockContainer;
     [SerializeField] private PopupContainer levelFailContainer;
     [SerializeField] private DefaultContainer coinSectionContainer;
+    [SerializeField] private PopupContainer eiffelPopupContainer;
 
     public TileQueueInterface _tileQueueInterface => tileQueueInterface;
     public PopupContainer _levelCompletedContainer => levelCompletedContainer;
@@ -29,6 +31,7 @@ public class LevelCanvasControl : MonoBehaviour
     public DefaultContainer _levelTopPartContainer => levelTopPartContainer;
     public PopupContainer _levelFailContainer => levelFailContainer;
     public DefaultContainer _coinSectionContainer => coinSectionContainer;
+    public PopupContainer _eiffelPopupContainer => eiffelPopupContainer;
 
     public Tile TileQueueFirstTile() => tileQueueInterface.FirstTile();
 
@@ -79,6 +82,10 @@ public class LevelCanvasControl : MonoBehaviour
 
     public void LevelLosing() {
         levelLoseFeedback.LevelLosing();
+    }
+
+    public void EiffelUnlock() {
+        eiffelUnlock.EiffelUnlocking();
     }
 
     public void NewTileUnlocked()

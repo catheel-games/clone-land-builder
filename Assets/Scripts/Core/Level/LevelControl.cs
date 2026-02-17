@@ -121,6 +121,12 @@ public class LevelControl : Singleton<LevelControl>
         LoadManager.Instance.LoadScene("Game");
     }
 
+    public void UnlockEiffel()
+    {
+        GameData.Instance.eiffelIsUnlocked = true;
+        levelCanvasControl.EiffelUnlock();
+    }
+
     public void CameraPresentation()
     {
         Vector3 centerCoordinates = tileControl.Tilegrid.TileGridCenter();

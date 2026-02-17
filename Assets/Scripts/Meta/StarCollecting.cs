@@ -65,6 +65,14 @@ public class StarCollecting : Singleton<StarCollecting>
     private LevelProgress levelProgress;
     private int currentLevel;
 
+    private bool hasEiffelStars = false;
+
+    [SerializeField] private GameObject eiffelScoreBonusObject;
+    [SerializeField] private TextMeshProUGUI eiffelScoreText;
+    [SerializeField] private TextMeshProUGUI eiffelBonusScoreText;
+    [SerializeField] private RectTransform eiffelStarRect;
+    [SerializeField] private int eiffelMaxScore = 20;
+
     void Start()
     {
         SetStarScoreMainMode();
@@ -78,11 +86,16 @@ public class StarCollecting : Singleton<StarCollecting>
         endStarText.text = LevelControl.Instance.starScore.ToString();
         starText1.text = LevelControl.Instance.starScore.ToString();
         starText2.text = maxStarValue.ToString();
+        eiffelScoreText.text = GameData.Instance.eiffelScore.ToString();
         tileText.text = LevelControl.Instance.tileScore.ToString();
 
         if (LevelControl.Instance.starScore == 0)
             starText1.color = starTextRedColor;
 
+        if (currentLevel == 2 && !GameData.Instance.eiffelIsUnlocked)
+        {
+            hasEiffelStars = true;
+        }
 
         starFTUEText.text = maxStarValue.ToString();
         maxStarScore = maxStarValue;
@@ -173,6 +186,15 @@ public class StarCollecting : Singleton<StarCollecting>
                     .Join(starCircleTransform.DOScale(1.25f, 0.1f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo))
                     .AppendCallback(() => SetScore(LevelControl.Instance.starScore, starAmount, starText1))
                     .AppendCallback(() => starText1.color = starTextDefaultColor)
+                    .AppendCallback(() =>
+                    {
+                        if (hasEiffelStars)
+                        {
+                            SetScore(GameData.Instance.eiffelScore, starAmount, eiffelScoreText, true);
+                            GameData.Instance.eiffelScore += starAmount;
+                            CheckEiffel();
+                        }
+                    })
                     .AppendCallback(() => SetScore(LevelControl.Instance.starScore, starAmount, endStarText))
                     .AppendCallback(() => LevelControl.Instance.starScore += starAmount)
                     .AppendCallback(() => CheckWinning());
@@ -247,6 +269,7 @@ public class StarCollecting : Singleton<StarCollecting>
         if (isStarScoreBonusMode)
         {
             isStarScoreBonusMode = false;
+            eiffelScoreBonusObject.SetActive(false);
 
             if (starScoringBonusSlide == null || !starScoringBonusSlide.IsActive())
             {
@@ -296,6 +319,11 @@ public class StarCollecting : Singleton<StarCollecting>
         starScoreBonusAmount = starAmount;
         starScoringBonus.text = "+" + starAmount;
         endStarScoringBonus.text = "+" + starAmount;
+        eiffelBonusScoreText.text = "+" + starAmount;
+
+        if (hasEiffelStars) {
+            eiffelScoreBonusObject.SetActive(true);
+        }
 
         if (!isStarScoreBonusMode)
         {
@@ -342,12 +370,13 @@ public class StarCollecting : Singleton<StarCollecting>
         }
     }
 
-    private void SetScore(int lastAmount, int plusAmount, TextMeshProUGUI text)
+    private void SetScore(int lastAmount, int plusAmount, TextMeshProUGUI text, bool isEiffelScore = false)
     {
         int finalAmount = lastAmount + plusAmount;
 
         if (plusAmount <= 1) {
             text.text = finalAmount.ToString();
+            eiffelStarRect.DOShakeScale(0.1f, 0.3f);
         }
 
         else {
@@ -356,7 +385,8 @@ public class StarCollecting : Singleton<StarCollecting>
             for (int i = 0; i < plusAmount; i++)
             {
                 int value = lastAmount + i + 1;
-
+                if (isEiffelScore)
+                    seq.Join(eiffelStarRect.DOShakeScale(0.05f, 0.3f));
                 seq.AppendCallback(() => {
                     text.text = value.ToString();
                 });
@@ -426,4 +456,14 @@ public class StarCollecting : Singleton<StarCollecting>
             LevelControl.Instance.Losing();    
         }
     }
+
+    private void CheckEiffel()
+    {
+        if (GameData.Instance.eiffelScore >= eiffelMaxScore)
+        {
+            hasEiffelStars = false;
+            LevelControl.Instance.UnlockEiffel();
+        }
+    }
+
 }

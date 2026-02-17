@@ -10,6 +10,8 @@ public class GameData
     public int coin = 0;
     public bool ftueIsEnded = false;
     public bool matched3Tiles = false;
+    public bool eiffelIsUnlocked = false;
+    public int eiffelScore = 0;
    
 
     private static GameData _instance = null;

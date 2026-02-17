@@ -11,9 +11,12 @@ public class LevelTileUnlocking : MonoBehaviour
 
     [SerializeField] private GameObject[] unlockedObjects;
     [SerializeField] private GameObject[] unlockedIconObjects;
+    [SerializeField] private GameObject eiffelTowerObject;
+    [SerializeField] private Camera tileUnlockedCamera;
 
     public void SetUnlockedObject()
     {
+        tileUnlockedCamera.orthographicSize = 1f;
         tapToContinueCanvasGroup.DOFade(0, 0);
 
         int currentLevel = GameData.Instance.currentLevelID;
@@ -30,6 +33,7 @@ public class LevelTileUnlocking : MonoBehaviour
                 break;
         }
 
+        eiffelTowerObject.SetActive(false);
         for (int i = 0; i < unlockedObjects.Length; i++) {
             unlockedObjects[i].SetActive(false);
             unlockedIconObjects[i].SetActive(false);
@@ -46,5 +50,20 @@ public class LevelTileUnlocking : MonoBehaviour
     public void ContinueToNextLevelPanel()
     {
         levelCanvasControl.ContinueToNextLevelPanel();
+    }
+
+    public void SetEiffelTower()
+    {
+        for (int i = 0; i < unlockedObjects.Length; i++)
+        {
+            unlockedObjects[i].SetActive(false);
+        }
+
+        tileUnlockedCamera.orthographicSize = 1.25f;
+
+        eiffelTowerObject.transform.DOScale(0, 0);
+        eiffelTowerObject.SetActive(true);
+        eiffelTowerObject.transform.DOScale(1, 0.5f);
+
     }
 }
