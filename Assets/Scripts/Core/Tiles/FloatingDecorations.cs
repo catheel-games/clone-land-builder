@@ -31,6 +31,15 @@ public class FloatingDecorations : MonoBehaviour
         spawnPosition.y = 1.5f;
 
         airplane = Instantiate(floatingDecorations[0], spawnPosition, Quaternion.LookRotation(direction));
+        airplane.GetComponentInChildren<AirplaneVisibility>().OnDisappear += OnAirplaneDisappear;
+    }
+
+    private void OnAirplaneDisappear()
+    {
+        GameObject old = airplane;
+        airplane = null;
+        Destroy(old);
+        SpawnAirplane();
     }
 
     void Update()
