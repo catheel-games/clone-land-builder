@@ -1,5 +1,147 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &459127716375329775
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6555593119617468654}
+    m_Modifications:
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9659258
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.25881916
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 330
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_Name
+      value: Expansion Side Variant Town (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+--- !u!4 &7353130007069866100 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 459127716375329775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7507114424686801356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 459127716375329775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &727171841928766814
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6555593119617468654}
+    m_Modifications:
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70710707
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710653
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_Name
+      value: Expansion Side Variant Town (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+--- !u!1 &7234724949966466941 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 727171841928766814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7657201293813409477 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 727171841928766814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2869021919446795224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12,14 +154,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -7634347612955612716, guid: 39bcb8d2ea0d30141a1378a257b46df3, type: 3}
-    - target: {fileID: 7881820332124483673, guid: d8440b5941fb8c548be49379d129a926, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7881820332124483673, guid: d8440b5941fb8c548be49379d129a926, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 4c2ea427895a5c647a65ceab20e124b2, type: 2}
     - target: {fileID: 8530140560371257740, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       propertyPath: m_Name
       value: City Tile 2 Variant
@@ -70,7 +204,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5632142673184901393}
+    - targetCorrespondingSourceObject: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6410399483996373491}
+    - targetCorrespondingSourceObject: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7353130007069866100}
+    - targetCorrespondingSourceObject: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4447374874793179710}
+    - targetCorrespondingSourceObject: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7657201293813409477}
+    - targetCorrespondingSourceObject: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1958513164311765788}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8530140560371257740, guid: d8440b5941fb8c548be49379d129a926, type: 3}
       insertIndex: -1
@@ -93,6 +245,303 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39723d17e390ef7478fb82949dc21561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  borderTypes: 010000000100000001000000010000000100000001000000
-  centerType: 1
   rotationLerpCoefficient: 10
+  centerType: 1
+  borderTypes: 010000000100000001000000010000000100000001000000
+  centerExpansion: {fileID: 0}
+  borderExpansions:
+  - {fileID: 4615155976973156521}
+  - {fileID: 6256450268468299851}
+  - {fileID: 7507114424686801356}
+  - {fileID: 3719146329441284998}
+  - {fileID: 7234724949966466941}
+  - {fileID: 1516368765627558564}
+--- !u!4 &6555593119617468654 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}
+  m_PrefabInstance: {fileID: 2869021919446795224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3350068007295322762
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6555593119617468654}
+    m_Modifications:
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.25881898
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9659259
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 210
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_Name
+      value: Expansion Side Variant Town
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+--- !u!1 &4615155976973156521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 3350068007295322762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5632142673184901393 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 3350068007295322762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4081077839771714152
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6555593119617468654}
+    m_Modifications:
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_Name
+      value: Expansion Side Variant Town (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+--- !u!1 &6256450268468299851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 4081077839771714152}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6410399483996373491 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 4081077839771714152}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6767935056753670565
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6555593119617468654}
+    m_Modifications:
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.96592593
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.2588188
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 390
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_Name
+      value: Expansion Side Variant Town (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+--- !u!1 &3719146329441284998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 6767935056753670565}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4447374874793179710 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 6767935056753670565}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8897634748357599367
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6555593119617468654}
+    m_Modifications:
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.25881916
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9659258
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 510
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_Name
+      value: Expansion Side Variant Town (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+--- !u!1 &1516368765627558564 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7958290393747720739, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 8897634748357599367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1958513164311765788 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6941374075440481179, guid: 3ba22ee7d9eb5214fab6b8501c35e921, type: 3}
+  m_PrefabInstance: {fileID: 8897634748357599367}
+  m_PrefabAsset: {fileID: 0}

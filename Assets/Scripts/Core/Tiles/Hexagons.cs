@@ -22,9 +22,9 @@ public static class Hexagons
     {
         Null,
         Town,
-        Grass,
         Forest,
         Yellow,
+        Grass,
         Water    
     }
 

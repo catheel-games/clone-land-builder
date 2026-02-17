@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(TileCalculator))]
 public class TilePreview : MonoBehaviour
 {
-    [SerializeField] private float tileElevevation = 0.5f;
+    [SerializeField] private float tileElevation = 0f;
     [SerializeField] private TileCalculator tileCalculator;
     [SerializeField] private TilePreviewInput tilePreviewInput;
 
@@ -46,7 +46,7 @@ public class TilePreview : MonoBehaviour
         transform.position = Hexagons.HexToWorld(coords);
 
         tileInstance.transform.SetParent(transform, false);
-        tileInstance.transform.localPosition = new Vector3(0f, tileElevevation, 0f);
+        tileInstance.transform.localPosition = new Vector3(0f, tileElevation, 0f);
         
         tilePreviewInput.UnlockRotation();
         tileCalculator.CalculateBonuses(tileInstanceCoords, tileInstance);
@@ -76,17 +76,14 @@ public class TilePreview : MonoBehaviour
     public void EndPreview(bool isTileAccepted)
     {
         tilePreviewInput.LockRotation();
-
         tilePlacementFeedback.StopHovering();
-
 
         if (!isTileAccepted)
         {
             tileCalculator.DestroyBonsuses();
             tileDenyingPreviewFeedback.Activate(tileInstance.gameObject);
         }
-
-        else if (isTileAccepted) {
+        else {
             tileCalculator.ProcessBonsuses();
         }
         
