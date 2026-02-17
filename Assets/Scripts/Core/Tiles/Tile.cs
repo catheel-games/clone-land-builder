@@ -12,20 +12,10 @@ public class Tile : MonoBehaviour
     private float rotationOffsetDiscrete = 0f;
     
     private bool isPlaced = false;
-    private bool isExpanded = false;
+    private bool isCenterExpanded = false;
     private bool[] isBorderExpanded = new bool[6] {false, false, false, false, false, false};
     
     public float RotationOffsetDiscrete => rotationOffsetDiscrete;
-
-    void Start()
-    {
-        centerExpansion.SetActive(false);
-
-        foreach (GameObject borderExpansion in borderExpansions)
-        {
-            borderExpansion.SetActive(false);
-        }
-    }
     
     void Update()
     {
@@ -73,18 +63,20 @@ public class Tile : MonoBehaviour
 
     public void ExpandCenter()
     {
-        if (!isPlaced) return;
-        if (isExpanded) return;
+        if (centerExpansion == null) return;
+        if (isCenterExpanded) return;
         
-        isExpanded = true;
+        isCenterExpanded = true;
         centerExpansion.SetActive(true);
     }
 
     public void ExpandSide(int side, Hexagons.Type neighborType)
     {
-        if (!isPlaced) return;
+        side = Tools.Modulo(rotationOffset + side, 6);
+
+        if (borderExpansions[side] == null) return;
         if (isBorderExpanded[side]) return;
-        if ((int)borderTypes[side] <= (int)neighborType) return;
+        if ((int)borderTypes[side] >= (int)neighborType) return;
         
         isBorderExpanded[side] = true;
         borderExpansions[side].SetActive(true);

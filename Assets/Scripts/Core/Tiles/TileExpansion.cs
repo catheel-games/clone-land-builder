@@ -23,7 +23,7 @@ public class TileExpansion : MonoBehaviour
 
                 if (neighbour != null)
                 {
-                    neighbour.ExpandSide(side, neighbour.GetSide(Tools.Modulo(side + 3, 6)));
+                    neighbour.ExpandSide(Tools.Modulo(side + 3, 6), tile.GetSide(side));
                 }
             });
         }
