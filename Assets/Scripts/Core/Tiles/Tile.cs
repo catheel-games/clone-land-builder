@@ -38,11 +38,11 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void RotateInstantly(float newRotationOffset)
+    public void RotateInstantly(float newRotationOffsetDiscrete)
     {    
         if (!isPlaced)
         {
-            rotationOffsetDiscrete = newRotationOffset;
+            rotationOffsetDiscrete = newRotationOffsetDiscrete;
             rotationOffset = (int)Mathf.Floor(-rotationOffsetDiscrete / 60f);
             transform.rotation = Quaternion.Euler(0f, rotationOffsetDiscrete, 0f);
         }

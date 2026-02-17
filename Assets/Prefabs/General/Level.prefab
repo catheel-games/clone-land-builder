@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileUpgrade
   tileGrid: {fileID: 8882862855357961664}
+  tileExpansion: {fileID: 3991347518223200085}
   cityTilePrefabs:
   - {fileID: 7348327155288334026, guid: d4a6fd205a22a1847a46deeaa78c4536, type: 3}
   - {fileID: -879753657287651595, guid: 869462e2e74a97046bdf675af353c90d, type: 3}

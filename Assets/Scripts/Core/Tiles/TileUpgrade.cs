@@ -5,6 +5,7 @@ using DG.Tweening;
 public class TileUpgrade : MonoBehaviour
 {
     [SerializeField] private TileGrid tileGrid;
+    [SerializeField] private TileExpansion tileExpansion;
     [SerializeField] private Tile[] cityTilePrefabs;
     [SerializeField] private Tile[] bigCityTilePrefabs;
 
@@ -23,6 +24,7 @@ public class TileUpgrade : MonoBehaviour
     {
         Tile newTile = Instantiate(upgradePrefab, tileGrid.transform);
         tileGrid.ReplaceTile(coords, newTile);
+        tileExpansion.CheckExpansion(coords);
         newTile.Place();
 
         Sequence seq = DOTween.Sequence();
