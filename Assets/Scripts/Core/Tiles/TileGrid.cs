@@ -14,6 +14,7 @@ public class TileGrid : MonoBehaviour
     private Dictionary<Hexagons.Coords, Tile> tiles = new Dictionary<Hexagons.Coords, Tile>();
 
     public event Action<Hexagons.Coords> OnTilePlacerClick;
+    public event Action OnTilePlace;
 
     private Vector3 centerCoordinates;
 
@@ -50,6 +51,7 @@ public class TileGrid : MonoBehaviour
                 tile.transform.SetParent(transform, false);
                 tile.transform.position = Hexagons.HexToWorld(coords);
                 tiles.Add(coords, tile);
+                OnTilePlace?.Invoke();
 
                 if (GameData.Instance.ftueIsEnded)
                 {
@@ -147,6 +149,12 @@ public class TileGrid : MonoBehaviour
         newTile.transform.SetParent(transform, false);
         newTile.transform.position = Hexagons.HexToWorld(coords);
         tiles[coords] = newTile;
+    }
+
+	  public Vector3 GetRandomTilePosition()
+    {
+        var keys = new List<Hexagons.Coords>(tiles.Keys);
+        return Hexagons.HexToWorld(keys[UnityEngine.Random.Range(0, keys.Count)]);
     }
 
     public Vector3 TileGridCenter()
