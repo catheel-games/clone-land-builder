@@ -17,11 +17,15 @@ public class LevelControl : Singleton<LevelControl>
     public int starScore;
     public int tileScore = 50;
 
+    public Hexagons.Coords eiffelCoords;
+
     public float CameraPivotRotation => cameraControl.PivotRotation;
 
     public TileControl _tileControl => tileControl;
     public LevelCanvasControl _levelCanvasControl => levelCanvasControl;
     public StarCollecting _starCollecting => starCollecting;
+    public CameraControl _cameraControl => cameraControl;
+    public FTUE _ftue => _FTUE;
 
     void OnEnable()
     {

@@ -519,7 +519,7 @@ MonoBehaviour:
   starScoreBonusText: {fileID: 4783425655380262048}
   starScoringBonus: {fileID: 2839364928333094977}
   endStarText: {fileID: 7298469251543235631}
-  endOffMaskPosition: 50
+  endOffMaskPosition: 60
   endStarScoreRect: {fileID: 4955033028673034219}
   endStarScoringBonus: {fileID: 4505188851360273203}
   eiffelScoreBonusObject: {fileID: 7688372811292353618}

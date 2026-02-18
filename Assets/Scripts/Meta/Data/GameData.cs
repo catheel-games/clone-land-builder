@@ -11,6 +11,7 @@ public class GameData
     public bool ftueIsEnded = false;
     public bool matched3Tiles = false;
     public bool eiffelIsUnlocked = false;
+    public bool blueSphereTutored = false;
     public int eiffelScore = 0;
    
 

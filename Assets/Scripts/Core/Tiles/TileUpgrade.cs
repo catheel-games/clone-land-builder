@@ -22,13 +22,16 @@ public class TileUpgrade : MonoBehaviour
 
     public void CheckUpgrade(Hexagons.Coords coords)
     {
-        UpgradeCount(coords);
-        Hexagons.IterateNeighbours(coords, (side, neighborCoords) =>
+        if (!LevelControl.Instance.settingEiffel)
         {
-            Tile neighbor = tileGrid.GetTile(neighborCoords);
-            if (neighbor == null) return;
-            UpgradeCount(neighborCoords);
-        });
+            UpgradeCount(coords);
+            Hexagons.IterateNeighbours(coords, (side, neighborCoords) =>
+            {
+                Tile neighbor = tileGrid.GetTile(neighborCoords);
+                if (neighbor == null || neighbor.GetComponent<EiffelTile>()) return;
+                UpgradeCount(neighborCoords);
+            });
+        }
     }
 
     private void UpgradeCount(Hexagons.Coords coords)

@@ -161,4 +161,14 @@ public class TileGrid : MonoBehaviour
         return centerCoordinates;
     }
 
+    public bool HexagonFrontierFinding(Hexagons.Coords targetCoords)
+    {
+        return frontier.ContainsKey(targetCoords);
+    }
+
+    public bool HexagonPutTilesFinding(Hexagons.Coords targetCoords)
+    {
+        return tiles.ContainsKey(targetCoords);
+    }
+
 }

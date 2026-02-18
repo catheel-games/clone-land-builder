@@ -49,10 +49,12 @@ public class TileQueueInterface : MonoBehaviour
 
             if (newTile.gameObject.GetComponent<EiffelTile>())
             {
-                if (i != 0)
-                    newTile.gameObject.GetComponent<EiffelTile>().ChangeInsideGenerator(true);
+                if (i == 0)
+                    LevelControl.Instance.settingEiffel = true;
                 else
-                    newTile.gameObject.GetComponent<EiffelTile>().ChangeInsideGenerator(false);
+                {
+                    Destroy(newTile.gameObject.GetComponent<EiffelTile>());
+                }
             }
 
             displayedTiles.Add(newTile.gameObject);

@@ -36,6 +36,7 @@ public class FTUE : MonoBehaviour
 
     private float _screenModifier;
     private bool eiffelUnlocked = false;
+    private bool blueSphereTutor = false;
 
     private void Start()
     {
@@ -227,7 +228,16 @@ public class FTUE : MonoBehaviour
 
     public void DialogueSkip()
     {
-        if (!eiffelUnlocked)
+        if (blueSphereTutor)
+        {
+            blueSphereTutor = false;
+
+            cameraControl.UnlockPosition();
+            uiCircleHoleMat.SetVector("_Color", new Vector4(0, 0, 0, 0.7f));
+            dialoguePanel.SetActive(false);
+            InputManager.Instance.EnableInput();
+        }
+        else if (!eiffelUnlocked)
         {
             uiCircleHoleMat.SetVector("_Color", new Vector4(0, 0, 0, 0.7f));
             dialoguePanel.SetActive(false);
@@ -235,7 +245,7 @@ public class FTUE : MonoBehaviour
         }
         else
         {
-            uiCircleHoleMat.SetVector("_Color", new Vector4(0,0,0,0));
+            uiCircleHoleMat.SetVector("_Color", new Vector4(0, 0, 0, 0));
             eiffelUnlocked = false;
             SetOliviaText(5);
         }
@@ -278,5 +288,16 @@ public class FTUE : MonoBehaviour
         _FTUEPanelDefaultContainer.Show();
         SetOliviaText(4);
         MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(55, -335), 0f, new Vector2(0.5f, 1f));
+    }
+
+    public void BlueSphereTutorial()
+    {
+        blueSphereTutor = true;
+
+        handAnimator.gameObject.SetActive(false);
+        _FTUEPanelDefaultContainer.Show();
+        SetOliviaText(6);
+        AnimateCircleHoleRadius(0.5f, 0.07f, 0.2f);
+        MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(0, 0), 0f, new Vector2(0.5f, 0.5f));
     }
 }

@@ -15,11 +15,15 @@ public class TileCalculator : MonoBehaviour
     private TilePreviewStar[] stars2 = new TilePreviewStar[6];
     private TilePreviewCombo combo;
 
+    private EiffelTile eiffelTile;
+
     private int starAmount = 0;
+    private int doubleStarAmount = 0;
 
     public void CalculateBonuses(Hexagons.Coords coords, Tile tile)
     {
         int combinationAmount = 0;
+        doubleStarAmount = 0;
 
         Hexagons.IterateNeighbours(coords, (side, neighborCoords) =>
         {
@@ -30,17 +34,23 @@ public class TileCalculator : MonoBehaviour
             if (neighbor != null)
             {
                 neighbourType = neighbor.GetSide(Tools.Modulo(side + 3, 6));
+                eiffelTile = neighbor.GetComponent<EiffelTile>();
             }
 
             if (neighbourType == instanceType)
             {
                 combinationAmount += 1;
 
+                if (LevelControl.Instance.settingEiffel || eiffelTile != null)
+                {
+                    doubleStarAmount += 1;
+                }
+
                 if (stars[side] == null)
                 {
                     float angle = side * 60f + 30f;
 
-                    if (!LevelControl.Instance.settingEiffel)
+                    if (!LevelControl.Instance.settingEiffel && eiffelTile == null)
                     {
                         TilePreviewStar newStar = Instantiate(
                             starPrefab,
@@ -56,7 +66,7 @@ public class TileCalculator : MonoBehaviour
                         stars[side] = newStar;
                     }
 
-                    else if (LevelControl.Instance.settingEiffel)
+                    else if (LevelControl.Instance.settingEiffel || (instanceType == Hexagons.Type.Town && eiffelTile != null))
                     {
                         TilePreviewStar newStar1 = Instantiate(starPrefab,transform);
                         TilePreviewStar newStar2 = Instantiate(starPrefab, transform);
@@ -78,6 +88,7 @@ public class TileCalculator : MonoBehaviour
                     }
                 }
             }
+
             else
             {
                 if (stars[side] != null)
@@ -130,7 +141,7 @@ public class TileCalculator : MonoBehaviour
 
         }
 
-        starAmount = combinationAmount;
+        starAmount = combinationAmount + doubleStarAmount;
 
         if (starAmount > 0)
         {

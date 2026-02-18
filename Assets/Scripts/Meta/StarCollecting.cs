@@ -162,10 +162,6 @@ public class StarCollecting : Singleton<StarCollecting>
                 Destroy(starObjects[i]);
             }
 
-            if (LevelControl.Instance.settingEiffel) {
-                starAmount *= 2;
-            }
-
             //-------------------------------------------------------- SEQUENCES ------------------------------------------------------------------------------------------
 
             Sequence starsSeq = DOTween.Sequence();
@@ -321,10 +317,6 @@ public class StarCollecting : Singleton<StarCollecting>
 
     public void SetStarScoreBonusMode(int starAmount)
     {
-        if (LevelControl.Instance.settingEiffel) {
-            starAmount *= 2;
-        }
-
         starScoreBonusAmount = starAmount;
         starScoringBonus.text = "+" + starAmount;
         endStarScoringBonus.text = "+" + starAmount;

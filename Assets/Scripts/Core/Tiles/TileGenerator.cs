@@ -40,6 +40,9 @@ public class TileGenerator : MonoBehaviour
         Hexagons.Type type2 = GetRandomTypeExcluding(type1);
         setQueue.AddRange(CreateTypedSet(type1));
         setQueue.AddRange(CreateTypedSet(type2));
+
+        // For quick Testing
+        setQueue.Add(eiffelTile);
     }
 
     public void InitializeFTUEQueue()
