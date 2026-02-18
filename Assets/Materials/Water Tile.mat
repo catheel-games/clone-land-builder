@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water Tile
-  m_Shader: {fileID: -6465566751694194690, guid: 3d7399eed2fec3c40ad88406b955ab15, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 90fddc1fa9f826c4c894045838f3b9c5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -92,6 +92,7 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
+    - _BorderStart: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -103,13 +104,21 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _FadeDistance: 0.1
+    - _Feather: 0
     - _FoamAmount: 0.35
+    - _FoamBorder: 1
     - _FoamWith: 0.035
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _InnerFeather: 0
+    - _InnerInner: 0
+    - _InnerOuter: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _OuterInner: 0.55
+    - _OuterOuter: 0.85
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
