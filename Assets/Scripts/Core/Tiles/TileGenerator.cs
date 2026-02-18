@@ -42,7 +42,7 @@ public class TileGenerator : MonoBehaviour
         setQueue.AddRange(CreateTypedSet(type2));
 
         // For quick Testing
-        setQueue.Add(eiffelTile);
+        // setQueue.Add(eiffelTile);
     }
 
     public void InitializeFTUEQueue()

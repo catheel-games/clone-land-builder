@@ -107,6 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EiffelBlueSphere
   destinationRange: 3
   breakParticleObject: {fileID: 6589665050273321971, guid: f44ed06e55252044190d9da190b00f24, type: 3}
+  ftuePing: {fileID: 8291106815480649836, guid: 41ffa7f78d3168d408ef1c6fac66c702, type: 3}
+  fakeTilePlacer: {fileID: 5443628285088413728, guid: e54a167806096d0468811465f0d078da, type: 3}
 --- !u!96 &5843170961530929787
 TrailRenderer:
   serializedVersion: 3

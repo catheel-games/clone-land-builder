@@ -1069,5 +1069,5 @@ MonoBehaviour:
   floatingDecorations:
   - {fileID: 1954616164567661590, guid: 2580cfae314c0d0478d7096dec6e838a, type: 3}
   - {fileID: 3047960412562793888, guid: f674bb8419609994cbe662bdfc65c175, type: 3}
-  airplaneSpeed: 1
-  cloudSpeed: 0.05
+  airplaneSpeed: 0.5
+  cloudSpeed: 0.03

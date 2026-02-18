@@ -28,7 +28,7 @@ public class FloatingDecorations : MonoBehaviour
 
         Vector3 direction = Quaternion.Euler(0f, UnityEngine.Random.Range(-30f, 30f), 0f) * camForward;
         Vector3 spawnPosition = Camera.main.transform.position - direction * 20f;
-        spawnPosition.y = 1.5f;
+        spawnPosition.y = 2.5f;
 
         airplane = Instantiate(floatingDecorations[0], spawnPosition, Quaternion.LookRotation(direction));
         airplane.GetComponentInChildren<AirplaneVisibility>().OnDisappear += OnAirplaneDisappear;
@@ -51,7 +51,7 @@ public class FloatingDecorations : MonoBehaviour
     private void SpawnCloud()
     {
         Vector3 tilePos = tileGrid.GetRandomTilePosition();
-        Vector3 spawnPosition = new Vector3(tilePos.x, 1.5f, tilePos.z);
+        Vector3 spawnPosition = new Vector3(tilePos.x, 2.5f, tilePos.z);
 
         float angle = UnityEngine.Random.Range(0f, 360f);
         Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0f, Mathf.Sin(angle * Mathf.Deg2Rad));

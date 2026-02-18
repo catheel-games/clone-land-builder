@@ -37,6 +37,12 @@ public class TileGrid : MonoBehaviour
         }
     }
 
+    public void SetFakeTilePlacer(Hexagons.Coords coords, TilePlacer fakePrefab)
+    {
+        TilePlacer newTilePlacer = Instantiate(fakePrefab, tilePlacerContainer.transform);
+        newTilePlacer.Setup(coords, false);
+    }
+
     public void SetTile(Hexagons.Coords coords, Tile tile)
     {
         if (frontier.ContainsKey(coords))

@@ -5,26 +5,45 @@ public class EiffelBlueSphere : MonoBehaviour
 {
     [SerializeField] private int destinationRange = 3;
     [SerializeField] private GameObject breakParticleObject;
-
-    private Vector3 destinationCoordinates;
-    private Hexagons.Coords newCoords;
+    [SerializeField] private GameObject ftuePing;
+    [SerializeField] private TilePlacer fakeTilePlacer;
 
     public void FlyToTile(Hexagons.Coords coords)
     {
-        InputManager.Instance.DisableInput();
+        if (!GameData.Instance.blueSphereTutored)
+            InputManager.Instance.DisableInput();
 
-        int offsetX = Random.Range(-destinationRange, destinationRange);
-        int offsetY = Random.Range(-destinationRange, destinationRange);
+        Hexagons.Coords newCoords;
+        Vector3 destinationCoordinates;
 
-        if (offsetX == 0 && offsetY == 0) {
-            FlyToTile(coords);
-            return;
+        while (true)
+        {
+            int offsetX = Random.Range(-destinationRange, destinationRange);
+            int offsetY = Random.Range(-destinationRange, destinationRange);
+
+            if (offsetX == 0 && offsetY == 0)
+                continue;
+
+            newCoords = new Hexagons.Coords(
+                coords.x + offsetX,
+                coords.y + offsetY
+            );
+
+            if (LevelControl.Instance._tileControl.Tilegrid.HexagonPutTilesFinding(newCoords))
+            {
+                continue;
+            }
+            else if (LevelControl.Instance._tileControl.Tilegrid.HexagonFrontierFinding(newCoords))
+            {
+                Debug.Log("Frontier");
+            }
+            else
+            {
+                DOVirtual.DelayedCall(2.5f, () => LevelControl.Instance._tileControl.Tilegrid.SetFakeTilePlacer(newCoords, fakeTilePlacer));
+            }
+
+            break;
         }
-
-        newCoords = new Hexagons.Coords(
-            coords.x + offsetX,
-            coords.y + offsetY
-        );
 
         destinationCoordinates = Hexagons.HexToWorld(newCoords);
 
@@ -33,29 +52,13 @@ public class EiffelBlueSphere : MonoBehaviour
         Debug.Log("destinationCoordinates: " + destinationCoordinates);
         Debug.Log("newCoords: " + newCoords.x + "," + newCoords.y);
 
-
-
-        if (LevelControl.Instance._tileControl.Tilegrid.HexagonPutTilesFinding(newCoords))
-        {
-            FlyToTile(coords);
-            return;
-        }
-
-        else if (LevelControl.Instance._tileControl.Tilegrid.HexagonFrontierFinding(newCoords))
-        {
-            Flying();
-        }
-
-        else {
-            Debug.Log("Create a hexagon");
-            Flying();
-        }
+        Flying(destinationCoordinates);
     }
 
-    public void Flying()
+    public void Flying(Vector3 destination)
     {
         transform.DOJump(
-            destinationCoordinates,
+            destination,
             jumpPower: 2.25f,
             numJumps: 1,
             duration: 2.5f
@@ -63,14 +66,18 @@ public class EiffelBlueSphere : MonoBehaviour
             .SetEase(Ease.OutQuad)
             .OnComplete(() =>
             {
-                LevelControl.Instance._cameraControl.LockPosition(destinationCoordinates);
                 if (!GameData.Instance.blueSphereTutored)
                 {
+                    LevelControl.Instance._cameraControl.LockPosition(destination);
                     GameData.Instance.blueSphereTutored = true;
                     DOVirtual.DelayedCall(0.1f, () => LevelControl.Instance._ftue.BlueSphereTutorial());
                 }
 
+                AudioManager.Instance.PlaySound("Plus", "Paris Blue Sphere");
+
                 Instantiate(breakParticleObject, transform.position, Quaternion.identity, transform.parent);
+                Instantiate(ftuePing, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity, transform.parent);
+
                 transform.DOScale(0f, 0.2f).OnComplete(
                                             ()=> Destroy(gameObject));
             });
