@@ -58,6 +58,8 @@ public class TileGrid : MonoBehaviour
                 tile.transform.position = Hexagons.HexToWorld(coords);
                 tiles.Add(coords, tile);
                 OnTilePlace?.Invoke();
+                
+                Debug.Log($"tile grid size now {GetTileGridSize()}");
 
                 if (GameData.Instance.ftueIsEnded)
                 {
@@ -185,4 +187,31 @@ public class TileGrid : MonoBehaviour
         return tiles.ContainsKey(targetCoords);
     }
 
+    public int GetTileGridSize()
+    {
+        // i am gonna do the cheapest trick in history
+        // by using the only thing i remember from the probability class
+        // i am gonna calculate variance of a data set or something
+
+        Vector2 linearSum = Vector2.zero;
+        Vector2 quadraticSum = Vector2.zero;
+        int count = tiles.Count;
+        
+        foreach (Hexagons.Coords coords in tiles.Keys)
+        {
+            Vector3 worldCoords = Hexagons.HexToWorld(coords);
+            
+            linearSum += new Vector2(worldCoords.x, worldCoords.z);
+            quadraticSum += new Vector2(worldCoords.x * worldCoords.x, worldCoords.z *  worldCoords.z);
+        }
+        
+        Vector2 linearAverage = linearSum / count;
+        Vector2 quadraticAverage = quadraticSum / count;
+        
+        Vector2 variance = quadraticAverage - new Vector2(linearAverage.x * linearAverage.x, linearAverage.y * linearAverage.y);
+        int diameter = Mathf.FloorToInt(Mathf.Sqrt(variance.magnitude) * 2 + 1);
+        
+        return diameter;
+    }
+    
 }
