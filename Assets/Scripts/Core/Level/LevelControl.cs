@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class LevelControl : Singleton<LevelControl>
 {
@@ -136,8 +136,8 @@ public class LevelControl : Singleton<LevelControl>
 
     public void CameraPresentation()
     {
-        Vector3 centerCoordinates = tileControl.Tilegrid.TileGridCenter();
-        cameraControl.CityPresentation(centerCoordinates);
+        tileControl.Tilegrid.TilePlacerContainer.Hide();
+        cameraControl.CityPresentation();
     }
 
 }

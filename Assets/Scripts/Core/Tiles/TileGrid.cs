@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TileGrid : MonoBehaviour
 {
@@ -18,6 +19,13 @@ public class TileGrid : MonoBehaviour
 
     private Vector3 centerCoordinates;
 
+    private int tileGridDiameter = 1;
+    private Vector3 tileGridCenter = Vector3.zero;
+    
+    public int TileGridDiameter => tileGridDiameter;
+    public Vector3 TileGridCenter => tileGridCenter;
+    public UIContainer TilePlacerContainer => tilePlacerContainer;
+    
     void Start()
     {
         SetTilePlacer(new Hexagons.Coords(0, 0), true);
@@ -58,6 +66,8 @@ public class TileGrid : MonoBehaviour
                 tile.transform.position = Hexagons.HexToWorld(coords);
                 tiles.Add(coords, tile);
                 OnTilePlace?.Invoke();
+                
+                UpdateTileGridCenterAndDiameter();
 
                 if (GameData.Instance.ftueIsEnded)
                 {
@@ -156,23 +166,11 @@ public class TileGrid : MonoBehaviour
         newTile.transform.position = Hexagons.HexToWorld(coords);
         tiles[coords] = newTile;
     }
-
-	  public Vector3 GetRandomTilePosition()
+    
+    public Vector3 GetRandomTilePosition()
     {
         var keys = new List<Hexagons.Coords>(tiles.Keys);
-        return Hexagons.HexToWorld(keys[UnityEngine.Random.Range(0, keys.Count)]);
-    }
-
-    public Vector3 TileGridCenter()
-    {
-        foreach (KeyValuePair<Hexagons.Coords, Tile> tile in tiles)
-        {
-            centerCoordinates += Hexagons.HexToWorld(tile.Key);
-        }
-
-        centerCoordinates /= tiles.Count;
-
-        return centerCoordinates;
+        return Hexagons.HexToWorld(keys[Random.Range(0, keys.Count)]);
     }
 
     public bool HexagonFrontierFinding(Hexagons.Coords targetCoords)
@@ -185,4 +183,31 @@ public class TileGrid : MonoBehaviour
         return tiles.ContainsKey(targetCoords);
     }
 
+    private void UpdateTileGridCenterAndDiameter()
+    {
+        // i am gonna do the cheapest trick in history
+        // by using the only thing i remember from the probability class
+        // i am gonna calculate variance of a data set or something
+
+        Vector2 linearSum = Vector2.zero;
+        Vector2 quadraticSum = Vector2.zero;
+        int count = tiles.Count;
+        
+        foreach (Hexagons.Coords coords in tiles.Keys)
+        {
+            Vector3 worldCoords = Hexagons.HexToWorld(coords);
+            
+            linearSum += new Vector2(worldCoords.x, worldCoords.z);
+            quadraticSum += new Vector2(worldCoords.x * worldCoords.x, worldCoords.z *  worldCoords.z);
+        }
+        
+        Vector2 linearAverage = linearSum / count;
+        Vector2 quadraticAverage = quadraticSum / count;
+        
+        Vector2 variance = quadraticAverage - new Vector2(linearAverage.x * linearAverage.x, linearAverage.y * linearAverage.y);
+
+        tileGridCenter = new Vector3(linearAverage.x, 0f, linearAverage.y);
+        tileGridDiameter = Mathf.FloorToInt(Mathf.Sqrt(variance.magnitude) * 2 + 1);
+    }
+    
 }

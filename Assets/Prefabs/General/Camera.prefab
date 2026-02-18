@@ -188,13 +188,15 @@ MonoBehaviour:
   previewCamera: {fileID: 6634012023508771999}
   pivotTransform: {fileID: 638401228234249165}
   cameraInput: {fileID: 5301659811425245732}
+  tileGrid: {fileID: 0}
   zoomLerpCoefficient: 10
   rotationLerpCoefficient: 10
   translationLerpCoefficient: 5
-  zoomMin: 5
-  zoomMax: 60
+  zoomRangeCoefficient: 0.8
+  translationRangeCoefficient: 2.5
   zoomStep: 1
   rotationStep: 20
+  presentationZoomCoefficient: 0
   presentationRotationStep: -10
   presentationYPos: 7
   presentationRotation: {x: 30, y: 0, z: 0}
@@ -211,8 +213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraInputInterpreter
   zoomCoefficient: 15
-  rotationCoefficient: 200
-  translationCoefficient: 5
+  rotationCoefficient: 250
+  translationCoefficient: 4
 --- !u!1 &4226790927997402425
 GameObject:
   m_ObjectHideFlags: 0

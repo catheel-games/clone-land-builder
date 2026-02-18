@@ -309,6 +309,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5417790446154678725}
     m_Modifications:
+    - target: {fileID: 602406319762784280, guid: fe6975213142ed844a6666a7b28d3838, type: 3}
+      propertyPath: tileGrid
+      value: 
+      objectReference: {fileID: 8882862855357961664}
     - target: {fileID: 3655100828832201250, guid: fe6975213142ed844a6666a7b28d3838, type: 3}
       propertyPath: m_Name
       value: Camera
@@ -980,6 +984,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileDecorations
       objectReference: {fileID: 0}
+    - target: {fileID: 3208150855244385614, guid: 4d122bd749697864186af47f76b4db75, type: 3}
+      propertyPath: tileGrid
+      value: 
+      objectReference: {fileID: 8882862855357961664}
     - target: {fileID: 4663422722088625320, guid: 4d122bd749697864186af47f76b4db75, type: 3}
       propertyPath: tileGrid
       value: 
@@ -1027,10 +1035,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 404875312955825449, guid: 4d122bd749697864186af47f76b4db75, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4488721245802941928}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d122bd749697864186af47f76b4db75, type: 3}
 --- !u!4 &1402532854121365381 stripped
 Transform:
@@ -1042,32 +1047,9 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4663422722088625320, guid: 4d122bd749697864186af47f76b4db75, type: 3}
   m_PrefabInstance: {fileID: 6287917926692907287}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5971012216640107582}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be68c68d4a7517a4ca0317117f5a5af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileDecoration
---- !u!1 &5971012216640107582 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 404875312955825449, guid: 4d122bd749697864186af47f76b4db75, type: 3}
-  m_PrefabInstance: {fileID: 6287917926692907287}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4488721245802941928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5971012216640107582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4867c8e65e3a7c44daae4e0e0a43b1a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FloatingDecorations
-  tileGrid: {fileID: 8882862855357961664}
-  floatingDecorations:
-  - {fileID: 1954616164567661590, guid: 2580cfae314c0d0478d7096dec6e838a, type: 3}
-  - {fileID: 3047960412562793888, guid: f674bb8419609994cbe662bdfc65c175, type: 3}
-  airplaneSpeed: 0.5
-  cloudSpeed: 0.03

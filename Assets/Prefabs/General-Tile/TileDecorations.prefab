@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4915081104683210386}
   - component: {fileID: 4663422722088625320}
+  - component: {fileID: 3208150855244385614}
   m_Layer: 0
   m_Name: TileDecorations
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404875312955825449}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be68c68d4a7517a4ca0317117f5a5af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileDecoration
-  tileGrid: {fileID: 8734218967770000859, guid: 18c02bc59ef94ce4dac75088f883677a, type: 3}
+  tileGrid: {fileID: 0}
   decorationGroups:
   - prefabs:
     - {fileID: 6903643519771881796, guid: 58d417912f93fd046b944918712e43f0, type: 3}
@@ -59,3 +60,21 @@ MonoBehaviour:
     - {fileID: 2043037591980130156, guid: 29157c5e02ecfb941b4cd3eb5cffe3f7, type: 3}
     tileType: 3
     spawnHeight: 0.17
+--- !u!114 &3208150855244385614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404875312955825449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4867c8e65e3a7c44daae4e0e0a43b1a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatingDecorations
+  tileGrid: {fileID: 0}
+  floatingDecorations:
+  - {fileID: 1954616164567661590, guid: 2580cfae314c0d0478d7096dec6e838a, type: 3}
+  - {fileID: 3047960412562793888, guid: f674bb8419609994cbe662bdfc65c175, type: 3}
+  airplaneSpeed: 0.5
+  cloudSpeed: 0.03
