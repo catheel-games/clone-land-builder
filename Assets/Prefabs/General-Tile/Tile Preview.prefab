@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2e812bb3b1ff240bfc6371c270dad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilePreview
-  tileElevevation: 0
+  tileElevation: 0
   tileCalculator: {fileID: 5174098795348246858}
   tilePreviewInput: {fileID: 3432788084915912076}
   tileDenyingPreviewFeedback: {fileID: 7563587593489117152}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bb097fe62790f408f44771c33b0ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilePreviewInputInterpreter
-  rotationCoefficient: 600
+  rotationCoefficient: 400
 --- !u!114 &5174098795348246858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileDenyingFeedback
   scaleTo0Duration: 0.5
-  scaleTo1Duration: 0.6
 --- !u!114 &3259717654111695271
 MonoBehaviour:
   m_ObjectHideFlags: 0
