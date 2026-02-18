@@ -196,6 +196,7 @@ MonoBehaviour:
   translationRangeCoefficient: 2.5
   zoomStep: 1
   rotationStep: 20
+  presentationZoomCoefficient: 0
   presentationRotationStep: -10
   presentationYPos: 7
   presentationRotation: {x: 30, y: 0, z: 0}

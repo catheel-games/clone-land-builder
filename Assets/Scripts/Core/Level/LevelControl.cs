@@ -136,6 +136,7 @@ public class LevelControl : Singleton<LevelControl>
 
     public void CameraPresentation()
     {
+        tileControl.Tilegrid.TilePlacerContainer.Hide();
         cameraControl.CityPresentation();
     }
 

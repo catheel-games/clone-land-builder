@@ -24,7 +24,8 @@ public class TileGrid : MonoBehaviour
     
     public int TileGridDiameter => tileGridDiameter;
     public Vector3 TileGridCenter => tileGridCenter;
-
+    public UIContainer TilePlacerContainer => tilePlacerContainer;
+    
     void Start()
     {
         SetTilePlacer(new Hexagons.Coords(0, 0), true);
