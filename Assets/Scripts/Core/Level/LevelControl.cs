@@ -136,8 +136,7 @@ public class LevelControl : Singleton<LevelControl>
 
     public void CameraPresentation()
     {
-        Vector3 centerCoordinates = tileControl.Tilegrid.TileGridCenter;
-        cameraControl.CityPresentation(centerCoordinates);
+        cameraControl.CityPresentation();
     }
 
 }

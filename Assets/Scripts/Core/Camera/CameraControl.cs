@@ -23,6 +23,7 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private float rotationStep = 20f;
 
     [Header("Presentation Properties")]
+    [SerializeField] private float presentationZoomCoefficient = 6f;
     [SerializeField] private float presentationRotationStep = -10f;
     [SerializeField] private float presentationYPos = 7f;
     [SerializeField] private Vector3 presentationRotation;
@@ -150,12 +151,17 @@ public class CameraControl : MonoBehaviour
         ChangeZoom(zoomStep);
     }
 
-    public void CityPresentation(Vector3 newPosition)
+    public void CityPresentation()
     {
+        Vector3 presentationPosition = tileGrid.TileGridCenter;
+        
         mainCamera.transform.DOMoveY(presentationYPos, 0.5f);
         mainCamera.transform.DOLocalRotate(presentationRotation, 0.5f);
 
-        LockPosition(newPosition);
+        zoomTarget = zoomRangeCoefficient * (6f + tileGrid.TileGridDiameter + presentationZoomCoefficient);
+        LockPosition(presentationPosition);
+        
         staticRotation = true;
+        cameraInput.enabled = false;
     }
 }

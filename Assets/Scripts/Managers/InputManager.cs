@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputManager : Singleton<InputManager>
 {
@@ -57,6 +58,8 @@ public class InputManager : Singleton<InputManager>
         {
             Touch touch = Input.GetTouch(0);
             
+            if (EventSystem.current.IsPointerOverGameObject(touch.fingerId)) return;
+            
             OneFingerSlideEvent slideEvent = new OneFingerSlideEvent
             {
                 Position = processInputPosition(touch.position),
@@ -74,6 +77,9 @@ public class InputManager : Singleton<InputManager>
             Touch touchOne = Input.GetTouch(0);
             Touch touchTwo = Input.GetTouch(1);
 
+            if (EventSystem.current.IsPointerOverGameObject(touchOne.fingerId)) return;
+            if (EventSystem.current.IsPointerOverGameObject(touchTwo.fingerId)) return;
+            
             TwoFingerSlideEvent slideEvent = new TwoFingerSlideEvent
             {
                 FirstFinger = new OneFingerSlideEvent
@@ -96,6 +102,8 @@ public class InputManager : Singleton<InputManager>
     {
         if (Input.GetMouseButton(0) && Input.touchCount == 0)
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            
             MouseClickEvent clickEvent = new MouseClickEvent
             {
                 Position = processInputPosition(Input.mousePosition),
@@ -110,6 +118,8 @@ public class InputManager : Singleton<InputManager>
     {
         if (Input.GetMouseButton(1) && Input.touchCount == 0)
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            
             MouseClickEvent clickEvent = new MouseClickEvent
             {
                 Position = processInputPosition(Input.mousePosition),
