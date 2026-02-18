@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -62,10 +63,19 @@ public class TileGrid : MonoBehaviour
                 Destroy(oldTilePlacer.gameObject);
                 frontier.Remove(coords);
 
-                tile.transform.SetParent(transform, false);
-                tile.transform.position = Hexagons.HexToWorld(coords);
                 tiles.Add(coords, tile);
                 OnTilePlace?.Invoke();
+                
+                tile.transform.SetParent(transform, false);
+                
+                Sequence sequence = DOTween.Sequence();
+                
+                sequence.Append(tile.transform.DOMoveY(0f, 0.2f));
+                sequence.Append(tile.transform.DOMoveY(0.014f, 0.05f));
+                sequence.Append(tile.transform.DOMoveY(0f, 0.01f));
+                sequence.AppendCallback(() => tile.transform.position = Hexagons.HexToWorld(coords));
+                
+                tile.transform.position = Hexagons.HexToWorld(coords);
                 
                 UpdateTileGridCenterAndDiameter();
 

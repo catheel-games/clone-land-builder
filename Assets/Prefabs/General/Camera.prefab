@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraInputInterpreter
   zoomCoefficient: 15
   rotationCoefficient: 250
-  translationCoefficient: 4
+  translationCoefficient: 3
 --- !u!1 &4226790927997402425
 GameObject:
   m_ObjectHideFlags: 0
