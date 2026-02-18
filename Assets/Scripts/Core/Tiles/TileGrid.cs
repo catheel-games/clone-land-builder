@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TileGrid : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class TileGrid : MonoBehaviour
     public event Action OnTilePlace;
 
     private Vector3 centerCoordinates;
+
+    private int tileGridDiameter = 1;
+    private Vector3 tileGridCenter = Vector3.zero;
+    
+    public int TileGridDiameter => tileGridDiameter;
+    public Vector3 TileGridCenter => tileGridCenter;
 
     void Start()
     {
@@ -59,7 +66,7 @@ public class TileGrid : MonoBehaviour
                 tiles.Add(coords, tile);
                 OnTilePlace?.Invoke();
                 
-                Debug.Log($"tile grid size now {GetTileGridSize()}");
+                UpdateTileGridCenterAndDiameter();
 
                 if (GameData.Instance.ftueIsEnded)
                 {
@@ -158,23 +165,11 @@ public class TileGrid : MonoBehaviour
         newTile.transform.position = Hexagons.HexToWorld(coords);
         tiles[coords] = newTile;
     }
-
-	  public Vector3 GetRandomTilePosition()
+    
+    public Vector3 GetRandomTilePosition()
     {
         var keys = new List<Hexagons.Coords>(tiles.Keys);
-        return Hexagons.HexToWorld(keys[UnityEngine.Random.Range(0, keys.Count)]);
-    }
-
-    public Vector3 TileGridCenter()
-    {
-        foreach (KeyValuePair<Hexagons.Coords, Tile> tile in tiles)
-        {
-            centerCoordinates += Hexagons.HexToWorld(tile.Key);
-        }
-
-        centerCoordinates /= tiles.Count;
-
-        return centerCoordinates;
+        return Hexagons.HexToWorld(keys[Random.Range(0, keys.Count)]);
     }
 
     public bool HexagonFrontierFinding(Hexagons.Coords targetCoords)
@@ -187,7 +182,7 @@ public class TileGrid : MonoBehaviour
         return tiles.ContainsKey(targetCoords);
     }
 
-    public int GetTileGridSize()
+    private void UpdateTileGridCenterAndDiameter()
     {
         // i am gonna do the cheapest trick in history
         // by using the only thing i remember from the probability class
@@ -209,9 +204,9 @@ public class TileGrid : MonoBehaviour
         Vector2 quadraticAverage = quadraticSum / count;
         
         Vector2 variance = quadraticAverage - new Vector2(linearAverage.x * linearAverage.x, linearAverage.y * linearAverage.y);
-        int diameter = Mathf.FloorToInt(Mathf.Sqrt(variance.magnitude) * 2 + 1);
-        
-        return diameter;
+
+        tileGridCenter = new Vector3(linearAverage.x, 0f, linearAverage.y);
+        tileGridDiameter = Mathf.FloorToInt(Mathf.Sqrt(variance.magnitude) * 2 + 1);
     }
     
 }

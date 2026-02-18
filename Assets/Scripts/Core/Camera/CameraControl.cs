@@ -1,5 +1,5 @@
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
@@ -7,17 +7,22 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private Camera previewCamera;
     [SerializeField] private Transform pivotTransform;
     [SerializeField] private CameraInput cameraInput;
+    [SerializeField] private TileGrid tileGrid;
 
+    [Header("Lerp Coefficients")]
     [SerializeField] private float zoomLerpCoefficient = 10f;
     [SerializeField] private float rotationLerpCoefficient = 10f;
     [SerializeField] private float translationLerpCoefficient = 10f;
 
-    [SerializeField] private float zoomMin = 1f;
-    [SerializeField] private float zoomMax = 10f;
-
+    [Header("Boundary Coefficients")]
+    [SerializeField] private float zoomRangeCoefficient = 2f;
+    [SerializeField] private float translationRangeCoefficient = 8f;
+    
+    [Header("Discrete Steps")]
     [SerializeField] private float zoomStep = 2f;
     [SerializeField] private float rotationStep = 20f;
 
+    [Header("Presentation Properties")]
     [SerializeField] private float presentationRotationStep = -10f;
     [SerializeField] private float presentationYPos = 7f;
     [SerializeField] private Vector3 presentationRotation;
@@ -46,7 +51,8 @@ public class CameraControl : MonoBehaviour
 
     void Awake()
     {
-        zoomTarget = mainCamera.orthographicSize;
+        zoomTarget = 6 * zoomRangeCoefficient;
+        
         rotationTarget = pivotTransform.transform.rotation.y;
         positionTarget = transform.position;
     }
@@ -97,6 +103,9 @@ public class CameraControl : MonoBehaviour
     // Physical
     private void ChangeZoom(float zoomAmount)
     {
+        float zoomMin = zoomRangeCoefficient * 5f;
+        float zoomMax = zoomRangeCoefficient * (6f + tileGrid.TileGridDiameter);
+        
         zoomTarget = Mathf.Clamp(zoomTarget + zoomAmount, zoomMin, zoomMax);
     }
 
@@ -107,7 +116,18 @@ public class CameraControl : MonoBehaviour
 
     private void ChangePosition(Vector3 translationAmount)
     {
-        positionTarget -= pivotTransform.transform.rotation * translationAmount;
+        positionTarget -= pivotTransform.transform.rotation * translationAmount * zoomTarget;
+
+        float minX = tileGrid.TileGridCenter.x - tileGrid.TileGridDiameter - translationRangeCoefficient;
+        float maxX = tileGrid.TileGridCenter.x + tileGrid.TileGridDiameter + translationRangeCoefficient;
+        float minZ = tileGrid.TileGridCenter.z - tileGrid.TileGridDiameter - translationRangeCoefficient;
+        float maxZ = tileGrid.TileGridCenter.z + tileGrid.TileGridDiameter + translationRangeCoefficient;
+
+        positionTarget = new Vector3(
+            Mathf.Clamp(positionTarget.x, minX, maxX),
+            positionTarget.y,
+            Mathf.Clamp(positionTarget.z, minZ, maxZ)
+        );
     }
 
     public void RotateLeft()

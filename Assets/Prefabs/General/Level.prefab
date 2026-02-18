@@ -309,6 +309,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5417790446154678725}
     m_Modifications:
+    - target: {fileID: 602406319762784280, guid: fe6975213142ed844a6666a7b28d3838, type: 3}
+      propertyPath: tileGrid
+      value: 
+      objectReference: {fileID: 8882862855357961664}
     - target: {fileID: 3655100828832201250, guid: fe6975213142ed844a6666a7b28d3838, type: 3}
       propertyPath: m_Name
       value: Camera

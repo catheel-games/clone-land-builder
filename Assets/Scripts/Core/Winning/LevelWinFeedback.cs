@@ -1,10 +1,10 @@
-using UnityEngine;
-using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
+using System.Linq;
 using DG.Tweening;
 using TMPro;
-using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelWinFeedback : MonoBehaviour
 {
@@ -98,7 +98,7 @@ public class LevelWinFeedback : MonoBehaviour
 
     private IEnumerator fireworkCoroutine()
     {
-        Vector3 position1 = LevelControl.Instance._tileControl.Tilegrid.TileGridCenter();
+        Vector3 position1 = LevelControl.Instance._tileControl.Tilegrid.TileGridCenter;
 
         Vector3 randomOffset = new Vector3(
         Random.Range(-5f, 5f),
