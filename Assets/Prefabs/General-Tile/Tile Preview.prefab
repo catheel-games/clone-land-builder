@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2e812bb3b1ff240bfc6371c270dad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilePreview
-  tileElevevation: 0
+  tileElevation: 0.125
   tileCalculator: {fileID: 5174098795348246858}
   tilePreviewInput: {fileID: 3432788084915912076}
   tileDenyingPreviewFeedback: {fileID: 7563587593489117152}
@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileDenyingFeedback
   scaleTo0Duration: 0.5
-  scaleTo1Duration: 0.6
 --- !u!114 &3259717654111695271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,4 +112,4 @@ MonoBehaviour:
   punchScaleDuration: 0.2
   punchScaleVector: {x: 0.1, y: 0.1, z: 0.1}
   hoveringValue: 0.075
-  hoveringDuration: 1.5
+  hoveringDuration: 1.1

@@ -29,6 +29,7 @@ public class LevelWinFeedback : MonoBehaviour
     [SerializeField] private GameObject coinSection;
 
     [SerializeField] private ParticleSystem coinShineParticles;
+    [SerializeField] private ParticleSystem confettiBurstParticle;
 
     [SerializeField] private GameObject fireworkParticleObject;
 
@@ -61,6 +62,7 @@ public class LevelWinFeedback : MonoBehaviour
               .AppendCallback(() => levelCanvasControl._coinContainer.Show())
               .AppendCallback(() => coinSection.SetActive(true))
               .AppendCallback(() => coinShineParticles.Play())
+              .AppendCallback(() => confettiBurstParticle.Play())
               .AppendCallback(() => LevelControl.Instance.CameraPresentation())
               .AppendCallback(() => CreatingFireworks())
               .AppendCallback(() => LevelCompletedTextAnimation());

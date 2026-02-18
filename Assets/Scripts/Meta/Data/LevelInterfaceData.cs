@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using TMPro;
 public class LevelInterfaceData : MonoBehaviour
 {
     [SerializeField] private GameObject starCircleObject;
@@ -9,12 +9,16 @@ public class LevelInterfaceData : MonoBehaviour
     [SerializeField] private GameObject coinSection;
     [SerializeField] private GameObject eiffelObject;
 
+    [SerializeField] private TextMeshProUGUI levelIDText;
+
 
     private void Start()
     {
         int currentLevel = GameData.Instance.currentLevelID;
 
         LevelProgress progress = GameData.Instance.GetLevelProgress(currentLevel);
+
+        levelIDText.text = "Level " + currentLevel;
 
         if (progress.state == LevelProgress.LevelState.Finished)
         {

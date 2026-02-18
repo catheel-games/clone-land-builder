@@ -200,7 +200,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (isMusicOn)
         {
-            audioMixer.SetFloat("MusicVolume", -20);
+            audioMixer.SetFloat("MusicVolume", -10);
         } else
         {
             audioMixer.SetFloat("MusicVolume", -80);               
@@ -211,7 +211,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (isSoundOn)
         {
-            audioMixer.SetFloat("SoundVolume", -10);
+            audioMixer.SetFloat("SoundVolume", -5);
         } else
         {
             audioMixer.SetFloat("SoundVolume", -80);               

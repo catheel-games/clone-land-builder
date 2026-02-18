@@ -6,6 +6,8 @@ public class EiffelTile : MonoBehaviour
     [SerializeField] private GameObject particleObject;
     [SerializeField] private EiffelBlueSphere eiffelBlueSphere;
 
+    [SerializeField] private bool onGrid;
+
     private Hexagons.Coords eiffelCoords;
 
     private void Start()
@@ -22,21 +24,25 @@ public class EiffelTile : MonoBehaviour
     {
         if (isAccepted)
         {
-            eiffelCoords = LevelControl.Instance.eiffelCoords;
+            if (!onGrid)
+            {
+                eiffelCoords = LevelControl.Instance.eiffelCoords;
 
-            particleObject.SetActive(false);
-            eiffelBlueSphere.gameObject.SetActive(true);
-            eiffelBlueSphere.FlyToTile(eiffelCoords);
+                particleObject.SetActive(false);
+                eiffelBlueSphere.gameObject.SetActive(true);
+                eiffelBlueSphere.FlyToTile(eiffelCoords);
 
-            DOVirtual.DelayedCall(1f, ()=> LevelControl.Instance.settingEiffel = false);
+                DOVirtual.DelayedCall(1f, () => LevelControl.Instance.settingEiffel = false);
 
-            UnSubscribeFromEvents();
+                UnSubscribeFromEvents();
+            }
         }
     }
 
     public void SetEiffelTile(Hexagons.Coords coords) 
     {
         LevelControl.Instance.eiffelCoords = coords;
+        onGrid = true;
     }
 
 

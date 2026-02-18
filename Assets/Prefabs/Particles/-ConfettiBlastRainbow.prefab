@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 19877600}
   - component: {fileID: 19939786}
   m_Layer: 0
-  m_Name: ConfettiBlastRainbow
+  m_Name: -ConfettiBlastRainbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
