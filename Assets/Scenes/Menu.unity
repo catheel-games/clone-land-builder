@@ -139,12 +139,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 1785190669}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1118210559c1f294c9e92abc3780ac71, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1118210559c1f294c9e92abc3780ac71, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1118210559c1f294c9e92abc3780ac71, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1118210559c1f294c9e92abc3780ac71, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1118210559c1f294c9e92abc3780ac71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1118210559c1f294c9e92abc3780ac71, type: 3}
       propertyPath: m_LocalPosition.z
@@ -501,11 +513,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -809316744305828308, guid: 9c15aaed08d79374baf8553370488f81, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c94d47f533a960f45934ade246030830, type: 2}
+    - target: {fileID: -809316744305828308, guid: 9c15aaed08d79374baf8553370488f81, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 668413c622843bc48ad77c11b03204a6, type: 2}
+    - target: {fileID: -809316744305828308, guid: 9c15aaed08d79374baf8553370488f81, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e4f8e2dd0566a7649b6f78d3c36963d0, type: 2}
+    - target: {fileID: -809316744305828308, guid: 9c15aaed08d79374baf8553370488f81, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ac9a47f6f9ab0ea45b5ef8892aa8eee0, type: 2}
     - target: {fileID: 919132149155446097, guid: 9c15aaed08d79374baf8553370488f81, type: 3}
       propertyPath: m_Name
       value: Land Builder Menu Map
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9c15aaed08d79374baf8553370488f81, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237999770463267460, guid: 9c15aaed08d79374baf8553370488f81, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
