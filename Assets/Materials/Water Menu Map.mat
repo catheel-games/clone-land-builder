@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water Tile
-  m_Shader: {fileID: -6465566751694194690, guid: 3d7399eed2fec3c40ad88406b955ab15, type: 3}
+  m_Name: Water Menu Map
+  m_Shader: {fileID: -6465566751694194690, guid: 90fddc1fa9f826c4c894045838f3b9c5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -38,8 +38,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BorderStart: 0
+    - _Border_Color: 0
+    - _FadeDistance: 0.1
+    - _Feather: 0
     - _FoamAmount: 0.35
+    - _FoamBorder: 1
     - _FoamWith: 0.035
+    - _InnerFeather: 0
+    - _InnerInner: 0
+    - _InnerOuter: 0
+    - _OuterInner: 0.55
+    - _OuterOuter: 0.85
     - _QueueControl: 0
     - _QueueOffset: 0
     - _WaveScale: 5
