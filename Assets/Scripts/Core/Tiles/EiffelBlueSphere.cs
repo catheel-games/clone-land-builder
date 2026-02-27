@@ -10,7 +10,7 @@ public class EiffelBlueSphere : MonoBehaviour
 
     public void FlyToTile(Hexagons.Coords coords)
     {
-        if (!GameData.Instance.blueSphereTutored)
+        if (!SaveLoadManager.Instance.gameData.blueSphereTutored)
             InputManager.Instance.DisableInput();
 
         Hexagons.Coords newCoords;
@@ -66,10 +66,10 @@ public class EiffelBlueSphere : MonoBehaviour
             .SetEase(Ease.OutQuad)
             .OnComplete(() =>
             {
-                if (!GameData.Instance.blueSphereTutored)
+                if (!SaveLoadManager.Instance.gameData.blueSphereTutored)
                 {
                     LevelControl.Instance._cameraControl.LockPosition(destination);
-                    GameData.Instance.blueSphereTutored = true;
+                    SaveLoadManager.Instance.gameData.blueSphereTutored = true;
                     DOVirtual.DelayedCall(0.1f, () => LevelControl.Instance._ftue.BlueSphereTutorial());
                 }
 

@@ -5,7 +5,7 @@ using System.IO;
 public class SaveLoadManager : Singleton<SaveLoadManager>
 {
 
-    [SerializeField] private GameData gameData;
+    public GameData gameData;
 
     public LevelDataSO[] levelDatas;
     [SerializeField] private int levelCount;
@@ -15,7 +15,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
 
     private void Start()
     {
-        gameData = GameData.Instance;
+        // gameData = GameData.Instance;
 
         if (File.Exists(SavePath))
         {
@@ -105,8 +105,8 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
 
     public void RefreshLevelData()
     {
-        int currentLevel = GameData.Instance.currentLevelID;
-        LevelProgress currentLevelProgress = GameData.Instance.GetLevelProgress(currentLevel);
+        int currentLevel = gameData.currentLevelID;
+        LevelProgress currentLevelProgress = gameData.GetLevelProgress(currentLevel);
 
         currentLevelProgress.currentScore = 0;
         currentLevelProgress.currentTilesLeft = 50;

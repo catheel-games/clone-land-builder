@@ -14,7 +14,7 @@ public class LoadManager : Singleton<LoadManager>
 
         if (sceneName == "Menu")
         {
-            GameData.Instance.currentLevelID = 0;
+            SaveLoadManager.Instance.gameData.currentLevelID = 0;
             SaveLoadManager.Instance.SaveData();
         }
 

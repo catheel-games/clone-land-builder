@@ -15,16 +15,6 @@ public class GameData
     public int eiffelScore = 0;
    
 
-    private static GameData _instance = null;
-    public static GameData Instance
-    {
-        get
-        {
-            if (_instance == null)
-                _instance = new GameData();
-            return _instance;
-        }
-    }
 
     public LevelProgress GetLevelProgress(int levelIndex)
     {

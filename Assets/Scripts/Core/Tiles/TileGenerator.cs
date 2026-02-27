@@ -26,11 +26,11 @@ public class TileGenerator : MonoBehaviour
 
     void Awake()
     {
-        currentGenerator = tileGeneratorSO[GameData.Instance.currentLevelID - 1];
+        currentGenerator = tileGeneratorSO[SaveLoadManager.Instance.gameData.currentLevelID - 1];
 
-        if (GameData.Instance.ftueIsEnded)
+        if (SaveLoadManager.Instance.gameData.ftueIsEnded)
             InitializeQueue();
-        else if (!GameData.Instance.ftueIsEnded)
+        else if (!SaveLoadManager.Instance.gameData.ftueIsEnded)
             InitializeFTUEQueue();
     }
 
@@ -63,7 +63,7 @@ public class TileGenerator : MonoBehaviour
 
         Debug.Log(uniqueTileChance);
 
-        if (!eiffelIsSpawned && uniqueTileChance <= eiffelTileChance && GameData.Instance.eiffelIsUnlocked)
+        if (!eiffelIsSpawned && uniqueTileChance <= eiffelTileChance && SaveLoadManager.Instance.gameData.eiffelIsUnlocked)
         {
             eiffelIsSpawned = true;
             return eiffelTile;

@@ -130,7 +130,7 @@ public class LevelControl : Singleton<LevelControl>
 
     public void UnlockEiffel()
     {
-        GameData.Instance.eiffelIsUnlocked = true;
+        SaveLoadManager.Instance.gameData.eiffelIsUnlocked = true;
         levelCanvasControl.EiffelUnlock();
     }
 

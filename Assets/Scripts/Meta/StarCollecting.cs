@@ -81,26 +81,26 @@ public class StarCollecting : Singleton<StarCollecting>
 
     public void SetDataUI(int maxStarValue)
     {
-        currentLevel = GameData.Instance.currentLevelID;
-        levelProgress = GameData.Instance.GetLevelProgress(currentLevel);
+        currentLevel = SaveLoadManager.Instance.gameData.currentLevelID;
+        levelProgress = SaveLoadManager.Instance.gameData.GetLevelProgress(currentLevel);
 
         endStarText.text = LevelControl.Instance.starScore.ToString();
         starText1.text = LevelControl.Instance.starScore.ToString();
         starText2.text = maxStarValue.ToString();
-        eiffelScoreText.text = GameData.Instance.eiffelScore.ToString();
+        eiffelScoreText.text = SaveLoadManager.Instance.gameData.eiffelScore.ToString();
         tileText.text = LevelControl.Instance.tileScore.ToString();
 
         if (LevelControl.Instance.starScore == 0)
             starText1.color = starTextRedColor;
 
-        if (currentLevel == 2 && !GameData.Instance.eiffelIsUnlocked)
+        if (currentLevel == 2 && !SaveLoadManager.Instance.gameData.eiffelIsUnlocked)
         {
             hasEiffelStars = true;
         }
 
         starFTUEText.text = maxStarValue.ToString();
         maxStarScore = maxStarValue;
-        levelWinFeedback._coinText.text = GameData.Instance.coin.ToString();
+        levelWinFeedback._coinText.text = SaveLoadManager.Instance.gameData.coin.ToString();
 
         ChangeTileCounter();
     }
@@ -191,8 +191,8 @@ public class StarCollecting : Singleton<StarCollecting>
                     {
                         if (hasEiffelStars)
                         {
-                            SetScore(GameData.Instance.eiffelScore, starAmount, eiffelScoreText, true);
-                            GameData.Instance.eiffelScore += starAmount;
+                            SetScore(SaveLoadManager.Instance.gameData.eiffelScore, starAmount, eiffelScoreText, true);
+                            SaveLoadManager.Instance.gameData.eiffelScore += starAmount;
                             CheckEiffel();
                         }
                     })
@@ -460,7 +460,7 @@ public class StarCollecting : Singleton<StarCollecting>
 
     private void CheckEiffel()
     {
-        if (GameData.Instance.eiffelScore >= eiffelMaxScore)
+        if (SaveLoadManager.Instance.gameData.eiffelScore >= eiffelMaxScore)
         {
             hasEiffelStars = false;
             LevelControl.Instance.UnlockEiffel();

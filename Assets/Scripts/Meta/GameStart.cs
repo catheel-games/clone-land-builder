@@ -6,7 +6,7 @@ public class GameStart : MonoBehaviour
     {
         AudioManager.Instance.PlayMusicGroup("Loading");
 
-        if (GameData.Instance.currentLevelID == 0)
+        if (SaveLoadManager.Instance.gameData.currentLevelID == 0)
             LoadManager.Instance.LoadScene("Menu");
 
         else
