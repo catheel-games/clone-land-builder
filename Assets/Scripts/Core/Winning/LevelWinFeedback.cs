@@ -42,7 +42,7 @@ public class LevelWinFeedback : MonoBehaviour
 
     public void LevelWinning()
     {
-        int currentLevel = SaveLoadManager.Instance.gameData.currentLevelID;
+        int currentLevel = SaveLoadManager.Instance.gameData.progressData.currentLevelID;
         LevelDataSO currentlevelDataSO = SaveLoadManager.Instance.levelDatas[currentLevel - 1];
 
         rewardCoinText.text = currentlevelDataSO.coinValue.ToString();

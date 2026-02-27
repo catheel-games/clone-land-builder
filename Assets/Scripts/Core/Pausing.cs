@@ -9,7 +9,7 @@ public class Pausing : MonoBehaviour
 
     public void UnPause()
     {
-        if (SaveLoadManager.Instance.gameData.ftueIsEnded)
+        if (SaveLoadManager.Instance.gameData.progressData.ftueIsEnded)
         {
             InputManager.Instance.EnableInput();
         }

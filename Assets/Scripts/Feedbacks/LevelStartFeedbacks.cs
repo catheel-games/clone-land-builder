@@ -16,7 +16,7 @@ public class LevelStartFeedbacks : MonoBehaviour
 
     void Start()
     {
-        isFTUE = !SaveLoadManager.Instance.gameData.ftueIsEnded;
+        isFTUE = !SaveLoadManager.Instance.gameData.progressData.ftueIsEnded;
 
         SetStartAnimations();
     }

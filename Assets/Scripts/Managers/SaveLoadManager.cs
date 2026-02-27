@@ -64,13 +64,13 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
                 });
             }*/
 
-        gameData.currentLevelID = 1;
+        gameData.progressData.currentLevelID = 1;
     }
 
     public void SaveData()
     {
         string json = JsonUtility.ToJson(gameData, true);
-        // Debug.Log("Saving: " + json);
+        Debug.Log("Saving: " + json);
 
         File.WriteAllText(SavePath, json);
     }
@@ -88,7 +88,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         string json = File.ReadAllText(SavePath);
         GameData data = JsonUtility.FromJson<GameData>(json);
 
-        gameData.SetData(data.levelsProgress);
+        gameData.SetData(data.levelsProgress, data.progressData);
     }
 
     public void DeleteData() {
@@ -105,7 +105,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
 
     public void RefreshLevelData()
     {
-        int currentLevel = gameData.currentLevelID;
+        int currentLevel = gameData.progressData.currentLevelID;
         LevelProgress currentLevelProgress = gameData.GetLevelProgress(currentLevel);
 
         currentLevelProgress.currentScore = 0;

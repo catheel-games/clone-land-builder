@@ -9,7 +9,7 @@ public class LevelWin : MonoBehaviour
 
     private void SettingData()
     {
-        int currentLevel = SaveLoadManager.Instance.gameData.currentLevelID;
+        int currentLevel = SaveLoadManager.Instance.gameData.progressData.currentLevelID;
 
         LevelProgress currentLevelProgress = SaveLoadManager.Instance.gameData.GetLevelProgress(currentLevel);
         LevelProgress nextLevelProgress = SaveLoadManager.Instance.gameData.GetLevelProgress(currentLevel + 1);

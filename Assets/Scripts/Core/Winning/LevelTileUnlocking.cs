@@ -19,7 +19,7 @@ public class LevelTileUnlocking : MonoBehaviour
         tileUnlockedCamera.orthographicSize = 1f;
         tapToContinueCanvasGroup.DOFade(0, 0);
 
-        int currentLevel = SaveLoadManager.Instance.gameData.currentLevelID;
+        int currentLevel = SaveLoadManager.Instance.gameData.progressData.currentLevelID;
 
         switch (currentLevel) {
             case 1:

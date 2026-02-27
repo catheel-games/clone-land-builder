@@ -117,7 +117,7 @@ public class TileCalculator : MonoBehaviour
                 transform
             );
 
-            if (!SaveLoadManager.Instance.gameData.matched3Tiles) {
+            if (!SaveLoadManager.Instance.gameData.progressData.matched3Tiles) {
                 LevelControl.Instance.Match3Tiles();
             }
 

@@ -15,7 +15,7 @@ public class LevelDataSetup : MonoBehaviour
 
     public void SetData()
     {
-        currentLevel = SaveLoadManager.Instance.gameData.currentLevelID;
+        currentLevel = SaveLoadManager.Instance.gameData.progressData.currentLevelID;
         LevelDataSO levelData = SaveLoadManager.Instance.levelDatas[currentLevel-1];
 
         progress = SaveLoadManager.Instance.gameData.GetLevelProgress(currentLevel);

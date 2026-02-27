@@ -114,7 +114,7 @@ public class LevelSelection : MonoBehaviour
             levelSelectionPanel.SetLevelIDText(level+1);
         }
 
-        SaveLoadManager.Instance.gameData.currentLevelID = levelData.levelIndex;
+        SaveLoadManager.Instance.gameData.progressData.currentLevelID = levelData.levelIndex;
         SaveLoadManager.Instance.SaveData();
     }
 }
