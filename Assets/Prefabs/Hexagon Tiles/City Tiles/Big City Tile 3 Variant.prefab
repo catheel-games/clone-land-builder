@@ -264,6 +264,7 @@ MonoBehaviour:
   - {fileID: 7942748108425670418}
   - {fileID: 5456697059694060067}
   - {fileID: 5401467293993925259}
+  isUpgraded: 1
 --- !u!4 &7669811603439981770 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9019290625914489654, guid: d8440b5941fb8c548be49379d129a926, type: 3}

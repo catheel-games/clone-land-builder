@@ -13,6 +13,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     private string SavePath =>
     Path.Combine(Application.persistentDataPath, "SaveData.json");
 
+    //protected override void Awake()
     private void Start()
     {
         // gameData = GameData.Instance;
@@ -70,7 +71,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     public void SaveData()
     {
         string json = JsonUtility.ToJson(gameData, true);
-        Debug.Log("Saving: " + json);
+        // Debug.Log("Saving: " + json);
 
         File.WriteAllText(SavePath, json);
     }

@@ -65,7 +65,9 @@ public class LevelWinFeedback : MonoBehaviour
               .AppendCallback(() => confettiBurstParticle.Play())
               .AppendCallback(() => LevelControl.Instance.CameraPresentation())
               .AppendCallback(() => CreatingFireworks())
-              .AppendCallback(() => LevelCompletedTextAnimation());
+              .AppendCallback(() => LevelCompletedTextAnimation())
+              .AppendInterval(0.5f)
+              .AppendCallback(() => AudioManager.Instance.PlayMusicGroup("Level Complete"));
 
     }
 
@@ -77,7 +79,9 @@ public class LevelWinFeedback : MonoBehaviour
               .AppendCallback(() => AudioManager.Instance.PlaySound("Other", "Level Complete"))
               .Append(tickObject.DOShakeScale(0.5f, 0.25f))
               .AppendCallback(() => levelCanvasControl._levelTopPartContainer.Hide())
-              .AppendCallback(() => levelCanvasControl.ContinueToNextLevelPanel());
+              .AppendCallback(() => levelCanvasControl.ContinueToNextLevelPanel())
+              .AppendInterval(0.5f)
+              .AppendCallback(() => AudioManager.Instance.PlayMusicGroup("Level Complete"));
 
     }
 

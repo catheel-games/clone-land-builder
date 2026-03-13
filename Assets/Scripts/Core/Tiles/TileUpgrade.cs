@@ -53,7 +53,7 @@ public class TileUpgrade : MonoBehaviour
             }
         });
 
-        if (count == 4 || count == 5)
+        if ((count == 4 || count == 5) && !tile.IsUpgraded)
         {
             Upgrade(coords, cityTilePrefabs[UnityEngine.Random.Range(0, cityTilePrefabs.Length)]);
         }

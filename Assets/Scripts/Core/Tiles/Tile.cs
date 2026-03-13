@@ -14,9 +14,12 @@ public class Tile : MonoBehaviour
     private bool isPlaced = false;
     private bool isCenterExpanded = false;
     private bool[] isBorderExpanded = new bool[6] {false, false, false, false, false, false};
-    
+
+    [SerializeField] private bool isUpgraded = false;
+
     public float RotationOffsetDiscrete => rotationOffsetDiscrete;
-    
+    public bool IsUpgraded => isUpgraded;
+
     void Update()
     {
         if (!isPlaced)

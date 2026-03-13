@@ -430,12 +430,14 @@ public class StarCollecting : Singleton<StarCollecting>
             .SetEase(Ease.OutCubic)
             .OnComplete(() =>
             {
-                if (withVoice)
-                    AudioManager.Instance.PlaySound("Plus", "Tile Plus");
-
                 VibrationManager.Instance.Vibrate();
                 Destroy(fly.gameObject);
             });
+
+        if (withVoice)
+        {
+            DOVirtual.DelayedCall(0.5f, () => AudioManager.Instance.PlaySound("Plus", "Tile Plus"));
+        }
     }
 
 
