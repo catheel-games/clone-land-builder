@@ -158,7 +158,7 @@ public class FTUE : MonoBehaviour
                     MoveCircleHoleCenter(new Vector2(0.5f, 0.475f), new Vector2(125f, -350f), 0f, new Vector2(0, 1));
                     AnimateCircleHoleRadius(0.5f, 0.045f, 0.2f);
 
-                    GameData.Instance.ftueIsEnded = true;
+                    SaveLoadManager.Instance.gameData.progressData.ftueIsEnded = true;
                     fTUEisOn = false;
                     SaveLoadManager.Instance.SaveData();
                     LevelControl.Instance.EndingFTUEGrid();
@@ -262,7 +262,7 @@ public class FTUE : MonoBehaviour
 
     public void TileMatchingTutorial()
     {
-        if (!GameData.Instance.matched3Tiles)
+        if (!SaveLoadManager.Instance.gameData.progressData.matched3Tiles)
         {
             _FTUEPanelDefaultContainer.Hide();
 
@@ -274,7 +274,7 @@ public class FTUE : MonoBehaviour
                 MoveCircleHoleCenter(new Vector2(0.5f, 0.5f), new Vector2(-410, -390), 0f, new Vector2(1, 1));
                 AnimateCircleHoleRadius(0.5f, 0.04f, 0.2f);
 
-                GameData.Instance.matched3Tiles = true;
+                SaveLoadManager.Instance.gameData.progressData.matched3Tiles = true;
                 SaveLoadManager.Instance.SaveData();
             });
         }

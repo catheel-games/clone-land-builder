@@ -158,7 +158,7 @@ public class CameraControl : MonoBehaviour
         mainCamera.transform.DOMoveY(presentationYPos, 0.5f);
         mainCamera.transform.DOLocalRotate(presentationRotation, 0.5f);
 
-        zoomTarget = zoomRangeCoefficient * (6f + tileGrid.TileGridDiameter + presentationZoomCoefficient);
+        zoomTarget = zoomRangeCoefficient * (8f + tileGrid.TileGridDiameter + presentationZoomCoefficient);
         LockPosition(presentationPosition);
         
         staticRotation = true;

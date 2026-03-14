@@ -26,7 +26,7 @@ public class CoinCollecting : MonoBehaviour
 
     public void ClaimCoin()
     {
-        int currentLevel = GameData.Instance.currentLevelID;
+        int currentLevel = SaveLoadManager.Instance.gameData.progressData.currentLevelID;
         LevelDataSO currentlevelDataSO = SaveLoadManager.Instance.levelDatas[currentLevel - 1];
 
         coinValue = currentlevelDataSO.coinValue;
@@ -108,7 +108,7 @@ public class CoinCollecting : MonoBehaviour
                 if (!coinSetCalled)
                 {
                     coinSetCalled = true;
-                    SetCoin(GameData.Instance.coin, coinValue, levelWinFeedback._coinText);
+                    SetCoin(SaveLoadManager.Instance.gameData.progressData.coin, coinValue, levelWinFeedback._coinText);
                     ScalingCoinPanel(1.1f, 0.125f);
                 }
 
@@ -135,7 +135,7 @@ public class CoinCollecting : MonoBehaviour
                 ScalingCoinPanel(1.2f, 0.2f)
             );
 
-        GameData.Instance.coin = finalAmount;
+        SaveLoadManager.Instance.gameData.progressData.coin = finalAmount;
     }
 
     private void ScalingCoinPanel(float scaleValue, float duration)

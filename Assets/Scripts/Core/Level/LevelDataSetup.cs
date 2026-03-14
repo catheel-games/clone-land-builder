@@ -15,10 +15,10 @@ public class LevelDataSetup : MonoBehaviour
 
     public void SetData()
     {
-        currentLevel = GameData.Instance.currentLevelID;
+        currentLevel = SaveLoadManager.Instance.gameData.progressData.currentLevelID;
         LevelDataSO levelData = SaveLoadManager.Instance.levelDatas[currentLevel-1];
 
-        progress = GameData.Instance.GetLevelProgress(currentLevel);
+        progress = SaveLoadManager.Instance.gameData.GetLevelProgress(currentLevel);
 
 
 
@@ -34,8 +34,8 @@ public class LevelDataSetup : MonoBehaviour
             progress.state = LevelProgress.LevelState.InProgress;
         }
 
-        GameData.Instance.levelsProgress[currentLevel - 1].currentScore = LevelControl.Instance.starScore;
-        GameData.Instance.levelsProgress[currentLevel - 1].currentTilesLeft = LevelControl.Instance.tileScore;
+        SaveLoadManager.Instance.gameData.levelsProgress[currentLevel - 1].currentScore = LevelControl.Instance.starScore;
+        SaveLoadManager.Instance.gameData.levelsProgress[currentLevel - 1].currentTilesLeft = LevelControl.Instance.tileScore;
 
         SaveLoadManager.Instance.SaveData();
     }

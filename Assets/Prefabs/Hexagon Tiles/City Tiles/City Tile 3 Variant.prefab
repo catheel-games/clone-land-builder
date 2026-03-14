@@ -340,6 +340,7 @@ MonoBehaviour:
   - {fileID: 3848904650372673733}
   - {fileID: 6238174566295449132}
   - {fileID: 7720284741371789790}
+  isUpgraded: 1
 --- !u!1001 &5806878148897306144
 PrefabInstance:
   m_ObjectHideFlags: 0

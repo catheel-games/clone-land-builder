@@ -24,13 +24,13 @@ public class TileGenerator : MonoBehaviour
 
     public Func<Hexagons.Type, (Hexagons.Type type, int count)> OnLeastTypeRequest;
 
-    void Awake()
+    void Start()
     {
-        currentGenerator = tileGeneratorSO[GameData.Instance.currentLevelID - 1];
+        currentGenerator = tileGeneratorSO[SaveLoadManager.Instance.gameData.progressData.currentLevelID - 1];
 
-        if (GameData.Instance.ftueIsEnded)
+        if (SaveLoadManager.Instance.gameData.progressData.ftueIsEnded)
             InitializeQueue();
-        else if (!GameData.Instance.ftueIsEnded)
+        else if (!SaveLoadManager.Instance.gameData.progressData.ftueIsEnded)
             InitializeFTUEQueue();
     }
 
@@ -61,11 +61,9 @@ public class TileGenerator : MonoBehaviour
     {
         float uniqueTileChance = UnityEngine.Random.Range(0, 100);
 
-        Debug.Log(uniqueTileChance);
-
-        if (!eiffelIsSpawned && uniqueTileChance <= eiffelTileChance && GameData.Instance.eiffelIsUnlocked)
+        if (!eiffelIsSpawned && uniqueTileChance <= eiffelTileChance && SaveLoadManager.Instance.gameData.progressData.eiffelIsUnlocked)
         {
-            eiffelIsSpawned = true;
+            EiffelSpawnLimit();
             return eiffelTile;
         }
 
@@ -74,6 +72,10 @@ public class TileGenerator : MonoBehaviour
 
         return randomTile;
     }
+
+    public void EiffelSpawnLimit() {
+        eiffelIsSpawned = true;
+    } 
 
     private Hexagons.Type GetRandomType()
     {

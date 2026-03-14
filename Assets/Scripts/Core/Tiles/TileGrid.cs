@@ -79,7 +79,7 @@ public class TileGrid : MonoBehaviour
                 
                 UpdateTileGridCenterAndDiameter();
 
-                if (GameData.Instance.ftueIsEnded)
+                if (SaveLoadManager.Instance.gameData.progressData.ftueIsEnded)
                 {
                     Hexagons.IterateNeighbours(coords, (int side, Hexagons.Coords neighbor) =>
                     {
@@ -87,7 +87,7 @@ public class TileGrid : MonoBehaviour
                     });
                 }
 
-                else if (!GameData.Instance.ftueIsEnded)
+                else if (!SaveLoadManager.Instance.gameData.progressData.ftueIsEnded)
                 {
                     switch (LevelControl.Instance.fTUEtileID) {
                         case 1:

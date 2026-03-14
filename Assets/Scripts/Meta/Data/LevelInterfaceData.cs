@@ -14,9 +14,10 @@ public class LevelInterfaceData : MonoBehaviour
 
     private void Start()
     {
-        int currentLevel = GameData.Instance.currentLevelID;
+        Debug.Log(SaveLoadManager.Instance.gameData);
+        int currentLevel = SaveLoadManager.Instance.gameData.progressData.currentLevelID;
 
-        LevelProgress progress = GameData.Instance.GetLevelProgress(currentLevel);
+        LevelProgress progress = SaveLoadManager.Instance.gameData.GetLevelProgress(currentLevel);
 
         levelIDText.text = "Level " + currentLevel;
 
@@ -44,7 +45,7 @@ public class LevelInterfaceData : MonoBehaviour
 
         if (currentLevel == 2)
         {
-            if (!GameData.Instance.eiffelIsUnlocked)
+            if (!SaveLoadManager.Instance.gameData.progressData.eiffelIsUnlocked)
             {
                 eiffelObject.SetActive(true);
             }

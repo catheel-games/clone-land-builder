@@ -6,38 +6,32 @@ using UnityEngine;
 public class GameData
 {
     public List<LevelProgress> levelsProgress = new();
-    public int currentLevelID = 1;
-    public int coin = 0;
-    public bool ftueIsEnded = false;
-    public bool matched3Tiles = false;
-    public bool eiffelIsUnlocked = false;
-    public bool blueSphereTutored = false;
-    public int eiffelScore = 0;
-   
-
-    private static GameData _instance = null;
-    public static GameData Instance
-    {
-        get
-        {
-            if (_instance == null)
-                _instance = new GameData();
-            return _instance;
-        }
-    }
+    public ProgressData progressData;
 
     public LevelProgress GetLevelProgress(int levelIndex)
     {
         return levelsProgress.Find(l => l.levelIndex == levelIndex);
     }
 
-    public void SetData(List<LevelProgress> levels)
+    public void SetData(List<LevelProgress> levels, ProgressData progress)
     {
         levelsProgress = new List<LevelProgress>(levels);
+        progressData = progress;
     }
 
 }
 
+[System.Serializable]
+public class ProgressData
+{
+    public int currentLevelID = 1;
+    public int coin = 0;
+    public int eiffelScore = 0;
+    public bool ftueIsEnded = false;
+    public bool matched3Tiles = false;
+    public bool eiffelIsUnlocked = false;
+    public bool blueSphereTutored = false;
+}
 
 [System.Serializable]
 public class LevelProgress

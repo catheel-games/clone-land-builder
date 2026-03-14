@@ -11,7 +11,7 @@ public class MenuCoinSetup : MonoBehaviour
     {
         DOVirtual.DelayedCall(0.02f, () =>
         {
-            coinText.text = GameData.Instance.coin.ToString();
+            coinText.text = SaveLoadManager.Instance.gameData.progressData.coin.ToString();
         });
     }
 

@@ -44,7 +44,7 @@ public class LevelSelection : MonoBehaviour
     {
         for (int i = 0; i < levelImages.Length; i++)
         {
-            LevelProgress progress = GameData.Instance.GetLevelProgress(i+1);
+            LevelProgress progress = SaveLoadManager.Instance.gameData.GetLevelProgress(i+1);
 
             LevelProgress.LevelState _state = progress != null ? progress.state : LevelProgress.LevelState.Blocked;
 
@@ -92,7 +92,7 @@ public class LevelSelection : MonoBehaviour
     {
         levelData = SaveLoadManager.Instance.levelDatas[level];
 
-        progress = GameData.Instance.GetLevelProgress(levelData.levelIndex);
+        progress = SaveLoadManager.Instance.gameData.GetLevelProgress(levelData.levelIndex);
 
         if (progress.state == LevelProgress.LevelState.Finished)
         {
@@ -114,7 +114,7 @@ public class LevelSelection : MonoBehaviour
             levelSelectionPanel.SetLevelIDText(level+1);
         }
 
-        GameData.Instance.currentLevelID = levelData.levelIndex;
+        SaveLoadManager.Instance.gameData.progressData.currentLevelID = levelData.levelIndex;
         SaveLoadManager.Instance.SaveData();
     }
 }

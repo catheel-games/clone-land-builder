@@ -1,11 +1,10 @@
 using UnityEngine;
 using System.IO;
-//using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveLoadManager : Singleton<SaveLoadManager>
 {
 
-    [SerializeField] private GameData gameData;
+    public GameData gameData;
 
     public LevelDataSO[] levelDatas;
     [SerializeField] private int levelCount;
@@ -13,9 +12,9 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     private string SavePath =>
     Path.Combine(Application.persistentDataPath, "SaveData.json");
 
-    private void Start()
+    protected override void Awake()
     {
-        gameData = GameData.Instance;
+        base.Awake();
 
         if (File.Exists(SavePath))
         {
@@ -64,7 +63,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
                 });
             }*/
 
-        gameData.currentLevelID = 1;
+        gameData.progressData.currentLevelID = 1;
     }
 
     public void SaveData()
@@ -88,7 +87,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         string json = File.ReadAllText(SavePath);
         GameData data = JsonUtility.FromJson<GameData>(json);
 
-        gameData.SetData(data.levelsProgress);
+        gameData.SetData(data.levelsProgress, data.progressData);
     }
 
     public void DeleteData() {
@@ -105,8 +104,8 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
 
     public void RefreshLevelData()
     {
-        int currentLevel = GameData.Instance.currentLevelID;
-        LevelProgress currentLevelProgress = GameData.Instance.GetLevelProgress(currentLevel);
+        int currentLevel = gameData.progressData.currentLevelID;
+        LevelProgress currentLevelProgress = gameData.GetLevelProgress(currentLevel);
 
         currentLevelProgress.currentScore = 0;
         currentLevelProgress.currentTilesLeft = 50;
