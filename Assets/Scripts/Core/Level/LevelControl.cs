@@ -131,6 +131,7 @@ public class LevelControl : Singleton<LevelControl>
     public void UnlockEiffel()
     {
         SaveLoadManager.Instance.gameData.progressData.eiffelIsUnlocked = true;
+        tileControl._tileGenerator.EiffelSpawnLimit();
         levelCanvasControl.EiffelUnlock();
     }
 

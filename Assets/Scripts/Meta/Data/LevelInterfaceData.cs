@@ -14,6 +14,7 @@ public class LevelInterfaceData : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(SaveLoadManager.Instance.gameData);
         int currentLevel = SaveLoadManager.Instance.gameData.progressData.currentLevelID;
 
         LevelProgress progress = SaveLoadManager.Instance.gameData.GetLevelProgress(currentLevel);

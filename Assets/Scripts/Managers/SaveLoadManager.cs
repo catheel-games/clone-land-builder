@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.IO;
-//using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveLoadManager : Singleton<SaveLoadManager>
 {
@@ -13,10 +12,9 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     private string SavePath =>
     Path.Combine(Application.persistentDataPath, "SaveData.json");
 
-    //protected override void Awake()
-    private void Start()
+    protected override void Awake()
     {
-        // gameData = GameData.Instance;
+        base.Awake();
 
         if (File.Exists(SavePath))
         {
