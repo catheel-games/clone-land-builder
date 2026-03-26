@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Hexagon Borderline Material
+    second: {fileID: 2100000, guid: 60c3fda83ff47ed4aa92262725e4ac6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Hexagon Material
     second: {fileID: 2100000, guid: e4f8e2dd0566a7649b6f78d3c36963d0, type: 2}
   - first:
