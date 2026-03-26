@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: City Material
-    second: {fileID: 2100000, guid: ac9a47f6f9ab0ea45b5ef8892aa8eee0, type: 2}
+    second: {fileID: 2100000, guid: 4c2ea427895a5c647a65ceab20e124b2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -18,17 +18,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Hexagon Material
-    second: {fileID: 2100000, guid: 668413c622843bc48ad77c11b03204a6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hexagon Material.001
     second: {fileID: 2100000, guid: e4f8e2dd0566a7649b6f78d3c36963d0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Hexagon Material.001
+    second: {fileID: 2100000, guid: 668413c622843bc48ad77c11b03204a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Menu Map Material
-    second: {fileID: 2100000, guid: c94d47f533a960f45934ade246030830, type: 2}
+    second: {fileID: 2100000, guid: a30043a87d1997149938d1a94a4afe27, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
