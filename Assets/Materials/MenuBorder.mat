@@ -54,17 +54,21 @@ Material:
     - _BorderStart: 0
     - _FadeDistance: 0.1
     - _Feather: 0
+    - _Float: 2
     - _FoamAmount: 0.35
     - _FoamBorder: 1
     - _FoamWith: 0.035
     - _InnerFeather: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Transparency: 0.8
     - _WaveScale: 5
     - _WaveSpeed: 0.125
     - _WaveStrength: 0.35
     m_Colors:
-    - _BorderColor: {r: 1, g: 0.98039216, b: 0.98039216, a: 1}
+    - _BorderColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BorderColor2: {r: 0.6784314, g: 0.84705883, b: 0.9019608, a: 1}
+    - _BorderColor_1: {r: 0.5396867, g: 0.784458, b: 0.86415094, a: 1}
     - _FoamColor: {r: 0.29019606, g: 0.7215686, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
