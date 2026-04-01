@@ -101,9 +101,10 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
-# misc
+# MISC
 *.slnx
 .vsconfig
 **/.claude/
 **/tmpclaude-*
 .idea/
+/[Aa]ssets/_[Rr]ecovery
