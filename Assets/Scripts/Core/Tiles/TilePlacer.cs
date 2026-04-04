@@ -1,6 +1,6 @@
 using System;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class TilePlacer : MonoBehaviour
 {
@@ -36,6 +36,7 @@ public class TilePlacer : MonoBehaviour
     public void Click()
     {
         OnClick?.Invoke(coords);
+        VibrationManager.Instance.Vibrate();
         anim.enabled = false;
     }
 

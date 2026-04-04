@@ -133,22 +133,22 @@ public class CameraControl : MonoBehaviour
 
     public void RotateLeft()
     {
-        ChangeRotation(rotationStep);
+        ChangeRotation(rotationStep * Time.deltaTime);
     }
 
     public void RotateRight()
     {
-        ChangeRotation(-rotationStep);
+        ChangeRotation(-rotationStep * Time.deltaTime);
     }
 
     public void ZoomIn()
     {
-        ChangeZoom(-zoomStep);
+        ChangeZoom(-zoomStep * Time.deltaTime);
     }
 
     public void ZoomOut()
     {
-        ChangeZoom(zoomStep);
+        ChangeZoom(zoomStep * Time.deltaTime);
     }
 
     public void CityPresentation()

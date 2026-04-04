@@ -195,6 +195,7 @@ MonoBehaviour:
   levelDataSetup: {fileID: 6976633817952614991}
   _FTUE: {fileID: 8015567836485200278}
   levelWin: {fileID: 2591294126416704093}
+  restartButton: {fileID: 645501865636265047}
   settingEiffel: 0
   fTUEtileID: 0
   starScore: 0
@@ -560,34 +561,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6102139194712775556, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102139194712775556, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102139194712775556, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3782118966075705244}
-    - target: {fileID: 6102139194712775556, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102139194712775556, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Restart
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102139194712775556, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LevelControl, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102139194712775556, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 8082248334833899311, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
       propertyPath: eiffelTowerObject
       value: 
@@ -697,6 +670,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
+--- !u!114 &645501865636265047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3410054798886607598, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}
+  m_PrefabInstance: {fileID: 2857457287182247609}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
 --- !u!114 &5910485773956897194 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8476330011625406227, guid: 0f1b039dd8e73c044b84babf4fdff54d, type: 3}

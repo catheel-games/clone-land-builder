@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 9133029498577285619}
   - component: {fileID: 7551430523150837384}
   - component: {fileID: 3496158077476529589}
-  - component: {fileID: 8524694044505830070}
+  - component: {fileID: 986316427667387356}
   m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 3.3
---- !u!114 &8524694044505830070
+--- !u!114 &986316427667387356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,41 +224,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1507218659216089429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_PressedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_SelectedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 3496158077476529589}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  targetImage: {fileID: 3496158077476529589}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 0.8000001, g: 0.8000001, b: 0.8000001, a: 1}
+  fadeDuration: 0.1
 --- !u!1 &2550474100706551106
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +322,7 @@ GameObject:
   - component: {fileID: 3633533517566150000}
   - component: {fileID: 4858742133281188660}
   - component: {fileID: 7561689864554722997}
-  - component: {fileID: 7563366943990159176}
+  - component: {fileID: 3322696025074156254}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -416,7 +388,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 3
---- !u!114 &7563366943990159176
+--- !u!114 &3322696025074156254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -425,53 +397,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2821739014127874649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_PressedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_SelectedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 7561689864554722997}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8639443571114196316}
-        m_TargetAssemblyTypeName: PopupContainer, Assembly-CSharp
-        m_MethodName: Hide
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  targetImage: {fileID: 7561689864554722997}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 0.8000001, g: 0.8000001, b: 0.8000001, a: 1}
+  fadeDuration: 0.1
 --- !u!1 &2837399252920828369
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +705,7 @@ GameObject:
   - component: {fileID: 8948879718434442092}
   - component: {fileID: 6435754400867312242}
   - component: {fileID: 8639443571114196316}
+  - component: {fileID: 5253465248761545039}
   m_Layer: 5
   m_Name: Restart Panel
   m_TagString: Untagged
@@ -870,6 +803,21 @@ MonoBehaviour:
   scalableTransform: {fileID: 2380942449440437803}
   showScalingDuration: 0.25
   hideScalingDuration: 0.4
+--- !u!114 &5253465248761545039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3558770820351329689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c44ef016ff2064bba331481c5d20a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Restarting
+  restartPanelContainer: {fileID: 8639443571114196316}
+  restartButton: {fileID: 0}
+  backButton: {fileID: 3322696025074156254}
 --- !u!1 &4625303648821646008
 GameObject:
   m_ObjectHideFlags: 0

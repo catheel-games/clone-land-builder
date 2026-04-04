@@ -194,8 +194,8 @@ MonoBehaviour:
   translationLerpCoefficient: 5
   zoomRangeCoefficient: 0.8
   translationRangeCoefficient: 2.5
-  zoomStep: 1
-  rotationStep: 20
+  zoomStep: 3
+  rotationStep: 80
   presentationZoomCoefficient: 0
   presentationRotationStep: -10
   presentationYPos: 7

@@ -2229,6 +2229,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Restart Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 5253465248761545039, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
+      propertyPath: restartButton
+      value: 
+      objectReference: {fileID: 8845043051321851138}
     - target: {fileID: 5737122130447730549, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2309,46 +2313,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6435754400867312242, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8524694044505830070, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8524694044505830070, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8524694044505830070, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3145964109104998210}
-    - target: {fileID: 8524694044505830070, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8639443571114196316, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-      propertyPath: topBar
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
---- !u!114 &6127027937812452462 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8639443571114196316, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
-  m_PrefabInstance: {fileID: 2513830292523821362}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8885d04d65a6b594799fa584d1a7cc28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PopupContainer
 --- !u!224 &7889375790446489159 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5737122130447730549, guid: b48cc53e3038dab46ade354b45d2896e, type: 3}
@@ -2838,10 +2807,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1375223157879388567, guid: 23ae87895fc41cc448ef861088252601, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1427803172001187703, guid: 23ae87895fc41cc448ef861088252601, type: 3}
       propertyPath: m_Name
       value: Pause Panel
@@ -2861,34 +2826,6 @@ PrefabInstance:
     - target: {fileID: 4757839905114118435, guid: 23ae87895fc41cc448ef861088252601, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5027945953984340742, guid: 23ae87895fc41cc448ef861088252601, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5027945953984340742, guid: 23ae87895fc41cc448ef861088252601, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5027945953984340742, guid: 23ae87895fc41cc448ef861088252601, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6127027937812452462}
-    - target: {fileID: 5027945953984340742, guid: 23ae87895fc41cc448ef861088252601, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5027945953984340742, guid: 23ae87895fc41cc448ef861088252601, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Show
-      objectReference: {fileID: 0}
-    - target: {fileID: 5027945953984340742, guid: 23ae87895fc41cc448ef861088252601, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PopupContainer, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5027945953984340742, guid: 23ae87895fc41cc448ef861088252601, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5598565933608513050, guid: 23ae87895fc41cc448ef861088252601, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3045,6 +2982,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8885d04d65a6b594799fa584d1a7cc28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopupContainer
+--- !u!114 &8845043051321851138 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4565222348887499509, guid: 23ae87895fc41cc448ef861088252601, type: 3}
+  m_PrefabInstance: {fileID: 5036443041750999031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
 --- !u!1001 &5958780311156046548
 PrefabInstance:
   m_ObjectHideFlags: 0
