@@ -30,6 +30,8 @@ public class InputManager : Singleton<InputManager>
     private Vector2 screenCenter = new Vector2(0.5f, 0.5f * Screen.height / Screen.width);
 
     private bool inputIsEnabled = true;
+    
+    public bool InputIsEnabled => inputIsEnabled;
 
     void Update()
     {

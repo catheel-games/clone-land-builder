@@ -15,5 +15,6 @@ public class LevelSelectionButton : MonoBehaviour
     private void OnClick()
     {
         levelSelection.MenuSelectLevel(levelIndex);
+        VibrationManager.Instance.Vibrate();
     }
 }

@@ -11,6 +11,8 @@ public class LevelControl : Singleton<LevelControl>
     [SerializeField] private LevelDataSetup levelDataSetup;
     [SerializeField] private FTUE _FTUE;
 	[SerializeField] private LevelWin levelWin;
+    
+    [SerializeField] private UIButton restartButton;
 
     public bool settingEiffel = false;
     public int fTUEtileID = 0;
@@ -34,6 +36,7 @@ public class LevelControl : Singleton<LevelControl>
         tileControl.OnTileQueueFirstTileRequest += levelCanvasControl.TileQueueFirstTile;
         levelCanvasControl.OnTilePreviewControlClick += ExitTileViewMode;
         levelCanvasControl.OnCameraControlClick += CameraControlClick;
+        restartButton.OnUp += Restart;
     }
 
     void OnDisable()
@@ -43,6 +46,7 @@ public class LevelControl : Singleton<LevelControl>
         tileControl.OnTileQueueFirstTileRequest -= levelCanvasControl.TileQueueFirstTile;
         levelCanvasControl.OnTilePreviewControlClick -= ExitTileViewMode;
         levelCanvasControl.OnCameraControlClick -= CameraControlClick;
+        restartButton.OnUp -= Restart;
     }
 
     private void Start()
