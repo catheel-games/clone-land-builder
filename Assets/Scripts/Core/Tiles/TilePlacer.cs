@@ -1,13 +1,11 @@
 using System;
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class TilePlacer : MonoBehaviour
 {
     [SerializeField] private RectTransform tilePlacerPlus;
-    [SerializeField] private Animator anim;
-
-    private bool isAnimated = false;
+    [SerializeField] private Animator animator;
 
     private Hexagons.Coords coords;
 
@@ -18,31 +16,25 @@ public class TilePlacer : MonoBehaviour
         tilePlacerPlus.localRotation = Quaternion.Euler(0f, 0f, -LevelControl.Instance.CameraPivotRotation);
     }
 
-    public void Setup(Hexagons.Coords coords, bool isFirstTile)
+    public void Setup(Hexagons.Coords coords, bool isAnimated)
     {
         this.coords = coords;
-        
         transform.position = Hexagons.HexToWorld(coords);
-
-        isAnimated = isFirstTile;
-    }
-
-    private void OnEnable()
-    {
-        StartCoroutine(AnimationSetting());
-
+        
+        Sequence animationSetup = DOTween.Sequence();
+        
+        animationSetup.AppendCallback(() => animator.enabled = false);
+        animationSetup.AppendInterval(1f);
+        animationSetup.AppendCallback(() => animator.enabled = isAnimated);
     }
 
     public void Click()
     {
-        OnClick?.Invoke(coords);
-        VibrationManager.Instance.Vibrate();
-        anim.enabled = false;
-    }
-
-    IEnumerator AnimationSetting() {
-        anim.enabled = false;
-        yield return new WaitForSeconds(1f);
-        anim.enabled = isAnimated;
+        if (InputManager.Instance.InputIsEnabled)
+        {
+            animator.enabled = false;
+            OnClick?.Invoke(coords);
+            VibrationManager.Instance.Vibrate();
+        }
     }
 }

@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilePlacer
   tilePlacerPlus: {fileID: 7794872966296473812}
-  anim: {fileID: 2205962961746068804}
+  animator: {fileID: 2205962961746068804}
 --- !u!95 &2205962961746068804
 Animator:
   serializedVersion: 7
