@@ -30,7 +30,7 @@ public class TilePlacer : MonoBehaviour
 
     public void Click()
     {
-        if (InputManager.Instance.InputIsEnabled)
+        if (InputManager.Instance.InputIsEnabled || !SaveLoadManager.Instance.gameData.progressData.ftueIsEnded)
         {
             animator.enabled = false;
             OnClick?.Invoke(coords);
