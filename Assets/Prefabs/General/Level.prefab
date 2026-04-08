@@ -314,6 +314,10 @@ PrefabInstance:
       propertyPath: tileGrid
       value: 
       objectReference: {fileID: 8882862855357961664}
+    - target: {fileID: 602406319762784280, guid: fe6975213142ed844a6666a7b28d3838, type: 3}
+      propertyPath: zoomRangeCoefficient
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3655100828832201250, guid: fe6975213142ed844a6666a7b28d3838, type: 3}
       propertyPath: m_Name
       value: Camera

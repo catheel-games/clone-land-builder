@@ -52,7 +52,7 @@ public class CameraControl : MonoBehaviour
 
     void Awake()
     {
-        zoomTarget = 6 * zoomRangeCoefficient;
+        zoomTarget = 4f * zoomRangeCoefficient;
         
         rotationTarget = pivotTransform.transform.rotation.y;
         positionTarget = transform.position;
@@ -104,7 +104,7 @@ public class CameraControl : MonoBehaviour
     // Physical
     private void ChangeZoom(float zoomAmount)
     {
-        float zoomMin = zoomRangeCoefficient * 5f;
+        float zoomMin = zoomRangeCoefficient * 4f;
         float zoomMax = zoomRangeCoefficient * (6f + tileGrid.TileGridDiameter);
         
         zoomTarget = Mathf.Clamp(zoomTarget + zoomAmount, zoomMin, zoomMax);
