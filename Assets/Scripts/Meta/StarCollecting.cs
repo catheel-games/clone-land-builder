@@ -53,6 +53,7 @@ public class StarCollecting : Singleton<StarCollecting>
     private int tileAmount = 0;
     private List<GameObject> starObjects = new();
     private GameObject tileObject;
+    private GameObject currentTileObject;
 
     private List<RectTransform> spawnedStars = new();
     private List<RectTransform> spawnedTiles = new();
@@ -67,6 +68,7 @@ public class StarCollecting : Singleton<StarCollecting>
 
     private bool hasEiffelStars = false;
     private bool placingEiffel = false;
+    private bool placing5StarTile = false;
 
     [SerializeField] private GameObject eiffelScoreBonusObject;
     [SerializeField] private TextMeshProUGUI eiffelScoreText;
@@ -105,11 +107,12 @@ public class StarCollecting : Singleton<StarCollecting>
         ChangeTileCounter();
     }
 
-    public void GetPlusObjects(int starAmountRef, List<GameObject> starObjectsRef, GameObject tileObjectRef)
+    public void GetPlusObjects(int starAmountRef, List<GameObject> starObjectsRef, GameObject tileObjectRef, GameObject currentTileObjectRef)
     {
         starAmount = starAmountRef;
         starObjects = starObjectsRef;
         tileObject = tileObjectRef;
+        currentTileObject = currentTileObjectRef;
     }
 
     public void SetAcceptFeedback()
@@ -160,6 +163,17 @@ public class StarCollecting : Singleton<StarCollecting>
                 Vector3 screenPos = Camera.main.WorldToScreenPoint(starObjects[i].transform.position);
                 SpawnStarFly(screenPos);
                 Destroy(starObjects[i]);
+            }
+
+            if (placing5StarTile)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    Vector3 spawnPoint = currentTileObject.transform.position + Vector3.up;
+
+                    Vector3 screenPos = Camera.main.WorldToScreenPoint(spawnPoint);
+                    SpawnStarFly(screenPos);
+                }
             }
 
             //-------------------------------------------------------- SEQUENCES ------------------------------------------------------------------------------------------
@@ -263,6 +277,11 @@ public class StarCollecting : Singleton<StarCollecting>
 
         else
             tileScoreBlinkFeedback.ChangeCounterDefaultColor();
+    }
+
+    public void SetPlus5Star(bool active)
+    {
+        placing5StarTile = active;
     }
 
     public void SetStarScoreMainMode()
