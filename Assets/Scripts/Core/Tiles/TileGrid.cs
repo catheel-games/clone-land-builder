@@ -15,6 +15,9 @@ public class TileGrid : MonoBehaviour
     private Dictionary<Hexagons.Coords, TilePlacer> frontier = new Dictionary<Hexagons.Coords, TilePlacer>();
     private Dictionary<Hexagons.Coords, Tile> tiles = new Dictionary<Hexagons.Coords, Tile>();
 
+    private List<Hexagons.Coords> fiveStarTiles = new List <Hexagons.Coords>();
+    private List<GameObject> fiveStarPings = new List<GameObject>();
+
     public event Action<Hexagons.Coords> OnTilePlacerClick;
     public event Action OnTilePlace;
 
@@ -52,6 +55,33 @@ public class TileGrid : MonoBehaviour
         newTilePlacer.Setup(coords, false);
     }
 
+    public void Set5StarTile(Hexagons.Coords coords)
+    {
+        fiveStarTiles.Add(coords);
+    }
+
+    public void Set5StarPing(GameObject pingObject)
+    {
+        fiveStarPings.Add(pingObject);
+        Debug.Log("Added Ping");
+    }
+
+    public bool Check5StarTile(Hexagons.Coords coords)
+    {
+        foreach (Hexagons.Coords fiveStar in fiveStarTiles)
+        {
+            if (coords.x == fiveStar.x && coords.y == fiveStar.y)
+            {
+                Debug.Log("True Checking");
+                LevelControl.Instance.setting5StarTile = true;
+                return true;
+            }
+        }
+
+        LevelControl.Instance.setting5StarTile = false;
+        return false;
+    }
+
     public void SetTile(Hexagons.Coords coords, Tile tile)
     {
         if (frontier.ContainsKey(coords))
@@ -78,6 +108,18 @@ public class TileGrid : MonoBehaviour
                 tile.transform.position = Hexagons.HexToWorld(coords);
                 
                 UpdateTileGridCenterAndDiameter();
+
+                for (int i = 0; i < fiveStarTiles.Count; i++) {
+                    if (coords.x == fiveStarTiles[i].x && coords.y == fiveStarTiles[i].y)
+                    {
+                        fiveStarTiles.RemoveAt(i);
+                        GameObject fiveStarCurrentPing = fiveStarPings[i];
+
+                        fiveStarPings.RemoveAt(i);
+                        Destroy(fiveStarCurrentPing);
+                    }
+                }
+
 
                 if (SaveLoadManager.Instance.gameData.progressData.ftueIsEnded)
                 {

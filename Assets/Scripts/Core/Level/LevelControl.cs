@@ -14,6 +14,7 @@ public class LevelControl : Singleton<LevelControl>
     
     [SerializeField] private UIButton restartButton;
 
+    public bool setting5StarTile = false;
     public bool settingEiffel = false;
     public int fTUEtileID = 0;
     public int starScore;
@@ -90,9 +91,9 @@ public class LevelControl : Singleton<LevelControl>
         }
     }
 
-    public void SetPlusObjects(int starAmount, List<GameObject> starObjects, GameObject tileObject)
+    public void SetPlusObjects(int starAmount, List<GameObject> starObjects, GameObject tileObject, GameObject currentTileObject)
     {
-        starCollecting.GetPlusObjects(starAmount, starObjects, tileObject);
+        starCollecting.GetPlusObjects(starAmount, starObjects, tileObject, currentTileObject);
 
         if (tileObject != null)
             _FTUE.TileMatchingTutorial();
