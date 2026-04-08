@@ -4,6 +4,11 @@ public class VibrationManager : Singleton<VibrationManager>
 {
     [SerializeField] private bool vibrationEnabled = true;
 
+    void Start()
+    {
+        Vibration.Init();
+    }
+
     public void SetVibration(bool isEnabled)
     {
         vibrationEnabled = isEnabled;
@@ -15,7 +20,7 @@ public class VibrationManager : Singleton<VibrationManager>
         if (vibrationEnabled)
         {
             Debug.Log("Vibrate");
-            Handheld.Vibrate();
+            Vibration.VibrateAndroid(10);
         }
         #endif
     }
