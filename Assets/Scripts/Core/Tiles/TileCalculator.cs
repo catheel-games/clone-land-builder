@@ -11,6 +11,8 @@ public class TileCalculator : MonoBehaviour
     [SerializeField] private TilePreviewCombo comboPrefab;
     [SerializeField] private TileGrid tileGrid; // idk
 
+    [SerializeField] private GameObject currentTileObject;
+
     private TilePreviewStar[] stars = new TilePreviewStar[6];
     private TilePreviewStar[] stars2 = new TilePreviewStar[6];
     private TilePreviewCombo combo;
@@ -19,11 +21,15 @@ public class TileCalculator : MonoBehaviour
 
     private int starAmount = 0;
     private int doubleStarAmount = 0;
+    private int plus5StarAmount = 0;
 
     public void CalculateBonuses(Hexagons.Coords coords, Tile tile)
     {
         int combinationAmount = 0;
         doubleStarAmount = 0;
+        plus5StarAmount = 0;
+
+        currentTileObject = tile.gameObject;
 
         Hexagons.IterateNeighbours(coords, (side, neighborCoords) =>
         {
@@ -141,7 +147,16 @@ public class TileCalculator : MonoBehaviour
 
         }
 
-        starAmount = combinationAmount + doubleStarAmount;
+        bool has5StarPin = LevelControl.Instance._tileControl.Tilegrid.Check5StarTile(coords);
+
+        if (has5StarPin)
+        {
+            plus5StarAmount = 5;
+        }
+
+        starAmount = combinationAmount + doubleStarAmount + plus5StarAmount;
+
+        StarCollecting.Instance.SetPlus5Star(has5StarPin);
 
         if (starAmount > 0)
         {
@@ -175,11 +190,11 @@ public class TileCalculator : MonoBehaviour
 
         if (combo != null)
         {
-            LevelControl.Instance.SetPlusObjects(starAmount, starObjects, combo.gameObject);
+            LevelControl.Instance.SetPlusObjects(starAmount, starObjects, combo.gameObject, currentTileObject);
         }
         else
         {
-            LevelControl.Instance.SetPlusObjects(starAmount, starObjects, null);
+            LevelControl.Instance.SetPlusObjects(starAmount, starObjects, null, currentTileObject);
         }
     }
 
