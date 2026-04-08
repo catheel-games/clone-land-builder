@@ -84,4 +84,26 @@ public class EiffelBlueSphere : MonoBehaviour
 
     }
 
+    private void HandleTilePlaced(Vector3 worldPos)
+    {
+        AudioManager.Instance.PlaySound("Plus", "Paris Blue Sphere");
+
+        Instantiate(breakParticleObject, transform.position, Quaternion.identity, transform.parent);
+        Instantiate(ftuePing, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity, transform.parent);
+
+        if (landingCoordsSet)
+        {
+            LevelControl.Instance._tileControl.OnTilePlacerClick += OnTilePlacedAnywhere;
+            AwardFiveStars(worldPos);
+        }
+        transform.DOScale(0f, 0.2f).OnComplete(
+                                        () => Destroy(gameObject));
+    }
+
+    private void AwardFiveStars(Vector3 worldPos)
+    {
+        StarCollecting.Instance.Stars += 5;
+        ShowStarsUI(worldPos);
+    }
+
 }
