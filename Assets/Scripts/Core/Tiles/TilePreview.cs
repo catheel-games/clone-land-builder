@@ -62,10 +62,12 @@ public class TilePreview : MonoBehaviour
             if (newRotationDiscrete != targetRotationDiscrete)
             {
                 AudioManager.Instance.PlaySound("Tile", "Tile Rotating");
+                VibrationManager.Instance.Vibrate();
 
                 targetRotationDiscrete = newRotationDiscrete;
                 tileInstance.Rotate(targetRotationDiscrete);
                 tileInstanceUI.Rotate(targetRotationDiscrete);
+                
                 tileCalculator.CalculateBonuses(tileInstanceCoords, tileInstance);
 
                 LevelControl.Instance.RotateTileFTUE();

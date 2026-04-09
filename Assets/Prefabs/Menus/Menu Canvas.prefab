@@ -3316,8 +3316,8 @@ GameObject:
   - component: {fileID: 777898825598476596}
   - component: {fileID: 2302211538950416788}
   - component: {fileID: 2871990411310710238}
-  - component: {fileID: 1098050881221290575}
-  - component: {fileID: 952796696001782200}
+  - component: {fileID: 956477063965495607}
+  - component: {fileID: 4229049187843257388}
   m_Layer: 5
   m_Name: Continue Button
   m_TagString: Untagged
@@ -3383,7 +3383,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1098050881221290575
+--- !u!114 &956477063965495607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3392,42 +3392,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3228574859816316614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_PressedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_SelectedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2871990411310710238}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &952796696001782200
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  targetImage: {fileID: 2871990411310710238}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 0.9490197, g: 0.9607844, b: 0.25882354, a: 1}
+  fadeDuration: 0.1
+--- !u!114 &4229049187843257388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3436,10 +3408,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3228574859816316614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484202b3eeb84db498fef69065b8fa8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 159f054ee95a5c24995c962da2a55edb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneLoadButton
-  button: {fileID: 1098050881221290575}
+  m_EditorClassIdentifier: Assembly-CSharp::SceneLoadButtonNew
+  button: {fileID: 956477063965495607}
   sceneName: Game
 --- !u!1 &3261492372963408359
 GameObject:
@@ -3736,7 +3708,7 @@ GameObject:
   - component: {fileID: 1240278358648622018}
   - component: {fileID: 7758664542756164286}
   - component: {fileID: 4694763951290294285}
-  - component: {fileID: 2112351847618692710}
+  - component: {fileID: 5674619204931083679}
   m_Layer: 5
   m_Name: Retry Button
   m_TagString: Untagged
@@ -3802,7 +3774,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2112351847618692710
+--- !u!114 &5674619204931083679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3811,53 +3783,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3929974969288998108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_PressedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_SelectedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 4694763951290294285}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6769162326336196223}
-        m_TargetAssemblyTypeName: LevelSelectionPanel, Assembly-CSharp
-        m_MethodName: RestartLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  targetImage: {fileID: 4694763951290294285}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 0.9490197, g: 0.9607844, b: 0.25882354, a: 1}
+  fadeDuration: 0.1
 --- !u!1 &4168482564151221376
 GameObject:
   m_ObjectHideFlags: 0
@@ -4057,7 +3989,7 @@ GameObject:
   - component: {fileID: 7549682030406355388}
   - component: {fileID: 6000246146646499428}
   - component: {fileID: 2420927764115732959}
-  - component: {fileID: 8394751060451441960}
+  - component: {fileID: 2510825824408789751}
   m_Layer: 5
   m_Name: Retry Button
   m_TagString: Untagged
@@ -4123,7 +4055,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8394751060451441960
+--- !u!114 &2510825824408789751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4132,53 +4064,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4246225392169617134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_PressedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_SelectedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2420927764115732959}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1376781693673474943}
-        m_TargetAssemblyTypeName: LevelSelectionPanel, Assembly-CSharp
-        m_MethodName: RestartLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  targetImage: {fileID: 2420927764115732959}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 0.9490197, g: 0.9607844, b: 0.25882354, a: 1}
+  fadeDuration: 0.1
 --- !u!1 &4267208059996846018
 GameObject:
   m_ObjectHideFlags: 0
@@ -4742,6 +4634,7 @@ MonoBehaviour:
   - {fileID: 1640451818245892392}
   - {fileID: 6850206236468334745}
   - {fileID: 2652193934728794998}
+  retryLevelButton: {fileID: 5674619204931083679}
 --- !u!1 &4621323299056703102
 GameObject:
   m_ObjectHideFlags: 0
@@ -6835,8 +6728,8 @@ GameObject:
   - component: {fileID: 8285157390330177813}
   - component: {fileID: 3541075844041392447}
   - component: {fileID: 6504960840863859895}
-  - component: {fileID: 1684285124042766216}
-  - component: {fileID: 8051979947154616741}
+  - component: {fileID: 9072484632693306713}
+  - component: {fileID: 1770192090743443507}
   m_Layer: 5
   m_Name: Continue Button
   m_TagString: Untagged
@@ -6902,7 +6795,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1684285124042766216
+--- !u!114 &9072484632693306713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6911,42 +6804,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6184089438268923056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_PressedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_SelectedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 6504960840863859895}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &8051979947154616741
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  targetImage: {fileID: 6504960840863859895}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 0.9490197, g: 0.9607844, b: 0.25882354, a: 1}
+  fadeDuration: 0.1
+--- !u!114 &1770192090743443507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6955,10 +6820,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6184089438268923056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484202b3eeb84db498fef69065b8fa8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 159f054ee95a5c24995c962da2a55edb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneLoadButton
-  button: {fileID: 1684285124042766216}
+  m_EditorClassIdentifier: Assembly-CSharp::SceneLoadButtonNew
+  button: {fileID: 9072484632693306713}
   sceneName: Game
 --- !u!1 &6206286264917080313
 GameObject:
@@ -9136,8 +9001,8 @@ GameObject:
   - component: {fileID: 8232928660531551975}
   - component: {fileID: 3969382264575167065}
   - component: {fileID: 7665261072187009880}
-  - component: {fileID: 3559698297347157258}
-  - component: {fileID: 2426266554881554197}
+  - component: {fileID: 7149223750060526793}
+  - component: {fileID: 1723626353653440240}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -9203,7 +9068,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3559698297347157258
+--- !u!114 &7149223750060526793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9212,42 +9077,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8272752183525604749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_PressedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_SelectedColor: {r: 0.9490196, g: 0.9607843, b: 0.25882354, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2871990411310710238}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &2426266554881554197
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  targetImage: {fileID: 7665261072187009880}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 0.9490197, g: 0.9607844, b: 0.25882354, a: 1}
+  fadeDuration: 0.1
+--- !u!114 &1723626353653440240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9256,10 +9093,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8272752183525604749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484202b3eeb84db498fef69065b8fa8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 159f054ee95a5c24995c962da2a55edb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneLoadButton
-  button: {fileID: 3559698297347157258}
+  m_EditorClassIdentifier: Assembly-CSharp::SceneLoadButtonNew
+  button: {fileID: 7149223750060526793}
   sceneName: Game
 --- !u!1 &8465925595861510694
 GameObject:
@@ -9799,6 +9636,7 @@ MonoBehaviour:
   - {fileID: 4452316986438620424}
   - {fileID: 1717636301269798804}
   - {fileID: 6466380473776515016}
+  retryLevelButton: {fileID: 2510825824408789751}
 --- !u!1001 &2283934368093289457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9823,22 +9661,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1721225465342253472, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1721225465342253472, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1721225465342253472, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1721225465342253472, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1794877960476340785, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9870,54 +9692,6 @@ PrefabInstance:
     - target: {fileID: 1797530518052304290, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2390790702481158067, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2390790702481158067, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2390790702481158067, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2390790702481158067, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3170117428462347291, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3170117428462347291, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3170117428462347291, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3170117428462347291, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3881856657805454789, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3881856657805454789, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3881856657805454789, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3881856657805454789, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4646925552435442375, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9943,22 +9717,6 @@ PrefabInstance:
       propertyPath: topBar
       value: 
       objectReference: {fileID: 1237626088794302723}
-    - target: {fileID: 7357856914757835802, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7357856914757835802, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7357856914757835802, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7357856914757835802, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8791927124461052299, guid: deb3cd8a1ba32e5478d6e7b0a11d52a0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

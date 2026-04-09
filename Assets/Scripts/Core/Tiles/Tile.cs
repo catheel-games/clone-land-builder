@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] private float rotationLerpCoefficient = 10f;
+    private float rotationLerpCoefficient = 4f;
     [SerializeField] private Hexagons.Type centerType;
     [SerializeField] private Hexagons.Type[] borderTypes = new Hexagons.Type[6];
     [SerializeField] private GameObject centerExpansion;
@@ -20,15 +20,14 @@ public class Tile : MonoBehaviour
     public float RotationOffsetDiscrete => rotationOffsetDiscrete;
     public bool IsUpgraded => isUpgraded;
 
+    private float originalRotation = 0f;
+    
     void Update()
     {
         if (!isPlaced)
         {
-            transform.rotation = Quaternion.Lerp(
-                transform.rotation,
-                Quaternion.Euler(0f, rotationOffsetDiscrete, 0f),
-                rotationLerpCoefficient * Time.deltaTime
-            );
+            originalRotation = Mathf.Lerp(originalRotation, rotationOffsetDiscrete, rotationLerpCoefficient * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0f, originalRotation, 0f);
         }
     }
 
@@ -43,10 +42,11 @@ public class Tile : MonoBehaviour
 
     public void RotateInstantly(float newRotationOffsetDiscrete)
     {    
-        if (!isPlaced)
+        //if (!isPlaced)
         {
             rotationOffsetDiscrete = newRotationOffsetDiscrete;
             rotationOffset = (int)Mathf.Floor(-rotationOffsetDiscrete / 60f);
+            originalRotation = rotationOffsetDiscrete;
             transform.rotation = Quaternion.Euler(0f, rotationOffsetDiscrete, 0f);
         }
     }

@@ -1,5 +1,5 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class LevelSelectionPanel : MonoBehaviour
 {
@@ -21,6 +21,18 @@ public class LevelSelectionPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText2;
 
     [SerializeField] private GameObject[] resources;
+
+    [SerializeField] private UIButton retryLevelButton;
+    
+    void OnEnable()
+    {
+        retryLevelButton.OnUp += RestartLevel;
+    }
+
+    void OnDisable()
+    {
+        retryLevelButton.OnUp -= RestartLevel;
+    }
 
     public void SetValues(int starValue, int coinValue, bool played, bool[] resourcesInLevel)
     {

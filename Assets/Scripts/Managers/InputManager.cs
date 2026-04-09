@@ -30,6 +30,8 @@ public class InputManager : Singleton<InputManager>
     private Vector2 screenCenter = new Vector2(0.5f, 0.5f * Screen.height / Screen.width);
 
     private bool inputIsEnabled = true;
+    
+    public bool InputIsEnabled => inputIsEnabled;
 
     void Update()
     {
@@ -77,8 +79,8 @@ public class InputManager : Singleton<InputManager>
             Touch touchOne = Input.GetTouch(0);
             Touch touchTwo = Input.GetTouch(1);
 
-            if (EventSystem.current.IsPointerOverGameObject(touchOne.fingerId)) return;
-            if (EventSystem.current.IsPointerOverGameObject(touchTwo.fingerId)) return;
+            //if (EventSystem.current.IsPointerOverGameObject(touchOne.fingerId)) return;
+            //if (EventSystem.current.IsPointerOverGameObject(touchTwo.fingerId)) return;
             
             TwoFingerSlideEvent slideEvent = new TwoFingerSlideEvent
             {

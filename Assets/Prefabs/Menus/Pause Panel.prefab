@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7576909931775059153}
   - component: {fileID: 586156856146208715}
   - component: {fileID: 4936418551516264617}
-  - component: {fileID: 3092805388190670836}
-  - component: {fileID: 8302565884832620112}
+  - component: {fileID: 7237814657392583261}
+  - component: {fileID: 5995249211716721756}
   m_Layer: 5
   m_Name: Map Button
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2.2
---- !u!114 &3092805388190670836
+--- !u!114 &7237814657392583261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,42 +87,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 192274887111675639}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_PressedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_SelectedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 4936418551516264617}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &8302565884832620112
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  targetImage: {fileID: 4936418551516264617}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 0.8000001, g: 0.8000001, b: 0.8000001, a: 1}
+  fadeDuration: 0.1
+--- !u!114 &5995249211716721756
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,10 +103,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 192274887111675639}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484202b3eeb84db498fef69065b8fa8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 159f054ee95a5c24995c962da2a55edb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneLoadButton
-  button: {fileID: 3092805388190670836}
+  m_EditorClassIdentifier: Assembly-CSharp::SceneLoadButtonNew
+  button: {fileID: 7237814657392583261}
   sceneName: Menu
 --- !u!1 &429681759367568765
 GameObject:
@@ -395,6 +367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eaf7f3e833a9b142af7d48cd437f9dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pausing
+  pausePanelContainer: {fileID: 713064811577612070}
+  continueButton: {fileID: 8137700246605536667}
 --- !u!1 &2778879677316733618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,7 +1496,7 @@ GameObject:
   - component: {fileID: 1536494311298066648}
   - component: {fileID: 3069846349193368088}
   - component: {fileID: 7361703553462939861}
-  - component: {fileID: 5027945953984340742}
+  - component: {fileID: 4565222348887499509}
   m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
@@ -1588,7 +1562,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2.2
---- !u!114 &5027945953984340742
+--- !u!114 &4565222348887499509
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1597,41 +1571,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5764699456082746060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_PressedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_SelectedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 7361703553462939861}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  targetImage: {fileID: 7361703553462939861}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 0.8000001, g: 0.8000001, b: 0.8000001, a: 1}
+  fadeDuration: 0.1
 --- !u!1 &6427086191665123416
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,7 +2457,7 @@ GameObject:
   - component: {fileID: 6298458794173485785}
   - component: {fileID: 1919752159245703645}
   - component: {fileID: 8587586072989862830}
-  - component: {fileID: 8509570276107452923}
+  - component: {fileID: 8137700246605536667}
   m_Layer: 5
   m_Name: Continue Button
   m_TagString: Untagged
@@ -2577,7 +2523,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2
---- !u!114 &8509570276107452923
+--- !u!114 &8137700246605536667
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2586,62 +2532,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9200525129431717318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: c87648062f8eb274da71e22c4b578033, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_PressedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_SelectedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 8587586072989862830}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 713064811577612070}
-        m_TargetAssemblyTypeName: PopupContainer, Assembly-CSharp
-        m_MethodName: Hide
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8163962113934723160}
-        m_TargetAssemblyTypeName: Pausing, Assembly-CSharp
-        m_MethodName: UnPause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  targetImage: {fileID: 8587586072989862830}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 0.8000001, g: 0.8000001, b: 0.8000001, a: 1}
+  fadeDuration: 0.1
