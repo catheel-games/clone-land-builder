@@ -205,10 +205,14 @@ public class AudioManager : Singleton<AudioManager>
 
         musicAudioSource.PlayScheduled(time);
 
-        scheduleSeq.AppendInterval(((float)time))
+        double delay = time - AudioSettings.dspTime;
+
+        scheduleSeq = DOTween.Sequence();
+
+        scheduleSeq.AppendInterval(((float)delay))
                    .AppendCallback(() => currentMusicSource.Stop())
                    .AppendCallback(() => currentMusicSource = musicAudioSource);
-        ;
+
     }
 
     public void SetMusicVolume(bool isMusicOn)
