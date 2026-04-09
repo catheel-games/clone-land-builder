@@ -67,6 +67,7 @@ public class TilePreview : MonoBehaviour
                 targetRotationDiscrete = newRotationDiscrete;
                 tileInstance.Rotate(targetRotationDiscrete);
                 tileInstanceUI.Rotate(targetRotationDiscrete);
+                
                 tileCalculator.CalculateBonuses(tileInstanceCoords, tileInstance);
 
                 LevelControl.Instance.RotateTileFTUE();

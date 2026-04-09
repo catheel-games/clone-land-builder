@@ -20,7 +20,7 @@ public class VibrationManager : Singleton<VibrationManager>
         if (vibrationEnabled)
         {
             Debug.Log("Vibrate");
-            Vibration.VibrateAndroid(10);
+            Vibration.VibrateAndroid(20);
         }
         #endif
     }
