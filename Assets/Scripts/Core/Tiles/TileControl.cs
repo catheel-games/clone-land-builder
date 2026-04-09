@@ -56,6 +56,7 @@ public class TileControl : MonoBehaviour
     {
         if (isTileAccepted)
         {
+            previewTile.RotateInstantly(previewTile.RotationOffsetDiscrete);
             tileGrid.SetTile(previewTileCoords, previewTile);
             
             tileUpgrade.CheckUpgrade(previewTileCoords);
